@@ -1,8 +1,8 @@
-package DAO;
+package DAO.Hibirnate;
 
 /**
  * Created by Artyom Karnov on 8/16/16.
  * artyom-karnov@yandex.ru
  **/
-public class Hibernate {
+public class TariffOption {
 }

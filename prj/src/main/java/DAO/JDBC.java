@@ -52,9 +52,12 @@ public class JDBC {
                     "GROUP BY tariff, tariffOption";
             ResultSet rs = stmt.executeQuery(sql);
 
+
             while (rs.next()) {
+
                 String tariff = rs.getString("tariff");
                 String tariffOption = rs.getString("tariffOption");
+
                 System.out.println("tariff: " + tariff + ", tariffOption: " + tariffOption);
             }
             rs.close();
