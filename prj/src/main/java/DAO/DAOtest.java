@@ -12,8 +12,9 @@ public class DAOtest {
         jdbc.getTariffOtions("Basic");
         MainHibernate hiber = new MainHibernate();
         //hiber.addTariff("novetly");
-        hiber.getTariffsList();
+//        hiber.getTariffsList();
 //        hiber.addTariff("newset");
-        hiber.updateTariff(9, "newest1");
+        //hiber.updateTariff(9, "newest1");
+        hiber.getTariffOtions("Basic");
     }
 }
