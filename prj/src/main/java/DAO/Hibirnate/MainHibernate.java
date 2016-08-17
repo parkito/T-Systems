@@ -60,9 +60,8 @@ public class MainHibernate {
             for (Iterator iterator =
                  tariffs.iterator(); iterator.hasNext(); ) {
                 Tariff_has_TariffOption tariff = (Tariff_has_TariffOption) iterator.next();
-                System.out.println(tariff.getTariffs());
-//                System.out.print("tariff №: " + tariff.getTariffs_id());
-//                System.out.print(",  tariffOtion № : " + tariff.getTariffOption_id());
+                System.out.print("tariff №: " + tariff.getTariffs_id());
+                System.out.print(",  tariffOtion № : " + tariff.getTariffOption_id());
                 System.out.println();
             }
             transaction.commit();
@@ -92,7 +91,7 @@ public class MainHibernate {
         }
     }
 
-    /* Method to DELETE an employee from the records */
+
     public void deleteTariff(long id) {
         try {
             transaction = session.beginTransaction();
@@ -100,6 +99,32 @@ public class MainHibernate {
                     (Tariff) session.get(Tariff.class, id);
             session.delete(id);
             transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void test() {
+        try {
+            transaction = session.beginTransaction();
+            String sql = "SELECT * FROM Tariffs";
+            List tariffs = session.createSQLQuery(sql).addEntity(Tariff.class).list();
+            transaction.commit();
+
+            transaction = session.beginTransaction();
+            String sql1 = "SELECT * FROM TariffOption";
+            List tariffsOptions = session.createSQLQuery(sql1).addEntity(TariffOption.class).list();
+            transaction.commit();
+
+            transaction = session.beginTransaction();
+            String sql2 = "SELECT * FROM Tariffs_have_TariffOption";
+            List twoTables = session.createSQLQuery(sql2).addEntity(Tariff_has_TariffOption.class).list();
+            transaction.commit();
+
+
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();

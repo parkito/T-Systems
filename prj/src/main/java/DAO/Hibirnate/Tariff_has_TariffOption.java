@@ -18,14 +18,14 @@ public class Tariff_has_TariffOption {
     @Column(name = "Tariffs_id")
     private long Tariffs_id;
 
-    @OneToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "Tariffs",
-            joinColumns = {@JoinColumn(name = "id",referencedColumnName = "Tariffs_id")},
-            inverseJoinColumns = {@JoinColumn(name = "id")})
-    private Set<Tariff> tariffs = new HashSet<Tariff>();
-
-    @OneToMany(cascade = {CascadeType.ALL})
-    private Set<TariffOption> tariffOptions = new HashSet<TariffOption>();
+//    @OneToMany(cascade = {CascadeType.ALL})
+//    @JoinTable(name = "Tariffs",
+//            joinColumns = {@JoinColumn(name = "id",referencedColumnName = "Tariffs_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "id")})
+//    private Set<Tariff> tariffs = new HashSet<Tariff>();
+//
+//    @OneToMany(cascade = {CascadeType.ALL})
+//    private Set<TariffOption> tariffOptions = new HashSet<TariffOption>();
 
     public Tariff_has_TariffOption() {
     }
@@ -51,11 +51,15 @@ public class Tariff_has_TariffOption {
         Tariffs_id = tariffs_id;
     }
 
-    public Set<Tariff> getTariffs() {
-        return tariffs;
+    public String toString() {
+        return Tariffs_id + " " + TariffOption_id;
     }
 
-    public Set<TariffOption> getTariffOptions() {
-        return tariffOptions;
-    }
+//    public Set<Tariff> getTariffs() {
+//        return tariffs;
+//    }
+//
+//    public Set<TariffOption> getTariffOptions() {
+//        return tariffOptions;
+//    }
 }

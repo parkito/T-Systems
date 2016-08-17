@@ -1,6 +1,10 @@
 package DAO.Hibirnate;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/16/16.
@@ -19,9 +23,15 @@ public class TariffOption {
 
     @Column(name = "price")
     private double price;
-
+    @Nullable
     @Column(name = "connectionPrice")
-    private double connectionPrice;
+    private Double connectionPrice;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Tariffs_have_TariffOption",
+            joinColumns = {@JoinColumn(name = "TariffOption_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "Tariffs_id", referencedColumnName = "id")})
+    private Set<Tariff> tariff = new HashSet();
 
     public TariffOption() {
     }
@@ -55,11 +65,18 @@ public class TariffOption {
         this.price = price;
     }
 
-    public void setConnectionPrice(double connectionPrice) {
-        this.connectionPrice = connectionPrice;
+    public void setConnectionPrice(Double connectionPrice) {
+        if (connectionPrice == null)
+            connectionPrice = -1.0;
+        else
+            this.connectionPrice = connectionPrice;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Set<Tariff> getTariff() {
+        return tariff;
     }
 }
