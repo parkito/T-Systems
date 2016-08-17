@@ -3,9 +3,6 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-
-    <display-name>Archetype Created Web Application</display-name>
-
     <servlet>
         <servlet-name>MyFirstServlet</servlet-name>
         <servlet-class>servlets.MyFirstServlet</servlet-class>
@@ -21,6 +18,7 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>

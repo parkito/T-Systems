@@ -1,4 +1,4 @@
-package DAO.Hibirnate;
+package DAO.Hibernate;
 
 /**
  * Created by Artyom Karnov on 8/17/16.

@@ -1,10 +1,5 @@
 package DAO;
 
-/**
- * Created by Artyom Karnov on 8/16/16.
- * artyom-karnov@yandex.ru
- **/
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -38,7 +33,7 @@ public class JDBC {
         }
     }
 
-    public void getTariffOtions(String tariffTitle) {
+    public void getTariffOptions(String tariffTitle) {
         try {
             stmt = conn.createStatement();
             String sql;

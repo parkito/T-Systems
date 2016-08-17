@@ -1,7 +1,6 @@
-package DAO.Hibirnate;
+package DAO.Hibernate;
 
 import org.hibernate.*;
-import org.hibernate.mapping.Map;
 
 import java.util.Iterator;
 import java.util.List;
@@ -52,7 +51,7 @@ public class MainHibernate {
 
     }
 
-    public void getTariffOtions() {
+    public void getTariffOptions() {
         try {
             transaction = session.beginTransaction();
             String sql = "SELECT * FROM Tariffs_have_TariffOption";
@@ -61,7 +60,7 @@ public class MainHibernate {
                  tariffs.iterator(); iterator.hasNext(); ) {
                 Tariff_has_TariffOption tariff = (Tariff_has_TariffOption) iterator.next();
                 System.out.print("tariff №: " + tariff.getTariffs_id());
-                System.out.print(",  tariffOtion № : " + tariff.getTariffOption_id());
+                System.out.print(",  tariffOption № : " + tariff.getTariffOption_id());
                 System.out.println();
             }
             transaction.commit();

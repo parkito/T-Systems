@@ -18,9 +18,9 @@
         <property name="show_sql">false</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="DAO.Hibirnate.Tariff"/>
-        <mapping class="DAO.Hibirnate.TariffOption"/>
-        <mapping class="DAO.Hibirnate.Tariff_has_TariffOption"/>
+        <mapping class="DAO.Hibernate.Tariff"/>
+        <mapping class="DAO.Hibernate.TariffOption"/>
+        <mapping class="DAO.Hibernate.Tariff_has_TariffOption"/>
 
     </session-factory>
 </hibernate-configuration>

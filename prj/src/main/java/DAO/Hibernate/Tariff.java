@@ -1,4 +1,4 @@
-package DAO.Hibirnate;
+package DAO.Hibernate;
 
 import javax.persistence.*;
 import java.util.HashSet;

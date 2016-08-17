@@ -1,8 +1,6 @@
-package DAO.Hibirnate;
+package DAO.Hibernate;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/17/16.

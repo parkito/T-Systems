@@ -1,4 +1,4 @@
-package DAO.Hibirnate;
+package DAO.Hibernate;
 
 import com.sun.istack.internal.Nullable;
 
@@ -41,7 +41,7 @@ public class TariffOption {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return id + " " + title + " " + price + " " + connectionPrice;
     }
 
