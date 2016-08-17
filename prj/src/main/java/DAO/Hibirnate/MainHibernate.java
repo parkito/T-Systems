@@ -11,10 +11,11 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class MainHibernate {
+    Session session = Factory.getSessionFactory().openSession();
+    Transaction transaction = null;
+
     public void addTariff(String tariffTitle) {
         Tariff tar = new Tariff(tariffTitle);
-        Session session = Factory.getSessionFactory().openSession();
-        Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             session.save(tar);
@@ -29,8 +30,6 @@ public class MainHibernate {
     }
 
     public void getTariffsList() {
-        Session session = Factory.getSessionFactory().openSession();
-        Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             String sql = "SELECT * FROM Tariffs";
@@ -54,8 +53,6 @@ public class MainHibernate {
     }
 
     public void getTariffOtions() {
-        Session session = Factory.getSessionFactory().openSession();
-        Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             String sql = "SELECT * FROM Tariffs_have_TariffOption";
@@ -63,8 +60,9 @@ public class MainHibernate {
             for (Iterator iterator =
                  tariffs.iterator(); iterator.hasNext(); ) {
                 Tariff_has_TariffOption tariff = (Tariff_has_TariffOption) iterator.next();
-                System.out.print("tariff №: " + tariff.getTariffs_id());
-                System.out.print(",  tariffOtion № : " + tariff.getTariffOption_id());
+                System.out.println(tariff.getTariffs());
+//                System.out.print("tariff №: " + tariff.getTariffs_id());
+//                System.out.print(",  tariffOtion № : " + tariff.getTariffOption_id());
                 System.out.println();
             }
             transaction.commit();
@@ -78,8 +76,6 @@ public class MainHibernate {
     }
 
     public void updateTariff(long id, String title) {
-        Session session = Factory.getSessionFactory().openSession();
-        Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             Tariff tariff =
@@ -98,8 +94,6 @@ public class MainHibernate {
 
     /* Method to DELETE an employee from the records */
     public void deleteTariff(long id) {
-        Session session = Factory.getSessionFactory().openSession();
-        Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             Tariff tariff =
