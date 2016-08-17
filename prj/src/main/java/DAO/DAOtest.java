@@ -11,6 +11,6 @@ public class DAOtest {
         JDBC jdbc = new JDBC();
         jdbc.getTariffOtions("Basic");
         MainHibernate hiber = new MainHibernate();
-        hiber.getTariffOtions("Basic");
+        hiber.addTariff("novetly");
     }
 }

@@ -1,14 +1,9 @@
 package DAO.Hibirnate;
 
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Table;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by Artyom Karnov on 8/16/16.
+ * Created by Artyom Karnov on 8/17/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity
@@ -18,6 +13,7 @@ public class Tariff {
     @Column(name = "id")
     @GeneratedValue
     private long id;
+
     @Column(name = "title")
     private String title;
 
@@ -28,4 +24,16 @@ public class Tariff {
         this.title = title;
     }
 
+    @Override
+    public String toString() {
+        return id + " " + title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

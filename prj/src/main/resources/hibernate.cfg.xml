@@ -18,7 +18,7 @@
         <property name="show_sql">false</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="DAO.Hibirnate.Tariffs"/>
+        <mapping class="DAO.Hibirnate.Tariff"/>
 
     </session-factory>
 </hibernate-configuration>

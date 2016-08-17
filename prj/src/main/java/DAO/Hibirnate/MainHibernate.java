@@ -1,6 +1,8 @@
 package DAO.Hibirnate;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
 import java.util.List;
@@ -10,18 +12,21 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class MainHibernate {
-    public void getTariffOtions(String tariffTitle) {
-
-
+    public void addTariff(String tariffTitle) {
+        Tariff tar = new Tariff(tariffTitle);
         Session session = Factory.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("Select * from Tariffs");
-        List<Object[]> list = query.list();
-
-        for (int i = 0; i < 1; i++) {
-            for (Object o : list.get(i)) {
-                System.out.println(o);
-            }
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(tar);
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
         }
+        System.out.println("ADDED " + tar.toString());
+
 
     }
 }
