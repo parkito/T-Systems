@@ -1,10 +1,15 @@
 package DAO;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+@ManagedBean(name = "DAO", eager = true)
+@RequestScoped
 
 public class JDBC {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -15,6 +20,9 @@ public class JDBC {
 
     static Connection conn;
     static Statement stmt;
+
+    @ManagedProperty(value="#{message}")
+    private String str="B";
 
     public JDBC() {
         conn = null;
