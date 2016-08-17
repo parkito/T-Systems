@@ -13,5 +13,7 @@ public class DAOtest {
         MainHibernate hiber = new MainHibernate();
         //hiber.addTariff("novetly");
         hiber.getTariffsList();
+//        hiber.addTariff("newset");
+        hiber.updateTariff(9, "newest1");
     }
 }
