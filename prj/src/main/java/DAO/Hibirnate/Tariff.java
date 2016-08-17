@@ -33,6 +33,10 @@ public class Tariff {
         return title;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
