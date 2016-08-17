@@ -12,7 +12,7 @@ public class Tariff_has_TariffOption {
 
     @Column(name = "TariffOption_id")
     private long TariffOption_id;
-
+    @Id
     @Column(name = "Tariffs_id")
     private long Tariffs_id;
 
@@ -39,4 +39,5 @@ public class Tariff_has_TariffOption {
     public void setTariffs_id(long tariffs_id) {
         Tariffs_id = tariffs_id;
     }
+
 }

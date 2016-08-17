@@ -15,6 +15,6 @@ public class DAOtest {
 //        hiber.getTariffsList();
 //        hiber.addTariff("newset");
         //hiber.updateTariff(9, "newest1");
-        hiber.getTariffOtions("Basic");
+        hiber.getTariffOtions();
     }
 }
