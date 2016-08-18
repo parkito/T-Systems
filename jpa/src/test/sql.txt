@@ -1,0 +1,7 @@
+SELECT
+  Tariff.title       AS Tariff,
+  TariffOption.title AS TariffOption
+FROM Tariff
+  INNER JOIN Tariff_has_Option ON Tariff.id = Tariff_has_Option.Tariff_id
+  INNER JOIN TariffOption ON Tariff_has_Option.Option_id = TariffOption.id
+GROUP BY Tariff, TariffOption
