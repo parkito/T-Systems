@@ -1,14 +1,14 @@
-package my;
+package test;
 
 import javax.persistence.*;
 
 /**
- * Created by Artyom Karnov on 8/19/16.
+ * Created by Artyom Karnov on 8/21/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity
-@Table(name = "StatusForNumbers", schema = "operator", catalog = "")
-public class StatusForNumbersEntity {
+@Table(name = "Tariff", schema = "test", catalog = "")
+public class TariffEntity {
     private int id;
     private String title;
 
@@ -37,7 +37,7 @@ public class StatusForNumbersEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        StatusForNumbersEntity that = (StatusForNumbersEntity) o;
+        TariffEntity that = (TariffEntity) o;
 
         if (id != that.id) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;

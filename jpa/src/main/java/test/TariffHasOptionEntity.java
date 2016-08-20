@@ -3,7 +3,7 @@ package test;
 import javax.persistence.*;
 
 /**
- * Created by Artyom Karnov on 8/19/16.
+ * Created by Artyom Karnov on 8/21/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity

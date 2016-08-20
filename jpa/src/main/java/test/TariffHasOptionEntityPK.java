@@ -1,16 +1,16 @@
-package my;
+package test;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Artyom Karnov on 8/19/16.
+ * Created by Artyom Karnov on 8/21/16.
  * artyom-karnov@yandex.ru
  **/
-public class AvailableTariffOptionEntityPK implements Serializable {
+public class TariffHasOptionEntityPK implements Serializable {
     private int tariffId;
-    private int tariffOptionId;
+    private int optionId;
 
     @Column(name = "Tariff_id")
     @Id
@@ -22,14 +22,14 @@ public class AvailableTariffOptionEntityPK implements Serializable {
         this.tariffId = tariffId;
     }
 
-    @Column(name = "TariffOption_id")
+    @Column(name = "Option_id")
     @Id
-    public int getTariffOptionId() {
-        return tariffOptionId;
+    public int getOptionId() {
+        return optionId;
     }
 
-    public void setTariffOptionId(int tariffOptionId) {
-        this.tariffOptionId = tariffOptionId;
+    public void setOptionId(int optionId) {
+        this.optionId = optionId;
     }
 
     @Override
@@ -37,10 +37,10 @@ public class AvailableTariffOptionEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AvailableTariffOptionEntityPK that = (AvailableTariffOptionEntityPK) o;
+        TariffHasOptionEntityPK that = (TariffHasOptionEntityPK) o;
 
         if (tariffId != that.tariffId) return false;
-        if (tariffOptionId != that.tariffOptionId) return false;
+        if (optionId != that.optionId) return false;
 
         return true;
     }
@@ -48,7 +48,7 @@ public class AvailableTariffOptionEntityPK implements Serializable {
     @Override
     public int hashCode() {
         int result = tariffId;
-        result = 31 * result + tariffOptionId;
+        result = 31 * result + optionId;
         return result;
     }
 }
