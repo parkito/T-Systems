@@ -1,6 +1,7 @@
 package test;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -13,6 +14,16 @@ public class TariffOptionEntity {
     private String title;
     private Double price;
     private Double connectionPrice;
+    private Set<TariffEntity> options;
+
+    @ManyToMany(mappedBy = "tariffOptions")
+    public Set<TariffEntity> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Set<TariffEntity> options) {
+        this.options = options;
+    }
 
     @Id
     @Column(name = "id")
@@ -77,5 +88,13 @@ public class TariffOptionEntity {
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (connectionPrice != null ? connectionPrice.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", connectionPrice=" + connectionPrice;
     }
 }
