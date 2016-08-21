@@ -10,18 +10,32 @@ import javax.persistence.*;
  **/
 @Entity
 public class Client {
+    @Id
+    @Column(name = "id")
     private int id;
+    @Basic
+    @Column(name = "name")
     private String name;
+    @Basic
+    @Column(name = "secondName")
     private String secondName;
+    @Basic
+    @Column(name = "birthdayData")
     private String birthdayData;
+    @Basic
+    @Column(name = "passport")
     private String passport;
+    @Basic
+    @Column(name = "adress")
     private String adress;
+    @Basic
+    @Column(name = "e-mail")
     private String eMail;
+    @Basic
+    @Column(name = "password")
     private String password;
 
-    @Id
-//    @GeneratedValue
-    @Column(name = "id")
+
     public int getId() {
         return id;
     }
@@ -30,8 +44,7 @@ public class Client {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
+
     public String getName() {
         return name;
     }
@@ -40,8 +53,7 @@ public class Client {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "secondName")
+
     public String getSecondName() {
         return secondName;
     }
@@ -50,8 +62,7 @@ public class Client {
         this.secondName = secondName;
     }
 
-    @Basic
-    @Column(name = "birthdayData")
+
     public String getBirthdayData() {
         return birthdayData;
     }
@@ -60,8 +71,7 @@ public class Client {
         this.birthdayData = birthdayData;
     }
 
-    @Basic
-    @Column(name = "passport")
+
     public String getPassport() {
         return passport;
     }
@@ -70,8 +80,7 @@ public class Client {
         this.passport = passport;
     }
 
-    @Basic
-    @Column(name = "adress")
+
     public String getAdress() {
         return adress;
     }
@@ -80,8 +89,7 @@ public class Client {
         this.adress = adress;
     }
 
-    @Basic
-    @Column(name = "e-mail")
+
     public String geteMail() {
         return eMail;
     }
@@ -90,8 +98,7 @@ public class Client {
         this.eMail = eMail;
     }
 
-    @Basic
-    @Column(name = "password")
+
     public String getPassword() {
         return password;
     }
@@ -100,7 +107,8 @@ public class Client {
         this.password = password;
     }
 
-    public Client(int id, String name, String secondName, String birthdayData, String passport, String adress, String eMail, String password) {
+    public Client(int id, String name, String secondName, String birthdayData,
+                  String passport, String adress, String eMail, String password) {
         this.id = id;
         this.name = name;
         this.secondName = secondName;

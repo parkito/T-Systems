@@ -1,7 +1,7 @@
 package base;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -16,9 +16,20 @@ public class Tariff {
     @Column(name = "title")
     private String title;
 
-    public Tariff() {
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<TariffOption> tariffOption;
+
+    public Set<TariffOption> getTariffOptions() {
+        return tariffOption;
     }
 
+    public void setTariffOptions(Set<TariffOption> tariffOptions) {
+        this.tariffOption = tariffOptions;
+    }
+
+    public Tariff() {
+    }
 
     public int getId() {
         return id;
