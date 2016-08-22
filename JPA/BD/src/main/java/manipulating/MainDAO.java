@@ -1,5 +1,6 @@
 package manipulating;
 
+import base.Client;
 import base.Tariff;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
  * artyom-karnov@yandex.ru
  **/
 public class MainDAO {
+    //с открытие/Закрытием этих ресурсов проблемы  ---- ПОДУМАТЬ НАД РЕШЕНИЕМ ПРОБЛЕМЫ
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
     private static EntityManager em = emf.createEntityManager();
 
@@ -22,8 +24,7 @@ public class MainDAO {
             e.printStackTrace();
             System.out.println("Fail");
         } finally {
-            em.close();
-            emf.close();
+
         }
     }
 
@@ -43,21 +44,32 @@ public class MainDAO {
         }
     }
 
-    public static Object getEntety(Object obj, String query) {
-        Object gottenObj = null;
-        System.out.println(query);
+//    public static Object getEntety(Object obj, String query) {
+//        Object gottenObj = null;
+//        System.out.println(query);
+//        try {
+//            Query nativeQuery = em.createNativeQuery(query, obj.getClass());
+//            gottenObj = nativeQuery.getResultList().get(0);
+//        } catch (PersistenceException e) {
+//            e.printStackTrace();
+//            System.out.println("Fail");
+//        } finally {
+//            em.close();
+//            emf.close();
+//            return gottenObj;
+//        }
+//    }
+
+    static public Object entityExisting(Object obj, String query) {
+        Object gottenObject = null;
         try {
             Query nativeQuery = em.createNativeQuery(query, obj.getClass());
-            gottenObj = nativeQuery.getResultList().get(0);
+            gottenObject = nativeQuery.getResultList().get(0);
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
         } finally {
-            em.close();
-            emf.close();
-            return gottenObj;
+            return gottenObject;
         }
-
-
     }
 }

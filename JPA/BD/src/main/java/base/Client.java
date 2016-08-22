@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Entity
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Basic
@@ -29,7 +30,7 @@ public class Client {
     @Column(name = "adress")
     private String adress;
     @Basic
-    @Column(name = "e-mail")
+    @Column(name = "email")
     private String eMail;
     @Basic
     @Column(name = "password")
@@ -107,9 +108,8 @@ public class Client {
         this.password = password;
     }
 
-    public Client(int id, String name, String secondName, String birthdayData,
+    public Client(String name, String secondName, String birthdayData,
                   String passport, String adress, String eMail, String password) {
-        this.id = id;
         this.name = name;
         this.secondName = secondName;
         this.birthdayData = birthdayData;

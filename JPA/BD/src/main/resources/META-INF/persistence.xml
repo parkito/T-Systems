@@ -27,6 +27,7 @@
             <property name="hibernate.validator.autoregister_listeners" value="true"/>
             <property name="javax.persistence.validation.group.pre-persist" value="javax.validation.groups.Default"/>
             <property name="javax.persistence.validation.group.pre-update" value="javax.validation.groups.Default"/>
+            <property name="hibernate.id.new_generator_mappings" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>

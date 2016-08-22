@@ -16,13 +16,13 @@ public class TariffDAO {
 
     public static void main(String[] args) {
         TariffDAO tariffDAO = new TariffDAO();
-//        tariffDAO.addTariff(2, "Base1");
-        Tariff tariff = tariffDAO.getTariff("Base1");
-        System.out.println(tariffDAO.isTariffPossible(tariff));
+        tariffDAO.addTariff(2, "Base1");
+        //Tariff tariff = tariffDAO.getTariff("Base1");
+        //System.out.println(tariffDAO.isTariffPossible(tariff));
     }
 
     public void addTariff(int id, String title) {
-        Tariff tariff = new Tariff(id, title);
+        Tariff tariff = new Tariff(title);
         MainDAO.addEntetyToBase(tariff);
     }
 
@@ -34,7 +34,7 @@ public class TariffDAO {
     public Tariff getTariff(String title) {
         String query = "SELECT * FROM Tariff WHERE title='" + title + "'"; //Инъекция?? - NO
         Tariff tariff = new Tariff();
-        tariff = (Tariff) MainDAO.getEntety(tariff, query);
+        tariff = (Tariff) MainDAO.entityExisting(tariff, query);
         if (tariff == null) {
             tariff = new Tariff(0, "0");
         }

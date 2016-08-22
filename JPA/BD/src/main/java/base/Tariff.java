@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 public class Tariff {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Basic
