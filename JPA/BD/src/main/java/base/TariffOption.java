@@ -1,9 +1,7 @@
 package base;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -11,13 +9,42 @@ import javax.persistence.Id;
  **/
 @Entity
 public class TariffOption {
-    private int id;
-    private String title;
-    private double price;
-    private Double connectionPrice;
-
     @Id
     @Column(name = "id")
+    private int id;
+    @Basic
+    @Column(name = "title")
+    private String title;
+    @Basic
+    @Column(name = "price")
+    private double price;
+    @Basic
+    @Column(name = "connectionPrice")
+    private Double connectionPrice;
+
+//    private Set<Tariff> options;
+//
+//    @ManyToMany(mappedBy = "tariffOptions")
+//    public Set<Tariff> getOptions() {
+//        return options;
+//    }
+//
+//    public void setOptions(Set<Tariff> options) {
+//        this.options = options;
+//    }
+
+
+    public TariffOption(int id, String title, double price, Double connectionPrice) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.connectionPrice = connectionPrice;
+    }
+
+    public TariffOption() {
+    }
+
+
     public int getId() {
         return id;
     }
@@ -26,8 +53,7 @@ public class TariffOption {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "title")
+
     public String getTitle() {
         return title;
     }
@@ -36,8 +62,7 @@ public class TariffOption {
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "price")
+
     public double getPrice() {
         return price;
     }
@@ -46,8 +71,7 @@ public class TariffOption {
         this.price = price;
     }
 
-    @Basic
-    @Column(name = "connectionPrice")
+
     public Double getConnectionPrice() {
         return connectionPrice;
     }

@@ -15,18 +15,20 @@ public class Tariff {
     @Basic
     @Column(name = "title")
     private String title;
-
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<TariffOption> tariffOption;
-
-    public Set<TariffOption> getTariffOptions() {
-        return tariffOption;
-    }
-
-    public void setTariffOptions(Set<TariffOption> tariffOptions) {
-        this.tariffOption = tariffOptions;
-    }
+//    private Set<AvailableTariffOption> tariffOptions;
+//
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "AvailableTariffOption",
+//            joinColumns = @JoinColumn(name = "Tariff_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "TariffOption_id", referencedColumnName = "id"))
+//    public Set<AvailableTariffOption> getTariffOptions() {
+//        return tariffOptions;
+//    }
+//
+//    public void setTariffOptions(Set<AvailableTariffOption> tariffOptions) {
+//        this.tariffOptions = tariffOptions;
+//    }
 
     public Tariff() {
     }
