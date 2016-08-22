@@ -12,26 +12,30 @@ public class TariffOption {
     @Id
     @Column(name = "id")
     private int id;
+
     @Basic
     @Column(name = "title")
     private String title;
+
     @Basic
     @Column(name = "price")
     private double price;
+
     @Basic
     @Column(name = "connectionPrice")
     private Double connectionPrice;
 
-//    private Set<Tariff> options;
-//
-//    @ManyToMany(mappedBy = "tariffOptions")
-//    public Set<Tariff> getOptions() {
-//        return options;
-//    }
-//
-//    public void setOptions(Set<Tariff> options) {
-//        this.options = options;
-//    }
+    @ManyToMany(mappedBy = "tariffOptions")
+    private Set<Tariff> options;
+
+
+    public Set<Tariff> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Set<Tariff> options) {
+        this.options = options;
+    }
 
 
     public TariffOption(int id, String title, double price, Double connectionPrice) {

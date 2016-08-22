@@ -16,25 +16,20 @@ public class TariffDAO {
 
     public static void main(String[] args) {
         TariffDAO tariffDAO = new TariffDAO();
-        tariffDAO.addTariff(2, "Base1");
-        //Tariff tariff = tariffDAO.getTariff("Base1");
-        //System.out.println(tariffDAO.isTariffPossible(tariff));
+        tariffDAO.addTariff("Base3");
     }
 
-    public void addTariff(int id, String title) {
+    public void addTariff(String title) {
         Tariff tariff = new Tariff(title);
         MainDAO.addEntetyToBase(tariff);
     }
 
-    public void updateTariff(Tariff tariff, String newTitle) {
-        Tariff newTariff = new Tariff(tariff.getId(), newTitle);
-        MainDAO.updateEntetyInBase(tariff, newTariff);
-    }
+    
 
     public Tariff getTariff(String title) {
         String query = "SELECT * FROM Tariff WHERE title='" + title + "'"; //Инъекция?? - NO
         Tariff tariff = new Tariff();
-        tariff = (Tariff) MainDAO.entityExisting(tariff, query);
+        tariff = (Tariff) MainDAO.getExistingEntity(tariff, query);
         if (tariff == null) {
             tariff = new Tariff(0, "0");
         }
@@ -46,5 +41,6 @@ public class TariffDAO {
             return false;
         else return true;
     }
+
 
 }

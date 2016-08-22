@@ -16,20 +16,22 @@ public class Tariff {
     @Basic
     @Column(name = "title")
     private String title;
-//    private Set<AvailableTariffOption> tariffOptions;
-//
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "AvailableTariffOption",
-//            joinColumns = @JoinColumn(name = "Tariff_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "TariffOption_id", referencedColumnName = "id"))
-//    public Set<AvailableTariffOption> getTariffOptions() {
-//        return tariffOptions;
-//    }
-//
-//    public void setTariffOptions(Set<AvailableTariffOption> tariffOptions) {
-//        this.tariffOptions = tariffOptions;
-//    }
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "AvailableTariffOption",
+            joinColumns = @JoinColumn(name = "Tariff_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "TariffOption_id", referencedColumnName = "id"))
+    private Set<TariffOption> tariffOptions;
+
+    public Set<TariffOption> getTariffOptions() {
+        return tariffOptions;
+    }
+
+    public void setTariffOptions(Set<TariffOption> tariffOptions) {
+        this.tariffOptions = tariffOptions;
+    }
 
     public Tariff() {
     }

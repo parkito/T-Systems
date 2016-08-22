@@ -7,6 +7,12 @@ import manipulating.ClientDAO;
  * artyom-karnov@yandex.ru
  **/
 public class Loging {
+    ClientDAO clientDAO;
+
+    public Loging() {
+        clientDAO = new ClientDAO();
+    }
+
     public static void main(String[] args) {
         Loging loging = new Loging();
         loging.signIn("ab@c.com", "214189"); //true
@@ -15,10 +21,14 @@ public class Loging {
     }
 
     public void signIn(String eMail, String password) {
-        System.out.println(ClientDAO.userExisting(eMail, password));
+        if (clientDAO.isUserAuthenticated(eMail, password) == true)
+            System.out.println("Welcome " + eMail);
+        else System.out.println("Incorrect username or password");
+
     }
 
     public void signUp() {
+        clientDAO.addClient("Ivan", "Ivanov", "5.2.1999", "8765456", "SPB", "ab@c.com", "214189");
     }
 
 }

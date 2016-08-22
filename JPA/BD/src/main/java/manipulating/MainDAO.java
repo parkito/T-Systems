@@ -28,39 +28,22 @@ public class MainDAO {
         }
     }
 
-    public static void updateEntetyInBase(Object oldObj, Object newObj) {
+    public static void updateEntetyInBase(Object object) {
         try {
             em.getTransaction().begin();
-            em.remove(oldObj);
-            em.persist(newObj);
+            em.persist(object);
             em.getTransaction().commit();
-            System.out.println(oldObj + " updated");
+            System.out.println(object + " updated");
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
         } finally {
-            em.close();
-            emf.close();
+
         }
     }
 
-//    public static Object getEntety(Object obj, String query) {
-//        Object gottenObj = null;
-//        System.out.println(query);
-//        try {
-//            Query nativeQuery = em.createNativeQuery(query, obj.getClass());
-//            gottenObj = nativeQuery.getResultList().get(0);
-//        } catch (PersistenceException e) {
-//            e.printStackTrace();
-//            System.out.println("Fail");
-//        } finally {
-//            em.close();
-//            emf.close();
-//            return gottenObj;
-//        }
-//    }
 
-    static public Object entityExisting(Object obj, String query) {
+    public static Object getExistingEntity(Object obj, String query) {
         Object gottenObject = null;
         try {
             Query nativeQuery = em.createNativeQuery(query, obj.getClass());
@@ -72,4 +55,19 @@ public class MainDAO {
             return gottenObject;
         }
     }
+
+    public static void deleteEntety(Object object) {
+        try {
+            em.getTransaction().begin();
+            em.remove(object);
+            em.getTransaction().commit();
+            System.out.println(object + " removed");
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+            System.out.println("Fail");
+        } finally {
+
+        }
+    }
+
 }
