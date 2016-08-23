@@ -24,7 +24,7 @@ public class TariffDAO {
         MainDAO.addEntetyToBase(tariff);
     }
 
-    
+
 
     public Tariff getTariff(String title) {
         String query = "SELECT * FROM Tariff WHERE title='" + title + "'"; //Инъекция?? - NO
