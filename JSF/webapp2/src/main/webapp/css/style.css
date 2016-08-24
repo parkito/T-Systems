@@ -13,7 +13,7 @@ header {
     height: 130px;
     width: 130px;
     top: 20px;
-    background: #cccff;
+    background: #ccccff;
     position: absolute;
     left: 5%;
     border-radius: 5px;
@@ -72,12 +72,21 @@ header {
     list-style: none;
 }
 
+#main .leftAside ul {
+    margin: 0px;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    padding: 0px;
+    width: 96%;
+    list-style: none;
+}
+
 #main .leftAside ul li {
     margin: 0px;
     cursor: pointer;
-    background: #76befc;
+    background: #ccccff;
     padding: 7px 5px;
-    border: 1px solid #6666ff;
+    border: 1px solid #ccccff;
     border-bottom: none;
 }
 
@@ -86,7 +95,7 @@ header {
     -webkit-transition: all 1s linear 0s;
     -o-transition: all 1s linear 0s;
     transition: all 1s linear 0s;
-    background: #cce6fc;
+    background: #00FFFF;
     padding-left: 10%;
 }
 
@@ -95,7 +104,7 @@ header {
 }
 
 #main .leftAside ul li:last-child {
-    border-bottom: 1px solid #6666ff;
+    border-bottom: 1px solid #ccccff;
     border-radius: 0px 0px 5px 5px;
 }
 
@@ -107,7 +116,7 @@ header {
 #main article {
     margin-left: 260px;
     margin-bottom: 5px;
-    background: #80abdb;
+    background: #ccccff;
     border: 1px solid #40658d;
     border-radius: 5px;
 }
@@ -121,7 +130,8 @@ header {
 
 #main article .text-article {
     padding: 5px;
-    font-size: 15px;
+    right: 50%;
+    font-size: 15px;;
     background: #cce6fc;
 }
 
