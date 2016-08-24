@@ -1,0 +1,919 @@
+
+body {
+	font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+  color: #565454;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+a {
+  font-family: 'Lora', Arial, Helvetica, sans-serif;
+  color: #CEF3FD;
+  font-style: italic;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #CEF3FD;
+  text-decoration: underline;
+}
+
+/* ======================================
+ * 02. Typography
+/* ====================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+	font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+h6 {
+	font-size: 12px;
+}
+
+p {
+  line-height: 1.8em;
+  font-size: 16px;
+}
+
+ul li {
+  font-size: 15px;
+  line-height: 1.8em;
+}
+
+/* ======================================
+ * 03. Custom
+/* ====================================== */
+
+h2 {
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  text-align: center;
+}
+
+h2:after {
+  display: block;
+  content: " ";
+  border: 2px solid #799598;
+  margin: 10px auto 0;
+  width: 35px;
+}
+
+.sub-heading-1 {
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: 300;  
+}
+
+.sub-heading-1:after {
+  display: block;
+  content: " ";
+  border: 1px solid #799598;
+  margin: 20px 0 0 0;
+  width: 60px;
+}
+
+.small-desc {
+  font-size: 15px;
+  font-family: 'Lora', Arial, sans-serif;
+  text-align: center;
+  font-style: italic;
+}
+
+.top-pad {
+  padding-top: 50px;
+}
+
+.overlay {
+  background-color: #1972A4;
+}
+
+.owl-theme .owl-controls .owl-page span {
+  background: none repeat scroll 0 0 #2BC3CB !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* ======================================
+ * 04. Preloader
+/* ====================================== */
+
+#loader {
+  background-color: #fff;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+
+#loader .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  background-image: url(../img/preloader.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* ======================================
+ * 05. Buttons
+/* ====================================== */
+
+.custom-button-1 {
+  font-family: 'Lora', Arial, sans-serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  color: #FFF;
+  background: #2CC4CB;
+  border: 2px solid #FFFFFF;
+  margin: 50px 0px 20px 0px;
+  padding: 12px 45px;
+  transition: all 0.5s ease 0s;
+}
+
+.custom-button-1:hover,
+.custom-button-1:focus {
+  color: #FFF;
+  outline-style: none;
+}
+
+.custom-button-2 {
+font-family: 'Lora', Arial, sans-serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  color: #FFF;
+  background: rgb(43, 195, 203);
+  border: 2px solid #FFF;
+  border-radius: 0;
+  padding: 12px 40px;
+  margin: 50px 0px 20px 0px;
+  transition: all 0.5s ease 0s;
+}
+
+.custom-button-2:hover,
+.custom-button-2:focus {
+  color: #2CC4CB;  
+  background-color: #FFF;
+  outline-style: none;
+}
+
+.custom-button-3 {
+  font-family: 'Lora', Arial, sans-serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  color: #FFF;    
+  background: rgb(43, 195, 203);
+  border: 2px solid #FFF;
+  padding: 12px 45px;
+  transition : all 0.5s ease 0s;
+}
+
+.custom-button-3:hover,
+.custom-button-3:focus {
+  color: #2CC4CB;  
+  background-color: #FFF;
+  outline-style: none;
+}
+
+.custom-button-4 {
+  font-family: 'Lora', Arial, sans-serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;  
+  background: rgb(43, 195, 203);
+  border: 2px solid rgb(43, 195, 203);
+  margin: 0px 0px 20px 0px;
+  padding: 12px 35px;
+  transition : all 0.5s ease 0s;
+}
+
+.custom-button-4:hover,
+.custom-button-4:focus {
+  background-color: #2CC4CB;
+  color: #FFF;
+  outline-style: none;
+}
+
+/* ======================================
+ * 06. Header
+/* ====================================== */
+
+header#home {
+  padding: 60px 0px;
+}
+
+header h1 {
+  font-family: 'Lora', Arial, sans-serif;
+  font-size: 60px;
+  color: #FFF;
+  padding-top: 20px;  
+}
+
+header h2 {
+  font-family: 'Roboto Condensed', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 28px;
+  color: #FFF;
+  text-align: left;
+  padding-top: 10px;  
+}
+
+header h2:after {
+  border: none;
+}
+
+header p {
+  font-family: 'Roboto Condensed', Arial, sans-serif;
+  font-weight: 100;  
+  font-size: 20px;
+  color: #FFF;
+  margin-bottom: 30px;
+  padding-top: 10px;  
+}
+
+.store i {
+  color: #FFF;
+  font-size: 35px;  
+  text-align: center;  
+  background-color: #2CC4CB;
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;  
+  border: 2px solid #FFF;  
+  margin-top: 50px;
+  padding-top: 12px;
+  transition : all 0.5s ease 0s;  
+}
+
+.store i:hover {
+  color: #2CC4CB;  
+  background-color: #FFF;
+  border: 2px solid #fff; 
+}
+
+/* ======================================
+ * 07. Navigation
+/* ====================================== */
+
+#nav.affix {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.navbar {
+  border: 0;  
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.navbar ul li {
+  font-family: 'Lora', Arial, sans-serif;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 16px;  
+}
+
+.logo {
+  font-family: 'Lora', Arial, sans-serif;
+  font-style: italic;
+  font-size: 25px;
+  color: #73F7DD;
+  outline-style: none;
+}
+
+.navbar-default {
+  padding: 0 0;
+  font-weight: 400;  
+  border-bottom: 1px solid #E7E7E7;
+  background-color: #2E3A87;
+}
+
+.navbar-default .nav li a {
+  color: #fff;
+  padding: 15px 10px;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover  {
+  color: #73F7DD;
+  background-color: transparent;
+  outline-style: none;  
+}
+
+.navbar-default .navbar-nav> .active> a:hover,
+.navbar-default .navbar-nav> .active> a:focus {
+  color: #73F7DD;
+  background-color: transparent;
+}
+
+/* ======================================
+ * 08. Navbar Toggle
+/* ====================================== */
+
+.navbar-default .navbar-collapse {
+  border-color: transparent;
+}
+
+.navbar-default .navbar-toggle {
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #2CC4CB;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
+
+/* ======================================
+ * 09. Services
+/* ====================================== */
+
+section#services {
+  padding: 80px 0px;
+}
+
+.c-services {
+  color: #2CC4CB;
+  width: 80px;
+  height: 80px;  
+  border: 2px solid #E0DEDE;  
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding-top: 14px;
+  transition: all 0.3s ease 0s; 
+}
+
+.services:hover > i {
+  box-shadow: 6px 6px #E3E3E3;
+}
+
+
+/* ======================================
+ * 10. Features
+/* ====================================== */
+
+section#features {
+  padding: 80px 0px;
+  color: #FFF;
+}
+
+/* ======================================
+ * 11. More Features
+/* ====================================== */
+
+section#more {
+  padding: 80px 0px;
+}
+
+.feature-list-left {
+  text-align: right;
+  list-style-type: none;
+  padding: 0px;
+}
+
+.feature-list-left li {
+  padding-right: 80px;
+}
+
+.feature-list-left li, .feature-list-right li {
+  position: relative; 
+  margin-bottom: 30px;
+}
+.feature-list-left .feature-icon {
+  position: absolute;
+  top: 15%;
+  right: 0px;
+  width: 58px;
+  height: 58px;  
+}
+.feature-list-left .feature-icon, .feature-list-right .feature-icon {
+  width: 58px;
+  height: 58px;
+  text-align: center;
+  line-height: 56px;
+  color: #2CC4CB;
+  border: 2px solid #2CC4CB;
+  border-radius: 50%;
+  -webkit-transition: all ease-in .3s;
+  -moz-transition: all ease-in .3s;
+  -o-transition: all ease-in .3s;
+  -ms-transition: all ease-in .3s;
+}
+.feature-list-left .fa, .feature-list-right .fa {
+  font-size: 23px;
+  line-height: 56px;  
+}
+
+.feature-list-right {
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+}
+
+.feature-list-right li {
+  padding-left: 80px;
+}
+
+.feature-list-right .feature-icon {
+  position: absolute;
+  top: 15%;
+  left: 0px;
+  width: 58px;
+  height: 58px;
+}
+
+.feature-list-left li:hover .feature-icon, .feature-list-right li:hover .feature-icon {
+  box-shadow: inset 0px 0px 0px 50px #2CC4CB;
+  -webkit-box-shadow: inset 0px 0px 0px 50px #2CC4CB;
+  -moz-box-shadow: inset 0px 0px 0px 50px #2CC4CB;
+  color: #FFF;
+  border: 2px solid transparent;
+}
+
+/* ======================================
+ * 12. Video
+/* ====================================== */
+
+section#video {
+  padding: 50px 0px;
+  color: #fff;
+}
+
+.play i {
+  font-size: 70px;
+  color: #fff;
+  cursor: pointer;
+  padding-top: 20px;
+}
+
+/* ======================================
+ * 13. Screenshots
+/* ====================================== */
+
+section#screenshots {
+  padding: 80px 0px;
+}
+
+.img-wrap {
+  position: relative;  
+  display: inline-block;
+}
+
+.img-overlay {
+    position: absolute;
+    text-align: center;
+    width: 100%;    
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    background: rgba(66, 107, 133, 0.55);    
+    transition: all 0.3s linear 0s;
+}
+
+.img-overlay:hover {
+  opacity: 1;
+}
+
+.img-overlay .hover-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 0%;
+}
+
+.img-overlay a i {
+  color: #FFF;
+  font-size: 35px;
+}
+
+/* ======================================
+ * 14. Facts
+/* ====================================== */
+
+section#facts {
+  padding: 50px 0px;
+  color: #FFF;
+}
+
+#facts h3 {
+  font-size: 28px;
+  font-family: 'Roboto Condensed', Arial, sans-serif;
+}
+
+/* ======================================
+ * 15. Reviews
+/* ====================================== */
+
+section#reviews {
+  padding: 80px 0px;
+}
+
+.comments {
+  font-family: 'Roboto Condensed', Arial, sans-serif;  
+  font-weight: 100;
+  font-size: 16px;  
+}
+
+.company {
+  font-size: 18px;
+  color: #2CC4CB;  
+}
+
+.ch-img-5 { 
+  background-image: url(../img/testimonials/1.jpg);
+}
+
+.ch-img-6 { 
+  background-image: url(../img/testimonials/2.jpg);
+}
+
+.ch-img-7 { 
+  background-image: url(../img/testimonials/3.jpg);
+}
+
+.rating i {
+  text-align: center;
+  color: #2CC4CB;  
+  margin-right: 5px;
+  padding-bottom: 30px;  
+}
+
+/* ======================================
+ * 16. Newsletter
+/* ====================================== */
+
+section#newsletter {
+  padding: 50px 0px;
+  color: #FFF;
+}
+
+#newsletter .form-control {
+  font-size: 17px;
+}
+
+#newsletter input {
+  color: #000;
+  background-color: #FFF;
+  border: none;
+  border-radius: 45px;
+  height: 55px;
+  margin-bottom: 15px;
+}
+
+#newsletter input:focus {
+  box-shadow: none;
+}
+
+/* ======================================
+ * 17. Packages
+/* ====================================== */
+
+section#packages {
+  padding: 80px 0px;
+}
+
+#packages h3 {
+  padding-bottom: 10px;
+}
+
+.package-head h4 {
+  font-size: 30px;  
+  color: #FFF;  
+  background-color: #1972A4;
+  padding: 15px 0px;
+}
+
+.package-table {
+  text-align: center;
+  background-color: #F2F2F2;
+  border: 1px solid #E0DEDE;  
+  margin-bottom: 20px;
+}
+
+.package-head span.sign {
+  font-size: 40px;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.package-head small {
+  color: #FFF;
+  font-size: 15px;
+}
+
+.package-table ul {
+  margin: 15px 0;
+  padding: 0;
+}
+.package-list {
+  list-style: outside none none;
+}
+
+.package-table ul li {
+  border-bottom: 1px solid #E2E0E0;
+  margin: 0 15px;
+  padding: 10px 0;
+}
+
+.package-table ul li:last-child {
+  border-bottom: none;
+}
+
+.package-table.special-offer h4 {
+  background-color: #5A7D8D;
+}
+
+/* ======================================
+ * 18. Download
+/* ====================================== */
+
+section#download {
+  padding: 50px 0px;
+  color: #FFF;
+}
+
+.download {
+  font-weight: 100;
+  font-size: 20px;  
+  color: #FFF;
+  border: 2px solid #FFF;
+  padding: 12px 45px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition : all 0.5s ease 0s;   
+}
+
+.download i {
+  font-size: 35px;
+  margin-right: 15px;
+}
+
+.download:hover, .download:focus {
+  background: rgba( 0, 0, 0, 0.2);
+  color: #FFF;
+}
+
+/* ======================================
+ * 19. Team
+/* ====================================== */
+
+section#team {
+  padding: 80px 0px;
+}
+
+.ch-grid {
+  display: block;  
+  text-align: center; 
+  width: 100%;
+  margin: 20px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ch-grid li {
+  display: inline-block;  
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+}
+
+.ch-item {
+  position: relative;
+  overflow: hidden;
+  background-size: 100%;    
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: default;
+  box-shadow: 
+    inset 0 0 0 16px rgba(255,255,255,0.6),
+    0 1px 2px rgba(0,0,0,0.1);
+  transition: all 0.4s ease-in-out;
+}
+
+.ch-img-1 { 
+  background-image: url(../img/team/1.jpg);
+}
+
+.ch-img-2 { 
+  background-image: url(../img/team/2.jpg);
+}
+
+.ch-img-3 { 
+  background-image: url(../img/team/3.jpg);
+}
+
+.ch-img-4 { 
+  background-image: url(../img/team/4.jpg);
+}
+
+.ch-info {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;  
+  background: rgba(109, 140, 148, 0.55);  
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  transform: scale(0);
+}
+
+.ch-info i {
+  display: inline-block;  
+  font-size: 15px;  
+  color: #FFF;
+  text-align: center; 
+  width: 30px;
+  height: 30px;  
+  border: 1px solid #FFF;
+  border-radius: 50%;  
+  margin: 90px 3px 0px 3px;
+  padding-top: 6px;
+  transition : all 0.3s ease 0s;
+}
+
+.ch-info i:hover {
+  color: #FFF;  
+  background-color: #2CC4CB;
+  border: 1px solid #2CC4CB;
+}
+
+.ch-item:hover {
+  box-shadow: 
+    inset 0 0 0 1px rgba(255,255,255,0.1),
+    0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ch-item:hover .ch-info {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.team-member i {
+  color: #2CC4CB;
+  margin-right: 10px;
+}
+
+/* ======================================
+ * 20. Contact
+/* ====================================== */
+
+section#contact {
+  padding: 80px 0px;
+  color: #FFF;
+}
+
+.contact i {
+  border: 2px solid #FFF;
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+  padding-top: 15px;
+  transition : all 0.5s ease 0s;  
+}
+
+.contact:hover i {
+  background-color: #FFF;
+  color: #2CC4CB;
+}
+
+/* ======================================
+ * 21. Contact Form
+/* ====================================== */
+
+section#contactform {
+  padding: 50px 0px;
+}
+
+#contactform input {
+  height: 55px;
+  border: 2px solid #DDDDDD;  
+}
+
+#contactform textarea {
+  border: 2px solid #DDDDDD;  
+}
+
+#contactform .form-control {
+  font-size: 17px;  
+  margin-bottom: 12px;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#contactform .form-control:focus {
+  border: 2px solid #2CC4CB;
+  box-shadow: none;  
+}
+
+.send-success, .send-error {
+  display: none;
+}
+
+.send-success i {
+  color: #2CC4CB;
+  margin-right: 10px;
+}
+
+.send-error i {
+  color: #C30000;
+  margin-right: 10px;
+}
+
+/* ======================================
+ * 22. Footer
+/* ====================================== */
+
+footer {
+  padding: 60px 0px;
+}
+
+ul.footer-social-icons li a {
+  display: block;
+  color: #fff; 
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  font-size: 15px;
+  line-height: 32px;
+  outline: 0;
+  transition: all .3s;
+}
+
+ul.footer-social-icons li a:hover,
+ul.footer-social-icons li a:focus,
+ul.footer-social-icons li a:active {
+  color: #fff;
+  background-color: #2BC3CB;
+  border: 1px solid #2BC3CB;
+}
+
+/* ======================================
+ * 23. Scroll Top
+/* ====================================== */
+
+.scroll-up {
+  position: fixed;
+  display: none;
+  z-index: 999;
+  bottom: 20px;
+  right: 20px;
+}
+
+.scroll-up a {
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: rgba(109, 140, 148, .8); 
+  color: #fff;
+  font-size: 25px;
+  line-height: 35px;
+  border-radius: 100%;
+}
+
+.scroll-up a:hover,
+.scroll-up a:active {
+  color: #fff;
+  background-color: rgba(109, 140, 148, .6);
+}
+
+.send-msg, .send-success, .send-error {
+  display: none;
+}

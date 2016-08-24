@@ -1,5 +1,6 @@
 package manipulating;
 
+import base.Client;
 import base.Tariff;
 
 import javax.persistence.EntityManager;
@@ -16,24 +17,25 @@ public class TariffDAO {
 
     public static void main(String[] args) {
         TariffDAO tariffDAO = new TariffDAO();
-        tariffDAO.addTariff("Base3");
+        tariffDAO.deleteTariff("new");
     }
 
     public void addTariff(String title) {
-        Tariff tariff = new Tariff(title);
-        MainDAO.addEntetyToBase(tariff);
+        if (!isTariffExist(title)) {
+            Tariff tariff = new Tariff(title);
+            MainDAO.addEntetyToBase(tariff);
+        } else System.out.println("Tariff already exists");
     }
-
 
 
     public Tariff getTariff(String title) {
         String query = "SELECT * FROM Tariff WHERE title='" + title + "'"; //Инъекция?? - NO
         Tariff tariff = new Tariff();
-        tariff = (Tariff) MainDAO.getExistingEntity(tariff, query);
-        if (tariff == null) {
-            tariff = new Tariff(0, "0");
-        }
-        return tariff;
+        Object object = MainDAO.getExistingEntity(tariff, query);
+        if (object == null) {
+            return new Tariff(0, "-");
+        } else
+            return (Tariff) object;
     }
 
     public boolean isTariffPossible(Tariff tariff) {
@@ -42,5 +44,21 @@ public class TariffDAO {
         else return true;
     }
 
+    public boolean isTariffExist(String title) {
+        String query = "SELECT * FROM Tariff WHERE title='" + title + "'";
+        Tariff tariff = new Tariff();
+        Object object = MainDAO.getExistingEntity(tariff, query);
+        if (object != null) {
+            tariff = (Tariff) object;
+            return (tariff != null) ? true : false;
+        } else return false;
+    }
 
+    public void deleteTariff(String title) {
+        Tariff tariff = null;
+        if (isTariffExist(title)) {
+            tariff = getTariff(title);
+            MainDAO.deleteEntety(tariff);
+        } else System.out.println("Tariff doesn't exists");
+    }
 }

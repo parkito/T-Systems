@@ -1,29 +1,37 @@
-package controller;
+package controllers;
 
-import com.sun.org.apache.bcel.internal.generic.GOTO;
+import manipulating.ClientDAO;
 
-import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-@WebServlet(name = "web_controller", urlPatterns = {"/article", "/registration"})
-public class web_controller extends HttpServlet {
-
+@WebServlet(name = "registration", urlPatterns = {"/registration"})
+public class registration extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         String userPath = request.getServletPath();
-        if ("/article".equals(userPath)) {
-
-        } else if ("/registration".equals(userPath)) {
-            String name = request.getParameter("email");
-            String pass = request.getParameter("password");
-            System.out.println(name + " " + pass);
+        System.out.println(request.getQueryString());
+        System.out.println(request.getParameter("sumbit"));
+        //System.out.println("work");
+        if ("/registration".equals(userPath)) {
+            //  System.out.println("yes");
+//            ClientDAO clientDAO = new ClientDAO();
+//            clientDAO.addClient(
+//                    request.getParameter("name"),
+//                    request.getParameter("secondName"),
+//                    request.getParameter("birthdayDate"),
+//                    request.getParameter("passport"),
+//                    request.getParameter("adress"),
+//                    request.getParameter("email"),
+//                    request.getParameter("password")
+//            );
         }
+
 
         request.getRequestDispatcher("/WEB-INF/views" + userPath + ".jsp").forward(request, response);
     }
@@ -55,6 +63,21 @@ public class web_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String userPath = request.getServletPath();
+        //System.out.println("work");
+        if ("/registration".equals(userPath)) {
+            //System.out.println("yes");
+//            ClientDAO clientDAO = new ClientDAO();
+//            clientDAO.addClient(
+//                    request.getParameter("name"),
+//                    request.getParameter("secondName"),
+//                    request.getParameter("birthdayDate"),
+//                    request.getParameter("passport"),
+//                    request.getParameter("adress"),
+//                    request.getParameter("email"),
+//                    request.getParameter("password")
+//            );
+        }
         processRequest(request, response);
     }
 

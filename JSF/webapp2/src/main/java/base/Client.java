@@ -1,4 +1,4 @@
-package bd;
+package base;
 
 import org.hibernate.annotations.Generated;
 

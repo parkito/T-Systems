@@ -1,5 +1,6 @@
 package manipulating;
 
+import base.Client;
 import base.Tariff;
 
 import javax.persistence.*;

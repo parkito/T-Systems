@@ -12,7 +12,10 @@ import java.util.List;
 public class ClientDAO {
     public static void main(String[] args) {
         ClientDAO clientDAO = new ClientDAO();
-        clientDAO.getClient("ab@c.com");
+        clientDAO.addClient("Ivan", "Ivanov", "5.2.1999", "8765456", "SPB", "ab@c.com", "214189");
+        clientDAO.addClient("Ivan", "Petrov", "5.6.1992", "8765456", "SPB", "aa@c.com", "124");
+        clientDAO.addClient("Petya", "Ivanov", "8.3.1996", "8765456", "SPB", "aat@c.com", "12345");
+        clientDAO.changePassword("aat@c.com","214189");
     }
 
     public void addClient(String name, String secondName,

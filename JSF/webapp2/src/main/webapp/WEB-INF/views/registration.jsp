@@ -9,7 +9,7 @@
         <article>
             <h1>Registration</h1>
             <div class="text-article">
-                <form method="POST" action="registration">
+                <form method="GET" action="registration">
                     <p>
                         <label for="email">E-Mail</label>
                         <input type="email" name="email" id="email"/>
@@ -38,7 +38,11 @@
                         <input type="text" name="login" id="adress"/>
                     </p>
                     <p>
-                        <button type="submit">SignUp</button>
+                    <p>
+                        <label for="passport">Passport</label>
+                        <input type="text" name="login" id="passport"/>
+                    </p>
+                    <button type="submit">SignUp</button>
                     </p>
                 </form>
             </div>
