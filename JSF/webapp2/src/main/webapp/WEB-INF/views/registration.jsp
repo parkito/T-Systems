@@ -11,39 +11,35 @@
             <div class="text-article">
                 <form method="POST" action="registration">
                     <p>
-                        <label for="login">Login </label>
-                        <input type="text" name="login" id="login"/>
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" id="email"/>
                     </p>
-                        <p>
-                            <label for="email">E-Mail</label>
-                            <input type="email" name="email" id="email"/>
-                        </p>
-                        <p>
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password"/>
+                    <p>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password"/>
 
-                            <label for="password2">Repeat password</label>
-                            <input type="password" name="password2" id="password2"/>
-                        </p>
-                        <p>
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name"/>
-                        </p>
-                        <p>
-                            <label for="secondName">Second name</label>
-                            <input type="text" name="login" id="secondName"/>
-                        </p>
-                        <p>
-                            <label for="birthdayDate">Birthday date</label>
-                            <input type="text" name="name" id="birthdayDate"/>
-                        </p>
-                        <p>
-                            <label for="adress">Adress</label>
-                            <input type="text" name="login" id="adress"/>
-                        </p>
-                        <p>
-                            <button type="submit">SignUp</button>
-                        </p>
+                        <label for="password2">Repeat password</label>
+                        <input type="password" name="password2" id="password2"/>
+                    </p>
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name"/>
+                    </p>
+                    <p>
+                        <label for="secondName">Second name</label>
+                        <input type="text" name="login" id="secondName"/>
+                    </p>
+                    <p>
+                        <label for="birthdayDate">Birthday date</label>
+                        <input type="text" name="name" id="birthdayDate"/>
+                    </p>
+                    <p>
+                        <label for="adress">Adress</label>
+                        <input type="text" name="login" id="adress"/>
+                    </p>
+                    <p>
+                        <button type="submit">SignUp</button>
+                    </p>
                 </form>
             </div>
         </article>

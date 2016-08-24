@@ -18,9 +18,11 @@ public class web_controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String userPath = request.getServletPath();
         if ("/article".equals(userPath)) {
-            System.out.println("Article");
+
         } else if ("/registration".equals(userPath)) {
-            System.out.println("Registration");
+            String name = request.getParameter("email");
+            String pass = request.getParameter("password");
+            System.out.println(name + " " + pass);
         }
 
         request.getRequestDispatcher("/WEB-INF/views" + userPath + ".jsp").forward(request, response);
