@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * artyom-karnov@yandex.ru
  **/
 @Entity
-@Table(name = "Client_has_Contract", schema = "operator", catalog = "")
+@Table(name = "Client_has_Contract", schema = "operator")
 public class ClientHasContract {
     private int clientId;
 

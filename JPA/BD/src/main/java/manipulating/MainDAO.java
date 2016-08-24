@@ -13,7 +13,7 @@ public class MainDAO {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
     private static EntityManager em = emf.createEntityManager();
 
-    public static void addEntetyToBase(Object obj) {
+    public static void addEntityToBase(Object obj) {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -27,7 +27,7 @@ public class MainDAO {
         }
     }
 
-    public static void updateEntetyInBase(Object object) {
+    public static void updateEntityInBase(Object object) {
         try {
             em.getTransaction().begin();
             em.persist(object);
@@ -55,7 +55,7 @@ public class MainDAO {
         }
     }
 
-    public static void deleteEntety(Object object) {
+    public static void deleteEntity(Object object) {
         try {
             em.getTransaction().begin();
             em.remove(object);
