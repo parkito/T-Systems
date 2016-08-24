@@ -1,12 +1,9 @@
 package manipulating;
 
-import base.Client;
 import base.Tariff;
+import base.TariffOption;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -28,7 +25,13 @@ public class TariffDAO {
 
     public static void main(String[] args) {
         TariffDAO tariffDAO = new TariffDAO();
-        tariffDAO.deleteTariff("new");
+        Tariff tariff = tariffDAO.getTariff("Base1");
+        System.out.println(tariff.getTitle());
+        TariffOptionDAO tariffOptionDAO = new TariffOptionDAO();
+        TariffOption tariffOption = tariffOptionDAO.getTariffOption("call1");
+        tariffDAO.addTariffOption(tariff, tariffOption);
+        tariffDAO.getTariffOtions(tariff);
+//        tariffDAO.addTariffOption(tariff);
     }
 
     public void addTariff(String title) {
@@ -70,6 +73,22 @@ public class TariffDAO {
         if (tariff.getId() == 0 && tariff.getTitle().equals("-"))
             return false;
         else return true;
+    }
+
+    public void addTariffOption(Tariff tariff, TariffOption tariffOption) {
+        tariff.getTariffOptions().add(tariffOption);
+    }
+
+    public boolean tariffHasOption(Tariff tariff, TariffOption tariffOption) {
+        return tariff.getTariffOptions().contains(tariffOption);
+    }
+
+    public Set<TariffOption> getTariffOtions(Tariff tariff) {
+        System.out.println(tariff.getTitle() + ": ");
+        for (TariffOption tariffOption : tariff.getTariffOptions()) {
+            System.out.println("   " + tariffOption.getTitle());
+        }
+        return tariff.getTariffOptions();
     }
 
 

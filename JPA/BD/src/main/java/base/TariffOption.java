@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 public class TariffOption {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -38,8 +39,7 @@ public class TariffOption {
     }
 
 
-    public TariffOption(int id, String title, double price, Double connectionPrice) {
-        this.id = id;
+    public TariffOption(String title, double price, Double connectionPrice) {
         this.title = title;
         this.price = price;
         this.connectionPrice = connectionPrice;
