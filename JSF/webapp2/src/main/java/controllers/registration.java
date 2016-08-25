@@ -15,8 +15,7 @@ public class registration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userPath = request.getServletPath();
-        System.out.println(request.getQueryString());
-        System.out.println(request.getParameter("sumbit"));
+        System.out.println("processRequest");
         //System.out.println("work");
         if ("/registration".equals(userPath)) {
             //  System.out.println("yes");
@@ -64,22 +63,31 @@ public class registration extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userPath = request.getServletPath();
-        //System.out.println("work");
-        if ("/registration".equals(userPath)) {
-            //System.out.println("yes");
-//            ClientDAO clientDAO = new ClientDAO();
-//            clientDAO.addClient(
-//                    request.getParameter("name"),
-//                    request.getParameter("secondName"),
-//                    request.getParameter("birthdayDate"),
-//                    request.getParameter("passport"),
-//                    request.getParameter("adress"),
-//                    request.getParameter("email"),
-//                    request.getParameter("password")
-//            );
-        }
-        processRequest(request, response);
+        ClientDAO clientDAO = new ClientDAO();
+        String name = request.getParameter("name");
+        String secondName = request.getParameter("secondName");
+        String birthdayData = request.getParameter("birthdayData");
+        String passport = request.getParameter("passport");
+        String adress = request.getParameter("adress");
+        String eMail = request.getParameter("email");
+        String password = request.getParameter("password");
+        System.out.println(name + " " + secondName + " " + birthdayData + " " + " " + " " + passport + " " + adress + " " + eMail + password);
+        clientDAO.addClient(
+                name, secondName,
+                birthdayData, passport,
+                adress, eMail,
+                password
+        );
     }
+    //processRequest(request, response);
+//        System.out.println(request.getParameter("name") + " " +
+//                request.getParameter("secondName") + " " +
+//                request.getParameter("birthdayDate") + " " +
+//                request.getParameter("passport") + " " +
+//                request.getParameter("adress") + " " +
+//                request.getParameter("email") + " " +
+//                request.getParameter("password"));
+//    }
 
     /**
      * Returns a short description of the servlet.
