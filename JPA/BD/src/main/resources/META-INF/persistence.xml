@@ -7,19 +7,13 @@
         <class>base.ClientHasContract</class>
         <class>base.ConnectedOption</class>
         <class>base.Contract</class>
-        <class>base.Money</class>
-        <class>base.NumberStatus</class>
-        <class>base.OptionCompatibility</class>
-        <class>base.StatusForNumbers</class>
-        <class>base.StatusForOptions</class>
         <class>base.Tariff</class>
         <class>base.TariffOption</class>
-        <class>base.AvailableTariffOption</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/operator"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.username"/>
-            <property name="hibernate.connection.password"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="214189"/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>

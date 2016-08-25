@@ -58,6 +58,13 @@ public class Contract {
         this.tariff = tariff;
     }
 
+    public Contract() {
+    }
+
+    public Contract(String number) {
+        this.number = number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

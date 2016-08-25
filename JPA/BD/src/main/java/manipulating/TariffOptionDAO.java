@@ -20,12 +20,13 @@ dependency
  */
 public class TariffOptionDAO {
     public static void main(String[] args) {
-        TariffOptionDAO tariffOptionDAO = new TariffOptionDAO();
-        tariffOptionDAO.addTariffOption("GB1", 25, null);
-        tariffOptionDAO.addTariffOption("GB2", 50, 20.0);
-        tariffOptionDAO.addTariffOption("call1", 30, null);
-        tariffOptionDAO.addTariffOption("call2", 25, 50.0);
-        tariffOptionDAO.addTariffOption("unlim", 100, 100.0);
+//        TariffOptionDAO tariffOptionDAO = new TariffOptionDAO();
+//        tariffOptionDAO.addTariffOption("Traf1", 25, null);
+//        tariffOptionDAO.addTariffOption("Traf2", 50, 20.0);
+//        tariffOptionDAO.addTariffOption("ph1", 30, null);
+//        tariffOptionDAO.addTariffOption("ph2", 25, 50.0);
+//        tariffOptionDAO.addTariffOption("unlim", 100, 100.0);
+//        MainDAO.closeConnections();
     }
 
     public void addTariffOption(String title, double price, Double connectionPrice) {

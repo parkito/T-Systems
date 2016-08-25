@@ -22,6 +22,16 @@ dependency
 
  */
 public class TariffDAO {
+    public static void main(String[] args) {
+//        TariffDAO tariffDAO =new TariffDAO();
+//        tariffDAO.addTariff("base");
+//        tariffDAO.addTariff("GB1");
+//        tariffDAO.addTariff("GB2");
+//        tariffDAO.addTariff("Call1");
+//        tariffDAO.addTariff("Call2");
+//        tariffDAO.addTariff("Unlim");
+//        MainDAO.closeConnections();
+    }
 
     public void getTariffList() {
         String query = "SELECT * FROM Tariff";
@@ -75,7 +85,8 @@ public class TariffDAO {
     }
 
     public void addTariffOption(Tariff tariff, TariffOption tariffOption) {
-        tariff.getTariffOptions().add(tariffOption);
+        if (!tariffHasOption(tariff, tariffOption))
+            tariff.getTariffOptions().add(tariffOption);
     }
 
     public boolean tariffHasOption(Tariff tariff, TariffOption tariffOption) {

@@ -17,7 +17,6 @@ public class Tariff {
     @Column(name = "title")
     private String title;
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "AvailableTariffOption",
