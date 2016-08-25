@@ -6,11 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by Artyom Karnov on 8/26/16.
+ * Created by Artyom Karnov on 8/21/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity
-@Table(name = "Client_has_Contract", schema = "operator", catalog = "")
+@Table(name = "Client_has_Contract", schema = "operator")
 public class ClientHasContract {
     private int clientId;
 
