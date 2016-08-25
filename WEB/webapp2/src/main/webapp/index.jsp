@@ -17,7 +17,7 @@
     <a href="/"><img alt="Logo" id="top-image" src="http://cdn.korsit.com/png/trunk/t-mobile.png"/></a>
     <div id="user-panel">
         <a href="/registration"><img alt="SignUp" scr="http://animal-store.ru/img/2015/050401/4834712"/></a>
-        <a href="/login">[SignIn]</a>
+        <a href="/tariff">[SignIn]</a>
     </div>
 </header>
 <div id="main">

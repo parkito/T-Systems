@@ -3,6 +3,7 @@ package manipulating;
 import base.Tariff;
 import base.TariffOption;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Set;
 
@@ -30,6 +31,17 @@ public class TariffDAO {
         for (Object object : tariffList) {
             tariff = (Tariff) object;
             System.out.println(tariff.toString());
+        }
+    }
+
+    public void getTariffList(PrintWriter out) {
+        System.out.println("here");
+        String query = "SELECT * FROM Tariff";
+        List tariffList = MainDAO.getEntitiesList(new Tariff(), query);
+        Tariff tariff = new Tariff();
+        for (Object object : tariffList) {
+            tariff = (Tariff) object;
+            out.write(tariff.toString());
         }
     }
 
