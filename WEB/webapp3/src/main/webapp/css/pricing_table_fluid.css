@@ -1,0 +1,128 @@
+/*
+* Fluid Skeleton 
+* Based on Skeleton, Dave Gamache
+* www.getskeleton.com
+* Butchered by Ian Yates
+* http://webdesign.tutsplus.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+*/
+
+/* Flexible Column Widths - mobile first
+================================================== */
+
+    	.table-container                                 { position: relative; width: 100%; max-width: 800px; margin: 20px auto 0; padding: 0; }
+        .table-container .table-columns 	     { float: left; display: inline;  }
+		
+		.table-container .one.table-columns 			{width: 100%; padding:0px 10px;}
+		.table-container .two.table-columns 			{width: 50%; padding:0px 10px;}
+		.table-container .three.table-columns		 {width: 33.2%; padding:0px 10px;  }
+		.table-container .four.table-columns                   { width: 25%; padding:0px 10px; }
+ 
+ /* #getting bigger - breakpoint beyond tablets portrait
+================================================== */       
+    @media only screen and (min-width: 321px) and (max-width: 600px) {
+    
+		.table-container .four.table-columns     {width: 100%;padding:0px 10px!important; } 
+        .table-container .table-columns                       {width: 100%!important; }
+		
+        .table-container .one.table-columns                    { width: 100%!important; }
+        .table-container .two.table-columns                    { width: 49.5%!important; }
+        .table-container .three.table-columns                { width: 32%!important; }
+        .table-container .four.table-columns                  { width: 50%!important; }
+
+        }
+		
+    @media only screen and (max-width: 320px) {
+		.table-container .four.table-columns     {width: 100%;padding:0px 10px; } 
+        .table-container .table-columns                       {width: 100%; }
+
+        .table-container .one.table-columns                     { width: 100%!important;  }
+        .table-container .two.table-columns                       { width: 100%!important;  }
+        .table-container .three.table-columns                   { width: 100%!important;  }
+        .table-container .four.table-columns                     { width: 100%!important; }
+		
+		#pricing_plan4,#pricing_plan3,#pricing_plan2,#pricing_plan1{ width: 50%;}
+
+		.plan_title{width:auto; float:none; }
+		.plan_price{width:auto;	float:none; }
+		.plan_more{display: none; }
+		.plan > dd {
+			padding: 10px 5px !important;
+			height:auto;
+
+			opacity: 1;
+			filter: alpha(opacity=1); /* IE6-IE8 */
+			-webkit-transition: opacity 0.9s ease-in-out;
+			-moz-transition: opacity 0.9s ease-in-out;
+			-o-transition: opacity 0.9s ease-in-out;
+			-ms-transition: opacity 0.9s ease-in-out;
+			transition: opacity 0.9s ease-in-out;
+		}
+		
+	}
+	
+    @media only screen and (max-width: 320px) {
+		.table-container .four.table-columns     {width: 100%; } 
+        .table-container .table-columns                         {width: 100%; }
+ 
+        .container .one.columns                     { width: 100%;  }
+        .container .two.columns                     { width: 100%;  }
+        .container .three.columns                 { width: 100%;  }
+        .container .four.columns                    { width: 100%!important; }
+		
+		.plan_title{width:auto;	float:none;	}
+		.plan_price{width:auto; float:none;	}
+		.plan_more{display: none;}
+		.plan > dd {
+			padding: 10px 5px !important;
+			height:auto;
+
+			opacity: 1;
+			filter: alpha(opacity=1); /* IE6-IE8 */
+			-webkit-transition: opacity 0.9s ease-in-out;
+			-moz-transition: opacity 0.9s ease-in-out;
+			-o-transition: opacity 0.9s ease-in-out;
+			-ms-transition: opacity 0.9s ease-in-out;
+			transition: opacity 0.9s ease-in-out;
+		}
+	
+	
+	}
+
+/* #Clearing
+================================================== */
+
+    /* Self Clearing Goodness */
+    .table-container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+    /* Use clearfix class on parent to clear nested columns,
+    or wrap each row of columns in a <div class="row"> */
+    .clearfix:before,
+    .clearfix:after,
+    .row:before,
+    .row:after {
+      content: '\0020';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .row:after,
+    .clearfix:after {
+      clear: both; }
+    .row,
+    .clearfix {
+      zoom: 1; }
+
+    /* You can also use a <br class="clear" /> to clear columns */
+    .clear {
+      clear: both;
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+    
+   
