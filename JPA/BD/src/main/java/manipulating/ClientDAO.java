@@ -2,9 +2,6 @@ package manipulating;
 
 import base.Client;
 
-import javax.persistence.*;
-import java.util.List;
-
 /**
  * Created by Artyom Karnov on 8/21/16.
  * artyom-karnov@yandex.ru
@@ -33,7 +30,7 @@ public class ClientDAO {
         Client client = new Client(name, secondName, birthdayData,
                 passport, adress, eMail, password);
         if (!isUserExist(eMail))
-            MainDAO.addEntityToBase(client);
+            MainDAO.addEntity(client);
         else System.out.println("User " + eMail + " already exists");
     }
 
@@ -77,7 +74,7 @@ public class ClientDAO {
     public void changePassword(String eMail, String newPassword) {
         Client client = getClient(eMail);
         client.setPassword(newPassword);
-        MainDAO.updateEntityInBase(client);
+        MainDAO.updateEntity(client);
     }
 
 

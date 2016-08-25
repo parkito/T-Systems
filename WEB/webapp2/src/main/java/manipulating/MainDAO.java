@@ -1,9 +1,7 @@
 package manipulating;
 
-import base.Client;
-import base.Tariff;
-
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -14,7 +12,19 @@ public class MainDAO {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
     private static EntityManager em = emf.createEntityManager();
 
-    public static void addEntetyToBase(Object obj) {
+    public static List<Object> getEntitiesList(Object obj, String query) {
+        Query nativeQuery = null;
+        try {
+            nativeQuery = em.createNativeQuery(query, obj.getClass());
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+            System.out.println("Fail");
+        } finally {
+            return nativeQuery.getResultList();
+        }
+    }
+
+    public static void addEntity(Object obj) {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -23,12 +33,10 @@ public class MainDAO {
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
-        } finally {
-
         }
     }
 
-    public static void updateEntetyInBase(Object object) {
+    public static void updateEntity(Object object) {
         try {
             em.getTransaction().begin();
             em.persist(object);
@@ -37,12 +45,10 @@ public class MainDAO {
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
-        } finally {
-
         }
     }
 
-
+    //Getting only one entity from db
     public static Object getExistingEntity(Object obj, String query) {
         Object gottenObject = null;
         try {
@@ -56,7 +62,7 @@ public class MainDAO {
         }
     }
 
-    public static void deleteEntety(Object object) {
+    public static void deleteEntity(Object object) {
         try {
             em.getTransaction().begin();
             em.remove(object);
@@ -65,9 +71,12 @@ public class MainDAO {
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
-        } finally {
-
         }
+    }
+
+    public static void closeConnections() {
+        em.close();
+        emf.close();
     }
 
 }

@@ -81,4 +81,12 @@ public class Tariff {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Tariff{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

@@ -1,7 +1,6 @@
 package manipulating;
 
 
-import base.Tariff;
 import base.TariffOption;
 
 /**
@@ -32,7 +31,7 @@ public class TariffOptionDAO {
     public void addTariffOption(String title, double price, Double connectionPrice) {
         if (!isTariffOptionExist(title)) {
             TariffOption tariffOption = new TariffOption(title, price, connectionPrice);
-            MainDAO.addEntityToBase(tariffOption);
+            MainDAO.addEntity(tariffOption);
         } else System.out.println("TariffOption already exists");
     }
 

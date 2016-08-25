@@ -36,7 +36,7 @@ public class TariffDAO {
     public void addTariff(String title) {
         if (!isTariffExist(title)) {
             Tariff tariff = new Tariff(title);
-            MainDAO.addEntityToBase(tariff);
+            MainDAO.addEntity(tariff);
         } else System.out.println("Tariff already exists");
     }
 

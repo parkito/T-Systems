@@ -24,7 +24,7 @@ public class MainDAO {
         }
     }
 
-    public static void addEntityToBase(Object obj) {
+    public static void addEntity(Object obj) {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -36,7 +36,7 @@ public class MainDAO {
         }
     }
 
-    public static void updateEntityInBase(Object object) {
+    public static void updateEntity(Object object) {
         try {
             em.getTransaction().begin();
             em.persist(object);
@@ -48,6 +48,7 @@ public class MainDAO {
         }
     }
 
+    //Getting only one entity from db
     public static Object getExistingEntity(Object obj, String query) {
         Object gottenObject = null;
         try {
