@@ -65,6 +65,11 @@ public class Contract {
         this.number = number;
     }
 
+    public Contract(String number, String status) {
+        this.number = number;
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

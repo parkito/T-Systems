@@ -12,6 +12,12 @@ import java.util.Set;
  **/
 public class ContractDAO {
     public static void main(String[] args) {
+        ContractDAO contractDAO =new ContractDAO();
+        contractDAO.addContract("12345");
+        contractDAO.addContract("12344");
+        contractDAO.addContract("12343");
+        contractDAO.addContract("12342");
+        MainDAO.closeConnections();
 
     }
 
@@ -27,7 +33,7 @@ public class ContractDAO {
 
     public void addContract(String number) {
         if (!isContractExist(number)) {
-            Contract contract = new Contract();
+            Contract contract = new Contract(number,"4");
             MainDAO.addEntity(contract);
         } else System.out.println("Contract already exists");
     }
