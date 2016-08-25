@@ -1,8 +1,7 @@
 package manipulating;
 
-import base.Tariff;
-
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -13,6 +12,18 @@ public class MainDAO {
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
     private static EntityManager em = emf.createEntityManager();
 
+    public static List<Object> getEntitiesList(Object obj, String query) {
+        Query nativeQuery = null;
+        try {
+            nativeQuery = em.createNativeQuery(query, obj.getClass());
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+            System.out.println("Fail");
+        } finally {
+            return nativeQuery.getResultList();
+        }
+    }
+
     public static void addEntityToBase(Object obj) {
         try {
             em.getTransaction().begin();
@@ -22,8 +33,6 @@ public class MainDAO {
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
-        } finally {
-
         }
     }
 
@@ -36,11 +45,8 @@ public class MainDAO {
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
-        } finally {
-
         }
     }
-
 
     public static Object getExistingEntity(Object obj, String query) {
         Object gottenObject = null;
@@ -64,9 +70,12 @@ public class MainDAO {
         } catch (PersistenceException e) {
             e.printStackTrace();
             System.out.println("Fail");
-        } finally {
-
         }
+    }
+
+    public static void closeConnections() {
+        em.close();
+        emf.close();
     }
 
 }
