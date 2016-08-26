@@ -13,9 +13,9 @@ import entities.User;
  **/
 public class First {
     public static void main(String[] args) {
-        GenericDAOImpl<User, User> genericDAO = new GenericDAOImpl<User,User>();
+//        GenericDAOImpl<User, User> genericDAO = new GenericDAOImpl<User,User>();
         User user = new User("Ivan", "Ivanov", "08.10.2000", "123", "spb", "a@b.ru", "123");
         System.out.println(user);
-        genericDAO.create(user);
+//        genericDAO.create(user);
     }
 }
