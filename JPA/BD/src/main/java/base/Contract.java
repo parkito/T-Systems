@@ -65,6 +65,12 @@ public class Contract {
         this.number = number;
     }
 
+    public Contract(String number, Tariff tariff, String status) {
+        this.number = number;
+        this.status = status;
+        this.tariff = tariff;
+    }
+
     public Contract(String number, String status) {
         this.number = number;
         this.status = status;
@@ -88,5 +94,14 @@ public class Contract {
         int result = number != null ? number.hashCode() : 0;
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "number='" + number + '\'' +
+                ", status='" + status + '\'' +
+                ", tariff=" + tariff +
+                '}';
     }
 }

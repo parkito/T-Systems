@@ -1,6 +1,7 @@
 package manipulating;
 
 import base.Contract;
+import base.Tariff;
 import base.TariffOption;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.Set;
 public class ContractDAO {
     public static void main(String[] args) {
         ContractDAO contractDAO = new ContractDAO();
+        TariffDAO tariffDAO = new TariffDAO();
+        Tariff tariff = tariffDAO.getTariff("base");
+
         contractDAO.addContract("12345");
         contractDAO.addContract("12344");
         contractDAO.addContract("12343");
@@ -31,11 +35,19 @@ public class ContractDAO {
         }
     }
 
+    public void setTariff(Contract contract, Tariff tariff) {
+        contract.setTariff(tariff);
+    }
+
     public void addContract(String number) {
         if (!isContractExist(number)) {
-            Contract contract = new Contract(number, "4");
+            Contract contract = new Contract(number, "aviable");
             MainDAO.addEntity(contract);
         } else System.out.println("Contract already exists");
+    }
+
+    public void blockContract(Contract contract) {
+        contract.setStatus("Block");
     }
 
     public boolean isContractExist(String number) {

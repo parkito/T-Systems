@@ -27,15 +27,15 @@ public class TariffOption {
     private Double connectionPrice;
 
     @ManyToMany(mappedBy = "tariffOptions")
-    private Set<Tariff> options;
+    private Set<Tariff> tariff;
 
 
-    public Set<Tariff> getOptions() {
-        return options;
+    public Set<Tariff> getTariff() {
+        return tariff;
     }
 
-    public void setOptions(Set<Tariff> options) {
-        this.options = options;
+    public void setTariff(Set<Tariff> options) {
+        this.tariff = options;
     }
 
 
@@ -110,5 +110,14 @@ public class TariffOption {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (connectionPrice != null ? connectionPrice.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "TariffOption{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", connectionPrice=" + connectionPrice +
+                '}';
     }
 }
