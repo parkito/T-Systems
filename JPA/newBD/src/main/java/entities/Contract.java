@@ -1,24 +1,92 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity
+@Table(name = "Contract", uniqueConstraints = @UniqueConstraint(columnNames = {"number"}))
+@NamedQuery(name = "getAllcontracts", query = "SELECT c FROM Contract c")
 public class Contract {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "contract_id")
     private int contractId;
+    @Basic
+    @Column(name = "number")
     private String number;
-    private byte isBlocked;
-    private Byte blockedByAdmin;
+    @Basic
+    @Column(name = "isBlocked")
+    private boolean isBlocked;
+    @Basic
+    @Column(name = "blockedByAdmin")
+    private boolean blockedByAdmin;
+    @Basic
+    @Column(name = "whoBlocked_id")
     private String whoBlockedId;
 
-    @Id
-    @Column(name = "contract_id")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable
+            (
+                    name = "ConnectedOptions",
+                    joinColumns = {@JoinColumn(name = "contract_id")},
+                    inverseJoinColumns = {@JoinColumn(name = "connectedOptions_id")}
+            )
+    private final List<TariffOption> TariffOptions = new ArrayList();
+
+    @OneToOne
+    @JoinColumn(name = "tariff_id")
+    private Tariff tariff;
+
+
+    @ManyToOne
+    @JoinColumn(name = "whoBlocked_id")
+    private User employee;
+
+    public Contract() {
+    }
+
+    public void setBlocked(boolean blocked) {
+        isBlocked = blocked;
+    }
+
+    public void setTariff(Tariff tariff) {
+        this.tariff = tariff;
+    }
+
+    public void setEmployee(User employee) {
+        this.employee = employee;
+    }
+
+    public Contract(String number, Tariff tariff) {
+        this.number = number;
+        this.tariff = tariff;
+    }
+
+    public boolean isBlocked() {
+        return isBlocked;
+    }
+
+    public boolean isBlockedByAdmin() {
+        return blockedByAdmin;
+    }
+
+    public List<TariffOption> getTariffOptions() {
+        return TariffOptions;
+    }
+
+    public Tariff getTariff() {
+        return tariff;
+    }
+
+    public User getEmployee() {
+        return employee;
+    }
+
     public int getContractId() {
         return contractId;
     }
@@ -27,8 +95,7 @@ public class Contract {
         this.contractId = contractId;
     }
 
-    @Basic
-    @Column(name = "number")
+
     public String getNumber() {
         return number;
     }
@@ -37,28 +104,25 @@ public class Contract {
         this.number = number;
     }
 
-    @Basic
-    @Column(name = "isBlocked")
-    public byte getIsBlocked() {
+
+    public boolean getIsBlocked() {
         return isBlocked;
     }
 
-    public void setIsBlocked(byte isBlocked) {
+    public void setIsBlocked(boolean isBlocked) {
         this.isBlocked = isBlocked;
     }
 
-    @Basic
-    @Column(name = "blockedByAdmin")
-    public Byte getBlockedByAdmin() {
+
+    public boolean getBlockedByAdmin() {
         return blockedByAdmin;
     }
 
-    public void setBlockedByAdmin(Byte blockedByAdmin) {
+    public void setBlockedByAdmin(boolean blockedByAdmin) {
         this.blockedByAdmin = blockedByAdmin;
     }
 
-    @Basic
-    @Column(name = "whoBlocked_id")
+
     public String getWhoBlockedId() {
         return whoBlockedId;
     }
@@ -67,31 +131,5 @@ public class Contract {
         this.whoBlockedId = whoBlockedId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Contract contract = (Contract) o;
-
-        if (contractId != contract.contractId) return false;
-        if (isBlocked != contract.isBlocked) return false;
-        if (number != null ? !number.equals(contract.number) : contract.number != null) return false;
-        if (blockedByAdmin != null ? !blockedByAdmin.equals(contract.blockedByAdmin) : contract.blockedByAdmin != null)
-            return false;
-        if (whoBlockedId != null ? !whoBlockedId.equals(contract.whoBlockedId) : contract.whoBlockedId != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = contractId;
-        result = 31 * result + (number != null ? number.hashCode() : 0);
-        result = 31 * result + (int) isBlocked;
-        result = 31 * result + (blockedByAdmin != null ? blockedByAdmin.hashCode() : 0);
-        result = 31 * result + (whoBlockedId != null ? whoBlockedId.hashCode() : 0);
-        return result;
-    }
 }
