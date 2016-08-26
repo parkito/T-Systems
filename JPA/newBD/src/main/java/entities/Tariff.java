@@ -1,9 +1,7 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -41,9 +39,12 @@ public class Tariff {
         return price;
     }
 
+
     public void setPrice(Double price) {
         this.price = price;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

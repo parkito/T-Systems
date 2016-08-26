@@ -39,7 +39,7 @@ public class Contract {
                     joinColumns = {@JoinColumn(name = "contract_id")},
                     inverseJoinColumns = {@JoinColumn(name = "connectedOptions_id")}
             )
-    private final List<TariffOption> TariffOptions = new ArrayList();
+    private final List<TariffOption> tariffOptions = new ArrayList();
 
     @OneToOne
     @JoinColumn(name = "tariff_id")
@@ -79,7 +79,7 @@ public class Contract {
     }
 
     public List<TariffOption> getTariffOptions() {
-        return TariffOptions;
+        return tariffOptions;
     }
 
     public Tariff getTariff() {
@@ -132,6 +132,24 @@ public class Contract {
 
     public void setWhoBlockedId(String whoBlockedId) {
         this.whoBlockedId = whoBlockedId;
+    }
+
+    public void removeOption(TariffOption tariffOption) {
+        this.tariffOptions.remove(tariffOption);
+    }
+
+    public void removeAllOptions() {
+        this.tariffOptions.clear();
+    }
+
+    public boolean isTariffOptionExists(TariffOption tariffOption) {
+        return this.tariffOptions.contains(tariffOption);
+    }
+
+    public void addOption(TariffOption tariffOption) {
+        if (!isTariffOptionExists(tariffOption))
+            this.tariffOptions.add(tariffOption);
+        else System.out.println("Option already exists");
     }
 
 

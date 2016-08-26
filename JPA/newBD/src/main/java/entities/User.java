@@ -136,4 +136,21 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", birthdayData='" + birthdayData + '\'' +
+                ", passport='" + passport + '\'' +
+                ", adress='" + adress + '\'' +
+                ", balance=" + balance +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", accessLevel=" + accessLevel +
+                ", contracts=" + contracts +
+                '}';
+    }
 }
