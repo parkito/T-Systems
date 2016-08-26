@@ -25,12 +25,12 @@ dependency
  */
 public class ClientDAO {
     public static void main(String[] args) {
-//        ClientDAO clientDAO = new ClientDAO();
-//        clientDAO.addClient("Ivan", "Ivanov", "08.01.2016", "passport1", "sbp", "a@b.ru", "123");
-//        clientDAO.addClient("Ivan", "Petrov", "08.01.2000", "passport2", "sbp", "a@t.ru", "1236");
-//        clientDAO.addClient("Petr", "Ivanov", "08.01.2016", "passport3", "sbp", "a@d.ru", "1236");
-//        clientDAO.addClient("Sidor", "Ivanov", "08.01.2016", "passport4", "msk", "a@c.ru", "123");
-//        MainDAO.closeConnections();
+        ClientDAO clientDAO = new ClientDAO();
+        clientDAO.addClient("Ivan", "Ivanov", "08.01.2016", "passport1", "sbp", "a@b.ru", "123");
+        clientDAO.addClient("Ivan", "Petrov", "08.01.2000", "passport2", "sbp", "a@t.ru", "1236");
+        clientDAO.addClient("Petr", "Ivanov", "08.01.2016", "passport3", "sbp", "a@d.ru", "1236");
+        clientDAO.addClient("Sidor", "Ivanov", "08.01.2016", "passport4", "msk", "a@c.ru", "123");
+        MainDAO.closeConnections();
 
     }
 
@@ -105,6 +105,10 @@ public class ClientDAO {
 
     public boolean clientHasContract(Client client, Contract contract) {
         return client.getContracts().contains(contract);
+    }
+
+    public void setAdmin(Client client) {
+        client.setStatus("Admin");
     }
 
 

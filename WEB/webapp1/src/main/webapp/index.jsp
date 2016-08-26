@@ -12,10 +12,13 @@
 <body>
 
 <h1>Hello JSP</h1>
-
-<%
+<%!
     TariffDAO tariffDAO = new TariffDAO();
     Tariff tariff = tariffDAO.getTariff("Base1");
+%>
+<%
+    //    TariffDAO tariffDAO = new TariffDAO();
+    //Tariff tariff = tariffDAO.getTariff("Base1");
     java.util.Date date = new java.util.Date();
 %>
 

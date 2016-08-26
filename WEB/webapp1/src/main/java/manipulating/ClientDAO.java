@@ -1,6 +1,12 @@
 package manipulating;
 
 import base.Client;
+import base.Contract;
+import base.Tariff;
+import base.TariffOption;
+import org.hibernate.validator.internal.util.Contracts;
+
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -20,7 +26,12 @@ dependency
 public class ClientDAO {
     public static void main(String[] args) {
         ClientDAO clientDAO = new ClientDAO();
-        clientDAO.getClient("ab@c.com");
+        clientDAO.addClient("Ivan", "Ivanov", "08.01.2016", "passport1", "sbp", "a@b.ru", "123");
+        clientDAO.addClient("Ivan", "Petrov", "08.01.2000", "passport2", "sbp", "a@t.ru", "1236");
+        clientDAO.addClient("Petr", "Ivanov", "08.01.2016", "passport3", "sbp", "a@d.ru", "1236");
+        clientDAO.addClient("Sidor", "Ivanov", "08.01.2016", "passport4", "msk", "a@c.ru", "123");
+        MainDAO.closeConnections();
+
     }
 
     public void addClient(String name, String secondName,
@@ -75,6 +86,29 @@ public class ClientDAO {
         Client client = getClient(eMail);
         client.setPassword(newPassword);
         MainDAO.updateEntity(client);
+    }
+
+    public Set<Contract> getContracts(Client client) {
+        System.out.println(client.geteMail() + ": ");
+        for (Contract contract : client.getContracts()) {
+            System.out.println("   " + contract.getNumber());
+        }
+        return client.getContracts();
+    }
+
+    public void addContract(Client client, Contract contract) {
+        if (!clientHasContract(client, contract)) {
+            client.getContracts().add(contract);
+            MainDAO.updateEntity(client);
+        }
+    }
+
+    public boolean clientHasContract(Client client, Contract contract) {
+        return client.getContracts().contains(contract);
+    }
+
+    public void setAdmin(Client client) {
+        client.setStatus("Admin");
     }
 
 

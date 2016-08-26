@@ -3,6 +3,7 @@ package base;
 import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Artyom Karnov on 8/21/16.
@@ -35,7 +36,23 @@ public class Client {
     @Basic
     @Column(name = "password")
     private String password;
+    @Basic
+    @Column(name = "status")
+    private String status;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Client_has_Contract",
+            joinColumns = @JoinColumn(name = "Client_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "Contract_number", referencedColumnName = "number"))
+    private Set<Contract> contracts;
 
+    public Set<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
+    }
 
     public int getId() {
         return id;
@@ -106,6 +123,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Client(String name, String secondName, String birthdayData,

@@ -36,7 +36,9 @@ public class Client {
     @Basic
     @Column(name = "password")
     private String password;
-
+    @Basic
+    @Column(name = "status")
+    private String status;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "Client_has_Contract",
@@ -121,6 +123,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Client(String name, String secondName, String birthdayData,

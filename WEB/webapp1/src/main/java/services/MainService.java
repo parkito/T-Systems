@@ -18,18 +18,14 @@ public class MainService implements Runnable {
     TariffOptionDAO tariffOptionDAO = new TariffOptionDAO();
     ClientDAO clientDAO = new ClientDAO();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             executorService.execute(new MainService());
         }
         executorService.shutdown();
-        try {
-            Thread.currentThread().sleep(7000);
-            MainDAO.closeConnections();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.currentThread().join();
+//        MainDAO.closeConnections();
 
     }
 
@@ -37,10 +33,10 @@ public class MainService implements Runnable {
         tariffDAO.getTariffList();
     }
 
-    public void run() {
-        synchronized (objectForSynchronized) {
-            tariffDAO.getTariffList();
-        }
+    synchronized public void run() {
+//        synchronized (objectForSynchronized) {
+        tariffDAO.getTariffList();
+//        }
     }
 }
 

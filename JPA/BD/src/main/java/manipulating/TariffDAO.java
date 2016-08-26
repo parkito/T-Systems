@@ -24,12 +24,12 @@ dependency
 public class TariffDAO {
     public static void main(String[] args) {
         TariffDAO tariffDAO = new TariffDAO();
-//        tariffDAO.addTariff("base");
-//        tariffDAO.addTariff("GB1");
-//        tariffDAO.addTariff("GB2");
-//        tariffDAO.addTariff("Call1");
-//        tariffDAO.addTariff("Call2");
-//        tariffDAO.addTariff("Unlim");
+        tariffDAO.addTariff("base");
+        tariffDAO.addTariff("GB1");
+        tariffDAO.addTariff("GB2");
+        tariffDAO.addTariff("Call1");
+        tariffDAO.addTariff("Call2");
+        tariffDAO.addTariff("Unlim");
 //        MainDAO.closeConnections();
         Tariff tariff = tariffDAO.getTariff("base");
         TariffOptionDAO tariffOptionDAO = new TariffOptionDAO();
