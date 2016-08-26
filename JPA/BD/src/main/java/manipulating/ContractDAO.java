@@ -12,7 +12,7 @@ import java.util.Set;
  **/
 public class ContractDAO {
     public static void main(String[] args) {
-        ContractDAO contractDAO =new ContractDAO();
+        ContractDAO contractDAO = new ContractDAO();
         contractDAO.addContract("12345");
         contractDAO.addContract("12344");
         contractDAO.addContract("12343");
@@ -33,7 +33,7 @@ public class ContractDAO {
 
     public void addContract(String number) {
         if (!isContractExist(number)) {
-            Contract contract = new Contract(number,"4");
+            Contract contract = new Contract(number, "4");
             MainDAO.addEntity(contract);
         } else System.out.println("Contract already exists");
     }
@@ -73,8 +73,10 @@ public class ContractDAO {
     }
 
     public void addContractOption(Contract contract, TariffOption contractOption) {
-        if (!contractHasOption(contract, contractOption))
+        if (!contractHasOption(contract, contractOption)) {
             contract.getTariffOptions().add(contractOption);
+            MainDAO.updateEntity(contract);
+        }
     }
 
     public boolean contractHasOption(Contract contract, TariffOption contractOption) {

@@ -97,8 +97,10 @@ public class ClientDAO {
     }
 
     public void addContract(Client client, Contract contract) {
-        if (!clientHasContract(client, contract))
+        if (!clientHasContract(client, contract)) {
             client.getContracts().add(contract);
+            MainDAO.updateEntity(client);
+        }
     }
 
     public boolean clientHasContract(Client client, Contract contract) {
