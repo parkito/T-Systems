@@ -9,7 +9,7 @@ import exceptions.UserNotFoundException;
  **/
 public interface UserDAO extends GenericDAO<User, Integer> {
 
-    public User getUserByNumber(long number) throws UserNotFoundException;
+    public User getUserByNumber(String number) throws UserNotFoundException;
 
 
     public User getUserByEMAil(String eMail) throws UserNotFoundException;

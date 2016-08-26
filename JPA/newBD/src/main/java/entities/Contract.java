@@ -28,6 +28,9 @@ public class Contract {
     @Basic
     @Column(name = "whoBlocked_id")
     private String whoBlockedId;
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
