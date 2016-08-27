@@ -1,15 +1,14 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity
+@Table (name = "AccessLevel")
+@NamedQuery(name = "AccessLevel.getAll", query = "SELECT a FROM AccessLevel a")
 public class AccessLevel {
     private int accessLevelId;
     private String status;

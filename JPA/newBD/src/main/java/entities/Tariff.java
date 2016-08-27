@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * artyom-karnov@yandex.ru
  **/
 @Entity
+@Table(name = "Tariff")
+@NamedQuery(name = "Tariff.getAll", query = "SELECT tar FROM Tariff tar")
 public class Tariff {
     private int tariffId;
     private String title;
@@ -43,7 +45,6 @@ public class Tariff {
     public void setPrice(Double price) {
         this.price = price;
     }
-
 
 
     @Override

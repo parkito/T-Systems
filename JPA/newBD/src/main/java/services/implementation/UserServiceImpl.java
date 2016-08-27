@@ -2,6 +2,7 @@ package services.implementation;
 
 
 import dao.api.UserDAO;
+import dao.implementation.UserDAOImpl;
 import entities.User;
 import exceptions.CustomDAOException;
 import exceptions.UserNotFoundException;
@@ -14,45 +15,50 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class UserServiceImpl implements UserService {
-    private UserDAO userDAO;
+    private UserDAO userDAO = new UserDAOImpl();
 
     @Override
     public void createEntity(User user) throws CustomDAOException {
-        this.userDAO.create(user);
+        userDAO.create(user);
     }
 
     @Override
     public User getEntityById(Integer id) throws CustomDAOException {
-        return this.userDAO.read(id);
+        return userDAO.read(id);
     }
 
     @Override
     public void updateEntity(User entity) throws CustomDAOException {
-        this.userDAO.update(entity);
+        userDAO.update(entity);
     }
 
     @Override
     public void deleteEntity(User entity) throws CustomDAOException {
-        this.userDAO.delete(entity);
+        userDAO.delete(entity);
     }
 
 
     @Override
     public List<User> getAll() throws CustomDAOException {
-        return this.userDAO.getAll();
+        return userDAO.getAll();
 
+    }
+
+    @Override
+    public boolean isEntityExists(User entity) throws CustomDAOException {
+        return userDAO.isEntityExists(entity);
     }
 
 
     @Override
     public User getUserByNumber(String number) throws UserNotFoundException {
-        return this.userDAO.getUserByNumber(number);
+        return userDAO.getUserByNumber(number);
     }
 
 
     @Override
-    public User getUserByLogin(String login) throws UserNotFoundException {
-        return this.userDAO.getUserByEMAil(login);
+    public User getUserByEMAil(String eMail) throws UserNotFoundException {
+        return userDAO.getUserByEMAil(eMail);
     }
 
 

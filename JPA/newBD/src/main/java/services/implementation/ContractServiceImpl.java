@@ -20,29 +20,29 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public void createEntity(Contract contract) throws CustomDAOException {
-        this.contractDAO.create(contract);
+        contractDAO.create(contract);
     }
 
     @Override
     public Contract getEntityById(Integer id) throws CustomDAOException {
-        return this.contractDAO.read(id);
+        return contractDAO.read(id);
     }
 
 
     @Override
     public void updateEntity(Contract contract) throws CustomDAOException {
-        this.contractDAO.update(contract);
+        contractDAO.update(contract);
     }
 
 
     @Override
     public void deleteEntity(Contract contract) throws CustomDAOException {
-        this.contractDAO.delete(contract);
+        contractDAO.delete(contract);
     }
 
     @Override
     public Contract getContractByNumber(String number) throws ContractNotFoundException {
-        return this.contractDAO.getContractByNumber(number);
+        return contractDAO.getContractByNumber(number);
     }
 
     /**
@@ -53,11 +53,16 @@ public class ContractServiceImpl implements ContractService {
      */
     @Override
     public List<Contract> getAll() throws CustomDAOException {
-        return this.contractDAO.getAll();
+        return contractDAO.getAll();
+    }
+
+    @Override
+    public boolean isEntityExists(Contract entity) throws CustomDAOException {
+        return contractDAO.isEntityExists(entity);
     }
 
     @Override
     public List<Contract> getAllContractsForUser(int id) throws ContractsForEntityNotGotException {
-        return this.contractDAO.getAllUserContracts(id);
+        return contractDAO.getAllUserContracts(id);
     }
 }

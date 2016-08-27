@@ -1,15 +1,14 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
 @Entity
+@Table(name = "TariffOption")
+@NamedQuery(name = "TariffOption.getAll", query = "SELECT opt FROM TariffOption opt")
 public class TariffOption {
     private int tariffOptionId;
     private String title;

@@ -3,9 +3,7 @@ package dao.implementation;
 import dao.api.GenericDAO;
 import exceptions.CustomDAOException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
+import javax.persistence.*;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -15,6 +13,7 @@ import java.util.List;
  **/
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
 
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
@@ -22,14 +21,19 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     }
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private EntityManager entityManager = emf.createEntityManager();
 
     @Override
     public void create(E entity) throws CustomDAOException {
         try {
-            this.entityManager.persist(entity);
+            entityManager.getTransaction().begin();
+            entityManager.persist(entity);
+            entityManager.getTransaction().commit();
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't created: " + entity, e);
+        } finally {
+            entityManager.close();
+            emf.close();
         }
     }
 
@@ -45,7 +49,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public void update(E entity) throws CustomDAOException {
         try {
-            this.entityManager.merge(entity);
+            entityManager.merge(entity);
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't updated: " + entity, e);
         }
@@ -55,7 +59,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public void delete(E entity) throws CustomDAOException {
         try {
-            this.entityManager.remove(entityManager.merge(entity));
+            entityManager.remove(entityManager.merge(entity));
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't deleted: " + entity, e);
         }
@@ -65,12 +69,18 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public List<E> getAll() throws CustomDAOException {
         try {
-            return this.entityManager.createNamedQuery(daoType.getSimpleName() + ".getAll", daoType).getResultList();
+            return entityManager.createNamedQuery(daoType.getSimpleName() + ".getAll", daoType).getResultList();
         } catch (PersistenceException ex) {
             throw new CustomDAOException("Unable to get all entities of class " + daoType.getSimpleName(), ex);
         }
     }
 
-
+    @Override
+    public boolean isEntityExists(E entity) throws CustomDAOException {
+        if (entityManager.createNamedQuery
+                (daoType.getSimpleName() + ".getAll", daoType).getResultList().get(0) != null)
+            return true;
+        else return false;
+    }
 }
 

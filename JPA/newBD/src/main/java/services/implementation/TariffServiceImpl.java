@@ -17,24 +17,24 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     public void createEntity(Tariff tariff) throws CustomDAOException {
-        this.tariffDAO.create(tariff);
+        tariffDAO.create(tariff);
 
     }
 
     @Override
     public Tariff getEntityById(Integer id) throws CustomDAOException {
-        return this.tariffDAO.read(id);
+        return tariffDAO.read(id);
     }
 
     @Override
     public void updateEntity(Tariff tariff) throws CustomDAOException {
-        this.tariffDAO.update(tariff);
+        tariffDAO.update(tariff);
 
     }
 
     @Override
     public void deleteEntity(Tariff tariff) throws CustomDAOException {
-        this.tariffDAO.delete(tariff);
+        tariffDAO.delete(tariff);
     }
 
     /**
@@ -44,7 +44,12 @@ public class TariffServiceImpl implements TariffService {
      */
     @Override
     public List<Tariff> getAll() throws CustomDAOException {
-        return this.tariffDAO.getAll();
+        return tariffDAO.getAll();
 
+    }
+
+    @Override
+    public boolean isEntityExists(Tariff entity) throws CustomDAOException {
+        return tariffDAO.isEntityExists(entity);
     }
 }

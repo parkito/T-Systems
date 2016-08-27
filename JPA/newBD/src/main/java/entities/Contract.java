@@ -10,7 +10,7 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Contract", uniqueConstraints = @UniqueConstraint(columnNames = {"number"}))
-@NamedQuery(name = "getAllcontracts", query = "SELECT c FROM Contract c")
+@NamedQuery(name = "Contract.getAll", query = "SELECT c FROM Contract c")
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,9 +46,9 @@ public class Contract {
     private Tariff tariff;
 
 
-    @ManyToOne
-    @JoinColumn(name = "whoBlocked_id")
-    private User employee;
+//    @ManyToOne
+//    @JoinColumn(name = "whoBlocked_id")
+//    private User employee;
 
     public Contract() {
     }
@@ -61,9 +61,9 @@ public class Contract {
         this.tariff = tariff;
     }
 
-    public void setEmployee(User employee) {
-        this.employee = employee;
-    }
+//    public void setEmployee(User employee) {
+//        this.employee = employee;
+//    }
 
     public Contract(String number, Tariff tariff) {
         this.number = number;
@@ -86,9 +86,9 @@ public class Contract {
         return tariff;
     }
 
-    public User getEmployee() {
-        return employee;
-    }
+//    public User getEmployee() {
+//        return employee;
+//    }
 
     public int getContractId() {
         return contractId;

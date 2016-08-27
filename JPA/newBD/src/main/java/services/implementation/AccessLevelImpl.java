@@ -19,28 +19,33 @@ public class AccessLevelImpl implements AccessLevelService {
     @Override
 
     public void createEntity(AccessLevel accessLevel) throws CustomDAOException {
-        this.accessLevelDAO.create(accessLevel);
+        accessLevelDAO.create(accessLevel);
     }
 
     @Override
     public AccessLevel getEntityById(Integer id) throws CustomDAOException {
-        return this.accessLevelDAO.read(id);
+        return accessLevelDAO.read(id);
     }
 
     @Override
     public void updateEntity(AccessLevel accessLevel) throws CustomDAOException {
-        this.accessLevelDAO.update(accessLevel);
+        accessLevelDAO.update(accessLevel);
     }
 
     @Override
     public void deleteEntity(AccessLevel accessLevel) throws CustomDAOException {
-        this.accessLevelDAO.delete(accessLevel);
+        accessLevelDAO.delete(accessLevel);
 
     }
 
     @Override
     public List<AccessLevel> getAll() throws CustomDAOException {
-        return this.accessLevelDAO.getAll();
+        return accessLevelDAO.getAll();
+    }
+
+    @Override
+    public boolean isEntityExists(AccessLevel entity) throws CustomDAOException {
+        return accessLevelDAO.isEntityExists(entity);
     }
 }
 

@@ -11,6 +11,6 @@ public interface UserService extends GenericService<User, Integer> {
 
     public User getUserByNumber(String number) throws UserNotFoundException;
 
-    public User getUserByLogin(String login) throws UserNotFoundException;
+    public User getUserByEMAil(String eMail) throws UserNotFoundException;
 
 }

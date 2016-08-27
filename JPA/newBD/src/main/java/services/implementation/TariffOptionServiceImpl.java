@@ -18,27 +18,32 @@ public class TariffOptionServiceImpl implements TariffOptionService {
 
     @Override
     public void createEntity(TariffOption option) throws CustomDAOException {
-        this.optionDAO.create(option);
+        optionDAO.create(option);
     }
 
     @Override
     public TariffOption getEntityById(Integer id) throws CustomDAOException {
-        return this.optionDAO.read(id);
+        return optionDAO.read(id);
     }
 
     @Override
     public void updateEntity(TariffOption option) throws CustomDAOException {
-        this.optionDAO.update(option);
+        optionDAO.update(option);
     }
 
     @Override
     public void deleteEntity(TariffOption option) throws CustomDAOException {
-        this.optionDAO.delete(option);
+        optionDAO.delete(option);
     }
 
 
     public List<TariffOption> getAll() throws CustomDAOException {
         return optionDAO.getAll();
+    }
+
+    @Override
+    public boolean isEntityExists(TariffOption entity) throws CustomDAOException {
+        return optionDAO.isEntityExists(entity);
     }
 
 

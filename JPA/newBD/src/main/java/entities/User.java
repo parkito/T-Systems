@@ -10,7 +10,7 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "User")
-@NamedQuery(name = "getAllUsers", query = "SELECT u FROM User u")
+@NamedQuery(name = "User.getAll", query = "SELECT u FROM User u")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
