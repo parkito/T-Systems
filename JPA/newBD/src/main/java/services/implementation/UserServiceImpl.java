@@ -19,7 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createEntity(User user) throws CustomDAOException {
-        userDAO.create(user);
+        if (!isEntityExists(user))
+            userDAO.create(user);
+        else System.out.println("User already exists");
     }
 
     @Override
