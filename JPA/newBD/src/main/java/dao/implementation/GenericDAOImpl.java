@@ -16,7 +16,6 @@ import java.util.List;
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
 
-    @SuppressWarnings("unchecked")
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];

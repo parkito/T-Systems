@@ -13,7 +13,7 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 
-public class RoleServiceImpl implements AccessLevelService {
+public class AccessLevelImpl implements AccessLevelService {
     private AccessLevelDAO accessLevelDAO;
 
     @Override

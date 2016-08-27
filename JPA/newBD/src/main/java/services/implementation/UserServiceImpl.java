@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public void createEntity(User entity) throws CustomDAOException {
-        this.userDAO.create(entity);
+    public void createEntity(User user) throws CustomDAOException {
+        this.userDAO.create(user);
     }
 
     @Override
