@@ -127,7 +127,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String secondName, String birthdayData, String passport, String adress, String email, String password) {
+    public User(String name, String secondName, String birthdayData,
+                String passport, String adress,
+                String email, String password) {
         this.name = name;
         this.secondName = secondName;
         this.birthdayData = birthdayData;

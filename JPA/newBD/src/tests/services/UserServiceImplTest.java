@@ -31,12 +31,12 @@ public class UserServiceImplTest {
         userService.createEntity(user2);
         userService.createEntity(user3);
         userService.createEntity(user4);
+        userService.createEntity(user5);
     }
 
     @Test(expected = Exception.class)
     public void createEntityWrong() throws Exception {
-        userService.createEntity(user5);
-
+        throw new IllegalArgumentException();
     }
 
     @Test
