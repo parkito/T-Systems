@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <!--<servlet>-->
+    <!--<servlet-name>RegistrationServlet</servlet-name>-->
+    <!--<servlet-class>src.main.java.controllers.RegistrationServlet</servlet-class>-->
+  <!--</servlet>-->
+
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>RegistrationServlet</servlet-name>-->
+    <!--<url-pattern>/registration</url-pattern>-->
+  <!--</servlet-mapping>-->
 </web-app>
