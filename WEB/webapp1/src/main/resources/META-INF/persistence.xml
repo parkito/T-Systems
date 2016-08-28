@@ -3,17 +3,6 @@
 
     <persistence-unit name="operator">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>base.Client</class>
-        <class>base.ClientHasContract</class>
-        <class>base.ConnectedOption</class>
-        <class>base.Contract</class>
-        <class>base.Money</class>
-        <class>base.NumberStatus</class>
-        <class>base.OptionCompatibility</class>
-        <class>base.StatusForNumbers</class>
-        <class>base.StatusForOptions</class>
-        <class>base.Tariff</class>
-        <class>base.TariffOption</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/operator"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
