@@ -2,6 +2,7 @@ package services.implementation;
 
 
 import dao.api.TariffDAO;
+import dao.implementation.TariffDAOImpl;
 import entities.Tariff;
 import exceptions.CustomDAOException;
 import services.api.TariffService;
@@ -13,7 +14,7 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class TariffServiceImpl implements TariffService {
-    private TariffDAO tariffDAO;
+    private TariffDAO tariffDAO = new TariffDAOImpl();
 
     @Override
     public void createEntity(Tariff tariff) throws CustomDAOException {
@@ -39,6 +40,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * A method to get all tariffs from the database.
+     *
      * @return
      * @throws CustomDAOException
      */

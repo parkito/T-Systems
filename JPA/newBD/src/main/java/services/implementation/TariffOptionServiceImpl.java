@@ -2,6 +2,7 @@ package services.implementation;
 
 
 import dao.api.TariffOptionDAO;
+import dao.implementation.TariffOptionDAOImpl;
 import entities.TariffOption;
 import exceptions.CustomDAOException;
 import exceptions.OptionsForEntityNotGotException;
@@ -14,7 +15,7 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class TariffOptionServiceImpl implements TariffOptionService {
-    private TariffOptionDAO optionDAO;
+    private TariffOptionDAO optionDAO = new TariffOptionDAOImpl();
 
     @Override
     public void createEntity(TariffOption option) throws CustomDAOException {
