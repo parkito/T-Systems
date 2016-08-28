@@ -21,7 +21,7 @@ public class First {
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil("c@b.ru");
         User user2 = new User("Petr", "Ivanov", "08.10.2000", "123", "spb", "c@b.ru", "123");
-//        userService.createEntity(user2);
+        userService.createEntity(user2);
         System.out.println(userService.isEntityExists(user));
         System.out.println(user);
 

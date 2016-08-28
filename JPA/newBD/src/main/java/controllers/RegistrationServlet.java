@@ -31,6 +31,9 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Post");
+//        User user = new User("art", "kar", "18.02.12", "pass", "adr", "a@b.ru", "123");
+//        UserServiceImpl userService = new UserServiceImpl();
+        System.out.println("yes");
         String name = req.getParameter("name");
         String secondName = req.getParameter("secondName");
         String birthdayData = req.getParameter("birthdayDate");
@@ -39,7 +42,8 @@ public class RegistrationServlet extends HttpServlet {
         String eMail = req.getParameter("email");
         String password = req.getParameter("password");
         System.out.println(name + " " + secondName + " " + birthdayData + " " + passport + " " + adress + " " + eMail + " " + password);
-        UserServiceImpl userService = new UserServiceImpl();
         User user = new User(name, secondName, birthdayData, passport, adress, eMail, password);
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.createEntity(user);
     }
 }
