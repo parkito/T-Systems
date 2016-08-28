@@ -19,11 +19,13 @@ import javax.persistence.Query;
 public class First {
     public static void main(String[] args) {
         UserServiceImpl userService = new UserServiceImpl();
-        User user = userService.getUserByEMAil("c@b.ru");
-        User user2 = new User("Petr", "Ivanov", "08.10.2000", "123", "spb", "c@b.ru", "123");
-        userService.createEntity(user2);
-        System.out.println(userService.isEntityExists(user));
-        System.out.println(user);
+        //User user = userService.getUserByEMAil("c@b.ru");
+        //User user2 = new User("Petr", "Ivanov", "08.10.2000", "123", "spb", "c@b.ru", "123");
+        //userService.createEntity(user2);
+        for (User usr : userService.getAll()) {
+            System.out.println(usr);
+        }
+        //System.out.println(user);
 
     }
 }
