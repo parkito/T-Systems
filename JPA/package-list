@@ -1,8 +1,0 @@
-controllers
-dao.api
-dao.implementation
-entities
-exceptions
-services
-services.api
-services.implementation
