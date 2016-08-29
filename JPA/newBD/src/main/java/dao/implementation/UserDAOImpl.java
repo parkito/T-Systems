@@ -12,7 +12,6 @@ import javax.persistence.*;
  **/
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
     //    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
-    private EntityManager entityManager = emf.createEntityManager();
 //    private EntityManager entityManager = emf.createEntityManager();
 
     @Override

@@ -33,12 +33,13 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.2.2.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
+        <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -81,32 +82,5 @@
             <version>3.1.0</version>
         </dependency>
     </dependencies>
-    <build>
-        <pluginManagement>
-        <!--<finalName>new</finalName>-->
-        <plugins>
-            <plugin>
-                <artifactId>com.Karnov</artifactId>
-                <groupid>com.Karnov</groupid>
-                <artifactid>tomcat-maven-plugin</artifactid>
-                <configuration>
-                    <!-- id-шник из settings.xml -->
-                    <server>apache-tomcat-9.0.0.M9</server>
-                    <url>http://localhost:8080/manager</url>
-                    <path>/mywebapp</path>
-                </configuration>
-            </plugin>
-        </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>

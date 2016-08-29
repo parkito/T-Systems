@@ -17,8 +17,8 @@ import java.util.List;
  **/
 
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
-    @PersistenceContext
-    private EntityManager entityManager;
+//    @PersistenceContext
+//    private EntityManager entityManager;
 
 
     @Override

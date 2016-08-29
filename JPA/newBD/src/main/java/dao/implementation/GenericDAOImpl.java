@@ -13,15 +13,15 @@ import java.util.List;
  **/
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
+    protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
+
 
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
     }
 
-    @PersistenceContext
-    private EntityManager entityManager = emf.createEntityManager();
+    protected EntityManager entityManager = emf.createEntityManager();
 
     @Override
     public void create(E entity) throws CustomDAOException {

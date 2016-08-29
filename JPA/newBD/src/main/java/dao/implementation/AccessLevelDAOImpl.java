@@ -8,7 +8,5 @@ import entities.AccessLevel;
  * artyom-karnov@yandex.ru
  **/
 public class AccessLevelDAOImpl extends GenericDAOImpl<AccessLevel, Integer> implements AccessLevelDAO {
-
-
 }
 

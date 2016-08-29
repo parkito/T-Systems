@@ -45,6 +45,7 @@ public class RegistrationServlet extends HttpServlet {
                 + " " + passport + " " + adress + " " + eMail + " " + password);
         User user = new User(name, secondName, birthdayData, passport, adress, eMail, password);
         UserServiceImpl userService = new UserServiceImpl();
-//        userService.createEntity(user);
+        userService.createEntity(user);
+        System.out.println(user);
     }
 }

@@ -13,7 +13,6 @@ public class FirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String str = req.getParameter("prize");
-        resp.setContentType("text/html; charset=windows-1251");
         req.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
         out.print("<!DOCTYPE html>\n" +
