@@ -2,11 +2,14 @@ package dao.implementation;
 
 import dao.api.TariffOptionDAO;
 import dao.api.UserDAO;
+import entities.Contract;
+import entities.Tariff;
 import entities.TariffOption;
 import entities.User;
 import exceptions.CustomDAOException;
 import exceptions.OptionsForEntityNotGotException;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -14,6 +17,7 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
+    private EntityManager entityManager = emf.createEntityManager();
 
 
     @Override

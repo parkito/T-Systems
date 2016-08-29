@@ -1,5 +1,7 @@
 package dao.api;
 
+import entities.Contract;
+import entities.Tariff;
 import entities.TariffOption;
 import exceptions.OptionsForEntityNotGotException;
 

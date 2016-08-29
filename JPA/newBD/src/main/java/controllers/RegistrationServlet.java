@@ -41,9 +41,10 @@ public class RegistrationServlet extends HttpServlet {
         String adress = req.getParameter("adress");
         String eMail = req.getParameter("email");
         String password = req.getParameter("password");
-        System.out.println(name + " " + secondName + " " + birthdayData + " " + passport + " " + adress + " " + eMail + " " + password);
+        System.out.println(name + " " + secondName + " " + birthdayData
+                + " " + passport + " " + adress + " " + eMail + " " + password);
         User user = new User(name, secondName, birthdayData, passport, adress, eMail, password);
         UserServiceImpl userService = new UserServiceImpl();
-        userService.createEntity(user);
+//        userService.createEntity(user);
     }
 }
