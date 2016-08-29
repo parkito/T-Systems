@@ -47,6 +47,10 @@ public class User {
     @JoinColumn(name = "accessLevel_id")
     private AccessLevel accessLevel;
 
+    public void setAccessLevel(AccessLevel accessLevel) {
+        this.accessLevel = accessLevel;
+    }
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "user")
     private final List<Contract> contracts = new ArrayList();
 
