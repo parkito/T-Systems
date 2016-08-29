@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createEntity(User user) throws CustomDAOException {
-        if (!isEntityExists(user))
+        if (!isUserExists(user))
             userDAO.create(user);
         else System.out.println("User already exists");
     }
@@ -46,11 +46,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public boolean isEntityExists(User entity) throws CustomDAOException {
-        return userDAO.isEntityExists(entity);
-    }
-
 
     @Override
     public User getUserByNumber(String number) throws UserNotFoundException {
@@ -63,5 +58,12 @@ public class UserServiceImpl implements UserService {
         return userDAO.getUserByEMAil(eMail);
     }
 
+    public boolean isUserExists(User user) {
+        try {
+            return getUserByEMAil(user.getEmail()) != null ? true : false;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
+    }
 
 }

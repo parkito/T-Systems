@@ -1,5 +1,8 @@
 package entities;
 
+import services.api.AccessLevelService;
+import services.implementation.AccessLevelImpl;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +46,17 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "accessLevel_id")
     private AccessLevel accessLevel;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "user")
     private final List<Contract> contracts = new ArrayList();
 
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
 
     public int getUserId() {
         return userId;

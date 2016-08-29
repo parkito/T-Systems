@@ -38,20 +38,9 @@ public class TariffServiceImpl implements TariffService {
         tariffDAO.delete(tariff);
     }
 
-    /**
-     * A method to get all tariffs from the database.
-     *
-     * @return
-     * @throws CustomDAOException
-     */
     @Override
     public List<Tariff> getAll() throws CustomDAOException {
         return tariffDAO.getAll();
 
-    }
-
-    @Override
-    public boolean isEntityExists(Tariff entity) throws CustomDAOException {
-        return tariffDAO.isEntityExists(entity);
     }
 }

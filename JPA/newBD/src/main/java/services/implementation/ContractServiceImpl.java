@@ -57,11 +57,6 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public boolean isEntityExists(Contract entity) throws CustomDAOException {
-        return contractDAO.isEntityExists(entity);
-    }
-
-    @Override
     public List<Contract> getAllContractsForUser(int id) throws ContractsForEntityNotGotException {
         return contractDAO.getAllUserContracts(id);
     }

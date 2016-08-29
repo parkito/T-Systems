@@ -43,19 +43,13 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     }
 
     @Override
-    public boolean isEntityExists(TariffOption entity) throws CustomDAOException {
-        return optionDAO.isEntityExists(entity);
-    }
-
-
-    @Override
     public List<TariffOption> getAllTariffOptions(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllTariffOptionsForTariff(id);
     }
 
     @Override
     public List<TariffOption> getAllTariffOptionForContract(int id) throws OptionsForEntityNotGotException {
-        return optionDAO.getAllContractOptions(id);
+        return optionDAO.getAllTariffOptionsForContract(id);
     }
 
     @Override

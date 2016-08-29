@@ -20,6 +20,5 @@ public interface GenericService<E, K> {
 
     public List<E> getAll() throws CustomDAOException;
 
-    public boolean isEntityExists(E entity) throws CustomDAOException;
 
 }

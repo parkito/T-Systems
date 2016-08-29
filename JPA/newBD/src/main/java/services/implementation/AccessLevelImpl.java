@@ -2,6 +2,7 @@ package services.implementation;
 
 
 import dao.api.AccessLevelDAO;
+import dao.implementation.AccessLevelDAOImpl;
 import entities.AccessLevel;
 import exceptions.CustomDAOException;
 import services.api.AccessLevelService;
@@ -14,7 +15,7 @@ import java.util.List;
  **/
 
 public class AccessLevelImpl implements AccessLevelService {
-    private AccessLevelDAO accessLevelDAO;
+    private AccessLevelDAO accessLevelDAO = new AccessLevelDAOImpl();
 
     @Override
 
@@ -43,10 +44,7 @@ public class AccessLevelImpl implements AccessLevelService {
         return accessLevelDAO.getAll();
     }
 
-    @Override
-    public boolean isEntityExists(AccessLevel entity) throws CustomDAOException {
-        return accessLevelDAO.isEntityExists(entity);
-    }
+
 }
 
 

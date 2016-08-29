@@ -14,14 +14,12 @@ import java.util.List;
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
     protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
-
+    protected EntityManager entityManager = emf.createEntityManager();
 
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
     }
-
-    protected EntityManager entityManager = emf.createEntityManager();
 
     @Override
     public void create(E entity) throws CustomDAOException {
@@ -31,9 +29,6 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
             entityManager.getTransaction().commit();
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't created: " + entity, e);
-        } finally {
-            entityManager.close();
-            emf.close();
         }
     }
 
@@ -43,6 +38,9 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
             return (E) this.entityManager.find(daoType, id);
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity " + id + " wasn't found", e);
+        } finally {
+            entityManager.close();
+            emf.close();
         }
     }
 
@@ -75,12 +73,5 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         }
     }
 
-    @Override
-    public boolean isEntityExists(E entity) throws CustomDAOException {
-        if (entityManager.createNamedQuery
-                (daoType.getSimpleName() + ".getAll", daoType).getResultList().get(0) != null)
-            return true;
-        else return false;
-    }
 }
 
