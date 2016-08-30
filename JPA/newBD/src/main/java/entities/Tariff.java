@@ -21,9 +21,6 @@ public class Tariff {
     @Basic
     @Column(name = "price")
     private Double price;
-    @Basic
-    @Column(name = "connectionPrice")
-    private Double connectionPrice;
 
     public int getTariffId() {
         return tariffId;
@@ -52,18 +49,10 @@ public class Tariff {
         this.price = price;
     }
 
-    public Double getConnectionPrice() {
-        return connectionPrice;
-    }
 
-    public void setConnectionPrice(Double connectionPrice) {
-        this.connectionPrice = connectionPrice;
-    }
-
-    public Tariff(String title, Double price, Double connectionPrice) {
+    public Tariff(String title, Double price) {
         this.title = title;
         this.price = price;
-        this.connectionPrice = connectionPrice;
     }
 
     public Tariff() {

@@ -3,6 +3,7 @@ package services.implementation;
 
 import dao.api.TariffOptionDAO;
 import dao.implementation.TariffOptionDAOImpl;
+import entities.Tariff;
 import entities.TariffOption;
 import entities.User;
 import exceptions.CustomDAOException;
@@ -20,7 +21,9 @@ public class TariffOptionServiceImpl implements TariffOptionService {
 
     @Override
     public void createEntity(TariffOption option) throws CustomDAOException {
-        optionDAO.create(option);
+        if (!isTariffOptionExists(option))
+            optionDAO.create(option);
+        else System.out.println("TariffOption already exists");
     }
 
     @Override
@@ -62,6 +65,14 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     @Override
     public List<TariffOption> getAllImpossibleTariffOption(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllImpossibleTariffOptions(id);
+    }
+
+    public boolean isTariffOptionExists(TariffOption tariffOption) {
+        try {
+            return optionDAO.getTariffOptionByTitle(tariffOption.getTitle()) != null ? true : false;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
     }
 
 }

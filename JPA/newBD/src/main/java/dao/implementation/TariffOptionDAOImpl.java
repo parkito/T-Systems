@@ -4,6 +4,7 @@ import dao.api.TariffOptionDAO;
 import entities.Tariff;
 import entities.TariffOption;
 import exceptions.OptionsForEntityNotGotException;
+import exceptions.UserNotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,8 +18,8 @@ import java.util.List;
  **/
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+//    @PersistenceContext
+//    private EntityManager entityManager;
 
     @Override
     public List<TariffOption> getAllTariffOptionsForTariff(int id) throws OptionsForEntityNotGotException {
@@ -61,6 +62,16 @@ public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> i
             return (List<TariffOption>) query.getResultList();
         } catch (PersistenceException ex) {
             throw new OptionsForEntityNotGotException("Options for tariff " + id + " not got", ex);
+        }
+    }
+
+    public TariffOption getTariffOptionByTitle(String title) {
+        try {
+            Query query = entityManager.createQuery("select t from TariffOption t where title=:title")
+                    .setParameter("title", title);
+            return (TariffOption) query.getResultList().get(0);
+        } catch (PersistenceException ex) {
+            throw new UserNotFoundException("TariffOption with title " + title + " not found!", ex);
         }
     }
 }

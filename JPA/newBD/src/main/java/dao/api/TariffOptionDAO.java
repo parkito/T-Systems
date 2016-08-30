@@ -21,5 +21,7 @@ public interface TariffOptionDAO extends GenericDAO<TariffOption, Integer> {
 
     public List<TariffOption> getAllImpossibleTariffOptions(int id) throws OptionsForEntityNotGotException;
 
+    public TariffOption getTariffOptionByTitle(String title);
+
 
 }
