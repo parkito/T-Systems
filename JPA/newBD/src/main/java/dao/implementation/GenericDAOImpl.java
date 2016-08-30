@@ -13,8 +13,12 @@ import java.util.List;
  **/
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
+//    @Resource
     protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
     protected EntityManager entityManager = emf.createEntityManager();
+
+//    @PersistenceContext
+//    private EntityManager entityManager;
 
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
@@ -38,9 +42,6 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
             return (E) this.entityManager.find(daoType, id);
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity " + id + " wasn't found", e);
-        } finally {
-            entityManager.close();
-            emf.close();
         }
     }
 

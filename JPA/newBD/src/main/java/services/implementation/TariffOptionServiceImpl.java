@@ -4,6 +4,7 @@ package services.implementation;
 import dao.api.TariffOptionDAO;
 import dao.implementation.TariffOptionDAOImpl;
 import entities.TariffOption;
+import entities.User;
 import exceptions.CustomDAOException;
 import exceptions.OptionsForEntityNotGotException;
 import services.api.TariffOptionService;
@@ -62,4 +63,5 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     public List<TariffOption> getAllImpossibleTariffOption(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllImpossibleTariffOptions(id);
     }
+
 }

@@ -7,5 +7,5 @@ import entities.Tariff;
  * artyom-karnov@yandex.ru
  **/
 public interface TariffDAO extends GenericDAO<Tariff, Integer> {
-
+    public Tariff getTariffByTitle(String title);
 }

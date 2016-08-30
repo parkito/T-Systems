@@ -2,8 +2,12 @@ package dao.implementation;
 
 import dao.api.TariffDAO;
 import entities.Tariff;
+import entities.User;
 import exceptions.CustomDAOException;
+import exceptions.UserNotFoundException;
 
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -12,6 +16,14 @@ import java.util.List;
  **/
 
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
-
+    public Tariff getTariffByTitle(String title) {
+        try {
+            Query query = entityManager.createQuery("select t from Tariff t where title=:title")
+                    .setParameter("title", title);
+            return (Tariff) query.getResultList().get(0);
+        } catch (PersistenceException ex) {
+            throw new UserNotFoundException("Tariff with title " + title + " not found!", ex);
+        }
+    }
 }
 

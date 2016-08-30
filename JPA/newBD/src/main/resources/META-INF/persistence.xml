@@ -5,7 +5,7 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="operator">
+    <persistence-unit name="operator" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>entities.AccessLevel</class>
         <class>entities.Contract</class>

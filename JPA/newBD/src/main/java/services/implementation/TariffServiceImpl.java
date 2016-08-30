@@ -4,6 +4,7 @@ package services.implementation;
 import dao.api.TariffDAO;
 import dao.implementation.TariffDAOImpl;
 import entities.Tariff;
+import entities.User;
 import exceptions.CustomDAOException;
 import services.api.TariffService;
 
@@ -18,7 +19,9 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     public void createEntity(Tariff tariff) throws CustomDAOException {
-        tariffDAO.create(tariff);
+        if (!isTariffExists(tariff))
+            tariffDAO.create(tariff);
+        else System.out.println("Tariff already exists");
 
     }
 
@@ -42,5 +45,13 @@ public class TariffServiceImpl implements TariffService {
     public List<Tariff> getAll() throws CustomDAOException {
         return tariffDAO.getAll();
 
+    }
+
+    public boolean isTariffExists(Tariff tariff) {
+        try {
+            return tariffDAO.getTariffByTitle(tariff.getTitle()) != null ? true : false;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
     }
 }

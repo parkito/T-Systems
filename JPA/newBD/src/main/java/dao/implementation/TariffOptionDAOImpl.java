@@ -6,6 +6,7 @@ import entities.TariffOption;
 import exceptions.OptionsForEntityNotGotException;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  **/
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
 
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
