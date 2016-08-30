@@ -17,9 +17,8 @@ import java.util.List;
  **/
 
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
-    @PersistenceContext
-    private EntityManager entityManager;
-
+//    @PersistenceContext
+//    private EntityManager entityManager = emf.createEntityManager();
 
     @Override
     public Contract getContractByNumber(String number) throws ContractNotFoundException {
@@ -36,7 +35,6 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
         try {
             Query query = entityManager.createQuery("select u.contracts from User u where u.id=:id")
                     .setParameter("id", id);
-
             return (List<Contract>) query.getResultList();
         } catch (PersistenceException ex) {
             throw new ContractsForEntityNotGotException("Contracts for user " + id + " wasn't gotten", ex);

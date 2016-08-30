@@ -2,7 +2,9 @@ package services.implementation;
 
 
 import dao.api.ContractDAO;
+import dao.implementation.ContractDAOImpl;
 import entities.Contract;
+import entities.User;
 import exceptions.ContractNotFoundException;
 import exceptions.ContractsForEntityNotGotException;
 import exceptions.CustomDAOException;
@@ -16,11 +18,13 @@ import java.util.List;
  **/
 
 public class ContractServiceImpl implements ContractService {
-    private ContractDAO contractDAO;
+    private ContractDAO contractDAO = new ContractDAOImpl();
 
     @Override
     public void createEntity(Contract contract) throws CustomDAOException {
-        contractDAO.create(contract);
+        if (!isContractExists(contract))
+            contractDAO.create(contract);
+        else System.out.println("Contract already exists");
     }
 
     @Override
@@ -45,12 +49,7 @@ public class ContractServiceImpl implements ContractService {
         return contractDAO.getContractByNumber(number);
     }
 
-    /**
-     * A method to get all contracts.
-     *
-     * @return
-     * @throws CustomDAOException
-     */
+
     @Override
     public List<Contract> getAll() throws CustomDAOException {
         return contractDAO.getAll();
@@ -59,5 +58,15 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public List<Contract> getAllContractsForUser(int id) throws ContractsForEntityNotGotException {
         return contractDAO.getAllUserContracts(id);
+    }
+
+    public boolean isContractExists(Contract contract) {
+        try {
+            return getContractByNumber(contract.getNumber()) != null ? true : false;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        } catch (ContractNotFoundException ex) {
+            return false;
+        }
     }
 }

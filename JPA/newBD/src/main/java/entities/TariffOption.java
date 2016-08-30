@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -23,7 +25,6 @@ public class TariffOption {
     @Basic
     @Column(name = "connectionPrice")
     private Double connectionPrice;
-
 
     public int getTariffOptionId() {
         return tariffOptionId;

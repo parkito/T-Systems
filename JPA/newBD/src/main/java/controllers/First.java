@@ -1,15 +1,9 @@
 package controllers;
 
-import entities.AccessLevel;
-import entities.Tariff;
-import entities.TariffOption;
-import entities.User;
+import entities.*;
 import services.api.AccessLevelService;
 import services.api.TariffService;
-import services.implementation.AccessLevelImpl;
-import services.implementation.TariffOptionServiceImpl;
-import services.implementation.TariffServiceImpl;
-import services.implementation.UserServiceImpl;
+import services.implementation.*;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -46,32 +40,46 @@ public class First {
 //        userService.createEntity(user5);
 
         //3) add Tariffs
-        Tariff tariff1 = new Tariff("base", 50.0);
-        Tariff tariff2 = new Tariff("gb1", 50.0);
-        Tariff tariff3 = new Tariff("gb2", 100.0);
-        Tariff tariff4 = new Tariff("call1", 50.0);
-        Tariff tariff5 = new Tariff("call2", 150.0);
-        Tariff tariff6 = new Tariff("unlim", 200.0);
-        TariffServiceImpl tariffService = new TariffServiceImpl();
-        tariffService.createEntity(tariff1);
-        tariffService.createEntity(tariff2);
-        tariffService.createEntity(tariff3);
-        tariffService.createEntity(tariff4);
-        tariffService.createEntity(tariff5);
-        tariffService.createEntity(tariff6);
+//        Tariff tariff1 = new Tariff("base", 50.0);
+//        Tariff tariff2 = new Tariff("gb1", 50.0);
+//        Tariff tariff3 = new Tariff("gb2", 100.0);
+//        Tariff tariff4 = new Tariff("call1", 50.0);
+//        Tariff tariff5 = new Tariff("call2", 150.0);
+//        Tariff tariff6 = new Tariff("unlim", 200.0);
+//        TariffServiceImpl tariffService = new TariffServiceImpl();
+//        tariffService.createEntity(tariff1);
+//        tariffService.createEntity(tariff2);
+//        tariffService.createEntity(tariff3);
+//        tariffService.createEntity(tariff4);
+//        tariffService.createEntity(tariff5);
+//        tariffService.createEntity(tariff6);
 
         //4) add TariffOptions
-        TariffOption tariffOption = new TariffOption("basic", 50.0, 0.0);
-        TariffOption tariffOption1 = new TariffOption("addbg1", 100.0, 50.0);
-        TariffOption tariffOption2 = new TariffOption("addgb2", 150.0, 100.0);
-        TariffOption tariffOption3 = new TariffOption("addcall1", 50.0, 0.0);
-        TariffOption tariffOption4 = new TariffOption("addcall2", 150.0, 100.0);
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        tariffOptionService.createEntity(tariffOption);
-        tariffOptionService.createEntity(tariffOption1);
-        tariffOptionService.createEntity(tariffOption2);
-        tariffOptionService.createEntity(tariffOption3);
-        tariffOptionService.createEntity(tariffOption4);
+//        TariffOption tariffOption = new TariffOption("basic", 50.0, 0.0);
+//        TariffOption tariffOption1 = new TariffOption("addbg1", 100.0, 50.0);
+//        TariffOption tariffOption2 = new TariffOption("addgb2", 150.0, 100.0);
+//        TariffOption tariffOption3 = new TariffOption("addcall1", 50.0, 0.0);
+//        TariffOption tariffOption4 = new TariffOption("addcall2", 150.0, 100.0);
+//        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+//        tariffOptionService.createEntity(tariffOption);
+//        tariffOptionService.createEntity(tariffOption1);
+//        tariffOptionService.createEntity(tariffOption2);
+//        tariffOptionService.createEntity(tariffOption3);
+//        tariffOptionService.createEntity(tariffOption4);
 
+        //5) addContract
+
+        // TODO: 8/30/16 getTariffByTittle 
+        TariffServiceImpl tariffService = new TariffServiceImpl();
+        UserServiceImpl userService = new UserServiceImpl();
+        Tariff tariff1 = tariffService.getEntityById(19);
+        User user0 = userService.getUserByEMAil("a@b.ru");
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        Contract contract = new Contract("21", user0, tariff1);
+        contractService.createEntity(contract);
+        //6) add TariffOption to contract
+
+
+        //7)
     }
 }

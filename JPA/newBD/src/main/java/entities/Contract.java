@@ -26,19 +26,14 @@ public class Contract {
     @Column(name = "blockedByAdmin")
     private boolean blockedByAdmin;
     @Basic
-    @Column(name = "whoBlocked_id")
+    @Column(name = "whoBlocked_id", insertable = false, updatable = false)
     private String whoBlockedId;
+
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable
-            (
-                    name = "ConnectedOptions",
-                    joinColumns = {@JoinColumn(name = "contract_id")},
-                    inverseJoinColumns = {@JoinColumn(name = "connectedOptions_id")}
-            )
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private final List<TariffOption> tariffOptions = new ArrayList();
 
     @OneToOne
@@ -46,11 +41,12 @@ public class Contract {
     private Tariff tariff;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "whoBlocked_id")
-//    private User employee;
+    @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User employee;
 
     public Contract() {
+
     }
 
     public void setBlocked(boolean blocked) {
@@ -78,9 +74,9 @@ public class Contract {
         return blockedByAdmin;
     }
 
-    public List<TariffOption> getTariffOptions() {
-        return tariffOptions;
-    }
+//    public List<TariffOption> getTariffOptions() {
+//        return tariffOptions;
+//    }
 
     public Tariff getTariff() {
         return tariff;
@@ -152,5 +148,13 @@ public class Contract {
         else System.out.println("Option already exists");
     }
 
+    public Contract(String number, User user, Tariff tariff) {
+        this.number = number;
+        this.isBlocked = false;
+        this.blockedByAdmin = false;
+        this.whoBlockedId = "null";
+        this.user = user;
+        this.tariff = tariff;
+    }
 
 }
