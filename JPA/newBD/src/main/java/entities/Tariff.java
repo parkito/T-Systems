@@ -57,4 +57,13 @@ public class Tariff {
 
     public Tariff() {
     }
+
+    @Override
+    public String toString() {
+        return "Tariff{" +
+                "tariffId=" + tariffId +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
