@@ -1,5 +1,6 @@
 package dao.implementation;
 
+import dao.EntityFactory;
 import dao.api.GenericDAO;
 import exceptions.CustomDAOException;
 
@@ -13,12 +14,11 @@ import java.util.List;
  **/
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
-//    @Resource
-    protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
-    protected EntityManager entityManager = emf.createEntityManager();
-
-//    @PersistenceContext
-//    private EntityManager entityManager;
+    //For testing
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
+    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+    //For Servlets
+//    protected EntityManager entityManager = EntityFactory.createEntityManager();
 
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())

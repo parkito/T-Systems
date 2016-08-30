@@ -7,4 +7,6 @@ import entities.Tariff;
  * artyom-karnov@yandex.ru
  **/
 public interface TariffService extends GenericService<Tariff, Integer> {
+    public Tariff getTariffByTitle(String title);
+    public boolean isTariffExists(Tariff tariff);
 }

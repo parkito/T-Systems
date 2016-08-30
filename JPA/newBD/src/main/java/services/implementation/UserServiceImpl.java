@@ -63,6 +63,8 @@ public class UserServiceImpl implements UserService {
             return getUserByEMAil(user.getEmail()) != null ? true : false;
         } catch (IndexOutOfBoundsException e) {
             return false;
+        } catch (UserNotFoundException ex) {
+            return false;
         }
     }
 

@@ -27,17 +27,17 @@ public class First {
 
         //2) add users
 //        User user0 = new User("Ivan", "Ivanov", "08.10.1990", "pass1", "spb", "a@b.ru", "1234");
-//        User user1 = new User("Ivan", "Ivanov", "08.10.1990", "pass1", "spb", "a@b.ru", "1234");
-//        User user2 = new User("Ivan", "Petrov", "05.05.1995", "pass2", "nn", "b@b.ru", "12345");
-//        User user3 = new User("Ivan", "Kirillov", "12.11.1950", "pass3", "dzr", "c@b.ru", "12346");
-//        User user4 = new User("Artem", "Ivanov", "07.10.1990", "pass4", "msk", "d@b.ru", "12347");
-//        User user5 = new User("Kirill", "Ivanov", "18.11.1999", "pass5", "ny", "e@b.ru", "12348");
-//        UserServiceImpl userService = new UserServiceImpl();
+        User user1 = new User("Ivan", "Ivanov", "08.10.1990", "pass1", "spb", "a@b.ru", "1234");
+        User user2 = new User("Ivan", "Petrov", "05.05.1995", "pass2", "nn", "b@b.ru", "12345");
+        User user3 = new User("Ivan", "Kirillov", "12.11.1950", "pass3", "dzr", "c@b.ru", "12346");
+        User user4 = new User("Artem", "Ivanov", "07.10.1990", "pass4", "msk", "d@b.ru", "12347");
+        User user5 = new User("Kirill", "Ivanov", "18.11.1999", "pass5", "ny", "e@b.ru", "12348");
+        UserServiceImpl userService = new UserServiceImpl();
 //        userService.createEntity(user1);
-//        userService.createEntity(user2);
-//        userService.createEntity(user3);
-//        userService.createEntity(user4);
-//        userService.createEntity(user5);
+        userService.createEntity(user2);
+        userService.createEntity(user3);
+        userService.createEntity(user4);
+        userService.createEntity(user5);
 
         //3) add Tariffs
 //        Tariff tariff1 = new Tariff("base", 50.0);
@@ -70,13 +70,13 @@ public class First {
         //5) addContract
 
         // TODO: 8/30/16 getTariffByTittle 
-        TariffServiceImpl tariffService = new TariffServiceImpl();
-        UserServiceImpl userService = new UserServiceImpl();
-        Tariff tariff1 = tariffService.getEntityById(19);
-        User user0 = userService.getUserByEMAil("a@b.ru");
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        Contract contract = new Contract("21", user0, tariff1);
-        contractService.createEntity(contract);
+//        TariffServiceImpl tariffService = new TariffServiceImpl();
+//        UserServiceImpl userService = new UserServiceImpl();
+//        Tariff tariff1 = tariffService.getEntityById(19);
+//        User user0 = userService.getUserByEMAil("a@b.ru");
+//        ContractServiceImpl contractService = new ContractServiceImpl();
+//        Contract contract = new Contract("21", user0, tariff1);
+//        contractService.createEntity(contract);
         //6) add TariffOption to contract
 
 

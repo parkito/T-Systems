@@ -46,12 +46,16 @@ public class TariffServiceImpl implements TariffService {
         return tariffDAO.getAll();
 
     }
-
+    @Override
     public boolean isTariffExists(Tariff tariff) {
         try {
             return tariffDAO.getTariffByTitle(tariff.getTitle()) != null ? true : false;
         } catch (IndexOutOfBoundsException e) {
             return false;
         }
+    }
+    @Override
+    public Tariff getTariffByTitle(String title) {
+        return tariffDAO.getTariffByTitle(title);
     }
 }
