@@ -14,14 +14,15 @@ import java.util.List;
  * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
+// TODO: 8/31/16 work with blocking
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAOImpl();
 
     @Override
     public void createEntity(User user) throws CustomDAOException {
-        if (!isUserExists(user))
+        if (!isUserExists(user)) {
             userDAO.create(user);
-        else System.out.println("User already exists");
+        } else System.out.println("User already exists");
     }
 
     @Override
@@ -61,8 +62,6 @@ public class UserServiceImpl implements UserService {
     public boolean isUserExists(User user) {
         try {
             return getUserByEMAil(user.getEmail()) != null ? true : false;
-        } catch (IndexOutOfBoundsException e) {
-            return false;
         } catch (UserNotFoundException ex) {
             return false;
         }

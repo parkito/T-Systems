@@ -12,11 +12,16 @@
         <class>entities.Tariff</class>
         <class>entities.TariffOption</class>
         <class>entities.User</class>
+        <class>controllers.AccessLevel</class>
+        <class>controllers.Contract</class>
+        <class>controllers.Tariff</class>
+        <class>controllers.TariffOption</class>
+        <class>controllers.User</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/operator"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="214189"/>
+            <property name="hibernate.connection.username"/>
+            <property name="hibernate.connection.password"/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>

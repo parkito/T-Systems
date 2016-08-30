@@ -1,7 +1,10 @@
 package controllers.usersCases;
 
+import entities.Contract;
+import entities.TariffOption;
 import entities.User;
 import services.api.UserService;
+import services.implementation.ContractServiceImpl;
 import services.implementation.UserServiceImpl;
 
 /**
@@ -13,7 +16,9 @@ public class UserCases {
 
     public static void main(String[] args) {
         UserCases userCases = new UserCases();
-        System.out.println(userCases.isAuthorized("aa@b.ru", "1234"));
+//        System.out.println(userCases.isAuthorized("aa@b.ru", "1234"));
+        UserServiceImpl userService = new UserServiceImpl();
+        userCases.watchConracts(userService.getUserByEMAil("а@b.ru"));
     }
 
     public boolean isAuthorized(String eMail, String password) {
@@ -24,6 +29,23 @@ public class UserCases {
             else return false;
         } catch (IndexOutOfBoundsException e) {
             return false;
+        }
+    }
+
+    public void watchConracts(User user) {
+        System.out.println("Enter");
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        if (contractService.getAllContractsForUser(user.getUserId()).size() == 0)
+            System.out.println("User haven't got any contracts ");
+        else {
+            for (Contract contract : contractService.getAllContractsForUser(user.getUserId())) {
+                System.out.println("Contract " + contract.getNumber());
+                System.out.println(contract.getTariff());
+                System.out.println("Connected tariff options");
+                for (TariffOption tariffOption : contract.getTariffOptions()) {
+                    System.out.println(tariffOption.getTitle() + tariffOption.getPrice());
+                }
+            }
         }
     }
 }

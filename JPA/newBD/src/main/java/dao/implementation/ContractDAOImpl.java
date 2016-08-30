@@ -17,8 +17,6 @@ import java.util.List;
  **/
 
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
-//    @PersistenceContext
-//    private EntityManager entityManager = emf.createEntityManager();
 
     @Override
     public Contract getContractByNumber(String number) throws ContractNotFoundException {

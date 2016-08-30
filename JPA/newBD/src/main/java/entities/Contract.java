@@ -29,25 +29,45 @@ public class Contract {
     @Column(name = "whoBlocked_id", insertable = false, updatable = false)
     private String whoBlockedId;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private final List<TariffOption> tariffOptions = new ArrayList();
 
     @OneToOne
     @JoinColumn(name = "tariff_id")
     private Tariff tariff;
 
+    public User getUser() {
+        return user;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User employee;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+//    private User employee;
+//
+//    public User getEmployee() {
+//        return employee;
+//    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+//    public void setEmployee(User employee) {
+//        this.employee = employee;
+//    }
 
     public Contract() {
 
     }
+
+    public List<TariffOption> getTariffOptions() {
+        return tariffOptions;
+    }
+
 
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;

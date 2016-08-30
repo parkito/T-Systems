@@ -10,19 +10,23 @@ import javax.persistence.*;
 @Table(name = "AccessLevel")
 @NamedQuery(name = "AccessLevel.getAll", query = "SELECT a FROM AccessLevel a")
 public class AccessLevel {
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "accessLevel_id")
     private int accessLevelId;
+    @Basic
+    @Column(name = "status")
     private String status;
 
     public AccessLevel(String status) {
         this.status = status;
     }
 
+
     public AccessLevel() {
     }
 
-    @Id
-    @Column(name = "accessLevel_id")
+
     public int getAccessLevelId() {
         return accessLevelId;
     }
@@ -31,8 +35,7 @@ public class AccessLevel {
         this.accessLevelId = accessLevelId;
     }
 
-    @Basic
-    @Column(name = "status")
+
     public String getStatus() {
         return status;
     }
