@@ -8,26 +8,27 @@
         <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
         <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
         <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/c3.min.css">
         <title>Clearmin template</title>
     </head>
     <body class="cm-no-transition cm-2-navbar">
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
-                <div class="cm-flex"><a href="index.html" class="cm-logo"></a></div>
+                <div class="cm-flex"><a href="index.jsp" class="cm-logo"></a></div>
                 <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
             </nav>
             <div id="cm-menu-content">
                 <div id="cm-menu-items-wrapper">
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
-                            <li><a href="index.html" class="sf-house">Home</a></li>
-                            <li><a href="dashboard-sales.html" class="sf-dashboard">Dashboard</a></li>
+                            <li><a href="index.jsp" class="sf-house">Home</a></li>
+                            <li class="active"><a href="dashboard-sales.html" class="sf-dashboard">Dashboard</a></li>
                             <li><a href="components-text.html" class="sf-brick">Components</a></li>
-                            <li class="cm-submenu pre-open">
+                            <li class="cm-submenu">
                                 <a class="sf-window-layout">Navbar layouts <span class="caret"></span></a>
                                 <ul>
                                     <li><a href="layouts-breadcrumb1.html">1st nav breadcrumb</a></li>
-                                    <li class="active"><a href="layouts-breadcrumb2.html">2nd nav breadcrumb</a></li>
+                                    <li><a href="layouts-breadcrumb2.html">2nd nav breadcrumb</a></li>
                                     <li><a href="layouts-tabs.html">2nd nav tabs</a></li>
                                 </ul>
                             </li>
@@ -50,8 +51,8 @@
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
-                    <h1>Check this breadcrumb</h1> 
-                    <form id="cm-search" action="index.html" method="get">
+                    <h1>Dashboard</h1> 
+                    <form id="cm-search" action="index.jsp" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
                     </form>
                 </div>
@@ -108,84 +109,117 @@
             </nav>
             <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
                 <div class="cm-flex">
-                    <div class="cm-breadcrumb-container">
-                        <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Settings</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li class="active">Lorem Page</li>
-                        </ol>
+                    <div class="nav-tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="dashboard-sales.html">Sales analytics</a></li>
+                            <li><a href="dashboard-visitors.html">Website Visitors</a></li>
+                            <li><a href="dashboard-server_stats.html">Server Stats</a></li>
+                        </ul>
                     </div>
                 </div>
+                <div class="pull-right" style="border-left:1px solid #e5e5e5"><a title="Download as PDF" class="btn btn-default btn-light md-file-download"></a></div>
+                <div class="pull-right"><a title="Customize indicators" class="btn btn-default btn-light md-settings"></a></div>
             </nav>
         </header>
         <div id="global">
             <div class="container-fluid">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h1 style="margin-top:10px">HTML Ipsum Presents</h1> 
-                        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-                        <h2>Header Level 2</h2> 
-                        <ol>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ol>
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
-                        </blockquote>
-                        <h3>Header Level 3</h3> 
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ul>
-                        <pre style="margin-bottom:0"><code>
-#header h1 a { display: block; width: 300px; height: 80px; }
-</code></pre>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">C3 Gauge</div>
+                            <div class="panel-body">
+                                <div id="d1-c1" style="height:150px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">C3 Gauge</div>
+                            <div class="panel-body">
+                                <div id="d1-c2" style="height:150px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">C3 Gauge</div>
+                            <div class="panel-body">
+                                <div id="d1-c3" style="height:150px"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
+                    <div class="panel-heading">C3 Bars</div>
                     <div class="panel-body">
-                        <h1 style="margin-top:10px">HTML Ipsum Presents</h1> 
-                        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-                        <h2>Header Level 2</h2> 
-                        <ol>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ol>
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
-                        </blockquote>
-                        <h3>Header Level 3</h3> 
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ul>
-                        <pre style="margin-bottom:0"><code>
-#header h1 a { display: block; width: 300px; height: 80px; }
-</code></pre>
+                        <div id="d1-c5" style="height:320px"></div>
                     </div>
                 </div>
                 <div class="panel panel-default">
+                    <div class="panel-heading">C3 Splines</div>
                     <div class="panel-body">
-                        <h1 style="margin-top:10px">HTML Ipsum Presents</h1> 
-                        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-                        <h2>Header Level 2</h2> 
-                        <ol>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ol>
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
-                        </blockquote>
-                        <h3>Header Level 3</h3> 
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                            <li>Aliquam tincidunt mauris eu risus.</li>
-                        </ul>
-                        <pre style="margin-bottom:0"><code>
-#header h1 a { display: block; width: 300px; height: 80px; }
-</code></pre>
+                        <div id="d1-c4" style="height:320px"></div>
                     </div>
+                </div>
+                <div class="alert alert-info shadowed" role="alert"> <i class="fa fa-fw fa-info-circle"></i> C3.js chart library by Masayuki Tanaka (MIT): <a href="http://c3js.org/">http://c3js.org/</a> </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Native progress bars</div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td style="white-space:nowrap">Nemo enim ipsam</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" style="width:3%"></div>
+                                </div>
+                            </td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td style="white-space:nowrap">Neque porro quisquam</td>
+                            <td style="width:100%">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning" style="width:9%"></div>
+                                </div>
+                            </td>
+                            <td>9%</td>
+                        </tr>
+                        <tr>
+                            <td style="white-space:nowrap">Et quoniam inedia</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:12%"></div>
+                                </div>
+                            </td>
+                            <td>12%</td>
+                        </tr>
+                        <tr>
+                            <td style="white-space:nowrap">Catoni anteponas</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:38%"></div>
+                                </div>
+                            </td>
+                            <td>38%</td>
+                        </tr>
+                        <tr>
+                            <td style="white-space:nowrap">Haec dum oriens diu perferret</td>
+                            <td style="width:100%">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:47%"></div>
+                                </div>
+                            </td>
+                            <td>47%</td>
+                        </tr>
+                        <tr>
+                            <td style="white-space:nowrap">Nam libero tempore</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:73%"></div>
+                                </div>
+                            </td>
+                            <td>73%</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <footer class="cm-footer"><span class="pull-left">Connected as John Smith</span><span class="pull-right">&copy; PAOMEDIA SARL</span></footer>
@@ -196,5 +230,8 @@
         <script src="assets/js/fastclick.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/clearmin.min.js"></script>
+        <script src="assets/js/lib/d3.min.js"></script>
+        <script src="assets/js/lib/c3.min.js"></script>
+        <script src="assets/js/demo/dashboard.js"></script>
     </body>
 </html>

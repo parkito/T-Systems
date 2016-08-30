@@ -7,11 +7,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
 /**
  * Created by Artyom Karnov on 8/30/16.
  * artyom-karnov@yandex.ru
  **/
+@WebListener
 public class EntityFactory implements ServletContextListener {
     private static EntityManagerFactory emf;
 

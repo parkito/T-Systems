@@ -1,5 +1,7 @@
 package controllers;
 
+import controllers.usersCases.UserCases;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,7 @@ import java.io.IOException;
  * artyom-karnov@yandex.ru
  **/
 
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         System.out.println("LoginServlet initialization ");
@@ -25,9 +27,16 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("POST here");
-        System.out.println(req.getParameter("username"));
-        req.getRequestDispatcher("/demo/").forward(req, resp);
-//        resp.sendRedirect("/demo/");
+        System.out.println("Post");
+        String eMail = req.getParameter("username");
+        String password = req.getParameter("password");
+        UserCases userCases = new UserCases();
+        if (userCases.isAuthorized(eMail, password))
+//            resp.sendRedirect("/home/");
+            req.getRequestDispatcher("WEB-INF/home/index.jsp").forward(req, resp);
+        else {
+            System.out.println("error");
+            resp.sendRedirect("/index.jsp");
+        }
     }
 }

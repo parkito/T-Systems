@@ -15,7 +15,7 @@ import java.io.IOException;
  * artyom-karnov@yandex.ru
  **/
 @WebServlet(name = "registration", urlPatterns = {"/registration"})
-public class RegistrationServlet extends HttpServlet {
+public class Testing extends HttpServlet {
     @Override
     public void init() throws ServletException {
         System.out.println("RegistrationServlet initialization ");
@@ -31,8 +31,6 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Post");
-//        User user = new User("art", "kar", "18.02.12", "pass", "adr", "a@b.ru", "123");
-//        UserServiceImpl userService = new UserServiceImpl();
         System.out.println("yes");
         String name = req.getParameter("name");
         String secondName = req.getParameter("secondName");

@@ -13,14 +13,14 @@
     <body class="cm-no-transition cm-1-navbar">
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
-                <div class="cm-flex"><a href="index.html" class="cm-logo"></a></div>
+                <div class="cm-flex"><a href="index.jsp" class="cm-logo"></a></div>
                 <div class="btn btn-primary md-menu-white" data-toggle="cm-menu"></div>
             </nav>
             <div id="cm-menu-content">
                 <div id="cm-menu-items-wrapper">
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
-                            <li class="active"><a href="index.html" class="sf-house">Home</a></li>
+                            <li class="active"><a href="index.jsp" class="sf-house">Home</a></li>
                             <li><a href="dashboard-sales.html" class="sf-dashboard">Dashboard</a></li>
                             <li><a href="components-text.html" class="sf-brick">Components</a></li>
                             <li class="cm-submenu">
@@ -51,7 +51,7 @@
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
                     <h1>Home</h1> 
-                    <form id="cm-search" action="index.html" method="get">
+                    <form id="cm-search" action="index.jsp" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="Search...">
                     </form>
                 </div>
