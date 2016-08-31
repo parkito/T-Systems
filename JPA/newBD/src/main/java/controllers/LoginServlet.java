@@ -34,11 +34,12 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         UserCases userCases = new UserCases();
         if (userCases.isAuthorized(eMail, password))
-            resp.sendRedirect("WEB-INF/home/index.jsp");
-//            req.getRequestDispatcher("WEB-INF/home/index.jsp").forward(req, resp);
+//            resp.sendRedirect("/home/index.jsp");
+            req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
         else {
             isPreviousDataCorrect = false;
-            resp.sendRedirect("/index.jsp");
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+//            resp.sendRedirect("/index.jsp");
         }
     }
 }

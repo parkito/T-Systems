@@ -17,12 +17,12 @@
 </div>
 
 <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
-    <form method="post" action="/loginIn">
+    <form method="post" action="/login">
         <div class="col-xs-12">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
-                    <input type="email" name="username" class="form-control" placeholder="Email">
+                    <input type="email" name="username" class="form-control" placeholder="E-mail">
                 </div>
             </div>
             <div class="form-group">
