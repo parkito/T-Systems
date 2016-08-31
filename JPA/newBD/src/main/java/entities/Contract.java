@@ -178,4 +178,37 @@ public class Contract {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Contract contract = (Contract) o;
+
+        if (contractId != contract.contractId) return false;
+        if (isBlocked != contract.isBlocked) return false;
+        if (blockedByAdmin != contract.blockedByAdmin) return false;
+        if (number != null ? !number.equals(contract.number) : contract.number != null) return false;
+        if (whoBlockedId != null ? !whoBlockedId.equals(contract.whoBlockedId) : contract.whoBlockedId != null)
+            return false;
+        if (user != null ? !user.equals(contract.user) : contract.user != null) return false;
+        if (tariffOptions != null ? !tariffOptions.equals(contract.tariffOptions) : contract.tariffOptions != null)
+            return false;
+        if (tariff != null ? !tariff.equals(contract.tariff) : contract.tariff != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = contractId;
+        result = 31 * result + (number != null ? number.hashCode() : 0);
+        result = 31 * result + (isBlocked ? 1 : 0);
+        result = 31 * result + (blockedByAdmin ? 1 : 0);
+        result = 31 * result + (whoBlockedId != null ? whoBlockedId.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (tariffOptions != null ? tariffOptions.hashCode() : 0);
+        result = 31 * result + (tariff != null ? tariff.hashCode() : 0);
+        return result;
+    }
 }

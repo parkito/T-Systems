@@ -3,7 +3,10 @@ package controllers.usersCases;
 import entities.Contract;
 import entities.TariffOption;
 import entities.User;
+import exceptions.UserNotFoundException;
+import services.api.AccessLevelService;
 import services.api.UserService;
+import services.implementation.AccessLevelImpl;
 import services.implementation.ContractServiceImpl;
 import services.implementation.UserServiceImpl;
 
@@ -16,9 +19,8 @@ public class UserCases {
 
     public static void main(String[] args) {
         UserCases userCases = new UserCases();
-//        System.out.println(userCases.isAuthorized("aa@b.ru", "1234"));
         UserServiceImpl userService = new UserServiceImpl();
-        userCases.watchConracts(userService.getUserByEMAil("а@b.ru"));
+        userCases.makeUserManager(userService.getUserByEMAil("b@b.ru"));
     }
 
     public boolean isAuthorized(String eMail, String password) {
@@ -29,7 +31,15 @@ public class UserCases {
             else return false;
         } catch (IndexOutOfBoundsException e) {
             return false;
+        } catch (UserNotFoundException ex) {
+            return false;
         }
+    }
+
+    public void makeUserManager(User user) {
+        AccessLevelService accessLevelService = new AccessLevelImpl();
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
     }
 
     public void watchConracts(User user) {

@@ -3,6 +3,7 @@ package services.implementation;
 
 import dao.api.UserDAO;
 import dao.implementation.UserDAOImpl;
+import entities.AccessLevel;
 import entities.User;
 import exceptions.CustomDAOException;
 import exceptions.UserNotFoundException;
@@ -65,6 +66,11 @@ public class UserServiceImpl implements UserService {
         } catch (UserNotFoundException ex) {
             return false;
         }
+    }
+
+    public void cahngeUserAccessLevel(User user, AccessLevel accessLevel) {
+        user.setAccessLevel(accessLevel);
+        updateEntity(user);
     }
 
 }

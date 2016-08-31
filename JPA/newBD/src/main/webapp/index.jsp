@@ -1,3 +1,4 @@
+<%@ page import="controllers.LoginServlet" %><%--<%@ page import="java.*" %>--%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,5 +40,17 @@
         </div>
     </form>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font color="red">
+    <h3 align="center">
+        <% if (!LoginServlet.isPreviousDataCorrect)
+            out.print("E-mail or password is incorrect. Try again");
+        %>
+    </h3>
+</font>
 </body>
 </html>

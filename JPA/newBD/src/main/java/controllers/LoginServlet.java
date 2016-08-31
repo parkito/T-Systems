@@ -14,6 +14,8 @@ import java.io.IOException;
  **/
 
 public class LoginServlet extends HttpServlet {
+    public static boolean isPreviousDataCorrect = true;
+
     @Override
     public void init() throws ServletException {
         System.out.println("LoginServlet initialization ");
@@ -32,10 +34,10 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         UserCases userCases = new UserCases();
         if (userCases.isAuthorized(eMail, password))
-//            resp.sendRedirect("/home/");
-            req.getRequestDispatcher("WEB-INF/home/index.jsp").forward(req, resp);
+            resp.sendRedirect("WEB-INF/home/index.jsp");
+//            req.getRequestDispatcher("WEB-INF/home/index.jsp").forward(req, resp);
         else {
-            System.out.println("error");
+            isPreviousDataCorrect = false;
             resp.sendRedirect("/index.jsp");
         }
     }
