@@ -51,7 +51,7 @@ public class User {
         this.accessLevel = accessLevel;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private final List<Contract> contracts = new ArrayList();
 
     public AccessLevel getAccessLevel() {

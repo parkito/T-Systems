@@ -29,36 +29,30 @@ public class Contract {
     @Column(name = "whoBlocked_id", insertable = false, updatable = false)
     private String whoBlockedId;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    private final List<TariffOption> tariffOptions = new ArrayList();
-
-    @OneToOne
-    @JoinColumn(name = "tariff_id")
-    private Tariff tariff;
 
     public User getUser() {
         return user;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-//    private User employee;
-//
-//    public User getEmployee() {
-//        return employee;
-//    }
-
     public void setUser(User user) {
         this.user = user;
     }
 
-//    public void setEmployee(User employee) {
-//        this.employee = employee;
-//    }
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "ConnectedOptions",
+            joinColumns = @JoinColumn(name = "contract_id", referencedColumnName = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "tariffOption_id", referencedColumnName = "tariffOption_id"))
+    private final List<TariffOption> tariffOptions = new ArrayList();
+    
+
+    @OneToOne
+    @JoinColumn(name = "tariff_id")
+    private Tariff tariff;
+
 
     public Contract() {
 
@@ -77,9 +71,6 @@ public class Contract {
         this.tariff = tariff;
     }
 
-//    public void setEmployee(User employee) {
-//        this.employee = employee;
-//    }
 
     public Contract(String number, Tariff tariff) {
         this.number = number;
@@ -94,17 +85,11 @@ public class Contract {
         return blockedByAdmin;
     }
 
-//    public List<TariffOption> getTariffOptions() {
-//        return tariffOptions;
-//    }
 
     public Tariff getTariff() {
         return tariff;
     }
 
-//    public User getEmployee() {
-//        return employee;
-//    }
 
     public int getContractId() {
         return contractId;

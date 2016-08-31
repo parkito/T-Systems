@@ -26,6 +26,14 @@ public class TariffOption {
     @Column(name = "connectionPrice")
     private Double connectionPrice;
 
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    @ManyToMany(mappedBy = "tariffOptions")
+    private final List<Contract> contracts = new ArrayList();
+
+
     public int getTariffOptionId() {
         return tariffOptionId;
     }
