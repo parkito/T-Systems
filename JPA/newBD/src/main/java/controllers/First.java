@@ -24,6 +24,10 @@ public class First {
 //        levelService.createEntity(accessLevel1);
 //        levelService.createEntity(accessLevel2);
 
+        //for test
+
+//        UserServiceImpl userService = new UserServiceImpl();
+//        System.out.println(userService.getUserByEMAil("c@b.ru"));
 
         //2) add users
 //        User user0 = new User("Ivan", "Ivanov", "08.10.1990", "pass1", "spb", "a@b.ru", "1234");
@@ -88,9 +92,20 @@ public class First {
 
         //6) add TariffOption to contract
 
-        UserServiceImpl userService = new UserServiceImpl();
-        System.out.println(userService.getUserByEMAil("c@b.ru"));
+//        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+//        ContractServiceImpl contractService = new ContractServiceImpl();
+//        Contract contract = contractService.getContractByNumber("214189");
+//        contract.addOption(tariffOptionService.getEntityById(2));
+//        contract.addOption(tariffOptionService.getEntityById(5));
+//        contractService.updateEntity(contract);
+//        contract=contractService.getContractByNumber("214190");
+//        contract.addOption(tariffOptionService.getEntityById(1));
+//        contract.addOption(tariffOptionService.getEntityById(3));
+//        contract.addOption(tariffOptionService.getEntityById(4));
+//        contractService.updateEntity(contract);
+
 
         //7)
+        
     }
 }

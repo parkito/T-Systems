@@ -1,5 +1,7 @@
 package entities;
 
+import services.implementation.ContractServiceImpl;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 @Entity
-@Table(name = "Contract", uniqueConstraints = @UniqueConstraint(columnNames = {"number"}))
+@Table(name = "Contract")
 @NamedQuery(name = "Contract.getAll", query = "SELECT c FROM Contract c")
 public class Contract {
     @Id
@@ -41,13 +43,13 @@ public class Contract {
         this.user = user;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "ConnectedOptions",
-            joinColumns = @JoinColumn(name = "contract_id", referencedColumnName = "contract_id"),
-            inverseJoinColumns = @JoinColumn(name = "tariffOption_id", referencedColumnName = "tariffOption_id"))
-    private final List<TariffOption> tariffOptions = new ArrayList();
-    
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "tariffOption_id"))
+    private List<TariffOption> tariffOptions = new ArrayList();
+
 
     @OneToOne
     @JoinColumn(name = "tariff_id")
@@ -160,6 +162,20 @@ public class Contract {
         this.whoBlockedId = "null";
         this.user = user;
         this.tariff = tariff;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "contractId=" + contractId +
+                ", number='" + number + '\'' +
+                ", isBlocked=" + isBlocked +
+                ", blockedByAdmin=" + blockedByAdmin +
+                ", whoBlockedId='" + whoBlockedId + '\'' +
+                ", user=" + user +
+                ", tariffOptions=" + tariffOptions +
+                ", tariff=" + tariff +
+                '}';
     }
 
 }
