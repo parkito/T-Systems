@@ -29,7 +29,7 @@
                 <ul class="cm-menu-items">
                     <li class="active"><a href="/login" class="sf-house">Home</a></li>
                     <li><a href="/user/Contract" class="sf-dashboard">Contracts</a></li>
-                    <li><a href="/user/Tarrifs" class="sf-notepad">Tariffs</a></li>
+                    <li><a href="/user/Tariffs" class="sf-notepad">Tariffs</a></li>
                     <li><a href="/user/TariffOptions" class="sf-brick">Tariff options</a></li>
                     <li><a href="/user/NumberOperations" class="sf-lock-open">Unlock number</a></li>
                 </ul>

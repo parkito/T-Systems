@@ -10,15 +10,15 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>TariffServlet</servlet-name>
-        <servlet-class>controllers.TariffServlets</servlet-class>
-    </servlet>
+    <!--<servlet>-->
+        <!--<servlet-name>TariffServlet</servlet-name>-->
+        <!--<servlet-class>controllers.TariffServlets</servlet-class>-->
+    <!--</servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>TariffServlet</servlet-name>
-        <url-pattern>/tariff</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>TariffServlet</servlet-name>-->
+        <!--<url-pattern>/tariff</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <servlet>
         <servlet-name>userContractServlet</servlet-name>
@@ -38,6 +38,17 @@
     <servlet-mapping>
         <servlet-name>NumberOperationsServlet</servlet-name>
         <url-pattern>/user/NumberOperations</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>TariffServlet</servlet-name>
+        <servlet-class>controllers.TariffServlets</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TariffServlet</servlet-name>
+        <url-pattern>/user/Tariffs</url-pattern>
     </servlet-mapping>
 
 

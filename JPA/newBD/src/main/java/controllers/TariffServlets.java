@@ -17,11 +17,8 @@ import java.io.PrintWriter;
 public class TariffServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        TariffServiceImpl tariffService = new TariffServiceImpl();
-        for (Tariff tariff : tariffService.getAll()) {
-            out.print(tariff + "\n");
-        }
+        req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);
+
     }
 
     @Override

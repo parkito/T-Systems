@@ -13,6 +13,7 @@ import java.io.IOException;
 public class NumberOperationsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Check");
         req.getRequestDispatcher("/WEB-INF/user/NumberOperations.jsp").forward(req, resp);
 
     }
