@@ -104,9 +104,7 @@
         <p></p>
     </div>
 
-    <%--<div id="global">--%>
-
-        <%
+    <%
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
@@ -114,7 +112,7 @@
 
 
     <div class="container-fluid">
-            <%
+        <%
             for (Contract contract : contracts) {
         %>
         <div class="row cm-fix-height">
@@ -153,7 +151,7 @@
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" >
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                     Option two can be something else and selecting it will deselect option one
                                 </label>
                             </div>
@@ -167,44 +165,45 @@
 
                 </div>
             </div>
-            <%}%>
 
         </div>
+        <%}%>
+</div>
 
 
-        <div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">X</span></button>
-                        <h3 class="modal-title" id="myModalLabel1">
-                            Apply changes ?
-                            <a class="anchorjs-link" href="#myModalLabel"><span
-                                    class="anchorjs-icon"></span></a>
-                        </h3>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="/login" method="post">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-default">Yes</button>
-
-                        </form>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
+<div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">X</span></button>
+                <h3 class="modal-title" id="myModalLabel1">
+                    Apply changes ?
+                    <a class="anchorjs-link" href="#myModalLabel"><span
+                            class="anchorjs-icon"></span></a>
+                </h3>
             </div>
-            <!-- /.modal-dialog -->
+            <div class="modal-footer">
+                <form action="/login" method="post">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default">Yes</button>
+
+                </form>
+            </div>
         </div>
-        <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
-        <script src="../assets/js/jquery.mousewheel.min.js"></script>
-        <script src="../assets/js/jquery.cookie.min.js"></script>
-        <script src="../assets/js/fastclick.min.js"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-        <script src="../assets/js/clearmin.min.js"></script>
-        <script src="../assets/js/demo/popovers-tooltips.js"></script>
-        <footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
-                class="pull-right">&copy;T-Systems JavaSchool</span></footer>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
+<script src="../assets/js/jquery.mousewheel.min.js"></script>
+<script src="../assets/js/jquery.cookie.min.js"></script>
+<script src="../assets/js/fastclick.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/clearmin.min.js"></script>
+<script src="../assets/js/demo/popovers-tooltips.js"></script>
+<footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
+        class="pull-right">&copy;T-Systems JavaSchool</span></footer>
 </body>
 </html>
