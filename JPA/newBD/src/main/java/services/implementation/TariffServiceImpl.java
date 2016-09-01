@@ -46,6 +46,7 @@ public class TariffServiceImpl implements TariffService {
         return tariffDAO.getAll();
 
     }
+
     @Override
     public boolean isTariffExists(Tariff tariff) {
         try {
@@ -54,6 +55,7 @@ public class TariffServiceImpl implements TariffService {
             return false;
         }
     }
+
     @Override
     public Tariff getTariffByTitle(String title) {
         return tariffDAO.getTariffByTitle(title);

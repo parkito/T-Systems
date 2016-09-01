@@ -5,6 +5,7 @@ import exceptions.ContractNotFoundException;
 import exceptions.ContractsForEntityNotGotException;
 
 import java.util.List;
+
 /**
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
