@@ -3,6 +3,8 @@
 <%@ page import="services.implementation.ContractServiceImpl" %>
 <%@ page import="services.implementation.UserServiceImpl" %>
 <%@ page import="java.util.List" %>
+<%@ page import="services.implementation.TariffOptionServiceImpl" %>
+<%@ page import="entities.TariffOption" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
-    <title>K-Mobile</title>
+    <title>K-Mobile/Contracts</title>
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
@@ -96,11 +98,17 @@
     </nav>
 </header>
 <div id="global">
+    <div class="container-fluid cm-container-white">
+        <h2 style="margin-top:0;">Welcome to K-Mobile site!</h2>
+        <p></p>
+    </div>
+
+<%--<div id="global">--%>
     <div class="container-fluid">
         <div class="row cm-fix-height">
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">My tariff</div>
+                    <div class="panel-heading">My tariffs</div>
                     <div class="panel-body">
                         <%
                             ContractServiceImpl contractService = new ContractServiceImpl();
@@ -109,13 +117,19 @@
 
                         %>
                         <h2>
+
                             <%
                                 for (Contract contract : contracts) {
-
+                                    out.print("<small>Tariff : </small>");
                                     out.print(contract.getTariff().getTitle());
+                                    out.print("<br>");
+                                    out.print("<small>Month payment : </small>");
+                                    out.print(contract.getTariff().getPrice() + " RUB");
+//                                    out.print("<br>");
+//                                    out.print("------------------------------------------------");
                                 }
                             %>
-                            <small>Secondary text</small>
+
                         </h2>
 
                     </div>
@@ -123,21 +137,30 @@
             </div>
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">paragraphs</div>
+                    <div class="panel-heading">My tariff options</div>
                     <div class="panel-body">
-                        <p> Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis
-                            dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies
-                            vehicula. </p>
-                        <p> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-                            ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat
-                            porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor
-                            fringilla. </p>
-                        <p> Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta
-                            gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
-                            lacinia odio sem nec elit. </p>
-                        <p> Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,
-                            nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non
-                            metus auctor fringilla.</p>
+                        <h2>
+                            <%
+                                TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+                                for (Contract contract : contracts) {
+                                    for (TariffOption tariffOption :
+                                            tariffOptionService.getAllTariffOptionForContract(contract.getContractId())) {
+                                        out.print("<small>Option : </small>");
+                                        out.print(tariffOption.getTitle());
+                                        out.print("<br>");
+                                        out.print("<small>Price : </small>");
+                                        out.print(tariffOption.getPrice());
+                                        out.print("<br>");
+                                        out.print("------------------------------------------------");
+                                        out.print("<br>");
+
+
+                                    }
+                                }
+                            %>
+                        </h2>
+
+
                     </div>
                 </div>
             </div>
