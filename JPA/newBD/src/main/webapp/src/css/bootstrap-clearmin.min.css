@@ -3472,7 +3472,8 @@ textarea.form-group-lg .form-control, select[multiple].form-group-lg .form-contr
     color: #fff;
     background-color: #2ecc71;
     border-color: #29b765;
-    line-height: 20px
+    line-height: 20px;
+    min-width:80px;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .btn-success.open, .open > .dropdown-toggle.btn-success {
@@ -3553,7 +3554,8 @@ textarea.form-group-lg .form-control, select[multiple].form-group-lg .form-contr
     color: #fff;
     background-color: #e74c3c;
     border-color: #e43725;
-    line-height: 20px
+    line-height: 20px;
+    min-width:80px;
 
 }
 
