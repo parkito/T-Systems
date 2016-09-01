@@ -122,6 +122,7 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <%
                     ContractServiceImpl contractService = new ContractServiceImpl();
                     List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
@@ -139,13 +140,16 @@
                         out.print("<td>Active</td>");
 
                     if (contracts.get(i).getIsBlocked())
-                        out.print("<td><button type=\"button\" class=\"btn btn-success\">Unblock</button></td>");
+                        out.print("<td><button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModalGreen\">\n" +
+                                "UnBlock</button></td>");
                     else
                         out.print("<td><button type=\"button\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#myModal\">\n" +
-                                "Block\n" +
-                                "                    </button></td>");
+                                "Block</button></td>");
 
                 %>
+
+                <td>
+                </td>
                 </tr>
                 <%}%>
                 </tbody>
@@ -169,17 +173,45 @@
                 </h3>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-default">Yes</button>
+                <form action="/login" method="post">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default">Yes</button>
+
+                </form>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
-<footer class="cm-footer"><span class="pull-left">Connected as John Smith</span><span
-        class="pull-right">&copy;
-    PAOMEDIA SARL</span></footer>
+
+<div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">X</span></button>
+                <h3 class="modal-title" id="myModalLabel1">
+                    Do you want to unblock number ?
+                    <a class="anchorjs-link" href="#myModalLabel"><span
+                            class="anchorjs-icon"></span></a>
+                </h3>
+            </div>
+            <div class="modal-footer">
+                <form action="/login" method="post">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default">Yes</button>
+
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 </div>
 <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
 <script src="../assets/js/jquery.mousewheel.min.js"></script>

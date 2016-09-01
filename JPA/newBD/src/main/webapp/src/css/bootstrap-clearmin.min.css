@@ -3554,6 +3554,7 @@ textarea.form-group-lg .form-control, select[multiple].form-group-lg .form-contr
     background-color: #e74c3c;
     border-color: #e43725;
     line-height: 20px
+
 }
 
 .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .btn-danger.open, .open > .dropdown-toggle.btn-danger {
