@@ -76,7 +76,7 @@
                             TariffServiceImpl tariffService = new TariffServiceImpl();
                             for (Tariff tariff : tariffService.getAll()) {
                         %>
-                        <tr >
+                        <tr>
                             <td><%out.print(tariff.getTariffId());%></td>
                             <td><%out.print(tariff.getTitle());%></td>
                             <td><%out.print(tariff.getPrice());%></td>

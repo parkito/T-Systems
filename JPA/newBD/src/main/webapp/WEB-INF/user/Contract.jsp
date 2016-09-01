@@ -79,7 +79,8 @@
                             if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
                         }
                         UserServiceImpl userService = new UserServiceImpl();
-                        String userName = userService.getUserByEMAil(eMail).getName();
+                        User user = userService.getUserByEMAil(eMail);
+                        String userName = user.getName();
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -99,35 +100,40 @@
 </header>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;">Welcome to K-Mobile site!</h2>
+        <h2 style="margin-top:0;"><%out.print(userName);%>, your contracts:</h2>
         <p></p>
     </div>
 
-<%--<div id="global">--%>
+    <%--<div id="global">--%>
+
+        <%
+               ContractServiceImpl contractService = new ContractServiceImpl();
+               List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+               TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+
+
+         %>
+
+
     <div class="container-fluid">
+            <%
+          for (Contract contract : contracts) {
+        %>
         <div class="row cm-fix-height">
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">My tariffs</div>
+                    <div class="panel-heading">Number: <%out.print(contract.getNumber());%></div>
                     <div class="panel-body">
-                        <%
-                            ContractServiceImpl contractService = new ContractServiceImpl();
-                            User user = userService.getUserByEMAil(eMail);
-                            List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
-                        %>
                         <h2>
 
                             <%
-                                for (Contract contract : contracts) {
-                                    out.print("<small>Tariff : </small>");
-                                    out.print(contract.getTariff().getTitle());
-                                    out.print("<br>");
-                                    out.print("<small>Month payment : </small>");
-                                    out.print(contract.getTariff().getPrice() + " RUB");
-//                                    out.print("<br>");
-//                                    out.print("------------------------------------------------");
-                                }
+                                out.print("<small>Tariff : </small>");
+                                out.print(contract.getTariff().getTitle());
+                                out.print("<br>");
+                                out.print("<small>Month payment : </small>");
+                                out.print(contract.getTariff().getPrice() + " RUB");
+//                                }
                             %>
 
                         </h2>
@@ -137,34 +143,32 @@
             </div>
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">My tariff options</div>
+                    <div class="panel-heading">options</div>
                     <div class="panel-body">
                         <h2>
                             <%
-                                TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-                                for (Contract contract : contracts) {
-                                    for (TariffOption tariffOption :
-                                            tariffOptionService.getAllTariffOptionForContract(contract.getContractId())) {
-                                        out.print("<small>Option : </small>");
-                                        out.print(tariffOption.getTitle());
-                                        out.print("<br>");
-                                        out.print("<small>Price : </small>");
-                                        out.print(tariffOption.getPrice());
-                                        out.print("<br>");
-                                        out.print("------------------------------------------------");
-                                        out.print("<br>");
-
-
-                                    }
+                                //                                for (Contract contract : contracts) {
+                                for (TariffOption tariffOption :
+                                        tariffOptionService.getAllTariffOptionForContract(contract.getContractId())) {
+                                    out.print("<small>Option : </small>");
+                                    out.print(tariffOption.getTitle());
+                                    out.print("<br>");
+                                    out.print("<small>Price : </small>");
+                                    out.print(tariffOption.getPrice());
+                                    out.print("<br>");
+                                    out.print("------------------------------------------------");
+                                    out.print("<br>");
                                 }
+//                                }
                             %>
                         </h2>
-
-
                     </div>
                 </div>
             </div>
         </div>
+            <%}%>
+
+
         <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
         <script src="../assets/js/jquery.mousewheel.min.js"></script>
         <script src="../assets/js/jquery.cookie.min.js"></script>

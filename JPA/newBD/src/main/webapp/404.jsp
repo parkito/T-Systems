@@ -1,16 +1,73 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: parkito
-  Date: 9/1/16
-  Time: 12:51 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>404. Page not found</title>
+    <title>404 - page not fount</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <%--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700&subset=latin,cyrillic'--%>
+          <%--rel='stylesheet' type='text/css'>--%>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px
+        }
+
+        body {
+            background: url('/404.png') center no-repeat #fff
+        }
+
+        .content {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 10%;
+            left: 0px;
+        }
+
+        .content a {
+            display: inline-block;
+            text-decoration: none
+        }
+
+        .content a:hover {
+            opacity: 0.7
+        }
+
+        .content a, .content a:hover {
+            color: #737f83;
+            font-size: 14px
+        }
+
+        @media only screen and (max-width: 46px), screen and (max-height: 70px) {
+            .content {
+                position: static;
+            }
+
+            .content a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                font-size: 0px;
+                opacity: 0;
+            }
+
+            body {
+                background-size: cover
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>404. Page not found!</h1>
+<div class="content">
+    <a href="/"><h2>Back to home</h2> </a>
+</div>
 </body>
 </html>
