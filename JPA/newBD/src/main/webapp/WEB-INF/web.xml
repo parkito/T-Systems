@@ -22,12 +22,12 @@
 
     <servlet>
         <servlet-name>userContractServlet</servlet-name>
-        <servlet-class>controllers.userContractServlet</servlet-class>
+        <servlet-class>controllers.UserContractServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>userContractServlet</servlet-name>
-        <url-pattern>/user/Contract.jsp</url-pattern>
+        <url-pattern>/user/Contract</url-pattern>
     </servlet-mapping>
 
 
