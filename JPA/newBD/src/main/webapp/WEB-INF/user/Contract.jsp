@@ -110,8 +110,6 @@
                ContractServiceImpl contractService = new ContractServiceImpl();
                List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
                TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-
-
          %>
 
 

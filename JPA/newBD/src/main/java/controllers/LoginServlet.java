@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("HERE");
         String eMail;
         Cookie[] cookies = req.getCookies();
         for (Cookie cookie : cookies) {

@@ -30,6 +30,16 @@
         <url-pattern>/user/Contract</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NumberOperationsServlet</servlet-name>
+        <servlet-class>controllers.NumberOperationsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NumberOperationsServlet</servlet-name>
+        <url-pattern>/user/NumberOperations</url-pattern>
+    </servlet-mapping>
+
 
     <!--<servlet>-->
     <!--<servlet-name>MainPageServlet</servlet-name>-->

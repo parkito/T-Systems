@@ -1,30 +1,24 @@
 package controllers;
 
-import entities.Tariff;
-import services.implementation.TariffServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
- * Created by Artyom Karnov on 8/30/16.
+ * Created by Artyom Karnov on 9/1/16.
  * artyom-karnov@yandex.ru
  **/
-public class TariffServlets extends HttpServlet {
+public class NumberOperationsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        TariffServiceImpl tariffService = new TariffServiceImpl();
-        for (Tariff tariff : tariffService.getAll()) {
-            out.print(tariff + "\n");
-        }
+        req.getRequestDispatcher("/WEB-INF/user/NumberOperations.jsp").forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
     }
 }
