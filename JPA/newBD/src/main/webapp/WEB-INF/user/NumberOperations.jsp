@@ -5,6 +5,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="services.implementation.TariffOptionServiceImpl" %>
 <%@ page import="entities.TariffOption" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
-    <title>K-Mobile/Number</title>
+    <title>Clearmin template</title>
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
@@ -98,6 +99,7 @@
         </div>
     </nav>
 </header>
+
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;"><%out.print(userName);%>, your numbers:</h2>
@@ -139,23 +141,54 @@
                     if (contracts.get(i).getIsBlocked())
                         out.print("<td><button type=\"button\" class=\"btn btn-success\">Unblock</button></td>");
                     else
-                        out.print("<td><button type=\"button\" class=\"btn btn-danger\">Block</button></td>");
+                        out.print("<td><button type=\"button\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#myModal\">\n" +
+                                "Block\n" +
+                                "                    </button></td>");
 
                 %>
                 </tr>
                 <%}%>
-
                 </tbody>
+
             </table>
         </div>
     </div>
+</div>
 
-    <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
-    <script src="../assets/js/jquery.mousewheel.min.js"></script>
-    <script src="../assets/js/jquery.cookie.min.js"></script>
-    <script src="../assets/js/fastclick.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/clearmin.min.js"></script>
-    <script src="../assets/js/demo/home.js"></script>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">X</span></button>
+                <h3 class="modal-title" id="myModalLabel">
+                    Do you want to block number ?
+                    <a class="anchorjs-link" href="#myModalLabel"><span
+                            class="anchorjs-icon"></span></a>
+                </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<footer class="cm-footer"><span class="pull-left">Connected as John Smith</span><span
+        class="pull-right">&copy;
+    PAOMEDIA SARL</span></footer>
+</div>
+<script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
+<script src="../assets/js/jquery.mousewheel.min.js"></script>
+<script src="../assets/js/jquery.cookie.min.js"></script>
+<script src="../assets/js/fastclick.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/clearmin.min.js"></script>
+<script src="../assets/js/demo/popovers-tooltips.js"></script>
+<footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
+        class="pull-right">&copy;T-Systems JavaSchool</span></footer>
 </body>
 </html>
