@@ -34,6 +34,30 @@ public class TariffOption {
     private final List<Contract> contracts = new ArrayList();
 
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "joinoptions",
+            joinColumns = @JoinColumn(name = "joinOptions_id"),
+            inverseJoinColumns = @JoinColumn(name = "tariffOption_id")
+    )
+    private final List<TariffOption> jointTogether = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "impossibleOtions",
+            joinColumns = @JoinColumn(name = "impossibleOtions_id"),
+            inverseJoinColumns = @JoinColumn(name = "tariffOption_id")
+    )
+    private final List<TariffOption> impossibleTogether = new ArrayList<>();
+
+    public List<TariffOption> getJointTogether() {
+        return jointTogether;
+    }
+
+
+
+    public List<TariffOption> getImpossibleTogether() {
+        return impossibleTogether;
+    }
+
     public int getTariffOptionId() {
         return tariffOptionId;
     }
@@ -88,33 +112,4 @@ public class TariffOption {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TariffOption that = (TariffOption) o;
-
-        if (tariffOptionId != that.tariffOptionId) return false;
-        if (Double.compare(that.price, price) != 0) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (connectionPrice != null ? !connectionPrice.equals(that.connectionPrice) : that.connectionPrice != null)
-            return false;
-        if (contracts != null ? !contracts.equals(that.contracts) : that.contracts != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = tariffOptionId;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (connectionPrice != null ? connectionPrice.hashCode() : 0);
-        result = 31 * result + (contracts != null ? contracts.hashCode() : 0);
-        return result;
-    }
 }

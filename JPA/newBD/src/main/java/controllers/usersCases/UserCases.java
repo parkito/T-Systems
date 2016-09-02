@@ -32,8 +32,9 @@ public class UserCases {
         TariffOption two = optionService.getEntityById(2);
         System.out.println(one);
         System.out.println(two);
-//        System.out.println(userCases.areOptionsPossible())
+//        System.out.println(optionService.getAllImpossibleTariffOption(3).size());
     }
+
 
     public boolean isAuthorized(String eMail, String password) {
         try {
@@ -66,16 +67,18 @@ public class UserCases {
 
     }
 
-    public boolean areOptionsPossible(TariffOption first, TariffOption second) {
-        try {
-            Query query = entityManager.createQuery("select t from impossibleOptions t where tariffOption_id=:id")
-                    .setParameter("id", first.getTariffOptionId());
-            return true;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            return false;
-        }
-    }
+//    public boolean areOptionsPossible(TariffOption first, TariffOption second) {
+//        try {
+////            Query query = entityManager.createQuery("select t from Tariff t where title=:title")
+////                    .setParameter("title", title);
+//            Query query = entityManager.createQuery("select t from impossibleOtions t where tariffOption_id=:id")
+//                    .setParameter("id", first.getTariffOptionId());
+//            return true;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            return false;
+//        }
+//    }
 
 }
