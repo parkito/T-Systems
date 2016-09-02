@@ -35,7 +35,7 @@ public class TariffOption {
 
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "joinoptions",
+    @JoinTable(name = "JoinOptions",
             joinColumns = @JoinColumn(name = "joinOptions_id"),
             inverseJoinColumns = @JoinColumn(name = "tariffOption_id")
     )
