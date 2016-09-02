@@ -48,16 +48,6 @@ public class TariffOption {
     )
     private final List<TariffOption> impossibleTogether = new ArrayList<>();
 
-    public List<TariffOption> getJointTogether() {
-        return jointTogether;
-    }
-
-
-
-    public List<TariffOption> getImpossibleTogether() {
-        return impossibleTogether;
-    }
-
     public int getTariffOptionId() {
         return tariffOptionId;
     }
@@ -100,6 +90,36 @@ public class TariffOption {
     }
 
     public TariffOption() {
+    }
+
+    public List<TariffOption> getjointTogether() {
+        return jointTogether;
+    }
+
+    public void removejointTogether() {
+        jointTogether.clear();
+    }
+
+    public void addjointTogether(TariffOption jointTogether) {
+        this.jointTogether.add(jointTogether);
+    }
+
+
+    public List<TariffOption> getimpossibleTogether() {
+        return impossibleTogether;
+    }
+
+    /**
+     * Removes all options that are incompatible with current option.
+     */
+
+    public void removeimpossibleTogether() {
+        impossibleTogether.clear();
+    }
+
+
+    public void addOptionsIncompatible(TariffOption impossibleTogether) {
+        this.impossibleTogether.add(impossibleTogether);
     }
 
     @Override

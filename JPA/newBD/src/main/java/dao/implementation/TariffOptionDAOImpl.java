@@ -46,7 +46,7 @@ public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> i
     @Override
     public List<TariffOption> getAllJointTariffOptions(int id) throws OptionsForEntityNotGotException {
         try {
-            Query query = entityManager.createQuery("select opt.tariffOptionId from TariffOption opt where opt.id=:id").setParameter("id", id);
+            Query query = entityManager.createQuery("select opt.jointTogether from TariffOption opt where opt.id=:id").setParameter("id", id);
 
             return (List<TariffOption>) query.getResultList();
         } catch (PersistenceException ex) {
@@ -57,7 +57,7 @@ public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> i
     @Override
     public List<TariffOption> getAllImpossibleTariffOptions(int id) throws OptionsForEntityNotGotException {
         try {
-            Query query = entityManager.createQuery("select opt.tariffOptionId from TariffOption opt where opt.id=:id").setParameter("id", id);
+            Query query = entityManager.createQuery("select opt.impossibleTogether from TariffOption opt where opt.id=:id").setParameter("id", id);
 
             return (List<TariffOption>) query.getResultList();
         } catch (PersistenceException ex) {

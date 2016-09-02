@@ -32,7 +32,8 @@ public class UserCases {
         TariffOption two = optionService.getEntityById(2);
         System.out.println(one);
         System.out.println(two);
-//        System.out.println(optionService.getAllImpossibleTariffOption(3).size());
+        System.out.println(optionService.getAllImpossibleTariffOption(1).get(0).getTitle());
+//        userCases.foo();
     }
 
 
@@ -81,4 +82,8 @@ public class UserCases {
 //        }
 //    }
 
+    public void foo() {
+        Query query = entityManager.createQuery("from impossibleOtions");
+
+    }
 }
