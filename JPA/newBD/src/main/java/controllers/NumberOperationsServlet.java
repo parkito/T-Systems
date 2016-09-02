@@ -20,8 +20,7 @@ import java.util.List;
 public class NumberOperationsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Get");
-        String eMail = "123";
+        String eMail = "";
         Cookie[] cookies = req.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
@@ -41,7 +40,8 @@ public class NumberOperationsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("POST");
-//        System.out.println(req.getParameter("blockItem"));
-//        System.out.println(req.getParameter("unblockItem"));
+        System.out.println(req.getParameter("blockItem"));
+        System.out.println(req.getParameter("unblockItem"));
+        System.out.println(req.getAttribute("buffer"));
     }
 }

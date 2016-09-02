@@ -1,17 +1,19 @@
 package controllers.usersCases;
 
-import entities.Contract;
 import entities.TariffOption;
 import entities.User;
+import exceptions.OptionsForEntityNotGotException;
 import exceptions.UserNotFoundException;
 import services.api.AccessLevelService;
 import services.api.UserService;
 import services.implementation.AccessLevelImpl;
-import services.implementation.ContractServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
 import services.implementation.UserServiceImpl;
 
+import javax.persistence.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/30/16.
@@ -20,10 +22,17 @@ import javax.servlet.http.HttpServletRequest;
 public class UserCases {
     UserService userService = new UserServiceImpl();
 
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
+    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+
     public static void main(String[] args) {
         UserCases userCases = new UserCases();
-        UserServiceImpl userService = new UserServiceImpl();
-        userCases.makeUserManager(userService.getUserByEMAil("b@b.ru"));
+        TariffOptionServiceImpl optionService = new TariffOptionServiceImpl();
+        TariffOption one = optionService.getEntityById(1);
+        TariffOption two = optionService.getEntityById(2);
+        System.out.println(one);
+        System.out.println(two);
+//        System.out.println(userCases.areOptionsPossible())
     }
 
     public boolean isAuthorized(String eMail, String password) {
@@ -56,4 +65,17 @@ public class UserCases {
         return user.getName();
 
     }
+
+    public boolean areOptionsPossible(TariffOption first, TariffOption second) {
+        try {
+            Query query = entityManager.createQuery("select t from impossibleOptions t where tariffOption_id=:id")
+                    .setParameter("id", first.getTariffOptionId());
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            return false;
+        }
+    }
+
 }

@@ -119,7 +119,7 @@
 
 
                 <td>
-                    <form name="test" onclick="funk('hi')">
+                    <form name="test" onclick="funk(<%out.print(userName);%>)">
                         <button type="submit" class="btn btn-success"
                                 data-toggle="modal"
                                 data-target="#myModal">UnBlock
@@ -129,9 +129,10 @@
                 </td>
 
                 <script>function funk(id) {
+                    id = <%user.getName();%>
                     popBox();
                     function popBox() {
-                        x = confirm('Are you sure?');
+                        x = confirm('Are you sure?' + id);
                         if (x == true) {
                             var xhr = new XMLHttpRequest();
                             xhr.open("POST", "/user/TariffOptions?attr=" + id, true);
@@ -144,12 +145,8 @@
 
                 }</script>
 
-                <td>
-                </td>
                 </tr>
-
                 </tbody>
-
             </table>
         </div>
     </div>
