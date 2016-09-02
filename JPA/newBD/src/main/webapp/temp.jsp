@@ -117,37 +117,45 @@
                 </thead>
                 <tbody>
 
+                <%
+                    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
+                    for (int i = 0; i < contracts.size(); i++) {
+                        if (contracts.get(i).getIsBlocked())
+                            out.print("<tr class=\"danger\">");
+                        else out.print("<tr class=\"active\">");
+                %>
+                <th scope="row"><%out.print(i + 1);%></th>
+                <td><%out.print(contracts.get(i).getNumber());%></td>
 
-                <td>
-                    <form name="test" onclick="funk('hi')">
-                        <button type="submit" class="btn btn-success"
-                                data-toggle="modal"
-                                data-target="#myModal">UnBlock
-                        </button>
+                <%
+                    if (contracts.get(i).getIsBlocked())
+                        out.print("<td>Blocked</td>");
+                    else
+                        out.print("<td>Active</td>");
 
-                    </form>
-                </td>
-
-                <script>function funk(id) {
-                    popBox();
-                    function popBox() {
-                        x = confirm('Are you sure?');
-                        if (x == true) {
-                            var xhr = new XMLHttpRequest();
-                            xhr.open("POST", "/user/TariffOptions?attr=" + id, true);
-                            xhr.send();
-                        }
-                        else {
-                        }
-                    }
-
-
-                }</script>
+                    if (contracts.get(i).getIsBlocked()) {
+                %>
+                <form name="block" onclick="block(<%contracts.get(i).getNumber();%>)">
+                    <%
+                        out.print("<td><button type=\"sumbit\" name=\"id\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModalGreen\">\n" +
+                                "UnBlock</button></td>");
+                    %>
+                </form>
+                <%
+                } else {
+                %>
+                <form name="unblock" onclick="unblock(<%contracts.get(i).getNumber();%>)">
+                    <%
+                        out.print("<td><button type=\"sumbit\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#myModal\">\n" +
+                                "Block</button></td>");
+                    %>
+                </form>
+                }%>
 
                 <td>
                 </td>
                 </tr>
-
+                <%}%>
                 </tbody>
 
             </table>
@@ -155,7 +163,7 @@
     </div>
 </div>
 
-<div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -181,8 +189,61 @@
     <!-- /.modal-dialog -->
 </div>
 
+<div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">X</span></button>
+                <h3 class="modal-title" id="myModalLabel1">
+                    Do you want to unblock number ?
+                    <a class="anchorjs-link" href="#myModalLabel"><span
+                            class="anchorjs-icon"></span></a>
+                </h3>
+            </div>
+            <div class="modal-footer">
+                <form action="/login" method="post">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default">Yes</button>
+
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
 
 </div>
+<script>
+    function block(id) {
+        popBox();
+        function popBox() {
+            x = confirm('Are you sure?');
+            if (x == true) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/user/NumberOperations?blockItem=" + id, true);
+                xhr.send();
+            }
+        }
+    }
+</script>
+
+<script>
+    function unblock(id) {
+        popBox();
+        function popBox() {
+            x = confirm('Are you sure?');
+            if (x == true) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/user/NumberOperations?unblockItem=" + id, true);
+                xhr.send();
+            }
+        }
+    }
+</script>
 <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
 <script src="../assets/js/jquery.mousewheel.min.js"></script>
 <script src="../assets/js/jquery.cookie.min.js"></script>

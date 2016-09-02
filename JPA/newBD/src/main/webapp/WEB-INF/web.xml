@@ -51,6 +51,17 @@
         <url-pattern>/user/Tariffs</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TariffOptionServlet</servlet-name>
+        <servlet-class>controllers.TariffOptionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TariffOptionServlet</servlet-name>
+        <url-pattern>/user/TariffOptions</url-pattern>
+    </servlet-mapping>
+
+
 
     <!--<servlet>-->
     <!--<servlet-name>MainPageServlet</servlet-name>-->

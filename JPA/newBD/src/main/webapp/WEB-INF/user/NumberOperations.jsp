@@ -74,8 +74,14 @@
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
                     <%
-                        User user = (User) request.getAttribute("userObj");
-                        String userName = (String) request.getAttribute("userName");
+                        String eMail = "123";
+                        Cookie[] cookies = request.getCookies();
+                        for (Cookie cookie : cookies) {
+                            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
+                        }
+                        UserServiceImpl userService = new UserServiceImpl();
+                        User user = userService.getUserByEMAil(eMail);
+                        String userName = user.getName();
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -118,7 +124,8 @@
                 <tbody>
 
                 <%
-                    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
+                    ContractServiceImpl contractService = new ContractServiceImpl();
+                    List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
                     for (int i = 0; i < contracts.size(); i++) {
                         if (contracts.get(i).getIsBlocked())
                             out.print("<tr class=\"danger\">");
@@ -131,14 +138,12 @@
                         out.print("<td>Blocked</td>");
                     else
                         out.print("<td>Active</td>");
-
                     if (contracts.get(i).getIsBlocked())
                         out.print("<td><button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModalGreen\">\n" +
                                 "UnBlock</button></td>");
                     else
                         out.print("<td><button type=\"button\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#myModal\">\n" +
                                 "Block</button></td>");
-
                 %>
 
                 <td>
