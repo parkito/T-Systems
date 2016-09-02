@@ -74,14 +74,8 @@
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
                     <%
-                        String eMail = "123";
-                        Cookie[] cookies = request.getCookies();
-                        for (Cookie cookie : cookies) {
-                            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-                        }
-                        UserServiceImpl userService = new UserServiceImpl();
-                        User user = userService.getUserByEMAil(eMail);
-                        String userName = user.getName();
+                        User user = (User) request.getAttribute("userObj");
+                        String userName = (String) request.getAttribute("userName");
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -124,8 +118,7 @@
                 <tbody>
 
                 <%
-                    ContractServiceImpl contractService = new ContractServiceImpl();
-                    List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+                    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
                     for (int i = 0; i < contracts.size(); i++) {
                         if (contracts.get(i).getIsBlocked())
                             out.print("<tr class=\"danger\">");

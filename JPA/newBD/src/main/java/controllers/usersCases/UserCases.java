@@ -10,6 +10,9 @@ import services.implementation.AccessLevelImpl;
 import services.implementation.ContractServiceImpl;
 import services.implementation.UserServiceImpl;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Artyom Karnov on 8/30/16.
  * artyom-karnov@yandex.ru
@@ -42,20 +45,15 @@ public class UserCases {
         userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
     }
 
-    public void watchConracts(User user) {
-        System.out.println("Enter");
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        if (contractService.getAllContractsForUser(user.getUserId()).size() == 0)
-            System.out.println("User haven't got any contracts ");
-        else {
-            for (Contract contract : contractService.getAllContractsForUser(user.getUserId())) {
-                System.out.println("Contract " + contract.getNumber());
-                System.out.println(contract.getTariff());
-                System.out.println("Connected tariff options");
-                for (TariffOption tariffOption : contract.getTariffOptions()) {
-                    System.out.println(tariffOption.getTitle() + tariffOption.getPrice());
-                }
-            }
+    static public String getUserName(HttpServletRequest req) {
+        String eMail = "";
+        Cookie[] cookies = req.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
         }
+        UserServiceImpl userService = new UserServiceImpl();
+        User user = userService.getUserByEMAil(eMail);
+        return user.getName();
+
     }
 }

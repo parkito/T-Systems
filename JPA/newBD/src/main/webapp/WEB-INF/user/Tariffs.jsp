@@ -5,6 +5,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="services.implementation.TariffOptionServiceImpl" %>
 <%@ page import="entities.TariffOption" %>
+<%@ page import="services.implementation.TariffServiceImpl" %>
+<%@ page import="entities.Tariff" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,14 +75,13 @@
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
                     <%
-                        String eMail = "123";
-                        Cookie[] cookies = request.getCookies();
-                        for (Cookie cookie : cookies) {
-                            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-                        }
-                        UserServiceImpl userService = new UserServiceImpl();
-                        User user = userService.getUserByEMAil(eMail);
-                        String userName = user.getName();
+
+                        User user = (User) request.getAttribute("user");
+                        String userName = (String) request.getAttribute("userName");
+
+                        List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
+                        TariffServiceImpl tariffService = (TariffServiceImpl) request.getAttribute("tariffService");
+                        int i = 1, k;
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -104,16 +105,10 @@
         <p></p>
     </div>
 
-    <%
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-    %>
-
-
     <div class="container-fluid">
         <%
             for (Contract contract : contracts) {
+
         %>
         <div class="row cm-fix-height">
             <div class="col-sm-6">
@@ -129,7 +124,6 @@
                                 out.print("<br>");
                                 out.print("<small>Month payment : </small>");
                                 out.print(contract.getTariff().getPrice() + " RUB");
-//                                }
                             %>
 
                         </h2>
@@ -141,69 +135,90 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff list</div>
                     <div class="panel-body">
+                        <%
+                            for (Tariff tariff : tariffService.getAll()) {
+                                if (contract.getTariff().equals(tariff)) {%>
+
                         <h3>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
-                                           checked>
-                                    Option one is this and that&mdash;be sure to include why it's great
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Option two can be something else and selecting it will deselect option one
+                                    <%
+                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios" + i + "\" value=\"option" + i + "\" checked disabled>");%>
+                                    <%
+                                        out.print("<b>" + tariff.getTitle() + "</b>");
+                                    %>
                                 </label>
                             </div>
                         </h3>
+
+                        <%
+                        } else {
+                        %>
+                        <h3>
+                            <div class="radio">
+                                <label>
+                                    <%
+                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios" + i + "\" value=\"option" + i + "\">");%>
+                                    <%
+                                        out.print(tariff.getTitle());
+                                    %>
+                                </label>
+                            </div>
+                        </h3>
+                        <%
+                                }
+                            }
+                        %>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" data-toggle="modal"
                                     data-target="#myModalGreen">Change
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
 
         </div>
-        <%}%>
-</div>
-
-
-<div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">X</span></button>
-                <h3 class="modal-title" id="myModalLabel1">
-                    Apply changes ?
-                    <a class="anchorjs-link" href="#myModalLabel"><span
-                            class="anchorjs-icon"></span></a>
-                </h3>
-            </div>
-            <div class="modal-footer">
-                <form action="/login" method="post">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-default">Yes</button>
-
-                </form>
-            </div>
-        </div>
-        <!-- /.modal-content -->
+        <%
+                i++;
+            }
+        %>
     </div>
-    <!-- /.modal-dialog -->
-</div>
-<script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
-<script src="../assets/js/jquery.mousewheel.min.js"></script>
-<script src="../assets/js/jquery.cookie.min.js"></script>
-<script src="../assets/js/fastclick.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/clearmin.min.js"></script>
-<script src="../assets/js/demo/popovers-tooltips.js"></script>
-<footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
-        class="pull-right">&copy;T-Systems JavaSchool</span></footer>
+
+
+    <div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">X</span></button>
+                    <h3 class="modal-title" id="myModalLabel1">
+                        Apply changes ?
+                        <a class="anchorjs-link" href="#myModalLabel"><span
+                                class="anchorjs-icon"></span></a>
+                    </h3>
+                </div>
+                <div class="modal-footer">
+                    <form action="/login" method="post">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-default">Yes</button>
+
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
+    <script src="../assets/js/jquery.mousewheel.min.js"></script>
+    <script src="../assets/js/jquery.cookie.min.js"></script>
+    <script src="../assets/js/fastclick.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/clearmin.min.js"></script>
+    <script src="../assets/js/demo/popovers-tooltips.js"></script>
+    <footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
+            class="pull-right">&copy;T-Systems JavaSchool</span></footer>
 </body>
 </html>

@@ -73,14 +73,7 @@
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
                     <%
-                        String eMail = "123";
-                        Cookie[] cookies = request.getCookies();
-                        for (Cookie cookie : cookies) {
-                            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-                        }
-                        UserServiceImpl userService = new UserServiceImpl();
-                        User user = userService.getUserByEMAil(eMail);
-                        String userName = user.getName();
+                        String userName = (String) request.getAttribute("userName");
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -107,9 +100,9 @@
     <%--<div id="global">--%>
 
         <%
-               ContractServiceImpl contractService = new ContractServiceImpl();
-               List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-               TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+               List<Contract> contracts = (List<Contract>)request.getAttribute("contracts");
+               TariffOptionServiceImpl tariffOptionService = (TariffOptionServiceImpl)
+                                                      request.getAttribute("tariffOptionService");
          %>
 
 
@@ -174,7 +167,7 @@
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="../assets/js/clearmin.min.js"></script>
         <script src="../assets/js/demo/home.js"></script>
-                <footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
-                        class="pull-right">&copy;T-Systems JavaSchool</span></footer>
+        <footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
+                class="pull-right">&copy;T-Systems JavaSchool</span></footer>
 </body>
 </html>
