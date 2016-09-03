@@ -213,31 +213,7 @@
     </div>
 
 
-    <div id="myModalGreen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">X</span></button>
-                    <h3 class="modal-title" id="myModalLabel1">
-                        Apply changes ?
-                        <a class="anchorjs-link" href="#myModalLabel"><span
-                                class="anchorjs-icon"></span></a>
-                    </h3>
-                </div>
-                <div class="modal-footer">
-                    <form action="/login" method="post">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-default">Yes</button>
 
-                    </form>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
     <script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
     <script src="../assets/js/jquery.mousewheel.min.js"></script>
     <script src="../assets/js/jquery.cookie.min.js"></script>
