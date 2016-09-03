@@ -143,8 +143,8 @@
                             <div class="radio">
                                 <label>
                                     <%
-                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios" + i + "\" value=\"option" + i + "\" checked disabled>");%>
-                                    <%
+                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
+                                                + i + "\" value=\"option" + i + "\" checked disabled>");
                                         out.print("<b>" + tariff.getTitle() + "</b>");
                                     %>
                                 </label>
@@ -158,8 +158,8 @@
                             <div class="radio">
                                 <label>
                                     <%
-                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios" + i + "\" value=\"option" + i + "\">");%>
-                                    <%
+                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
+                                                + i + "\" value=\"option" + i + "\">");
                                         out.print(tariff.getTitle());
                                     %>
                                 </label>
@@ -170,9 +170,32 @@
                             }
                         %>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                    data-target="#myModalGreen">Change
-                            </button>
+                            <form name="test" onclick="change('one')">
+                                <button type="submit" class="btn btn-success">Change</button>
+                            </form>
+                            <script>
+                                function change(number) {
+                                    popBox();
+                                    function popBox() {
+                                        x = confirm('Are you sure?' + number);
+                                        if (x == true) {
+                                            var xhr = new XMLHttpRequest();
+                                            var id = 1;
+                                            xhr.open("POST", "/user/Tariffs?changeItem=" + number, true);
+                                            xhr.send();
+                                        }
+                                        function check() {
+                                            var inp = document.getElementsByName('r');
+                                            for (var i = 0; i < inp.length; i++) {
+                                                if (inp[i].type == "radio" && inp[i].checked) {
+                                                    alert("selected: " + inp[i].value);
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }</script>
+
                         </div>
                     </div>
                 </div>

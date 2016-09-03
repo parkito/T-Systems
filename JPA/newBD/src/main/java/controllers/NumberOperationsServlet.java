@@ -51,7 +51,7 @@ public class NumberOperationsServlet extends HttpServlet {
             if (!contract.getBlockedByAdmin())
                 contract.setBlocked(false);
             else {
-                // TODO: 9/3/16 how invoke window on the page? make it 
+                // TODO: 9/3/16 how invoke window on the page? make it
                 req.getRequestDispatcher("/404.jsp");
             }
             contractService.updateEntity(contract);
