@@ -159,20 +159,21 @@
                                 <td>Activated</td>
                                 <td>
 
-                                    <form name="test" onclick="unblock('check')">
+                                    <form name="test"
+                                          onclick="disable(<%=contract.getNumber()%>,<%=allTariffOptions.get(i).getTariffOptionId()%>)">
                                         <button type="submit" class="btn btn-danger">Disable</button>
                                     </form>
 
                                 </td>
                                 <script>
-                                    function unblock(number) {
+                                    function disable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure?');
+                                            x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                var id = 1;
-                                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
+                                                xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
+                                                        + "&tariff=" + par2+"&method=disable", true);
                                                 xhr.send();
                                             }
                                         }
@@ -188,21 +189,21 @@
                                 <td>Disabled</td>
                                 <td>
 
-                                    <form name="test" onclick="unblock('check')">
+                                    <form name="test" onclick="unable(<%=contract.getNumber()%>,<%=allTariffOptions.get(i).getTariffOptionId()%>)">
                                         <button type="submit" class="btn btn-success">Activate</button>
                                     </form>
 
                                 </td>
 
                                 <script>
-                                    function unblock(number) {
+                                    function unable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure?');
+                                            x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                var id = 1;
-                                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
+                                                xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
+                                                        + "&tariff=" + par2+"&method=unable", true);
                                                 xhr.send();
                                             }
                                         }

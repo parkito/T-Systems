@@ -154,7 +154,6 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                var id = 1;
                                 xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
                                 xhr.send();
                             }
@@ -178,7 +177,6 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                var id = 1;
                                 xhr.open("POST", "/user/NumberOperations?blockItem=" + number, true);
                                 xhr.send();
                             }

@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Contract;
+import entities.TariffOption;
 import entities.User;
 import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
@@ -42,6 +43,22 @@ public class TariffOptionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String contractNumber = req.getParameter("contractNumber");
+        int tariffId = Integer.parseInt(req.getParameter("tariff"));
+        String method = req.getParameter("method");
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        TariffOption tariffOption = tariffOptionService.getEntityById(tariffId);
+        Contract contract = contractService.getContractByNumber(contractNumber);
+        System.out.println(tariffId + " " + contractNumber + " " + method);
+        if (method.equals("unable")) {
+            System.out.println("here");
+            contract.getTariffOptions().add(tariffOption);
+            contractService.updateEntity(contract);
+        } else {
+            contract.getTariffOptions().remove(tariffOption);
+            contractService.updateEntity(contract);
+        }
 
     }
 }
