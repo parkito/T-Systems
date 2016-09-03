@@ -142,20 +142,20 @@
                 %>
                 <td>
 
-                    <form name="test" onclick="unblock()">
+                    <form name="test" onclick="unblock(<%=contracts.get(i).getNumber()%>)">
                         <button type="submit" class="btn btn-success">unblock</button>
                     </form>
 
                 </td>
                 <script>
-                    function unblock() {
+                    function unblock(number) {
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
                                 var id = 1;
-                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + id, true);
+                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
                                 xhr.send();
                             }
                         }
@@ -165,21 +165,21 @@
                 } else {%>
 
                 <td>
-                    <form name="test" onclick="block()">
+                    <form name="test" onclick="block(<%=contracts.get(i).getNumber()%>)">
                         <button type="submit" class="btn btn-danger">block</button>
                     </form>
 
                 </td>
 
                 <script>
-                    function block() {
+                    function block(number) {
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
                                 var id = 1;
-                                xhr.open("POST", "/user/NumberOperations?blockItem=" + id, true);
+                                xhr.open("POST", "/user/NumberOperations?blockItem=" + number, true);
                                 xhr.send();
                             }
                         }
