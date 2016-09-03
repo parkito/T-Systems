@@ -37,14 +37,14 @@ public class TariffOption {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "JoinOptions",
             joinColumns = @JoinColumn(name = "joinOptions_id"),
-            inverseJoinColumns = @JoinColumn(name = "tariffOption_id")
+            inverseJoinColumns = @JoinColumn(name = "tariffOption_id1")
     )
     private final List<TariffOption> jointTogether = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "impossibleOtions",
             joinColumns = @JoinColumn(name = "impossibleOtions_id"),
-            inverseJoinColumns = @JoinColumn(name = "tariffOption_id")
+            inverseJoinColumns = @JoinColumn(name = "tariffOption_id1")
     )
     private final List<TariffOption> impossibleTogether = new ArrayList<>();
 

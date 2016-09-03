@@ -1,9 +1,11 @@
 package controllers;
 
-import entities.*;
-import services.api.AccessLevelService;
-import services.api.TariffService;
-import services.implementation.*;
+import entities.Contract;
+import entities.TariffOption;
+import services.implementation.ContractServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
+
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -106,6 +108,27 @@ public class First {
 
 
         //7)
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        Contract contract = contractService.getEntityById(2);
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        TariffOption tar1 = tariffOptionService.getEntityById(1);
+        TariffOption tar2 = tariffOptionService.getEntityById(2);
+        TariffOption tar3 = tariffOptionService.getEntityById(3);
+//        tar2.addOptionsIncompatible(tar2);
+//        tar2.addjointTogether(tar2);
+//        tariffOptionService.updateEntity(tar2);
+
+//        System.out.println(tar1);
+//        System.out.println(tar2);
+//        System.out.println(tar3);
+
+//        List<TariffOption> tariffOptions = tariffOptionService.getAllImpossibleTariffOption(tar1.getTariffOptionId());
+        List<TariffOption> tariffOptions = tariffOptionService.getAllJoinedTariffOption(tar2.getTariffOptionId());
+
+        for (TariffOption option : tariffOptions) {
+            System.out.println(option);
+        }
+
 
     }
 }
