@@ -7,6 +7,7 @@
 <%@ page import="entities.TariffOption" %>
 <%@ page import="services.implementation.TariffServiceImpl" %>
 <%@ page import="entities.Tariff" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,6 +82,7 @@
 
                         List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
                         TariffServiceImpl tariffService = (TariffServiceImpl) request.getAttribute("tariffService");
+                        List<Integer> tempTariff = new ArrayList();
                         int i = 1, k;
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
@@ -137,6 +139,7 @@
                     <div class="panel-body">
                         <%
                             for (Tariff tariff : tariffService.getAll()) {
+                                tempTariff.add(tariff.getTariffId());
                                 if (contract.getTariff().equals(tariff)) {%>
 
                         <h3>
@@ -170,31 +173,32 @@
                             }
                         %>
                         <div class="modal-footer">
-                            <form name="test" onclick="change('one')">
+                            <form name="test" onclick="change(<%=i%>,<%=tempTariff%>,<%=contract.getNumber()%>)">
                                 <button type="submit" class="btn btn-success">Change</button>
                             </form>
                             <script>
-                                function change(number) {
-                                    popBox();
-                                    function popBox() {
-                                        x = confirm('Are you sure?' + number);
+                                function change(par1, par2, par3) {
+                                    var rad = document.getElementsByName('optionsRadios' + par1);
+                                    for (var i = 0; i
+                                    < rad.length
+                                            ; i++) {
+                                        if (rad[i].checked) {
+                                            popBox(par2[i], par3);
+                                        }
+                                    }
+
+                                    function popBox(num1, num2) {
+                                        x = confirm('Are you sure? ');
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             var id = 1;
-                                            xhr.open("POST", "/user/Tariffs?changeItem=" + number, true);
+                                            xhr.open("POST", "/user/Tariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                             xhr.send();
                                         }
-                                        function check() {
-                                            var inp = document.getElementsByName('r');
-                                            for (var i = 0; i < inp.length; i++) {
-                                                if (inp[i].type == "radio" && inp[i].checked) {
-                                                    alert("selected: " + inp[i].value);
-                                                }
-                                            }
-                                        }
-
                                     }
-                                }</script>
+
+                                }
+                            </script>
 
                         </div>
                     </div>
