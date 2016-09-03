@@ -148,15 +148,31 @@
                             </thead>
                             <tbody>
                             <%
+                                List<TariffOption> contractOptions = contract.getTariffOptions();
                                 for (int i = 0; i < tariffOptions.size(); i++) {
+                                    if (contractOptions.contains(tariffOptions.get(i))) {
                             %>
-                            <tr class="active">
+                            <tr class="success">
                                 <th scope="row"><%out.print(i + 1);%></th>
                                 <td><%out.print(tariffOptions.get(i).getTitle());%></td>
                                 <td>Column content</td>
                                 <td>Column content</td>
                             </tr>
-                            <%}%>
+                            <%
+                            } else {
+                            %>
+
+                            <tr class="active">
+                                <th scope="row"><%out.print(i + 1);%></th>
+                                <td><%out.print(tariffOptions.get(i).getTitle());%></td>
+                                <td>active</td>
+                                <td>active</td>
+                            </tr>
+
+                            <%
+                                    }
+                                }
+                            %>
 
                             </tbody>
                         </table>
