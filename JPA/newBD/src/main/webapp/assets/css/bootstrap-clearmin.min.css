@@ -2717,13 +2717,15 @@ th {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px
+
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     padding: 9px;
     line-height: 1.428571429;
-    vertical-align: top;
+    vertical-align: center;
     border-top: 1px solid #ddd
+
 }
 
 .table > thead > tr > th {
@@ -3473,7 +3475,7 @@ textarea.form-group-lg .form-control, select[multiple].form-group-lg .form-contr
     background-color: #2ecc71;
     border-color: #29b765;
     line-height: 20px;
-    min-width:80px;
+    min-width:100px;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .btn-success.open, .open > .dropdown-toggle.btn-success {
@@ -3555,7 +3557,7 @@ textarea.form-group-lg .form-control, select[multiple].form-group-lg .form-contr
     background-color: #e74c3c;
     border-color: #e43725;
     line-height: 20px;
-    min-width:80px;
+    min-width:100px;
 }
 
 .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .btn-danger.open, .open > .dropdown-toggle.btn-danger {

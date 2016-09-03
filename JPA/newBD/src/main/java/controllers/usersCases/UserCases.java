@@ -1,5 +1,6 @@
 package controllers.usersCases;
 
+import entities.Contract;
 import entities.TariffOption;
 import entities.User;
 import exceptions.OptionsForEntityNotGotException;
@@ -7,6 +8,7 @@ import exceptions.UserNotFoundException;
 import services.api.AccessLevelService;
 import services.api.UserService;
 import services.implementation.AccessLevelImpl;
+import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
 import services.implementation.UserServiceImpl;
 
@@ -26,14 +28,15 @@ public class UserCases {
     protected EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     public static void main(String[] args) {
-        UserCases userCases = new UserCases();
-        TariffOptionServiceImpl optionService = new TariffOptionServiceImpl();
-        TariffOption one = optionService.getEntityById(1);
-        TariffOption two = optionService.getEntityById(2);
-        System.out.println(one);
-        System.out.println(two);
-        System.out.println(optionService.getAllImpossibleTariffOption(1).get(0).getTitle());
-//        userCases.foo();
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        Contract contract = contractService.getEntityById(1);
+        List<TariffOption> tariffOptions = contract.getTariffOptions();
+//        System.out.println(tariffOptions.get(0));
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        List<TariffOption> tariffOptions1 = tariffOptionService.getAll();
+//        System.out.println(tariffOptions1);
+        System.out.println(tariffOptions1.contains(tariffOptions.get(0)));
+
     }
 
 
@@ -82,8 +85,5 @@ public class UserCases {
 //        }
 //    }
 
-    public void foo() {
-        Query query = entityManager.createQuery("from impossibleOtions");
 
-    }
 }

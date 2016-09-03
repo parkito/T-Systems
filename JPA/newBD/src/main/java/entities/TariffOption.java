@@ -132,4 +132,33 @@ public class TariffOption {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TariffOption that = (TariffOption) o;
+
+        if (tariffOptionId != that.tariffOptionId) return false;
+        if (Double.compare(that.price, price) != 0) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (connectionPrice != null ? !connectionPrice.equals(that.connectionPrice) : that.connectionPrice != null)
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = tariffOptionId;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (connectionPrice != null ? connectionPrice.hashCode() : 0);
+        result = 31 * result + (contracts != null ? contracts.hashCode() : 0);
+        result = 31 * result + (jointTogether != null ? jointTogether.hashCode() : 0);
+        result = 31 * result + (impossibleTogether != null ? impossibleTogether.hashCode() : 0);
+        return result;
+    }
 }

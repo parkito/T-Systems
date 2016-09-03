@@ -81,7 +81,8 @@
                         String userName = (String) request.getAttribute("userName");
 
                         List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
-                        List<TariffOption> tariffOptions = (List<TariffOption>) request.getAttribute("tariffOptions");
+                        List<TariffOption> allTariffOptions = (List<TariffOption>) request.getAttribute("tariffOptions");
+
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -108,6 +109,7 @@
     <div class="container-fluid">
         <%
             for (Contract contract : contracts) {
+                List<TariffOption> contractOptions = contract.getTariffOptions();
 
         %>
         <div class="row cm-fix-height">
@@ -148,15 +150,33 @@
                             </thead>
                             <tbody>
                             <%
-                                List<TariffOption> contractOptions = contract.getTariffOptions();
-                                for (int i = 0; i < tariffOptions.size(); i++) {
-                                    if (contractOptions.contains(tariffOptions.get(i))) {
+                                for (int i = 0; i < allTariffOptions.size(); i++) {
+                                    if (contractOptions.contains(allTariffOptions.get(i))) {
                             %>
                             <tr class="success">
                                 <th scope="row"><%out.print(i + 1);%></th>
-                                <td><%out.print(tariffOptions.get(i).getTitle());%></td>
-                                <td>Column content</td>
-                                <td>Column content</td>
+                                <td><%out.print(allTariffOptions.get(i).getTitle());%></td>
+                                <td>Activated</td>
+                                <td>
+
+                                    <form name="test" onclick="unblock('check')">
+                                        <button type="submit" class="btn btn-danger">Disable</button>
+                                    </form>
+
+                                </td>
+                                <script>
+                                    function unblock(number) {
+                                        popBox();
+                                        function popBox() {
+                                            x = confirm('Are you sure?');
+                                            if (x == true) {
+                                                var xhr = new XMLHttpRequest();
+                                                var id = 1;
+                                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
+                                                xhr.send();
+                                            }
+                                        }
+                                    }</script>
                             </tr>
                             <%
                             } else {
@@ -164,9 +184,29 @@
 
                             <tr class="active">
                                 <th scope="row"><%out.print(i + 1);%></th>
-                                <td><%out.print(tariffOptions.get(i).getTitle());%></td>
-                                <td>active</td>
-                                <td>active</td>
+                                <td><%out.print(allTariffOptions.get(i).getTitle());%></td>
+                                <td>Disabled</td>
+                                <td>
+
+                                    <form name="test" onclick="unblock('check')">
+                                        <button type="submit" class="btn btn-success">Activate</button>
+                                    </form>
+
+                                </td>
+
+                                <script>
+                                    function unblock(number) {
+                                        popBox();
+                                        function popBox() {
+                                            x = confirm('Are you sure?');
+                                            if (x == true) {
+                                                var xhr = new XMLHttpRequest();
+                                                var id = 1;
+                                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
+                                                xhr.send();
+                                            }
+                                        }
+                                    }</script>
                             </tr>
 
                             <%

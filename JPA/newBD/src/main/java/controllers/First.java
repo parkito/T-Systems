@@ -13,7 +13,6 @@ import java.util.List;
  **/
 
 
-// TODO: 8/30/16 work with tariff option
 // TODO: 8/31/16 unic status for accsess level
 public class First {
     public static void main(String[] args) {
@@ -107,13 +106,13 @@ public class First {
 //        contractService.updateEntity(contract);
 
 
-        //7)
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        Contract contract = contractService.getEntityById(2);
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        TariffOption tar1 = tariffOptionService.getEntityById(1);
-        TariffOption tar2 = tariffOptionService.getEntityById(2);
-        TariffOption tar3 = tariffOptionService.getEntityById(3);
+        //7) add possible and joint TariffOptions
+//        ContractServiceImpl contractService = new ContractServiceImpl();
+//        Contract contract = contractService.getEntityById(2);
+//        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+//        TariffOption tar1 = tariffOptionService.getEntityById(1);
+//        TariffOption tar2 = tariffOptionService.getEntityById(2);
+//        TariffOption tar3 = tariffOptionService.getEntityById(3);
 //        tar2.addOptionsIncompatible(tar2);
 //        tar2.addjointTogether(tar2);
 //        tariffOptionService.updateEntity(tar2);
@@ -123,12 +122,12 @@ public class First {
 //        System.out.println(tar3);
 
 //        List<TariffOption> tariffOptions = tariffOptionService.getAllImpossibleTariffOption(tar1.getTariffOptionId());
-        List<TariffOption> tariffOptions = tariffOptionService.getAllJoinedTariffOption(tar2.getTariffOptionId());
-
-        for (TariffOption option : tariffOptions) {
-            System.out.println(option);
-        }
-
-
+//        List<TariffOption> tariffOptions = tariffOptionService.getAllJoinedTariffOption(tar2.getTariffOptionId());
+//
+//        for (TariffOption option : tariffOptions) {
+//            System.out.println(option);
+//        }
+//
+//
     }
 }
