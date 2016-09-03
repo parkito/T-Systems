@@ -3,7 +3,7 @@ package controllers;
 import entities.Contract;
 import entities.User;
 import services.implementation.ContractServiceImpl;
-import services.implementation.TariffServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
 import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -34,7 +34,8 @@ public class TariffOptionServlet extends HttpServlet {
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.setAttribute("contracts", contracts);
-        TariffServiceImpl tariffService = new TariffServiceImpl();
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        req.setAttribute("tariffOptions", tariffOptionService.getAll());
         req.getRequestDispatcher("/WEB-INF/user/TariffOptions.jsp").forward(req, resp);
 
     }

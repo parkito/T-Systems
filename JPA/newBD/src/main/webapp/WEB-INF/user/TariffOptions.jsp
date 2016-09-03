@@ -81,6 +81,7 @@
                         String userName = (String) request.getAttribute("userName");
 
                         List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
+                        List<TariffOption> tariffOptions = (List<TariffOption>) request.getAttribute("tariffOptions");
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
@@ -134,6 +135,32 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff option list</div>
                     <div class="panel-body">
+                        <%%>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Option</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                                for (int i = 0; i < tariffOptions.size(); i++) {
+                            %>
+                            <tr class="active">
+                                <th scope="row"><%out.print(i + 1);%></th>
+                                <td><%out.print(tariffOptions.get(i).getTitle());%></td>
+                                <td>Column content</td>
+                                <td>Column content</td>
+                            </tr>
+                            <%}%>
+
+                            </tbody>
+                        </table>
+
 
                     </div>
                 </div>
