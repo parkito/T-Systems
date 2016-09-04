@@ -1,5 +1,6 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
+    <!--Servlets for users-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.LoginServlet</servlet-class>
@@ -9,16 +10,6 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-
-    <!--<servlet>-->
-    <!--<servlet-name>TariffServlet</servlet-name>-->
-    <!--<servlet-class>controllers.user.TariffServlets</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>TariffServlet</servlet-name>-->
-    <!--<url-pattern>/tariff</url-pattern>-->
-    <!--</servlet-mapping>-->
 
     <servlet>
         <servlet-name>userContractServlet</servlet-name>
@@ -43,7 +34,7 @@
 
     <servlet>
         <servlet-name>TariffServlet</servlet-name>
-        <servlet-class>controllers.user.TariffServlets</servlet-class>
+        <servlet-class>controllers.user.TariffServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -61,16 +52,19 @@
         <url-pattern>/user/TariffOptions</url-pattern>
     </servlet-mapping>
 
+    <!--Servlets for managers-->
 
-    <!--<servlet>-->
-    <!--<servlet-name>MainPageServlet</servlet-name>-->
-    <!--<servlet-class>controllers.MainPageServlet</servlet-class>-->
-    <!--</servlet>-->
+    <servlet>
+        <servlet-name>FindClientServlet</servlet-name>
+        <servlet-class>controllers.manager.FindClientServlet</servlet-class>
+    </servlet>
 
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>MainPageServlet</servlet-name>-->
-    <!--<url-pattern>/home/index.jsp</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>FindClientServlet</servlet-name>
+        <url-pattern>/manager/FindClient</url-pattern>
+    </servlet-mapping>
+
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>

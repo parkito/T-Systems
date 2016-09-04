@@ -1,16 +1,14 @@
 package controllers.user;
 
-import controllers.usersCases.UserCases;
+import controllers.UserCases;
 import entities.Contract;
 import entities.Tariff;
 import entities.User;
 import services.implementation.ContractServiceImpl;
-import services.implementation.TariffOptionServiceImpl;
 import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +20,7 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 // TODO: 9/4/16 thinking about blocking 
-public class TariffServlets extends HttpServlet {
+public class TariffServlet extends HttpServlet {
     private UserCases userCases = new UserCases();
 
     @Override
