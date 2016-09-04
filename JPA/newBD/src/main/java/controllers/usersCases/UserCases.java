@@ -1,4 +1,4 @@
-package controllers;
+package controllers.usersCases;
 
 
 import entities.Contract;

@@ -1,13 +1,19 @@
 package controllers.user;
 
-import controllers.UserCases;
+import controllers.usersCases.UserCases;
+import entities.Contract;
+import entities.User;
+import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
+import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/31/16.

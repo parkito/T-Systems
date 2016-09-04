@@ -96,7 +96,7 @@
         <div class="row cm-fix-height">
             <div class="row cm-fix-height">
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/manager/NewClient" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/user/Contract" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/dashboard.svg" alt="dashboard">
@@ -108,7 +108,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/manager/ChangeClient" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/user/Tariffs" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/notepad.svg" alt="notepad">
@@ -157,7 +157,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/manager/FindClient" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="AboutMe" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/window-layout.svg" alt="cat">

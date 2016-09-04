@@ -1,6 +1,6 @@
 package controllers.user;
 
-import controllers.UserCases;
+import controllers.usersCases.UserCases;
 import entities.Contract;
 import entities.TariffOption;
 import entities.User;
@@ -9,6 +9,7 @@ import services.implementation.TariffOptionServiceImpl;
 import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
