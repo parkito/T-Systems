@@ -10,16 +10,6 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-    <!--<servlet-name>TariffServlet</servlet-name>-->
-    <!--<servlet-class>controllers.user.TariffServlets</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>TariffServlet</servlet-name>-->
-    <!--<url-pattern>/tariff</url-pattern>-->
-    <!--</servlet-mapping>-->
-
     <servlet>
         <servlet-name>userContractServlet</servlet-name>
         <servlet-class>controllers.user.UserContractServlet</servlet-class>
@@ -39,7 +29,6 @@
         <servlet-name>NumberOperationsServlet</servlet-name>
         <url-pattern>/user/NumberOperations</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>TariffServlet</servlet-name>
@@ -61,16 +50,6 @@
         <url-pattern>/user/TariffOptions</url-pattern>
     </servlet-mapping>
 
-
-    <!--<servlet>-->
-    <!--<servlet-name>MainPageServlet</servlet-name>-->
-    <!--<servlet-class>controllers.MainPageServlet</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>MainPageServlet</servlet-name>-->
-    <!--<url-pattern>/home/index.jsp</url-pattern>-->
-    <!--</servlet-mapping>-->
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
