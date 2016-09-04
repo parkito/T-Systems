@@ -9,11 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+// TODO: 9/4/16 избаватсья от падений вначале
+// TODO: 9/4/16 страницы 404
+// TODO: 9/4/16  выход из систмы продумать
+// TODO: 9/4/16  прибраться в коде. Все засрано. особенно в сервлетах
+// TODO: 9/4/16  разобраться с блокировками тарифных опций
+// TODO: 9/4/16  дизайн менеджеров
+// TODO: 9/4/16  писать для менедэеров
 /**
  * Created by Artyom Karnov on 8/29/16.
  * artyom-karnov@yandex.ru
  **/
-// TODO: 9/4/16 thinking about failining during loginin 
+// TODO: 9/4/16 thinking about failining during loginin
 public class LoginServlet extends HttpServlet {
     public static boolean isPreviousDataCorrect = true;
 
