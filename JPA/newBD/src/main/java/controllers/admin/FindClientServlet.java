@@ -19,6 +19,9 @@ public class FindClientServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String number = req.getParameter("number");
+        System.out.println(number);
+        req.setAttribute("usr", number);
+        System.out.println("end");
     }
 }

@@ -98,7 +98,7 @@
                 <h3 style="margin-top:0px">Enter contract number</h3>
                 <div class="input-group input-group-lg">
 
-                    <input type="text" class="form-control" placeholder="Searching" id="textfiled">
+                    <input type="text" class="form-control" placeholder="Searching" id="textFiled">
 
                     <span class="input-group-btn">
                         <form name="new" onclick="find()" class="btn btn-primary md-search-white">
@@ -108,13 +108,13 @@
 
                     <script>
                         function find() {
-                            var text = document.getElementById('textfiled').value;
+                            var text = document.getElementById('textFiled').value;
                             popBox();
                             function popBox() {
                                 x = confirm('Are you sure? ' + text);
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
+                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
                                     xhr.send();
                                 }
                             }
@@ -124,13 +124,31 @@
             </div>
         </div>
     </div>
+    <%
+        String answer = (String) request.getAttribute("user");
+        answer = "user";
+        if (answer != null) {
+    %>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body">
-
+                <h2><%out.print(request.getAttribute("usr"));%></h2>
             </div>
         </div>
     </div>
+    <%
+    } else {
+    %>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2>User wasn't found</h2>
+            </div>
+        </div>
+    </div>
+    <%
+        }
+    %>
 </div>
 
 </div>
