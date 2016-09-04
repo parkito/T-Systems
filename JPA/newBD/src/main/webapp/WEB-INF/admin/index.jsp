@@ -22,12 +22,12 @@
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
                     <li class="active"><a href="/login" class="sf-house">Home</a></li>
-                    <li><a href="/manager/NewClient" class="sf-dashboard">New client</a></li>
-                    <li><a href="/manager/ChangeClient" class="sf-notepad">Change client</a></li>
-                    <li><a href="/manager/EditTariff" class="sf-brick">Edit tariff</a></li>
-                    <li><a href="/manager/EditTariffOption" class="sf-brick-alt">Edit options</a></li>
-                    <li><a href="/manager/ViewClient" class="sf-lock-open">View clients</a></li>
-                    <li><a href="/manager/FindClient" class="sf-window-layout">Find client</a></li>
+                    <li><a href="/admin/NewClient" class="sf-dashboard">New client</a></li>
+                    <li><a href="/admin/ChangeClient" class="sf-notepad">Change client</a></li>
+                    <li><a href="/admin/EditTariff" class="sf-brick">Edit tariff</a></li>
+                    <li><a href="/admin/EditTariffOption" class="sf-brick-alt">Edit options</a></li>
+                    <li><a href="/admin/ViewClient" class="sf-lock-open">View clients</a></li>
+                    <li><a href="/admin/FindClient" class="sf-window-layout">Find client</a></li>
                 </ul>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <div class="arrow"></div>
                 <div class="popover-content">
                     <div class="list-group">
-                        <a href="/user/Offer" class="list-group-item">
+                        <a href="/admin/Offer" class="list-group-item">
                             <h4 class="list-group-item-heading text-overflow">
                                 <i class="fa fa-fw fa-envelope"></i> New offer special for you !
                             </h4>
@@ -75,13 +75,13 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="/user/AboutMe"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="/admin/AboutMe"><i class="fa fa-fw fa-user"></i> Profile</a>
                 </li>
                 <li>
-                    <a href="/user/ChangeData"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                    <a href="/admin/ChangeData"><i class="fa fa-fw fa-cog"></i> Settings</a>
                 </li>
                 <li>
-                    <a href="/user/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                    <a href="/admin/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
                 </li>
             </ul>
         </div>
@@ -96,7 +96,7 @@
         <div class="row cm-fix-height">
             <div class="row cm-fix-height">
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/Contract" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/admin/NewClient" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/dashboard.svg" alt="dashboard">
@@ -108,7 +108,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/Tariffs" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/admin/ChangeClient" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/notepad.svg" alt="notepad">
@@ -120,7 +120,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/TariffOptions" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/admin/EditTariff" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/brick.svg" alt="brick">
@@ -132,7 +132,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/NumberOperations" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/admin/EditTariffOption" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/brick-alt.svg" alt="lock-open">
@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/ChangeData" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/admin/ViewClient" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/lock.svg" alt="window-layout">
@@ -157,7 +157,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="AboutMe" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/admin/FindClient" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/window-layout.svg" alt="cat">

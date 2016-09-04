@@ -27,11 +27,18 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
+        if (userCases.isManager(userCases.getCookiesValue(req, "eMail"))) {
+            req.setAttribute("userName", userCases.getUserName(req));
+            req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("userName", userCases.getUserName(req));
+            req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("here");
         String eMail = req.getParameter("username");
         String password = req.getParameter("password");
         String userName;
@@ -45,7 +52,7 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(userNameCookie);
             req.setAttribute("userName", userName);
             if (userCases.isManager(eMail)) {
-                req.getRequestDispatcher("WEB-INF/manager/index.jsp").forward(req, resp);
+                req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
             } else {
                 req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
             }

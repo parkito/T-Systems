@@ -53,12 +53,12 @@
 
     <servlet>
         <servlet-name>FindClientServlet</servlet-name>
-        <servlet-class>controllers.manager.FindClientServlet</servlet-class>
+        <servlet-class>controllers.admin.FindClientServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>FindClientServlet</servlet-name>
-        <url-pattern>/manager/FindClient</url-pattern>
+        <url-pattern>/admin/FindClient</url-pattern>
     </servlet-mapping>
 
     <error-page>

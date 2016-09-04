@@ -1,4 +1,4 @@
-package controllers.manager;
+package controllers.admin;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ public class FindClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("get");
-        req.getRequestDispatcher("WEB-INF/manager/FindClient.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/FindClient.jsp").forward(req, resp);
 
     }
 
