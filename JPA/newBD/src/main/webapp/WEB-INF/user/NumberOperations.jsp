@@ -102,7 +102,7 @@
 
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><%out.print(userName);%>, your numbers:</h2>
+        <h2 style="margin-top:0;"><%out.print(userName);%>, your options:</h2>
         <p></p>
     </div>
     <div class="container-fluid ">
