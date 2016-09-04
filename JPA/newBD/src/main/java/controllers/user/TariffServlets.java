@@ -27,12 +27,18 @@ public class TariffServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //getting cookies
         String eMail = userCases.getCookiesValue(req, "eMail");
         String userName = userCases.getCookiesValue(req, "userName");
         req.setAttribute("userName", userName);
-        //work with tariff
-        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
+
+        UserServiceImpl userService = new UserServiceImpl();
+        User user = userService.getUserByEMAil(eMail);
+
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+//        System.out.println(contracts.equals(userCases.getAllContractsForUser(eMail)));
+        req.setAttribute("contracts", contracts);
+//        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffServiceImpl tariffService = new TariffServiceImpl();
         req.setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);
@@ -41,7 +47,6 @@ public class TariffServlets extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Post");
         ContractServiceImpl contractService = new ContractServiceImpl();
         TariffServiceImpl tariffService = new TariffServiceImpl();
         int tariffId = Integer.parseInt(req.getParameter("tariffId"));

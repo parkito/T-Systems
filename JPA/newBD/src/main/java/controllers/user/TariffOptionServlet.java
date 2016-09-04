@@ -26,13 +26,12 @@ public class TariffOptionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getSession().getCreationTime());
         String eMail = userCases.getCookiesValue(req, "eMail");
+        String userName = userCases.getCookiesValue(req, "userName");
+        req.setAttribute("userName", userName);
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
-        String userName = user.getName();
-        req.setAttribute("userName", userName);
 
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());

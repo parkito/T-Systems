@@ -1,5 +1,6 @@
 package controllers.user;
 
+import controllers.usersCases.UserCases;
 import entities.Contract;
 import entities.User;
 import services.implementation.ContractServiceImpl;
@@ -18,13 +19,10 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class NumberOperationsServlet extends HttpServlet {
+    private UserCases userCases = new UserCases();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = "";
-        Cookie[] cookies = req.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-        }
+        String eMail = userCases.getCookiesValue(req, "eMail");
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
         req.setAttribute("userObj", user);
