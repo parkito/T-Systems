@@ -1,5 +1,6 @@
 package controllers.user;
 
+import controllers.usersCases.UserCases;
 import entities.Contract;
 import entities.User;
 import services.implementation.ContractServiceImpl;
@@ -19,33 +20,21 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class UserContractServlet extends HttpServlet {
+    private UserCases userCases = new UserCases();
+
     // TODO: 9/2/16 do optimization
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //getting cookies
-        String eMail = "";
-        Cookie[] cookies = req.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-        }
-        UserServiceImpl userService = new UserServiceImpl();
-        User user = userService.getUserByEMAil(eMail);
-        String userName = user.getName();
+        String userName = userCases.getCookiesValue(req, "userName");
+        String eMail = userCases.getCookiesValue(req, "eMail");
         req.setAttribute("userName", userName);
-
         //work with contract
-
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-        req.setAttribute("contracts", contracts);
+        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
         req.setAttribute("tariffOptionService", tariffOptionService);
-
         req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    }
 }

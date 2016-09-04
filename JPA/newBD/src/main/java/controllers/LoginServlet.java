@@ -23,7 +23,7 @@ import java.io.IOException;
  **/
 // TODO: 9/4/16 thinking about failining during loginin
 public class LoginServlet extends HttpServlet {
-    UserCases userCases = new UserCases();
+    private UserCases userCases = new UserCases();
     public static boolean isPreviousDataCorrect = true;
 
     @Override

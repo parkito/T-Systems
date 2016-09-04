@@ -1,13 +1,16 @@
 package controllers.usersCases;
 
 
+import entities.Contract;
 import entities.User;
 import exceptions.UserNotFoundException;
 import services.implementation.AccessLevelImpl;
+import services.implementation.ContractServiceImpl;
 import services.implementation.UserServiceImpl;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/30/16.
@@ -17,6 +20,7 @@ public class UserCases {
     private UserServiceImpl userService = new UserServiceImpl();
     private User user;
     private AccessLevelImpl accessLevelService = new AccessLevelImpl();
+    private ContractServiceImpl contractService = new ContractServiceImpl();
     Cookie[] cookies;
 
 
@@ -70,6 +74,12 @@ public class UserCases {
 
     public String getUserNameByEmail(String eMail) {
         return userService.getUserByEMAil(eMail).getName();
+    }
+
+    public List<Contract> getAllContractsForUser(String eMail) {
+        return contractService.getAllContractsForUser(userService.getUserByEMAil(eMail).getUserId());
+
+
     }
 
 

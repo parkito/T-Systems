@@ -1,5 +1,6 @@
 package controllers.user;
 
+import controllers.usersCases.UserCases;
 import entities.Contract;
 import entities.Tariff;
 import entities.User;
@@ -22,21 +23,16 @@ import java.util.List;
  **/
 // TODO: 9/4/16 thinking about blocking 
 public class TariffServlets extends HttpServlet {
+    private UserCases userCases = new UserCases();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = "";
-        Cookie[] cookies = req.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-        }
-        UserServiceImpl userService = new UserServiceImpl();
-        User user = userService.getUserByEMAil(eMail);
-        String userName = user.getName();
+        //getting cookies
+        String eMail = userCases.getCookiesValue(req, "eMail");
+        String userName = userCases.getCookiesValue(req, "userName");
         req.setAttribute("userName", userName);
-
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-        req.setAttribute("contracts", contracts);
+        //work with tariff
+        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffServiceImpl tariffService = new TariffServiceImpl();
         req.setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);
