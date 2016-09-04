@@ -13,14 +13,12 @@ import java.io.IOException;
 public class FindClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("get");
         req.getRequestDispatcher("/WEB-INF/admin/FindClient.jsp").forward(req, resp);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("post");
 
     }
 }

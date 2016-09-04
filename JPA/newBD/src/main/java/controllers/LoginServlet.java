@@ -1,8 +1,5 @@
 package controllers;
 
-import controllers.usersCases.UserCases;
-import org.hibernate.Session;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;

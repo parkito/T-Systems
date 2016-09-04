@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="demo/assets/css/bootstrap-clearmin.min.css">
     <link rel="stylesheet" type="text/css" href="demo/assets/css/roboto.css">
     <link rel="stylesheet" type="text/css" href="demo/assets/css/font-awesome.min.css">
-    <title>CLEARMIN / LESS</title>
+    <title>K-Mobile</title>
     <style></style>
 </head>
 <body class="cm-login">
