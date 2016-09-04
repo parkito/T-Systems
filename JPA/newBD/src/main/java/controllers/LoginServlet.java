@@ -17,6 +17,7 @@ import java.io.IOException;
 // TODO: 9/4/16  разобраться с блокировками тарифных опций
 // TODO: 9/4/16  дизайн менеджеров
 // TODO: 9/4/16  писать для менедэеров
+// TODO: 9/4/16 что можно сделать с пустыми списками? 
 /**
  * Created by Artyom Karnov on 8/29/16.
  * artyom-karnov@yandex.ru
