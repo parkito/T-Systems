@@ -23,41 +23,36 @@ import java.io.IOException;
  **/
 // TODO: 9/4/16 thinking about failining during loginin
 public class LoginServlet extends HttpServlet {
+    UserCases userCases = new UserCases();
     public static boolean isPreviousDataCorrect = true;
 
     @Override
-    public void init() throws ServletException {
-    }
-
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = UserCases.getCookiesValue(req,"eMail");
-            req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
-//        }
-//        req.getRequestDispatcher("/404.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String eMail = req.getParameter("username");
         String password = req.getParameter("password");
-        UserCases userCases = new UserCases();
+        String userName;
         if (userCases.isAuthorized(eMail, password)) {
-//            resp.sendRedirect("/home/index.jsp");
+            userName = userCases.getUserNameByEmail(eMail);
             Cookie loginCookie = new Cookie("eMail", eMail);
+            Cookie userNameCookie = new Cookie("userName", userName);
             loginCookie.setMaxAge(30 * 60);
+            userNameCookie.setMaxAge(30 * 60);
             resp.addCookie(loginCookie);
-            if (UserCases.isManager(eMail)) {
-                System.out.println("manager");
+            resp.addCookie(userNameCookie);
+            req.setAttribute("userName", userName);
+            if (userCases.isManager(eMail)) {
                 req.getRequestDispatcher("WEB-INF/manager/index.jsp").forward(req, resp);
-
             } else {
                 req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
             }
         } else {
             isPreviousDataCorrect = false;
             req.getRequestDispatcher("index.jsp").forward(req, resp);
-//            resp.sendRedirect("/index.jsp");
         }
     }
 }

@@ -22,10 +22,12 @@ import java.util.List;
  **/
 // TODO: 9/4/16 thinking about blocking again 
 public class TariffOptionServlet extends HttpServlet {
+    private UserCases userCases = new UserCases();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println(req.getSession().getCreationTime());
-        String eMail = UserCases.getCookiesValue(req, "eMail");
+        String eMail = userCases.getCookiesValue(req, "eMail");
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);

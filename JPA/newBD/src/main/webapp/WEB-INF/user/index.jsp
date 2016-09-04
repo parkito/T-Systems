@@ -67,13 +67,7 @@
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
                     <%
-                        String eMail = "123";
-                        Cookie[] cookies = request.getCookies();
-                        for (Cookie cookie : cookies) {
-                            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
-                        }
-                        UserServiceImpl userService = new UserServiceImpl();
-                        String userName = userService.getUserByEMAil(eMail).getName();
+                        String userName = (String) request.getAttribute("userName");
                     %>
                     <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
                 </li>
