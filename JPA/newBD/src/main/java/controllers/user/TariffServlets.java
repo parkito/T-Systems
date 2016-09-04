@@ -33,10 +33,12 @@ public class TariffServlets extends HttpServlet {
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
+//        List<Contract> ctrs = userCases.getAllContractsForUser(eMail);
 
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-//        System.out.println(contracts.equals(userCases.getAllContractsForUser(eMail)));
+//        System.out.println(ctrs);
+//        System.out.println(contracts);
         req.setAttribute("contracts", contracts);
 //        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffServiceImpl tariffService = new TariffServiceImpl();

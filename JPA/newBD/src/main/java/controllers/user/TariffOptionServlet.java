@@ -51,9 +51,7 @@ public class TariffOptionServlet extends HttpServlet {
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
         TariffOption tariffOption = tariffOptionService.getEntityById(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
-        System.out.println(tariffId + " " + contractNumber + " " + method);
         if (method.equals("unable")) {
-            System.out.println("here");
             contract.getTariffOptions().add(tariffOption);
             contractService.updateEntity(contract);
         } else {

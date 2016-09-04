@@ -22,10 +22,12 @@
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
                     <li class="active"><a href="/login" class="sf-house">Home</a></li>
-                    <li><a href="/user/Contract" class="sf-dashboard">Contracts</a></li>
-                    <li><a href="/user/Tariffs" class="sf-notepad">Tariffs</a></li>
-                    <li><a href="/user/TariffOptions" class="sf-brick">Tariff options</a></li>
-                    <li><a href="/user/NumberOperations" class="sf-lock-open">Unlock number</a></li>
+                    <li><a href="/manager/NewClient" class="sf-dashboard">New client</a></li>
+                    <li><a href="/manager/ChangeClient" class="sf-notepad">Change client</a></li>
+                    <li><a href="/manager/EditTariff" class="sf-brick">Edit tariff</a></li>
+                    <li><a href="/manager/EditTariffOption" class="sf-brick-alt">Edit options</a></li>
+                    <li><a href="/manager/ViewClient" class="sf-lock-open">View clients</a></li>
+                    <li><a href="/manager/FindClient" class="sf-window-layout">Find client</a></li>
                 </ul>
             </div>
         </div>
@@ -99,8 +101,8 @@
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/dashboard.svg" alt="dashboard">
                                 </span>
-                            <h4>Contracts</h4>
-                            <small>How much money do I have?</small>
+                            <h4>New client</h4>
+                            <small>Add new contract</small>
 
                         </div>
                     </a>
@@ -111,8 +113,8 @@
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/notepad.svg" alt="notepad">
                                 </span>
-                            <h4>Tariffs</h4>
-                            <small>Much more freedom!</small>
+                            <h4>Change client</h4>
+                            <small>Edit exist data</small>
 
                         </div>
                     </a>
@@ -123,8 +125,8 @@
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/brick.svg" alt="brick">
                                 </span>
-                            <h4>Tariff options</h4>
-                            <small>You can change world!</small>
+                            <h4>Edit tariff</h4>
+                            <small>Edit tariff data</small>
 
                         </div>
                     </a>
@@ -133,10 +135,10 @@
                     <a href="/user/NumberOperations" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
-                                    <img src="../assets/img/sf/lock-open.svg" alt="lock-open">
+                                    <img src="../assets/img/sf/brick-alt.svg" alt="lock-open">
                                 </span>
-                            <h4>Unlock number</h4>
-                            <small>Available for connection!</small>
+                            <h4>Edit options</h4>
+                            <small>Edit tariff options</small>
 
                         </div>
                     </a>
@@ -146,10 +148,10 @@
                     <a href="/user/ChangeData" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
-                    <img src="../assets/img/sf/window-layout.svg" alt="window-layout">
+                    <img src="../assets/img/sf/lock.svg" alt="window-layout">
                     </span>
-                            <h4>Change personal data</h4>
-                            <small>Give more details for better service!</small>
+                            <h4>View clients</h4>
+                            <small>Block/Unblock</small>
 
                         </div>
                     </a>
@@ -158,10 +160,10 @@
                     <a href="AboutMe" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
-                    <img src="../assets/img/sf/cat.svg" alt="cat">
+                    <img src="../assets/img/sf/window-layout.svg" alt="cat">
                     </span>
-                            <h4>AboutMe</h4>
-                            <small>Have fun!</small>
+                            <h4>Find client</h4>
+                            <small>Searching by number</small>
 
                         </div>
                     </a>
@@ -169,9 +171,9 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, <%out.print(userName);%>!</h1>
-                    <p><strong><h3>We are glad to see you here ! </h3></strong>
-                    <h3>Let's discover all opportunities and explore new horizonts! If you need a help, please</h3><a
-                            href="/user/Contract.jsp"><h3>Contact us</h3></a></p>
+                    <p><strong><h3>Remember corporate agreements about client data! </h3></strong>
+                    <h3>Clients are our past, reality, and future! </h3><a
+                            href="/user/Contract.jsp"><h3>Help here</h3></a></p>
                 </div>
 
             </div>
