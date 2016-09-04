@@ -1,12 +1,10 @@
 package controllers;
 
 import controllers.usersCases.UserCases;
+import org.hibernate.Session;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 
@@ -18,6 +16,7 @@ import java.io.IOException;
 // TODO: 9/4/16  дизайн менеджеров
 // TODO: 9/4/16  писать для менедэеров
 // TODO: 9/4/16 что можно сделать с пустыми списками? 
+
 /**
  * Created by Artyom Karnov on 8/29/16.
  * artyom-karnov@yandex.ru
@@ -32,13 +31,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail;
-        Cookie[] cookies = req.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("eMail")) eMail = cookie.getValue();
+        String eMail = UserCases.getCookiesValue(req,"eMail");
             req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
-        }
-        req.getRequestDispatcher("/404.jsp").forward(req, resp);
+//        }
+//        req.getRequestDispatcher("/404.jsp").forward(req, resp);
     }
 
     @Override

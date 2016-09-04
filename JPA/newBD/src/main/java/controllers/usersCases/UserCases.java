@@ -28,14 +28,6 @@ public class UserCases {
     protected EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     public static void main(String[] args) {
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        Contract contract = contractService.getEntityById(1);
-        List<TariffOption> tariffOptions = contract.getTariffOptions();
-//        System.out.println(tariffOptions.get(0));
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        List<TariffOption> tariffOptions1 = tariffOptionService.getAll();
-//        System.out.println(tariffOptions1);
-        System.out.println(tariffOptions1.contains(tariffOptions.get(0)));
 
     }
 
@@ -75,19 +67,15 @@ public class UserCases {
         UserServiceImpl userService = new UserServiceImpl();
         return userService.getUserByEMAil(eMail).getAccessLevel().getStatus().equals("Manager") ? true : false;
     }
-//    public boolean areOptionsPossible(TariffOption first, TariffOption second) {
-//        try {
-////            Query query = entityManager.createQuery("select t from Tariff t where title=:title")
-////                    .setParameter("title", title);
-//            Query query = entityManager.createQuery("select t from impossibleOtions t where tariffOption_id=:id")
-//                    .setParameter("id", first.getTariffOptionId());
-//            return true;
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        } finally {
-//            return false;
-//        }
-//    }
+
+    public static String getCookiesValue(HttpServletRequest req, String value) {
+        Cookie[] cookies = req.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(value))
+                return cookie.getValue();
+        }
+        return "";
+    }
 
 
 }
