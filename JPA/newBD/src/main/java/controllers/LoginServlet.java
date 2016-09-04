@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by Artyom Karnov on 8/29/16.
  * artyom-karnov@yandex.ru
  **/
-
+// TODO: 9/4/16 thinking about failining during loginin 
 public class LoginServlet extends HttpServlet {
     public static boolean isPreviousDataCorrect = true;
 
@@ -42,7 +42,13 @@ public class LoginServlet extends HttpServlet {
             Cookie loginCookie = new Cookie("eMail", eMail);
             loginCookie.setMaxAge(30 * 60);
             resp.addCookie(loginCookie);
-            req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
+            if (UserCases.isManager(eMail)) {
+                System.out.println("manager");
+                req.getRequestDispatcher("WEB-INF/manager/index.jsp").forward(req, resp);
+
+            } else {
+                req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
+            }
         } else {
             isPreviousDataCorrect = false;
             req.getRequestDispatcher("index.jsp").forward(req, resp);

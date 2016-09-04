@@ -71,6 +71,10 @@ public class UserCases {
 
     }
 
+    static public boolean isManager(String eMail) {
+        UserServiceImpl userService = new UserServiceImpl();
+        return userService.getUserByEMAil(eMail).getAccessLevel().getStatus().equals("Manager") ? true : false;
+    }
 //    public boolean areOptionsPossible(TariffOption first, TariffOption second) {
 //        try {
 ////            Query query = entityManager.createQuery("select t from Tariff t where title=:title")

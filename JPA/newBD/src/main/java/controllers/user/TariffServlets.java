@@ -1,9 +1,11 @@
-package controllers;
+package controllers.user;
 
 import entities.Contract;
+import entities.Tariff;
 import entities.User;
 import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
+import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -15,14 +17,13 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Artyom Karnov on 8/31/16.
+ * Created by Artyom Karnov on 8/30/16.
  * artyom-karnov@yandex.ru
  **/
-public class UserContractServlet extends HttpServlet {
-    // TODO: 9/2/16 do optimization
+// TODO: 9/4/16 thinking about blocking 
+public class TariffServlets extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //getting cookies
         String eMail = "";
         Cookie[] cookies = req.getCookies();
         for (Cookie cookie : cookies) {
@@ -33,19 +34,25 @@ public class UserContractServlet extends HttpServlet {
         String userName = user.getName();
         req.setAttribute("userName", userName);
 
-        //work with contract
-
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.setAttribute("contracts", contracts);
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        req.setAttribute("tariffOptionService", tariffOptionService);
+        TariffServiceImpl tariffService = new TariffServiceImpl();
+        req.setAttribute("tariffService", tariffService);
+        req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);
 
-        req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Post");
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        TariffServiceImpl tariffService = new TariffServiceImpl();
+        int tariffId = Integer.parseInt(req.getParameter("tariffId"));
+        Contract contract = contractService.getContractByNumber(req.getParameter("contractNumber"));
+        Tariff tariff = tariffService.getEntityById(tariffId);
+        contract.setTariff(tariff);
+        contractService.updateEntity(contract);
 
     }
 }

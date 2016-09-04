@@ -12,7 +12,7 @@
 
     <!--<servlet>-->
         <!--<servlet-name>TariffServlet</servlet-name>-->
-        <!--<servlet-class>controllers.TariffServlets</servlet-class>-->
+        <!--<servlet-class>controllers.user.TariffServlets</servlet-class>-->
     <!--</servlet>-->
 
     <!--<servlet-mapping>-->
@@ -22,7 +22,7 @@
 
     <servlet>
         <servlet-name>userContractServlet</servlet-name>
-        <servlet-class>controllers.UserContractServlet</servlet-class>
+        <servlet-class>controllers.user.UserContractServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>NumberOperationsServlet</servlet-name>
-        <servlet-class>controllers.NumberOperationsServlet</servlet-class>
+        <servlet-class>controllers.user.NumberOperationsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -43,7 +43,7 @@
 
     <servlet>
         <servlet-name>TariffServlet</servlet-name>
-        <servlet-class>controllers.TariffServlets</servlet-class>
+        <servlet-class>controllers.user.TariffServlets</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -53,7 +53,7 @@
 
     <servlet>
         <servlet-name>TariffOptionServlet</servlet-name>
-        <servlet-class>controllers.TariffOptionServlet</servlet-class>
+        <servlet-class>controllers.user.TariffOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
