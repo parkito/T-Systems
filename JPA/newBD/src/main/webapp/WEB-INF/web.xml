@@ -50,6 +50,17 @@
         <url-pattern>/user/TariffOptions</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>FindClientServlet</servlet-name>
+        <servlet-class>controllers.manager.FindClientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FindClientServlet</servlet-name>
+        <url-pattern>/manager/FindClient</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
