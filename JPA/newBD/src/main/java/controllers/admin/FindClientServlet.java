@@ -22,6 +22,6 @@ public class FindClientServlet extends HttpServlet {
         String number = req.getParameter("number");
         System.out.println(number);
         req.setAttribute("usr", number);
-        System.out.println("end");
+        System.out.println(req.getAttribute("usr"));
     }
 }
