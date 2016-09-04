@@ -1,6 +1,5 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
-    <!--Servlets for users-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.LoginServlet</servlet-class>
@@ -52,24 +51,23 @@
         <url-pattern>/user/TariffOptions</url-pattern>
     </servlet-mapping>
 
-    <!--Servlets for managers-->
-
     <servlet>
-        <servlet-name>FindClientServlet</servlet-name>
-        <servlet-class>controllers.manager.FindClientServlet</servlet-class>
+        <servlet-name>NewClientServlet</servlet-name>
+        <servlet-class>controllers.manager.NewClientServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>FindClientServlet</servlet-name>
-        <url-pattern>/manager/FindClient</url-pattern>
+        <servlet-name>NewClientServlet</servlet-name>
+        <url-pattern>/manager/NewClient</url-pattern>
     </servlet-mapping>
-
 
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
 </web-app>
