@@ -16,7 +16,6 @@
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Client searching</h2>
-        <%--<p></p>--%>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
@@ -97,13 +96,12 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h2><p align="center">
-                        User wasn' t found</p></h2>
+                    User wasn' t found</p></h2>
                 </div>
             </div>
         </div>
         <%}%>
 
     </div>
-    </body>
     <jsp:include page="footer.jsp"></jsp:include>
 </html>

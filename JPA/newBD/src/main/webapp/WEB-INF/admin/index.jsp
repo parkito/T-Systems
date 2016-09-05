@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>K-Mobile</title>
 </head>
-<body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
 <%
     String userName = (String) request.getSession(true).getAttribute("userName");

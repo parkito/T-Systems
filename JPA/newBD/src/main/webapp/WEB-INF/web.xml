@@ -61,14 +61,25 @@
         <url-pattern>/admin/FindClient</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NewClientServlet</servlet-name>
+        <servlet-class>controllers.admin.NewClientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewClientServlet</servlet-name>
+        <url-pattern>/admin/NewClient</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
 
+
     <error-page>
         <error-code>500</error-code>
-        <location>/login</location>
+        <location>/404.jsp</location>
     </error-page>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

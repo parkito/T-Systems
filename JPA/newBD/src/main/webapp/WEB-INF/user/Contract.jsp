@@ -21,7 +21,7 @@
 
 <%
     String userName = (String) request.getSession(true).getAttribute("userName");
-    List<Contract> contracts = (List<Contract>)request.getSession(true).getAttribute("contracts");
+    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
     TariffOptionServiceImpl tariffOptionService = (TariffOptionServiceImpl)
             request.getSession(true).getAttribute("tariffOptionService");
 %>
@@ -31,8 +31,8 @@
         <p></p>
     </div>
     <div class="container-fluid">
-            <%
-          for (Contract contract : contracts) {
+        <%
+            for (Contract contract : contracts) {
         %>
         <div class="row cm-fix-height">
             <div class="col-sm-6">
@@ -81,6 +81,9 @@
                 </div>
             </div>
         </div>
-            <%}%>
-        <jsp:include page="footer.jsp"></jsp:include>
+        <%}%>
+    </div>
+</div>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

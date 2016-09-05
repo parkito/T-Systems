@@ -1,4 +1,4 @@
-<%--<body class="cm-no-transition cm-1-navbar">--%>
+<body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
     <nav class="cm-navbar cm-navbar-primary">
         <div class="cm-flex"><a href="index.jsp" class="cm-logo"></a></div>
