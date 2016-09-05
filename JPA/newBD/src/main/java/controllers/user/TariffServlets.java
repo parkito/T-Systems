@@ -27,7 +27,7 @@ public class TariffServlets extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String eMail = userCases.getCookiesValue(req, "eMail");
         String userName = userCases.getCookiesValue(req, "userName");
-        req.setAttribute("userName", userName);
+        req.getSession(true).setAttribute("userName", userName);
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
@@ -37,10 +37,10 @@ public class TariffServlets extends HttpServlet {
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 //        System.out.println(ctrs);
 //        System.out.println(contracts);
-        req.setAttribute("contracts", contracts);
+        req.getSession(true).setAttribute("contracts", contracts);
 //        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffServiceImpl tariffService = new TariffServiceImpl();
-        req.setAttribute("tariffService", tariffService);
+        req.getSession().setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);
 
     }
