@@ -21,20 +21,25 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     private UserCases userCases = new UserCases();
     public static boolean isPreviousDataCorrect = true;
+    private HttpSession session;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        session = req.getSession(true);
         if (userCases.isManager(userCases.getCookiesValue(req, "eMail"))) {
             req.setAttribute("userName", userCases.getUserName(req));
+            session.setAttribute("userName", userCases.getUserName(req));
             req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
         } else {
             req.setAttribute("userName", userCases.getUserName(req));
+            session.setAttribute("userName", userCases.getUserName(req));
             req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        session = req.getSession(true);
         String eMail = req.getParameter("username");
         String password = req.getParameter("password");
         String userName;
@@ -47,6 +52,7 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(loginCookie);
             resp.addCookie(userNameCookie);
             req.setAttribute("userName", userName);
+            session.setAttribute("userName", userName);
             if (userCases.isManager(eMail)) {
                 req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
             } else {

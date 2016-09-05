@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -22,10 +23,13 @@ public class UserContractServlet extends HttpServlet {
         //getting cookies
         String userName = userCases.getCookiesValue(req, "userName");
         String eMail = userCases.getCookiesValue(req, "eMail");
+        req.getSession(true).setAttribute("userName", userName);
         req.setAttribute("userName", userName);
         //work with contract
+        req.getSession(true).setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        req.getSession(true).setAttribute("tariffOptionService", tariffOptionService);
         req.setAttribute("tariffOptionService", tariffOptionService);
         req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
     }
