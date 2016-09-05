@@ -19,9 +19,10 @@ import java.util.List;
  **/
 public class NumberOperationsServlet extends HttpServlet {
     private UserCases userCases = new UserCases();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = userCases.getCookiesValue(req, "eMail");
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
         req.getSession(true).setAttribute("userObj", user);

@@ -25,9 +25,8 @@ public class TariffServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = userCases.getCookiesValue(req, "eMail");
-        String userName = userCases.getCookiesValue(req, "userName");
-        req.getSession(true).setAttribute("userName", userName);
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
+        String userName = (String) req.getSession(true).getAttribute("userName");
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);

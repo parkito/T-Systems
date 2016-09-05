@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(userNameCookie);
             req.setAttribute("userName", userName);
             req.getSession(true).setAttribute("userName", userName);
+            req.getSession(true).setAttribute("eMail", eMail);
             if (userCases.isManager(eMail)) {
                 req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
             } else {
