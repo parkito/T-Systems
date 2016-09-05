@@ -13,9 +13,8 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-
 <%
-    String userName = (String) request.getSession().getAttribute("userName");
+    String userName = (String) request.getSession(true).getAttribute("userName");
 %>
 
 <div id="global">
@@ -106,21 +105,9 @@
                     <h3>Clients are our past, reality, and future! </h3><a
                             href="/user/Contract.jsp"><h3>Help here</h3></a></p>
                 </div>
-
             </div>
-
-
-            <footer class="cm-footer"><span class="pull-left">Created by Artyom Karnov</span><span
-                    class="pull-right">&copy;T-Systems JavaSchool</span></footer>
         </div>
     </div>
 </div>
-<script src="../assets/js/lib/jquery-2.1.3.min.js"></script>
-<script src="../assets/js/jquery.mousewheel.min.js"></script>
-<script src="../assets/js/jquery.cookie.min.js"></script>
-<script src="../assets/js/fastclick.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/clearmin.min.js"></script>
-<script src="../assets/js/demo/home.js"></script>
-</body>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
