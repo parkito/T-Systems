@@ -27,7 +27,7 @@ public class TariffOptionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String eMail = userCases.getCookiesValue(req, "eMail");
         String userName = userCases.getCookiesValue(req, "userName");
-        req.setAttribute("userName", userName);
+        req.getSession(true).setAttribute("userName", userName);
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
@@ -35,10 +35,8 @@ public class TariffOptionServlet extends HttpServlet {
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.getSession(true).setAttribute("contracts", contracts);
-        req.setAttribute("contracts", contracts);
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
         req.getSession(true).setAttribute("tariffOptions", tariffOptionService.getAll());
-        req.setAttribute("tariffOptions", tariffOptionService.getAll());
         req.getRequestDispatcher("/WEB-INF/user/TariffOptions.jsp").forward(req, resp);
 
     }

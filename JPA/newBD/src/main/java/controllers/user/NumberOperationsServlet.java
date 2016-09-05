@@ -24,12 +24,12 @@ public class NumberOperationsServlet extends HttpServlet {
         String eMail = userCases.getCookiesValue(req, "eMail");
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
-        req.setAttribute("userObj", user);
+        req.getSession(true).setAttribute("userObj", user);
         String userName = user.getName();
-        req.setAttribute("userName", userName);
+        req.getSession(true).setAttribute("userName", userName);
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-        req.setAttribute("contracts", contracts);
+        req.getSession(true).setAttribute("contracts", contracts);
         req.getRequestDispatcher("/WEB-INF/user/NumberOperations.jsp").forward(req, resp);
 
     }
