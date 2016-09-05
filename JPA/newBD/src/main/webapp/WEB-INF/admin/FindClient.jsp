@@ -13,9 +13,6 @@
     <title>K-Mobile</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<%
-    String userName = (String) request.getSession(true).getAttribute("userName");
-%>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Client searching</h2>
@@ -53,33 +50,60 @@
             </div>
         </div>
     </div>
-    <%
-        Contract contract;
-        String check = (String) request.getSession(true).getAttribute("check");
-        if (!check.equals("error")) {
-            contract = (Contract) request.getSession(true).getAttribute("usr");
+        <% String check = (String) request.getSession(true).getAttribute("check");
+        if (check.equals("work"))
+            if (request.getSession(true).getAttribute("usr") != null) {
+                Contract contract = (Contract) request.getSession(true).getAttribute("usr");
+    %>
 
-    %>
     <div class="container-fluid">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h2><%out.print(contract.getNumber());%></h2>
+        <div class="row cm-fix-height">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Contract:</h3>
+                        <p>
+                        <h3><b>Number </b><%out.print(contract.getNumber());%></h3>
+                        <h3><b>Blocked </b><%out.print(contract.getIsBlocked());%></h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Client:</h3>
+                        <p>
+                        <h3><b>Name </b><%out.print(contract.getUser().getName());%></h3>
+                        <h3><b>Surname </b><%out.print(contract.getUser().getSecondName());%></h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Contacts:</h3>
+                        <p>
+                        <h3><b>E-mail </b><%out.print(contract.getUser().getEmail());%></h3>
+                        <h3><b>Adress </b><%out.print(contract.getUser().getAdress());%></h3>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <%
-    } else {
-    %>
-    <div class="container-fluid">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h2>User wasn't found</h2>
+        <%} else {%>
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2><p align="center">
+                        User wasn' t found</p></h2>
+                </div>
             </div>
         </div>
+        <%}%>
+
     </div>
-    <%
-        }
-    %>
-</div>
-<jsp:include page="footer.jsp"></jsp:include>
+    </body>
+    <jsp:include page="footer.jsp"></jsp:include>
 </html>
