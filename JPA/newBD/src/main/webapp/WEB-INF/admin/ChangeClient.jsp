@@ -33,30 +33,30 @@ int i = 1, k;
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <%--<h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>--%>
+        <h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>
         <p></p>
     </div>
 
     <div class="container-fluid">
-        <%--<%--%>
-        <%--for (Contract contract : contracts) {--%>
+        <%
+        for (Contract contract : contracts) {
 
-        <%--%>--%>
+        %>
         <div class="row cm-fix-height">
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <%--<div class="panel-heading">Number: <%out.print(contract.getNumber());%></div>--%>
+                    <div class="panel-heading">Number: <%out.print(contract.getNumber());%></div>
                     <div class="panel-body">
 
                         <h2>
 
-                            <%--<%--%>
-                            <%--out.print("<small>Tariff : </small>");--%>
-                            <%--out.print(contract.getTariff().getTitle());--%>
-                            <%--out.print("<br>");--%>
-                            <%--out.print("<small>Month payment : </small>");--%>
-                            <%--out.print(contract.getTariff().getPrice() + " RUB");--%>
-                            <%--%>--%>
+                            <%
+                            out.print("<small>Tariff : </small>");
+                            out.print(contract.getTariff().getTitle());
+                            out.print("<br>");
+                            out.print("<small>Month payment : </small>");
+                            out.print(contract.getTariff().getPrice() + " RUB");
+                            %>
 
                         </h2>
 
@@ -67,41 +67,41 @@ int i = 1, k;
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff list</div>
                     <div class="panel-body">
-                        <%--<%--%>
-                            <%--for (Tariff tariff : tariffService.getAll()) {--%>
-                                <%--tempTariff.add(tariff.getTariffId());--%>
-                                <%--if (contract.getTariff().equals(tariff)) {%>--%>
+                        <%
+                            for (Tariff tariff : tariffService.getAll()) {
+                                tempTariff.add(tariff.getTariffId());
+                                if (contract.getTariff().equals(tariff)) {%>
 
                         <h3>
                             <div class="radio">
                                 <label>
-                                    <%--<%--%>
-                                    <%--out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"--%>
-                                    <%--+ i + "\" value=\"option" + i + "\" checked disabled>");--%>
-                                    <%--out.print("<b>" + tariff.getTitle() + "</b>");--%>
-                                    <%--%>--%>
+                                    <%
+                                    out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
+                                    + i + "\" value=\"option" + i + "\" checked disabled>");
+                                    out.print("<b>" + tariff.getTitle() + "</b>");
+                                    %>
                                 </label>
                             </div>
                         </h3>
 
-                        <%--<%--%>
-                        <%--} else {--%>
-                        <%--%>--%>
+                        <%
+                        } else {
+                        %>
                         <h3>
                             <div class="radio">
                                 <label>
-                                    <%--<%--%>
-                                    <%--out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"--%>
-                                    <%--+ i + "\" value=\"option" + i + "\">");--%>
-                                    <%--out.print(tariff.getTitle());--%>
-                                    <%--%>--%>
+                                    <%
+                                    out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
+                                    + i + "\" value=\"option" + i + "\">");
+                                    out.print(tariff.getTitle());
+                                    %>
                                 </label>
                             </div>
                         </h3>
-                        <%--<%--%>
-                        <%--}--%>
-                        <%--}--%>
-                        <%--%>--%>
+                        <%
+                        }
+                        }
+                        %>
                         <div class="modal-footer">
                             <form name="test" onclick="change(<%//=i%>,<%//=tempTariff%>,<%//=contract.getNumber()%>)">
                                 <button type="submit" class="btn btn-success">Change</button>
@@ -136,10 +136,10 @@ int i = 1, k;
             </div>
 
         </div>
-        <%--<%--%>
-        <%--i++;--%>
-        <%--}--%>
-        <%--%>--%>
+        <%
+                i++;
+            }
+        %>
     </div>
     <jsp:include page="footer.jsp"></jsp:include>
 </html>

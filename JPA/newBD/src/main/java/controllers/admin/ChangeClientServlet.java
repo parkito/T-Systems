@@ -4,6 +4,7 @@ import entities.Contract;
 import entities.User;
 import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
+import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -25,13 +26,16 @@ public class ChangeClientServlet extends HttpServlet {
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
+//        List<Contract> ctrs = userCases.getAllContractsForUser(eMail);
 
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+//        System.out.println(ctrs);
+//        System.out.println(contracts);
         req.getSession(true).setAttribute("contracts", contracts);
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        req.getSession(true).setAttribute("tariffOptions", tariffOptionService.getAll());
-        System.out.println("here");
+//        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
+        TariffServiceImpl tariffService = new TariffServiceImpl();
+        req.getSession().setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/admin/ChangeClient.jsp").forward(req, resp);
     }
 
