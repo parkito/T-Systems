@@ -157,18 +157,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <%--<%--%>
-                                <%--for (int j = 0; j < allTariffOptions.size(); j++) {--%>
-                                    <%--if (contractOptions.contains(allTariffOptions.get(j))) {--%>
-                            <%--%>--%>
+                            <%
+                                for (int j = 0; j < allTariffOptions.size(); j++) {
+                                    if (contractOptions.contains(allTariffOptions.get(j))) {
+                            %>
                             <tr class="success">
-                                <th scope="row"><%//out.print(j + 1);%></th>
-                                <td><%//out.print(allTariffOptions.get(j).getTitle());%></td>
+                                <th scope="row"><%out.print(j + 1);%></th>
+                                <td><%out.print(allTariffOptions.get(j).getTitle());%></td>
                                 <td>Activated</td>
                                 <td>
 
                                     <form name="test"
-                                          onclick="disable(<%//=contract.getNumber()%>,<%//=allTariffOptions.get(j).getTariffOptionId()%>)">
+                                          onclick="disable(<%=contract.getNumber()%>,<%=allTariffOptions.get(j).getTariffOptionId()%>)">
                                         <button type="submit" class="btn btn-danger">Disable</button>
                                     </form>
 
@@ -187,18 +187,18 @@
                                         }
                                     }</script>
                             </tr>
-                            <%--<%--%>
-                            <%--} else {--%>
-                            <%--%>--%>
+                            <%
+                            } else {
+                            %>
 
                             <tr class="active">
-                                <th scope="row"><%//out.print(j + 1);%></th>
-                                <td><%//out.print(allTariffOptions.get(j).getTitle());%></td>
+                                <th scope="row"><%out.print(j + 1);%></th>
+                                <td><%out.print(allTariffOptions.get(j).getTitle());%></td>
                                 <td>Disabled</td>
                                 <td>
 
                                     <form name="test"
-                                          onclick="unable(<%//=contract.getNumber()%>,<%//=allTariffOptions.get(j).getTariffOptionId()%>)">
+                                          onclick="unable(<%=contract.getNumber()%>,<%=allTariffOptions.get(j).getTariffOptionId()%>)">
                                         <button type="submit" class="btn btn-success">Activate</button>
                                     </form>
 
@@ -219,10 +219,10 @@
                                     }</script>
                             </tr>
 
-                            <%--<%--%>
-                                    <%--}--%>
-                                <%--}--%>
-                            <%--%>--%>
+                            <%
+                                    }
+                                }
+                            %>
 
                             </tbody>
                         </table>
