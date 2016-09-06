@@ -27,19 +27,45 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <input id="name" type="text" class="form-control" placeholder="Enter name">
-                    <br>
-                    <input id="surName" type="text" class="form-control" placeholder="Surname">
-                    <br>
-                    <input id="birthday" type="text" class="form-control" placeholder="Birthday date">
-                    <br>
-                    <input id="passport" type="text" class="form-control" placeholder="Passport">
-                    <br>
-                    <input id="adress" type="text" class="form-control" placeholder="Adress">
-                    <br>
-                    <input id="email" type="text" class="form-control" placeholder="Email">
-                    <br>
-                    <input id="password" type="text" class="form-control" placeholder="Password">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input id="name" type="text" class="form-control" placeholder="Enter name"></td>
+                            <td>active</td>
+                        </tr>
+                        <tr>
+                            <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
+                            <td>active</td>
+                        </tr>
+                        <tr>
+                            <td><input id="birthday" type="text" class="form-control" placeholder="Birthday date"></td>
+                            <td>active</td>
+                        </tr>
+                        <tr>
+                            <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
+                            <td>active</td>
+                        </tr>
+                        <tr>
+                            <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
+                            <td>active</td>
+                        </tr>
+                        <tr>
+                            <td><input id="email" type="text" class="form-control" placeholder="Email"></td>
+                            <td>active</td>
+                        </tr>
+                        <tr>
+                            <td><input id="password" type="text" class="form-control" placeholder="Password"</td>
+                            <td>active</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
             <div class="modal-footer">

@@ -4150,7 +4150,8 @@ tbody.collapse.in {
     border-collapse: separate;
     float:left;
     line-height: 46px;
-    width: 500px;
+    width: 700px;
+    font-size: 24px;
 
 
 
