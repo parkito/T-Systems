@@ -71,6 +71,16 @@
         <url-pattern>/admin/NewClient</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangeClientServlet</servlet-name>
+        <servlet-class>controllers.admin.ChangeClientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeClientServlet</servlet-name>
+        <url-pattern>/admin/ChangeClient</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
