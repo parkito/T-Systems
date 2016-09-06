@@ -36,6 +36,8 @@ public class ChangeClientServlet extends HttpServlet {
 //        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffServiceImpl tariffService = new TariffServiceImpl();
         req.getSession().setAttribute("tariffService", tariffService);
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        req.getSession(true).setAttribute("tariffOptions", tariffOptionService.getAll());
         req.getRequestDispatcher("/WEB-INF/admin/ChangeClient.jsp").forward(req, resp);
     }
 

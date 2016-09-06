@@ -23,27 +23,31 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%
 
-User user = (User) request.getSession(true).getAttribute("user");
-String userName = (String) request.getSession(true).getAttribute("userName");
+    User user = (User) request.getSession(true).getAttribute("user");
+    String userName = (String) request.getSession(true).getAttribute("userName");
 
-List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
-TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
-List<Integer> tempTariff = new ArrayList();
-int i = 1, k;
+    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
+    TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
+    List<Integer> tempTariff = new ArrayList();
+    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getSession(true).getAttribute("tariffOptions");
+    int i = 1, k;
 %>
 <div id="global">
+
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>
         <p></p>
     </div>
 
-    <div class="container-fluid">
-        <%
+    <%
         for (Contract contract : contracts) {
+            List<TariffOption> contractOptions = contract.getTariffOptions();
 
-        %>
+    %>
+    <div class="container-fluid">
         <div class="row cm-fix-height">
-            <div class="col-sm-6">
+
+            <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">Number: <%out.print(contract.getNumber());%></div>
                     <div class="panel-body">
@@ -51,22 +55,22 @@ int i = 1, k;
                         <h2>
 
                             <%
-                            out.print("<small>Tariff : </small>");
-                            out.print(contract.getTariff().getTitle());
-                            out.print("<br>");
-                            out.print("<small>Month payment : </small>");
-                            out.print(contract.getTariff().getPrice() + " RUB");
+                                out.print("<small>Tariff : </small>");
+                                out.print(contract.getTariff().getTitle());
+                                out.print("<br>");
+                                out.print("<small>Month payment : </small>");
+                                out.print(contract.getTariff().getPrice() + " RUB");
                             %>
-
                         </h2>
-
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+
+            <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff list</div>
                     <div class="panel-body">
+
                         <%
                             for (Tariff tariff : tariffService.getAll()) {
                                 tempTariff.add(tariff.getTariffId());
@@ -76,9 +80,9 @@ int i = 1, k;
                             <div class="radio">
                                 <label>
                                     <%
-                                    out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
-                                    + i + "\" value=\"option" + i + "\" checked disabled>");
-                                    out.print("<b>" + tariff.getTitle() + "</b>");
+                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
+                                                + i + "\" value=\"option" + i + "\" checked disabled>");
+                                        out.print("<b>" + tariff.getTitle() + "</b>");
                                     %>
                                 </label>
                             </div>
@@ -91,19 +95,20 @@ int i = 1, k;
                             <div class="radio">
                                 <label>
                                     <%
-                                    out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
-                                    + i + "\" value=\"option" + i + "\">");
-                                    out.print(tariff.getTitle());
+                                        out.print("<input type=\"radio\" name=\"optionsRadios" + i + "\" id=\"optionsRadios"
+                                                + i + "\" value=\"option" + i + "\">");
+                                        out.print(tariff.getTitle());
                                     %>
                                 </label>
                             </div>
                         </h3>
                         <%
-                        }
-                        }
+                                }
+                            }
                         %>
                         <div class="modal-footer">
-                            <form name="test" onclick="change(<%//=i%>,<%//=tempTariff%>,<%//=contract.getNumber()%>)">
+                            <form name="test"
+                                  onclick="change(<%//=i%>,<%//=tempTariff%>,<%//=contract.getNumber()%>)">
                                 <button type="submit" class="btn btn-success">Change</button>
                             </form>
                             <script>
@@ -131,15 +136,111 @@ int i = 1, k;
                             </script>
 
                         </div>
+
+
                     </div>
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tariff options</div>
+                    <div class="panel-body">
 
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Option</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%--<%--%>
+                                <%--for (int j = 0; j < allTariffOptions.size(); j++) {--%>
+                                    <%--if (contractOptions.contains(allTariffOptions.get(j))) {--%>
+                            <%--%>--%>
+                            <tr class="success">
+                                <th scope="row"><%//out.print(j + 1);%></th>
+                                <td><%//out.print(allTariffOptions.get(j).getTitle());%></td>
+                                <td>Activated</td>
+                                <td>
+
+                                    <form name="test"
+                                          onclick="disable(<%//=contract.getNumber()%>,<%//=allTariffOptions.get(j).getTariffOptionId()%>)">
+                                        <button type="submit" class="btn btn-danger">Disable</button>
+                                    </form>
+
+                                </td>
+                                <script>
+                                    function disable(par1, par2) {
+                                        popBox();
+                                        function popBox() {
+                                            x = confirm('Are you sure? ');
+                                            if (x == true) {
+                                                var xhr = new XMLHttpRequest();
+                                                xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
+                                                        + "&tariff=" + par2 + "&method=disable", true);
+                                                xhr.send();
+                                            }
+                                        }
+                                    }</script>
+                            </tr>
+                            <%--<%--%>
+                            <%--} else {--%>
+                            <%--%>--%>
+
+                            <tr class="active">
+                                <th scope="row"><%//out.print(j + 1);%></th>
+                                <td><%//out.print(allTariffOptions.get(j).getTitle());%></td>
+                                <td>Disabled</td>
+                                <td>
+
+                                    <form name="test"
+                                          onclick="unable(<%//=contract.getNumber()%>,<%//=allTariffOptions.get(j).getTariffOptionId()%>)">
+                                        <button type="submit" class="btn btn-success">Activate</button>
+                                    </form>
+
+                                </td>
+
+                                <script>
+                                    function unable(par1, par2) {
+                                        popBox();
+                                        function popBox() {
+                                            x = confirm('Are you sure? ');
+                                            if (x == true) {
+                                                var xhr = new XMLHttpRequest();
+                                                xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
+                                                        + "&tariff=" + par2 + "&method=unable", true);
+                                                xhr.send();
+                                            }
+                                        }
+                                    }</script>
+                            </tr>
+
+                            <%--<%--%>
+                                    <%--}--%>
+                                <%--}--%>
+                            <%--%>--%>
+
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
         </div>
-        <%
-                i++;
-            }
-        %>
     </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+</div>
+<%
+        i++;
+    }
+%>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

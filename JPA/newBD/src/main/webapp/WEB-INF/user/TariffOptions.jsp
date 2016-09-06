@@ -67,7 +67,6 @@
                     <div class="panel-heading">Tariff option list</div>
                     <div class="panel-body">
                         <%%>
-
                         <table class="table">
                             <thead>
                             <tr>
