@@ -19,7 +19,7 @@ public class NewClientServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getSession(true).setAttribute("nameStat", "1");
+//        req.getSession(true).setAttribute("nameStat", "");
 //        req.getSession(true).setAttribute("surNameStat", "");
 //        req.getSession(true).setAttribute("birthday", "");
 //        req.getSession(true).setAttribute("passport", "");
@@ -32,7 +32,7 @@ public class NewClientServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        boolean add = true;
         String name = req.getParameter("name");
         String secondName = req.getParameter("surName");
         String birthdayDate = req.getParameter("birthday");
@@ -41,18 +41,54 @@ public class NewClientServlet extends HttpServlet {
         String eMail = req.getParameter("email");
         String password = req.getParameter("password");
 
-        req.getSession(true).setAttribute("nameStat", "OK");
-        req.getSession(true).setAttribute("surNameStat", "OK");
-        req.getSession(true).setAttribute("birthday", "OK");
-        req.getSession(true).setAttribute("passport", "OK");
-        req.getSession(true).setAttribute("adress", "OK");
+        if (name.equals("")) {
+            req.getSession(true).setAttribute("nameStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("nameStat", "OK");
 
-        if (!managerCases.isUserExists(eMail)) {
+        if (secondName.equals("")) {
+            req.getSession(true).setAttribute("surNameStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("surNameStat", "OK");
+
+        if (birthdayDate.equals("")) {
+            req.getSession(true).setAttribute("birthday", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("birthday", "OK");
+
+        if (passport.equals("")) {
+            req.getSession(true).setAttribute("passport", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("passport", "OK");
+
+        if (adress.equals("")) {
+            req.getSession(true).setAttribute("adress", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("adress", "OK");
+
+
+        if (managerCases.isUserExists(eMail)) {
             req.getSession(true).setAttribute("email", "Error");
+            add = false;
         } else {
             req.getSession(true).setAttribute("email", "OK");
         }
-        req.getSession(true).setAttribute("password", "OK");
+
+
+        if (password.equals("")) {
+            req.getSession(true).setAttribute("password", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("password", "OK");
+
+
+        if (add == true) managerCases.addUserToBase(name, secondName,
+                birthdayDate, passport, adress, eMail, password);
 
     }
 }

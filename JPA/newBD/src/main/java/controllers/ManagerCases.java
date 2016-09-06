@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.User;
 import exceptions.UserNotFoundException;
 import services.implementation.UserServiceImpl;
 
@@ -12,10 +13,19 @@ public class ManagerCases {
 
     public boolean isUserExists(String eMail) {
         try {
-            System.out.println(userService.getUserByEMAil(eMail).getEmail());
+            userService.getUserByEMAil(eMail).getEmail();
         } catch (UserNotFoundException ex) {
             return false;
         }
         return true;
+    }
+
+    public void addUserToBase(String name, String secondName, String birthdayData,
+                              String passport, String adress,
+                              String email, String password) {
+        User user = new User(name, secondName, birthdayData,
+                passport, adress,
+                email, password);
+        userService.createEntity(user);
     }
 }

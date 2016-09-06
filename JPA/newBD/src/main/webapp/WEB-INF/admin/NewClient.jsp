@@ -28,7 +28,7 @@
             <div class="panel-body">
                 <div class="input-group">
                     <%
-                        String nameStat = (String) request.getSession(true).getAttribute("nameStat");
+                        String nameStat = (String) request.getSession().getAttribute("nameStat");
                         String surNameStat = (String) request.getSession(true).getAttribute("surNameStat");
                         String birthday = (String) request.getSession(true).getAttribute("birthday");
                         String passport = (String) request.getSession(true).getAttribute("passport");
@@ -47,32 +47,32 @@
                         <tr>
                             <td><input id="name" type="text" class="form-control" placeholder="Enter name"></td>
                             <td>
-                                <font color="aqua"><%out.print(nameStat);%></font>
+                                <font color="blue"><%out.print(nameStat);%></font>
                             </td>
                         </tr>
                         <tr>
                             <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
-                            <td><font color="aqua"><%out.print(surNameStat);%></font></td>
+                            <td><font color="blue"><%out.print(surNameStat);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
-                            <td><font color="aqua"><%out.print(birthday);%></font></td>
+                            <td><font color="blue"><%out.print(birthday);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
-                            <td><font color="aqua"><%out.print(passport);%></font></td>
+                            <td><font color="blue"><%out.print(passport);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
-                            <td><font color="aqua"><%out.print(adress);%></font></td>
+                            <td><font color="blue"><%out.print(adress);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
-                            <td><font color="aqua"><%out.print(email);%></font></td>
+                            <td><font color="blue"><%out.print(email);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="password" type="password" class="form-control" placeholder="Password"></td>
-                            <td><font color="aqua"><%out.print(password);%></font></td>
+                            <td><font color="blue"><%out.print(password);%></font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -94,7 +94,7 @@
                         var password = document.getElementById('password').value;
                         popBox();
                         function popBox() {
-                            x = confirm('Are you sure? ' + adress);
+                            x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName
