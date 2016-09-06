@@ -27,6 +27,15 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
+                    <%
+                        String nameStat = (String) request.getSession(true).getAttribute("nameStat");
+                        String surNameStat = (String) request.getSession(true).getAttribute("surNameStat");
+                        String birthday = (String) request.getSession(true).getAttribute("birthday");
+                        String passport = (String) request.getSession(true).getAttribute("passport");
+                        String adress = (String) request.getSession(true).getAttribute("adress");
+                        String email = (String) request.getSession(true).getAttribute("email");
+                        String password = (String) request.getSession(true).getAttribute("password");
+                    %>
                     <table class="table">
                         <thead>
                         <tr>
@@ -37,31 +46,33 @@
                         <tbody>
                         <tr>
                             <td><input id="name" type="text" class="form-control" placeholder="Enter name"></td>
-                            <td>active</td>
+                            <td>
+                                <font color="aqua"><%out.print(nameStat);%></font>
+                            </td>
                         </tr>
                         <tr>
                             <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
-                            <td>active</td>
+                            <td><font color="aqua"><%out.print(surNameStat);%></font></td>
                         </tr>
                         <tr>
-                            <td><input id="birthday" type="text" class="form-control" placeholder="Birthday date"></td>
-                            <td>active</td>
+                            <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
+                            <td><font color="aqua"><%out.print(birthday);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
-                            <td>active</td>
+                            <td><font color="aqua"><%out.print(passport);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
-                            <td>active</td>
+                            <td><font color="aqua"><%out.print(adress);%></font></td>
                         </tr>
                         <tr>
-                            <td><input id="email" type="text" class="form-control" placeholder="Email"></td>
-                            <td>active</td>
+                            <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
+                            <td><font color="aqua"><%out.print(email);%></font></td>
                         </tr>
                         <tr>
-                            <td><input id="password" type="text" class="form-control" placeholder="Password"</td>
-                            <td>active</td>
+                            <td><input id="password" type="password" class="form-control" placeholder="Password"></td>
+                            <td><font color="aqua"><%out.print(password);%></font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -69,19 +80,26 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form name="test" onclick="add('hi')">
+                <form name="test" onclick="add()">
                     <button type="submit" class="btn btn-success">Create</button>
                 </form>
                 <script>
-                    function add(par1) {
+                    function add() {
                         var name = document.getElementById('name').value;
                         var surName = document.getElementById('surName').value;
+                        var birthday = document.getElementById('birthday').value;
+                        var passport = document.getElementById('passport').value;
+                        var adress = document.getElementById('adress').value;
+                        var email = document.getElementById('email').value;
+                        var password = document.getElementById('password').value;
                         popBox();
                         function popBox() {
-                            x = confirm('Are you sure? ' + name);
+                            x = confirm('Are you sure? ' + adress);
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName, true);
+                                xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName
+                                        + "&birthday=" + birthday + "&passport=" + passport
+                                        + "&adress=" + adress + "&email=" + email + "&password=" + password, true);
                                 xhr.send();
                             }
                         }
