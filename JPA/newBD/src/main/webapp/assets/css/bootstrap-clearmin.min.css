@@ -4147,13 +4147,21 @@ tbody.collapse.in {
 .input-group {
     position: relative;
     display: table;
-    border-collapse: separate
+    border-collapse: separate;
+    float:left;
+    line-height: 46px;
+    width: 500px;
+
+
+
+
+
 }
 
 .input-group[class*="col-"] {
     float: none;
     padding-left: 0;
-    padding-right: 0
+    padding-right: 0;
 }
 
 .input-group .form-control {
@@ -4173,7 +4181,7 @@ tbody.collapse.in {
 }
 
 select.input-group-lg > .form-control, select.input-group-lg > .input-group-addon, select.input-group-lg > .input-group-btn > .btn {
-    height: 46px;
+    height: px;
     line-height: 46px
 }
 

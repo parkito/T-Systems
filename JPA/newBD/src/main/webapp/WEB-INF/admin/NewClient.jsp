@@ -20,15 +20,52 @@
 <
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;">Client searching</h2>
+        <h2 style="margin-top:0;">Add new client</h2>
         <%--<p></p>--%>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body">
+                <div class="input-group">
+                    <input id="name" type="text" class="form-control" placeholder="Enter name">
+                    <br>
+                    <input id="surName" type="text" class="form-control" placeholder="Surname">
+                    <br>
+                    <input id="birthday" type="text" class="form-control" placeholder="Birthday date">
+                    <br>
+                    <input id="passport" type="text" class="form-control" placeholder="Passport">
+                    <br>
+                    <input id="adress" type="text" class="form-control" placeholder="Adress">
+                    <br>
+                    <input id="email" type="text" class="form-control" placeholder="Email">
+                    <br>
+                    <input id="password" type="text" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form name="test" onclick="add('hi')">
+                    <button type="submit" class="btn btn-success">Create</button>
+                </form>
+                <script>
+                    function add(par1) {
+                        var name = document.getElementById('name').value;
+                        var surName = document.getElementById('surName').value;
+                        popBox();
+                        function popBox() {
+                            x = confirm('Are you sure? ' + name);
+                            if (x == true) {
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName, true);
+                                xhr.send();
+                            }
+                        }
+
+                    }
+                </script>
             </div>
         </div>
     </div>
 
-    <jsp:include page="footer.jsp"></jsp:include>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
