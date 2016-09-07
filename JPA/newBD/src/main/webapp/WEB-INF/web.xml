@@ -56,6 +56,17 @@
         <servlet-class>controllers.admin.FindClientServlet</servlet-class>
     </servlet>
 
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>FindClientServlet</servlet-name>-->
+        <!--<url-pattern>/admin/index</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <!--<servlet>-->
+        <!--<servlet-name>FindClientServlet</servlet-name>-->
+        <!--<servlet-class>controllers.admin.FindClientServlet</servlet-class>-->
+    <!--</servlet>-->
+
     <servlet-mapping>
         <servlet-name>FindClientServlet</servlet-name>
         <url-pattern>/admin/FindClient</url-pattern>
