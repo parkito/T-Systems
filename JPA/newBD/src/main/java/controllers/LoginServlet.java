@@ -5,13 +5,19 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 
-// TODO: 9/4/16 страницы 404
 // TODO: 9/4/16  выход из систмы продумать
 // TODO: 9/4/16  прибраться в коде. Все засрано. особенно в сервлетах
 // TODO: 9/4/16  разобраться с блокировками тарифных опций
 // TODO: 9/4/16  дизайн менеджеров
 // TODO: 9/4/16  писать для менедэеров
 // TODO: 9/4/16 что можно сделать с пустыми списками? т.е. когда на странице нет ни одного элемента.
+
+// TODO: 9/7/16 errors
+// TODO: 9/7/16 1) Not update content after first changing on user/Tariffs
+// TODO: 9/7/16 2) Incorrect login status after sign out (users)
+// TODO: 9/7/16 3) /admin/NewClient - null from srtatch
+// TODO: 9/7/16 4) huge space between blocks on /admin/ChangeClient
+// TODO: 9/7/16 5) http://localhost:8080/admin/NewClient - mistaken access
 
 /**
  * Created by Artyom Karnov on 8/29/16.

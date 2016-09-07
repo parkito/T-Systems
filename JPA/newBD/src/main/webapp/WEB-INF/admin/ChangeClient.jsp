@@ -108,7 +108,7 @@
                         %>
                         <div class="modal-footer">
                             <form name="test"
-                                  onclick="change(<%//=i%>,<%//=tempTariff%>,<%//=contract.getNumber()%>)">
+                                  onclick="change(<%=i%>,<%=tempTariff%>,<%=contract.getNumber()%>)">
                                 <button type="submit" class="btn btn-success">Change</button>
                             </form>
                             <script>
