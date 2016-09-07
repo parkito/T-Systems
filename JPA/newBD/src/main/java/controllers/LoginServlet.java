@@ -18,6 +18,7 @@ import java.io.IOException;
 // TODO: 9/7/16 3) /admin/NewClient - null from srtatch
 // TODO: 9/7/16 4) huge space between blocks on /admin/ChangeClient
 // TODO: 9/7/16 5) http://localhost:8080/admin/NewClient - mistaken access
+// TODO: 9/7/16 6) for security set up getting password from session
 
 /**
  * Created by Artyom Karnov on 8/29/16.
@@ -57,6 +58,7 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("userName", userName);
             req.getSession(true).setAttribute("userName", userName);
             req.getSession(true).setAttribute("eMail", eMail);
+            isPreviousDataCorrect = true;
             if (userCases.isManager(eMail)) {
                 req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
             } else {

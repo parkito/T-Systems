@@ -86,12 +86,26 @@
         <location>/404.jsp</location>
     </error-page>
 
-
     <error-page>
         <error-code>500</error-code>
         <location>/404.jsp</location>
     </error-page>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <session-config>
+        <session-timeout>30</session-timeout> <!-- in minutes -->
+    </session-config>
+
+    <servlet>
+        <servlet-name>ExitServlet</servlet-name>
+        <servlet-class>controllers.ExitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/Exit</url-pattern>
+    </servlet-mapping>
 </web-app>

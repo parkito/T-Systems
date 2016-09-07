@@ -68,7 +68,7 @@
                     <a href="/admin/ChangeData"><i class="fa fa-fw fa-cog"></i> Settings</a>
                 </li>
                 <li>
-                    <a href="/admin/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                    <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
                 </li>
             </ul>
         </div>
