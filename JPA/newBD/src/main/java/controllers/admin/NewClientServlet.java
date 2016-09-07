@@ -43,7 +43,6 @@ public class NewClientServlet extends HttpServlet {
         String password = req.getParameter("password");
 
 
-
         req.getSession(false).removeAttribute("nameStat");
         req.getSession(false).removeAttribute("surNameStat");
         req.getSession(true).removeAttribute("birthday");
@@ -83,7 +82,7 @@ public class NewClientServlet extends HttpServlet {
             req.getSession(true).setAttribute("adress", "OK");
 
 
-        if (managerCases.isUserExists(eMail)) {
+        if (managerCases.isUserExists(eMail) || eMail.equals("")) {
             req.getSession(true).setAttribute("email", "Error");
             add = false;
         } else {
