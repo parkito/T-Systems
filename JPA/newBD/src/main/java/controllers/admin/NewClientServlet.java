@@ -19,13 +19,13 @@ public class NewClientServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getSession(true).setAttribute("nameStat", "");
-//        req.getSession(true).setAttribute("surNameStat", "");
-//        req.getSession(true).setAttribute("birthday", "");
-//        req.getSession(true).setAttribute("passport", "");
-//        req.getSession(true).setAttribute("adress", "");
-//        req.getSession(true).setAttribute("email", "");
-//        req.getSession(true).setAttribute("password", "");
+//        req.getSession(false).setAttribute("nameStat", " ");
+//        req.getSession(true).setAttribute("surNameStat", " ");
+//        req.getSession(true).setAttribute("birthday", " ");
+//        req.getSession(true).setAttribute("passport", " ");
+//        req.getSession(true).setAttribute("adress", " ");
+//        req.getSession(true).setAttribute("email", " ");
+//        req.getSession(true).setAttribute("password", " ");
         req.getRequestDispatcher("/WEB-INF/admin/NewClient.jsp").forward(req, resp);
 
     }
@@ -33,6 +33,7 @@ public class NewClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         boolean add = true;
+
         String name = req.getParameter("name");
         String secondName = req.getParameter("surName");
         String birthdayDate = req.getParameter("birthday");
@@ -40,6 +41,16 @@ public class NewClientServlet extends HttpServlet {
         String adress = req.getParameter("adress");
         String eMail = req.getParameter("email");
         String password = req.getParameter("password");
+
+
+
+        req.getSession(false).removeAttribute("nameStat");
+        req.getSession(false).removeAttribute("surNameStat");
+        req.getSession(true).removeAttribute("birthday");
+        req.getSession(true).removeAttribute("passport");
+        req.getSession(true).removeAttribute("adress");
+        req.getSession(true).removeAttribute("email");
+        req.getSession(true).removeAttribute("password");
 
         if (name.equals("")) {
             req.getSession(true).setAttribute("nameStat", "Error");

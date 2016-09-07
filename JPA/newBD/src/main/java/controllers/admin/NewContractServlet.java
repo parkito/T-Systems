@@ -1,4 +1,4 @@
-package controllers;
+package controllers.admin;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +10,15 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/7/16.
  * artyom-karnov@yandex.ru
  **/
-public class ExitServlet extends HttpServlet {
+public class NewContractServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession(true).removeAttribute("userName");
-        req.getSession(true).removeAttribute("contracts");
-        req.getSession(false).invalidate();
-        resp.sendRedirect("/index.jsp");
+        System.out.println("here");
+        req.getRequestDispatcher("/WEB-INF/admin/NewContract.jsp").forward(req, resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
 }

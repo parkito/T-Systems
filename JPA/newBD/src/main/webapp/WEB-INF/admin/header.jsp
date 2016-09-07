@@ -10,7 +10,13 @@
                 <ul class="cm-menu-items">
                     <li class="active"><a href="/login" class="sf-house">Home</a></li>
                     <li><a href="/admin/NewClient" class="sf-dashboard">New client</a></li>
-                    <li><a href="/admin/ChangeClient" class="sf-notepad">Change client</a></li>
+                    <li class="cm-submenu">
+                        <a class="sf-notepad">Change client<span class="caret"></span></a>
+                        <ul>
+                            <li><a href="/admin/NewContract">New contract</a></li>
+                            <li><a href="/admin/ChangeClient">Change contract</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/admin/EditTariff" class="sf-brick">Edit tariff</a></li>
                     <li><a href="/admin/EditTariffOption" class="sf-brick-alt">Edit options</a></li>
                     <li><a href="/admin/ViewClient" class="sf-lock-open">View clients</a></li>

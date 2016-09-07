@@ -28,13 +28,48 @@
             <div class="panel-body">
                 <div class="input-group">
                     <%
-                        String nameStat = (String) request.getSession().getAttribute("nameStat");
-                        String surNameStat = (String) request.getSession(true).getAttribute("surNameStat");
-                        String birthday = (String) request.getSession(true).getAttribute("birthday");
-                        String passport = (String) request.getSession(true).getAttribute("passport");
-                        String adress = (String) request.getSession(true).getAttribute("adress");
-                        String email = (String) request.getSession(true).getAttribute("email");
-                        String password = (String) request.getSession(true).getAttribute("password");
+                        String nameStat;
+                        String surName;
+                        String birthday;
+                        String passport;
+                        String adress;
+                        String email;
+                        String password;
+                        if (request.getSession().getAttribute("nameStat") == null)
+                            nameStat = "";
+                        else
+                            nameStat = (String) request.getSession().getAttribute("nameStat");
+
+                        if (request.getSession(true).getAttribute("surNameStat") == null)
+                            surName = "";
+                        else
+                            surName = (String) request.getSession(true).getAttribute("surNameStat");
+
+                        if (request.getSession(true).getAttribute("birthday") == null)
+                            birthday = "";
+                        else
+                            birthday = (String) request.getSession(true).getAttribute("birthday");
+
+                        if (request.getSession(true).getAttribute("passport") == null)
+                            passport = "";
+                        else
+                            passport = (String) request.getSession(true).getAttribute("passport");
+
+                        if (request.getSession(true).getAttribute("adress") == null)
+                            adress = "";
+                        else
+                            adress = (String) request.getSession(true).getAttribute("adress");
+
+                        if (request.getSession(true).getAttribute("email") == null)
+                            email = "";
+                        else
+                            email = (String) request.getSession(true).getAttribute("email");
+
+                        if (request.getSession(true).getAttribute("password") == null)
+                            password = "";
+                        else
+                            password = (String) request.getSession(true).getAttribute("password");
+
                     %>
                     <table class="table">
                         <thead>
@@ -52,7 +87,7 @@
                         </tr>
                         <tr>
                             <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
-                            <td><font color="blue"><%out.print(surNameStat);%></font></td>
+                            <td><font color="blue"><%out.print(surName);%></font></td>
                         </tr>
                         <tr>
                             <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
