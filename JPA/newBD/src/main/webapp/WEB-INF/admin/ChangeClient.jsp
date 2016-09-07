@@ -24,6 +24,7 @@
 <%
     User user = (User) request.getSession(true).getAttribute("user");
     String userName = (String) request.getSession(true).getAttribute("userName");
+
     List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
     TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
     List<Integer> tempTariff = new ArrayList();
@@ -35,7 +36,6 @@
         <h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>
         <p></p>
     </div>
-
     <%---------------------------------------------------------------------------------------------%>
     <div class="container-fluid">
         <div class="panel panel-default">
@@ -74,10 +74,9 @@
         String check = (String) request.getSession(true).getAttribute("check");
         if (check != null)
             if (check.equals("work"))
-                System.out.println(request.getSession(true).getAttribute("usr"));
-        if (request.getSession(true).getAttribute("usr") != null) {
-            Contract contr = (Contract) request.getSession(true).getAttribute("usr");
-            contracts = contr.getUser().getContracts();
+                if (request.getSession(true).getAttribute("usr") != null) {
+                    Contract contract = (Contract) request.getSession(true).getAttribute("usr");
+                    contracts = contract.getUser().getContracts();
 
     %>
 
@@ -89,8 +88,8 @@
                     <div class="panel-body">
                         <h3>Contract:</h3>
                         <p>
-                        <h3><b>Number </b><%out.print(contr.getNumber());%></h3>
-                        <h3><b>Blocked </b><%out.print(contr.getIsBlocked());%></h3>
+                        <h3><b>Number </b><%out.print(contract.getNumber());%></h3>
+                        <h3><b>Blocked </b><%out.print(contract.getIsBlocked());%></h3>
                         </p>
                     </div>
                 </div>
@@ -100,8 +99,8 @@
                     <div class="panel-body">
                         <h3>Client:</h3>
                         <p>
-                        <h3><b>Name </b><%out.print(contr.getUser().getName());%></h3>
-                        <h3><b>Surname </b><%out.print(contr.getUser().getSecondName());%></h3>
+                        <h3><b>Name </b><%out.print(contract.getUser().getName());%></h3>
+                        <h3><b>Surname </b><%out.print(contract.getUser().getSecondName());%></h3>
                         </p>
                     </div>
                 </div>
@@ -111,51 +110,47 @@
                     <div class="panel-body">
                         <h3>Contacts:</h3>
                         <p>
-                        <h3><b>E-mail </b><%out.print(contr.getUser().getEmail());%></h3>
-                        <h3><b>Adress </b><%out.print(contr.getUser().getAdress());%></h3>
+                        <h3><b>E-mail </b><%out.print(contract.getUser().getEmail());%></h3>
+                        <h3><b>Adress </b><%out.print(contract.getUser().getAdress());%></h3>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <%
+        for (Contract contr : contracts) {
+            List<TariffOption> contractOptions = contr.getTariffOptions();
+    %>
 
     <%------------------------------------------------------------------------------------------%>
-
-
-    <%
-        }
-        for (Contract contract : contracts) {
-            List<TariffOption> contractOptions = contract.getTariffOptions();
-    %>
     <div class="container-fluid">
         <div class="row cm-fix-height">
 
             <div class="col-sm-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Number: <%out.print(contract.getNumber());%></div>
+                    <div class="panel-heading">Number: <%out.print(contr.getNumber());%></div>
                     <div class="panel-body">
-
                         <h2>
-
                             <%
                                 out.print("<small>Tariff : </small>");
-                                out.print(contract.getTariff().getTitle());
+                                out.print(contr.getTariff().getTitle());
                                 out.print("<br>");
                                 out.print("<small>Month payment : </small>");
-                                out.print(contract.getTariff().getPrice() + " RUB\n");
-                                out.print("<small>Status : </small>");
-                                if (contract.isBlocked() && contract.isBlockedByAdmin())
+                                out.print(contr.getTariff().getPrice() + " RUB");
+                                out.print("<small><br>Status : </small>");
+                                if (contr.isBlocked() && contr.isBlockedByAdmin())
                                     out.print("<font color =\"red\">Blocked by manager</font>");
-                                if (contract.isBlocked() && !contract.isBlockedByAdmin())
+                                if (contr.isBlocked() && !contr.isBlockedByAdmin())
                                     out.print("<font color =\"red\">Blocked by user</font>");
-                                if (!contract.isBlocked())
+                                if (!contr.isBlocked())
                                     out.print("<font color =\"green\">Active</font>");
+
                             %>
                         </h2>
-                        <%if (contract.getIsBlocked()) {%>
+                        <%if (contr.getIsBlocked()) {%>
                         <div class="modal-footer">
-                            <form name="test" onclick="unblock(<%=contract.getNumber()%>)">
+                            <form name="test" onclick="unblock(<%=contr.getNumber()%>)">
                                 <button type="submit" class="btn btn-success">unblock</button>
                             </form>
                             <script>
@@ -167,6 +162,8 @@
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "/admin/ChangeClient?unblockItem=" + number, true);
                                             xhr.send();
+
+
                                         }
                                     }
                                 }</script>
@@ -174,18 +171,19 @@
                         <%
                         } else {%>
                         <div class="modal-footer">
-                            <form name="test" onclick="block(<%=contract.getNumber()%>)">
+                            <form name="test" onclick="block(<%=contr.getNumber()%>)">
                                 <button type="submit" class="btn btn-danger">block</button>
                             </form>
                             <script>
                                 function block(number) {
                                     popBox();
                                     function popBox() {
-                                        x = confirm('Are you sure?');
+                                        x = confirm('Are you sure? ' + number);
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "/admin/ChangeClient?blockItem=" + number, true);
                                             xhr.send();
+
                                         }
                                     }
                                 }
@@ -193,19 +191,19 @@
                         </div>
                         <%}%>
                     </div>
+
                 </div>
             </div>
-            <%if (!contract.isBlocked()) {%>
+            <%if (!contr.isBlocked()) {%>
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff list</div>
                     <div class="panel-body">
-
                         <%
                             for (Tariff tariff : tariffService.getAll()) {
                                 tempTariff.add(tariff.getTariffId());
-                                if (contract.getTariff().equals(tariff)) {%>
-
+                                if (contr.getTariff().equals(tariff)) {
+                        %>
                         <h3>
                             <div class="radio">
                                 <label>
@@ -238,7 +236,7 @@
                         %>
                         <div class="modal-footer">
                             <form name="test"
-                                  onclick="change(<%=i%>,<%=tempTariff%>,<%=contract.getNumber()%>)">
+                                  onclick="change(<%=i%>,<%=tempTariff%>,<%=contr.getNumber()%>)">
                                 <button type="submit" class="btn btn-success">Change</button>
                             </form>
                             <script>
@@ -251,6 +249,7 @@
                                             popBox(par2[i], par3);
                                         }
                                     }
+
                                     function popBox(num1, num2) {
                                         x = confirm('Are you sure? ');
                                         if (x == true) {
@@ -260,12 +259,11 @@
                                             xhr.send();
                                         }
                                     }
+
                                 }
                             </script>
 
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -273,8 +271,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff options</div>
                     <div class="panel-body">
-
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -296,7 +292,7 @@
                                 <td>
 
                                     <form name="test"
-                                          onclick="disable(<%=contract.getNumber()%>,<%=allTariffOptions.get(j).getTariffOptionId()%>)">
+                                          onclick="disable(<%=contr.getNumber()%>,<%=allTariffOptions.get(j).getTariffOptionId()%>)">
                                         <button type="submit" class="btn btn-danger">Disable</button>
                                     </form>
 
@@ -326,7 +322,7 @@
                                 <td>
 
                                     <form name="test"
-                                          onclick="unable(<%=contract.getNumber()%>,<%=allTariffOptions.get(j).getTariffOptionId()%>)">
+                                          onclick="unable(<%=contr.getNumber()%>,<%=allTariffOptions.get(j).getTariffOptionId()%>)">
                                         <button type="submit" class="btn btn-success">Activate</button>
                                     </form>
 
@@ -360,10 +356,28 @@
             <%}%>
         </div>
     </div>
+
     <%
             i++;
         }
+
     %>
+
+
+    <%} else {%>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2><p align="center">
+                    User wasn' t found</p></h2>
+            </div>
+        </div>
+    </div>
+
+
+    <%}%>
+
 </div>
+
 <jsp:include page="footer.jsp"></jsp:include>
 </html>
