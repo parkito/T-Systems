@@ -27,47 +27,18 @@
             <div class="panel-body">
                 <div class="input-group">
                     <%
-                        String nameStat;
-                        String surName;
-                        String birthday;
-                        String passport;
-                        String adress;
+                        String number;
                         String email;
-                        String password;
-                        if (request.getSession().getAttribute("nameStat") == null)
-                            nameStat = "";
-                        else
-                            nameStat = (String) request.getSession().getAttribute("nameStat");
 
-                        if (request.getSession(true).getAttribute("surNameStat") == null)
-                            surName = "";
-                        else
-                            surName = (String) request.getSession(true).getAttribute("surNameStat");
-
-                        if (request.getSession(true).getAttribute("birthday") == null)
-                            birthday = "";
-                        else
-                            birthday = (String) request.getSession(true).getAttribute("birthday");
-
-                        if (request.getSession(true).getAttribute("passport") == null)
-                            passport = "";
-                        else
-                            passport = (String) request.getSession(true).getAttribute("passport");
-
-                        if (request.getSession(true).getAttribute("adress") == null)
-                            adress = "";
-                        else
-                            adress = (String) request.getSession(true).getAttribute("adress");
-
-                        if (request.getSession(true).getAttribute("email") == null)
+                        if (request.getSession().getAttribute("emailStat") == null)
                             email = "";
                         else
-                            email = (String) request.getSession(true).getAttribute("email");
+                            email = (String) request.getSession().getAttribute("emailStat");
 
-                        if (request.getSession(true).getAttribute("password") == null)
-                            password = "";
+                        if (request.getSession(true).getAttribute("numberStat") == null)
+                            number = "";
                         else
-                            password = (String) request.getSession(true).getAttribute("password");
+                            number = (String) request.getSession(true).getAttribute("numberStat");
 
                     %>
                     <table class="table">
@@ -79,34 +50,14 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input id="name" type="text" class="form-control" placeholder="Enter name"></td>
+                            <td><input id="email" type="text" class="form-control" placeholder="Email"></td>
                             <td>
-                                <font color="blue"><%out.print(nameStat);%></font>
+                                <font color="blue"><%out.print(email);%></font>
                             </td>
                         </tr>
                         <tr>
-                            <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
-                            <td><font color="blue"><%out.print(surName);%></font></td>
-                        </tr>
-                        <tr>
-                            <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
-                            <td><font color="blue"><%out.print(birthday);%></font></td>
-                        </tr>
-                        <tr>
-                            <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
-                            <td><font color="blue"><%out.print(passport);%></font></td>
-                        </tr>
-                        <tr>
-                            <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
-                            <td><font color="blue"><%out.print(adress);%></font></td>
-                        </tr>
-                        <tr>
-                            <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
-                            <td><font color="blue"><%out.print(email);%></font></td>
-                        </tr>
-                        <tr>
-                            <td><input id="password" type="password" class="form-control" placeholder="Password"></td>
-                            <td><font color="blue"><%out.print(password);%></font></td>
+                            <td><input id="number" type="text" class="form-control" placeholder="Number"></td>
+                            <td><font color="blue"><%out.print(number);%></font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -115,25 +66,19 @@
             </div>
             <div class="modal-footer">
                 <form name="test" onclick="add()">
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <button type="submit" class="btn btn-success">Add</button>
                 </form>
                 <script>
                     function add() {
-                        var name = document.getElementById('name').value;
-                        var surName = document.getElementById('surName').value;
-                        var birthday = document.getElementById('birthday').value;
-                        var passport = document.getElementById('passport').value;
-                        var adress = document.getElementById('adress').value;
                         var email = document.getElementById('email').value;
-                        var password = document.getElementById('password').value;
+                        var number = document.getElementById('number').value;
+
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName
-                                        + "&birthday=" + birthday + "&passport=" + passport
-                                        + "&adress=" + adress + "&email=" + email + "&password=" + password, true);
+                                xhr.open("POST", "/admin/NewContract?email=" + email + "&number=" + number, true);
                                 xhr.send();
                             }
                         }

@@ -1,5 +1,7 @@
 package controllers.admin;
 
+import controllers.ManagerCases;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,14 +13,31 @@ import java.io.IOException;
  * artyom-karnov@yandex.ru
  **/
 public class NewContractServlet extends HttpServlet {
+    private ManagerCases managerCases = new ManagerCases();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("here");
         req.getRequestDispatcher("/WEB-INF/admin/NewContract.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        boolean add = true;
+        String eMail = req.getParameter("email");
+        String number = req.getParameter("number");
+        if (!managerCases.isUserExists(eMail) || eMail.equals("")) {
+            req.getSession(true).setAttribute("emailStat", "Error");
+            add = false;
+        } else {
+            req.getSession(true).setAttribute("emailStat", "OK");
+        }
+
+        if (managerCases.isNumberExists(number) || number.equals("")) {
+            req.getSession(true).setAttribute("numberStat", "Error");
+            add = false;
+        } else {
+            req.getSession(true).setAttribute("numberStat", "OK");
+        }
+        if (add == true) managerCases.addContractToBase(eMail, number);
     }
 }

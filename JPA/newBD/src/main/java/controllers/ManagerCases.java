@@ -1,7 +1,11 @@
 package controllers;
 
+import entities.Contract;
 import entities.User;
+import exceptions.ContractNotFoundException;
 import exceptions.UserNotFoundException;
+import services.implementation.ContractServiceImpl;
+import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
 /**
@@ -10,6 +14,8 @@ import services.implementation.UserServiceImpl;
  **/
 public class ManagerCases {
     private UserServiceImpl userService = new UserServiceImpl();
+    private ContractServiceImpl contractService = new ContractServiceImpl();
+    TariffServiceImpl tariffService = new TariffServiceImpl();
 
     public boolean isUserExists(String eMail) {
         try {
@@ -28,4 +34,21 @@ public class ManagerCases {
                 email, password);
         userService.createEntity(user);
     }
+
+    public boolean isNumberExists(String number) {
+        try {
+            contractService.getContractByNumber(number);
+        } catch (ContractNotFoundException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public void addContractToBase(String eMail, String number) {
+
+        Contract contract = new Contract(number, userService.getUserByEMAil(eMail),
+                tariffService.getTariffByTitle("base"));
+        contractService.createEntity(contract);
+    }
+
 }

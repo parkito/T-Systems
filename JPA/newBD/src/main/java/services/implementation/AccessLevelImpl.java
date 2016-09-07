@@ -17,28 +17,55 @@ import java.util.List;
 public class AccessLevelImpl implements AccessLevelService {
     private AccessLevelDAO accessLevelDAO = new AccessLevelDAOImpl();
 
-    @Override
 
+    /**
+     *
+     * @param accessLevel
+     * @throws CustomDAOException
+     */
+    @Override
     public void createEntity(AccessLevel accessLevel) throws CustomDAOException {
         accessLevelDAO.create(accessLevel);
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws CustomDAOException
+     */
 
     @Override
     public AccessLevel getEntityById(Integer id) throws CustomDAOException {
         return accessLevelDAO.read(id);
     }
 
+    /**
+     *
+     * @param accessLevel
+     * @throws CustomDAOException
+     */
     @Override
     public void updateEntity(AccessLevel accessLevel) throws CustomDAOException {
         accessLevelDAO.update(accessLevel);
     }
 
+    /**
+     *
+     * @param accessLevel
+     * @throws CustomDAOException
+     */
     @Override
     public void deleteEntity(AccessLevel accessLevel) throws CustomDAOException {
         accessLevelDAO.delete(accessLevel);
 
     }
 
+    /**
+     *
+     * @return
+     * @throws CustomDAOException
+     */
     @Override
     public List<AccessLevel> getAll() throws CustomDAOException {
         return accessLevelDAO.getAll();
