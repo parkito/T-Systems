@@ -22,7 +22,6 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-
     User user = (User) request.getSession(true).getAttribute("user");
     String userName = (String) request.getSession(true).getAttribute("userName");
 
@@ -118,12 +117,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff list</div>
                     <div class="panel-body">
-
                         <%
                             for (Tariff tariff : tariffService.getAll()) {
                                 tempTariff.add(tariff.getTariffId());
-                                if (contract.getTariff().equals(tariff)) {%>
-
+                                if (contract.getTariff().equals(tariff)) {
+                        %>
                         <h3>
                             <div class="radio">
                                 <label>
@@ -184,8 +182,6 @@
                             </script>
 
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -193,8 +189,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff options</div>
                     <div class="panel-body">
-
-
                         <table class="table">
                             <thead>
                             <tr>
