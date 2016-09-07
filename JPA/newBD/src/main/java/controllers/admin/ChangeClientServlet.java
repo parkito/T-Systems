@@ -44,7 +44,6 @@ public class ChangeClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
-
         if (req.getParameter("blockItem") != null) {
             Contract contract = contractService.getContractByNumber(req.getParameter("blockItem"));
             contract.setBlocked(true);
@@ -55,7 +54,6 @@ public class ChangeClientServlet extends HttpServlet {
             if (!contract.getBlockedByAdmin())
                 contract.setBlocked(false);
             else {
-                // TODO: 9/3/16 how invoke window on the page? make it
                 req.getRequestDispatcher("/404.jsp");
             }
             contractService.updateEntity(contract);
