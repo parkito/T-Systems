@@ -88,7 +88,12 @@
             </div>
         </div>
     </div>
+    <%if (number.equals("OK") && email.equals("OK")) {%>
+    <div class="container-fluid cm-container-white">
+        <h2 align="center" style="margin-top:0;">Contract added</h2>
 
+    </div>
+    <%}%>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

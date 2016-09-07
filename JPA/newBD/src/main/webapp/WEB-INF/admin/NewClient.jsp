@@ -143,7 +143,13 @@
             </div>
         </div>
     </div>
+    <%if (nameStat.equals("OK") && surName.equals("OK")&&birthday.equals("OK")&&passport.equals("OK")
+            &&adress.equals("OK")&&email.equals("OK")&&password.equals("OK")) {%>
+    <div class="container-fluid cm-container-white">
+        <h2 align="center" style="margin-top:0;">Client added</h2>
 
+    </div>
+    <%}%>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>
