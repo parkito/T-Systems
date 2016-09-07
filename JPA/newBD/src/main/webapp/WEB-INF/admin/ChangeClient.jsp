@@ -59,10 +59,58 @@
                                 out.print(contract.getTariff().getTitle());
                                 out.print("<br>");
                                 out.print("<small>Month payment : </small>");
-                                out.print(contract.getTariff().getPrice() + " RUB");
+                                out.print(contract.getTariff().getPrice() + " RUB\n");
+                                out.print("<small>Status : </small>");
+                                if (contract.isBlocked() && contract.isBlockedByAdmin())
+                                    out.print("<font color =\"red\">Blocked by manager</font>");
+                                if (contract.isBlocked() && !contract.isBlockedByAdmin())
+                                    out.print("<font color =\"red\">Blocked by user</font>");
+                                if (!contract.isBlocked())
+                                    out.print("<font color =\"green\">Active</font>");
+
                             %>
                         </h2>
+                        <%if (contract.getIsBlocked()) {%>
+                        <div class="modal-footer">
+                            <form name="test" onclick="unblock(<%=contract.getNumber()%>)">
+                                <button type="submit" class="btn btn-success">unblock</button>
+                            </form>
+                            <script>
+                                function unblock(number) {
+                                    popBox();
+                                    function popBox() {
+                                        x = confirm('Are you sure?');
+                                        if (x == true) {
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("POST", "/admin/ChangeClient?unblockItem=" + number, true);
+                                            xhr.send();
+                                        }
+                                    }
+                                }</script>
+                        </div>
+                        <%
+                        } else {%>
+                        <div class="modal-footer">
+                            <form name="test" onclick="block(<%=contract.getNumber()%>)">
+                                <button type="submit" class="btn btn-danger">block</button>
+                            </form>
+                            <script>
+                                function block(number) {
+                                    popBox();
+                                    function popBox() {
+                                        x = confirm('Are you sure?');
+                                        if (x == true) {
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("POST", "/admin/ChangeClient?blockItem=" + number, true);
+                                            xhr.send();
+                                        }
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <%}%>
                     </div>
+
                 </div>
             </div>
 
@@ -226,7 +274,6 @@
 
                             </tbody>
                         </table>
-
 
 
                     </div>
