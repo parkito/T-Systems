@@ -38,6 +38,100 @@
         <p></p>
     </div>
 
+
+
+
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 style="margin-top:0px">Enter contract number</h3>
+                <div class="input-group input-group-lg">
+
+                    <input type="text" class="form-control" placeholder="Searching" id="textFiled">
+
+                    <span class="input-group-btn">
+                        <form name="new" onclick="find()" class="btn btn-primary md-search-white">
+                         <button style="z-index:2" class="btn btn-primary md-search-white" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </form>
+                    </span>
+
+                    <script>
+                        function find() {
+                            var text = document.getElementById('textFiled').value;
+                            popBox();
+                            function popBox() {
+                                x = confirm('Are you sure? ' + text);
+                                if (x == true) {
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.send();
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% String check = (String) request.getSession(true).getAttribute("check");
+        if(check!=null)
+        if (check.equals("work"))
+            if (request.getSession(true).getAttribute("usr") != null) {
+                Contract contract = (Contract) request.getSession(true).getAttribute("usr");
+                contracts=contract.getUser().getContracts();
+
+    %>
+
+    <div class="container-fluid">
+        <div class="row cm-fix-height">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Contract:</h3>
+                        <p>
+                        <h3><b>Number </b><%out.print(contract.getNumber());%></h3>
+                        <h3><b>Blocked </b><%out.print(contract.getIsBlocked());%></h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Client:</h3>
+                        <p>
+                        <h3><b>Name </b><%out.print(contract.getUser().getName());%></h3>
+                        <h3><b>Surname </b><%out.print(contract.getUser().getSecondName());%></h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Contacts:</h3>
+                        <p>
+                        <h3><b>E-mail </b><%out.print(contract.getUser().getEmail());%></h3>
+                        <h3><b>Adress </b><%out.print(contract.getUser().getAdress());%></h3>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%} else {%>
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2><p align="center">
+                        User wasn' t found</p></h2>
+                </div>
+            </div>
+        </div>
+        <%}%>
+        </div>
+
+
+
     <%
         for (Contract contract : contracts) {
             List<TariffOption> contractOptions = contract.getTariffOptions();
