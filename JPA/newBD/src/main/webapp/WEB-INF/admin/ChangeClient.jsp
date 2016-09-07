@@ -59,8 +59,8 @@
                                 out.print(contract.getTariff().getTitle());
                                 out.print("<br>");
                                 out.print("<small>Month payment : </small>");
-                                out.print(contract.getTariff().getPrice() + " RUB\n");
-                                out.print("<small>Status : </small>");
+                                out.print(contract.getTariff().getPrice() + " RUB");
+                                out.print("<small><br>Status : </small>");
                                 if (contract.isBlocked() && contract.isBlockedByAdmin())
                                     out.print("<font color =\"red\">Blocked by manager</font>");
                                 if (contract.isBlocked() && !contract.isBlockedByAdmin())
@@ -113,7 +113,7 @@
 
                 </div>
             </div>
-
+            <%if (!contract.isBlocked()){%>
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff list</div>
@@ -274,13 +274,10 @@
 
                             </tbody>
                         </table>
-
-
                     </div>
-
-
                 </div>
             </div>
+            <%}%>
         </div>
     </div>
 </div>
