@@ -20,8 +20,14 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class ChangeClientServlet extends HttpServlet {
+    public static int count = 1;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (count == 1) {
+            req.getSession(true).setAttribute("check", "start");
+            count++;
+        }
+
         String eMail = (String) req.getSession(true).getAttribute("eMail");
         String userName = (String) req.getSession(true).getAttribute("userName");
 
@@ -44,6 +50,20 @@ public class ChangeClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
+        //------------------------------------------------
+        String number = req.getParameter("number");
+        req.getSession(true).setAttribute("check", "work");
+        try {
+            Contract contract = contractService.getContractByNumber(number);
+            req.getSession(true).setAttribute("usr", contract);
+
+        } catch (ContractNotFoundException ex) {
+            req.getSession(true).setAttribute("usr", null);
+        }
+
+        //-----------------------------------------------
+
+
         if (req.getParameter("blockItem") != null) {
             Contract contract = contractService.getContractByNumber(req.getParameter("blockItem"));
             contract.setBlocked(true);
