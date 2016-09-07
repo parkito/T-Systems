@@ -3523,7 +3523,6 @@
                 };
             }(idx);
         }
-        ;
         /* jshint ignore:end */
 
         /**

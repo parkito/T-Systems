@@ -19,13 +19,6 @@ public class NewClientServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getSession(false).setAttribute("nameStat", " ");
-//        req.getSession(true).setAttribute("surNameStat", " ");
-//        req.getSession(true).setAttribute("birthday", " ");
-//        req.getSession(true).setAttribute("passport", " ");
-//        req.getSession(true).setAttribute("adress", " ");
-//        req.getSession(true).setAttribute("email", " ");
-//        req.getSession(true).setAttribute("password", " ");
         req.getRequestDispatcher("/WEB-INF/admin/NewClient.jsp").forward(req, resp);
 
     }

@@ -416,7 +416,7 @@ window.CM = {
             this.xStart = touch.clientX;
             this.yStart = touch.clientY;
             this.lock = ((this.mobile && !this.open && ((this.xStart > openMaxPos) || (this.xStart < openMinPos))) ||
-            (!this.mobile))
+            (!this.mobile));
             if (this.mobile && this.open)
                 this.xStart = Math.min(this.xStart, this.mwidth);
             if (!this.lock) {

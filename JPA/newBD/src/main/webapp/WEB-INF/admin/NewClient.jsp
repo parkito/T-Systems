@@ -15,9 +15,8 @@
 <jsp:include page="header.jsp"></jsp:include>
     <%
     String userName = (String) request.getSession(true).getAttribute("userName");
-%>
+    %>
 
-<
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new client</h2>

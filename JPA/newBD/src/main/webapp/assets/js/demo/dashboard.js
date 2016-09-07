@@ -76,7 +76,7 @@ $(function () {
             }
 
         });
-    }
+    };
 
     //this.makeChart('#d1-c4', 'area-spline', ['#3498db', '#f39c12'], true);
     this.makeChart('#d1-c4', 'spline', ['#1abc9c', '#3498db'], true);
