@@ -18,7 +18,6 @@ import java.io.IOException;
 // TODO: 9/7/16 1) Not update content after first changing on user/Tariffs
 // TODO: 9/7/16 2) Incorrect login status after sign out (users)
 // TODO: 9/7/16 3) /admin/NewClient - null from srtatch
-// TODO: 9/7/16 4) huge space between blocks on /admin/ChangeClient
 // TODO: 9/7/16 5) http://localhost:8080/admin/NewClient - mistaken access
 // TODO: 9/7/16 6) for security set up getting password from session
 // TODO: 9/7/16 7) not remoning session after log out 

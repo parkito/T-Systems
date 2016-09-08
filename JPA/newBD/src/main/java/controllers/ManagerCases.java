@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.Contract;
+import entities.Tariff;
 import entities.User;
 import exceptions.ContractNotFoundException;
 import exceptions.UserNotFoundException;
@@ -42,6 +43,19 @@ public class ManagerCases {
             return false;
         }
         return true;
+    }
+
+    public boolean isTariffExists(String title) {
+        for (Tariff tariff : tariffService.getAll()) {
+            if (tariff.getTitle().equals(title))
+                return true;
+        }
+        return false;
+    }
+
+    public void addTariffToBase(String title, String price) {
+        Tariff tariff = new Tariff(title, Double.parseDouble(price));
+        tariffService.createEntity(tariff);
     }
 
     public void addContractToBase(String eMail, String number) {

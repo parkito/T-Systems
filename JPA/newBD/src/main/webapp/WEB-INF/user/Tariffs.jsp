@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="entities.Contract" %>
 <%@ page import="entities.User" %>
 <%@ page import="services.implementation.ContractServiceImpl" %>
@@ -33,7 +34,8 @@
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>
+        <h2 style="margin-top:0;"><c:out value='${userName}'/>, your tariffs:</h2>
+        <%--<h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>--%>
         <p></p>
     </div>
 

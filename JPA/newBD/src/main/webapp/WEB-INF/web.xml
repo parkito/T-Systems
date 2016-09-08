@@ -102,6 +102,17 @@
         <url-pattern>/admin/NewContract</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>EditTariffServlet</servlet-name>
+        <servlet-class>controllers.admin.EditTariffServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditTariffServlet</servlet-name>
+        <url-pattern>/admin/EditTariff</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>

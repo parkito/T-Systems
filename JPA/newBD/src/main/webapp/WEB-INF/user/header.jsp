@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
     <nav class="cm-navbar cm-navbar-primary">
@@ -56,7 +57,8 @@
                     <%
                         String userName = (String) request.getSession(true).getAttribute("userName");
                     %>
-                    <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
+                    <a style="cursor:default;"><strong><c:out value='${userName}'/></strong></a>
+                    <%--<a style="cursor:default;"><strong><%out.print(userName);%></strong></a>--%>
                 </li>
                 <li class="divider"></li>
                 <li>

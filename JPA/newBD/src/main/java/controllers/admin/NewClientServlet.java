@@ -16,7 +16,6 @@ import java.io.IOException;
  **/
 public class NewClientServlet extends HttpServlet {
     private ManagerCases managerCases = new ManagerCases();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/admin/NewClient.jsp").forward(req, resp);

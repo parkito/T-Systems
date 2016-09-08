@@ -59,7 +59,7 @@
                                 x = confirm('Are you sure? ' + text);
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.open("POST", "/admin/ChangeClient?number=" + text, true);
                                     xhr.send();
                                 }
                             }
