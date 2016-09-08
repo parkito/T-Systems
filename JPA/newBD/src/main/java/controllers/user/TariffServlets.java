@@ -21,7 +21,6 @@ import java.util.List;
  **/
 // TODO: 9/4/16 thinking about blocking 
 public class TariffServlets extends HttpServlet {
-    private UserCases userCases = new UserCases();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,14 +29,11 @@ public class TariffServlets extends HttpServlet {
 
         UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
-//        List<Contract> ctrs = userCases.getAllContractsForUser(eMail);
 
         ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-//        System.out.println(ctrs);
-//        System.out.println(contracts);
+
         req.getSession(true).setAttribute("contracts", contracts);
-//        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
         TariffServiceImpl tariffService = new TariffServiceImpl();
         req.getSession().setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);

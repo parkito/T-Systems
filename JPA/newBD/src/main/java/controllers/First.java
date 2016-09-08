@@ -130,9 +130,14 @@ public class First {
 //        }
 //
 //
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        for (TariffOption tariffOption : tariffOptionService.getAll()) {
-            System.out.println(tariffOption.getTitle());
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.getEntityById(2);
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        List<Contract> contractList = contractService.getAllContractsForUser(2);
+        for (Contract contract : contractList) {
+            System.out.println(contract.getNumber() + " " + contract.isBlocked());
         }
+        Contract newContract = contractList.get(0);
+        newContract.setBlocked(true);
     }
 }

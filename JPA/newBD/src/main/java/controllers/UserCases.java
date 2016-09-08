@@ -77,8 +77,7 @@ public class UserCases {
     }
 
     public List<Contract> getAllContractsForUser(String eMail) {
-        for (Contract contract : userService.getUserByEMAil(eMail).getContracts())
-            contractService.updateEntity(contract);
+        userService.updateEntity(userService.getUserByEMAil(eMail));
         return contractService.getAllContractsForUser(userService.getUserByEMAil(eMail).getUserId());
 
     }

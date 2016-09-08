@@ -24,6 +24,7 @@ import java.io.IOException;
 // TODO: 9/7/16 8) If there is session - on localhost:8080 open /login, not signIn
 // TODO: 9/7/16 10) Change clien multi window on manegers main page
 // TODO: 9/7/16 11) fuckin shit with email on registration
+// TODO: 9/9/16  12) необновление контракта у пользователей 
 
 /**
  * Created by Artyom Karnov on 8/29/16.
