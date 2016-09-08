@@ -177,7 +177,7 @@ public class User {
 
         User user = (User) o;
 
-        if (userId != user.userId) return false;
+//        if (userId != user.userId) return false;
         if (Double.compare(user.balance, balance) != 0) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (secondName != null ? !secondName.equals(user.secondName) : user.secondName != null) return false;
@@ -186,8 +186,8 @@ public class User {
         if (adress != null ? !adress.equals(user.adress) : user.adress != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (accessLevel != null ? !accessLevel.equals(user.accessLevel) : user.accessLevel != null) return false;
-        if (contracts != null ? !contracts.equals(user.contracts) : user.contracts != null) return false;
+//        if (accessLevel != null ? !accessLevel.equals(user.accessLevel) : user.accessLevel != null) return false;
+//        if (contracts != null ? !contracts.equals(user.contracts) : user.contracts != null) return false;
 
         return true;
     }

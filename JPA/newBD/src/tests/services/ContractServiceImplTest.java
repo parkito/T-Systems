@@ -1,5 +1,6 @@
 package services;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,6 +10,8 @@ import static org.junit.Assert.*;
  * artyom-karnov@yandex.ru
  **/
 public class ContractServiceImplTest {
+    @Before
+
     @Test
     public void createEntity() throws Exception {
 

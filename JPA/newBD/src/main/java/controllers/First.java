@@ -4,6 +4,7 @@ import entities.Contract;
 import entities.TariffOption;
 import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
+import services.implementation.UserServiceImpl;
 
 import java.util.List;
 
@@ -129,5 +130,7 @@ public class First {
 //        }
 //
 //
+        UserServiceImpl userService = new UserServiceImpl();
+        System.out.println(userService.getEntityById(1).getEmail());
     }
 }

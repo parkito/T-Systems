@@ -15,10 +15,10 @@ import java.util.List;
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
     //For testing
-//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
-//    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
+    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
     //For Servlets
-    protected EntityManager entityManager = EntityFactory.createEntityManager();
+//    protected EntityManager entityManager = EntityFactory.createEntityManager();
 
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
@@ -62,7 +62,9 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public void delete(E entity) throws CustomDAOException {
         try {
+            entityManager.getTransaction().begin();
             entityManager.remove(entityManager.merge(entity));
+            entityManager.getTransaction().commit();
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't deleted: " + entity, e);
         }
