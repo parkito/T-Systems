@@ -57,14 +57,14 @@
     </servlet>
 
     <!--<servlet-mapping>-->
-        <!--<servlet-name>FindClientServlet</servlet-name>-->
-        <!--<url-pattern>/admin/index</url-pattern>-->
+    <!--<servlet-name>FindClientServlet</servlet-name>-->
+    <!--<url-pattern>/admin/index</url-pattern>-->
     <!--</servlet-mapping>-->
 
 
     <!--<servlet>-->
-        <!--<servlet-name>FindClientServlet</servlet-name>-->
-        <!--<servlet-class>controllers.admin.FindClientServlet</servlet-class>-->
+    <!--<servlet-name>FindClientServlet</servlet-name>-->
+    <!--<servlet-class>controllers.admin.FindClientServlet</servlet-class>-->
     <!--</servlet>-->
 
     <servlet-mapping>
@@ -113,14 +113,24 @@
         <url-pattern>/admin/NewTariff</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangeTariffChangeTariffServlet</servlet-name>
+        <servlet-class>controllers.admin.ChangeTariffServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeTariffChangeTariffServlet</servlet-name>
+        <url-pattern>/admin/EditTariff</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
 
     <!--<error-page>-->
-        <!--<error-code>500</error-code>-->
-        <!--<location>/404.jsp</location>-->
+    <!--<error-code>500</error-code>-->
+    <!--<location>/404.jsp</location>-->
     <!--</error-page>-->
 
     <welcome-file-list>
