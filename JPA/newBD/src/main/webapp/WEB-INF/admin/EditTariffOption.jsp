@@ -62,7 +62,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/EditTariffOption?tariffId=" + number, true);
+                                xhr.open("POST", "/admin/EditTariffOption?tariffOptionId=" + number, true);
                                 xhr.send();
                             }
                         }

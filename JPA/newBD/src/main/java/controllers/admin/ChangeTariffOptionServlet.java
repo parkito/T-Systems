@@ -25,7 +25,7 @@ public class ChangeTariffOptionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int tariffOptionId = Integer.parseInt(req.getParameter("options"));
+        int tariffOptionId = Integer.parseInt(req.getParameter("tariffOptionId"));
         TariffOption tariffOption = tariffOptionService.getEntityById(tariffOptionId);
         tariffOptionService.deleteEntity(tariffOption);
     }

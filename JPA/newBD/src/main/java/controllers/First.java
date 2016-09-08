@@ -130,7 +130,9 @@ public class First {
 //        }
 //
 //
-        UserServiceImpl userService = new UserServiceImpl();
-        System.out.println(userService.getEntityById(1).getEmail());
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        for (TariffOption tariffOption : tariffOptionService.getAll()) {
+            System.out.println(tariffOption.getTitle());
+        }
     }
 }
