@@ -104,13 +104,13 @@
 
 
     <servlet>
-        <servlet-name>EditTariffServlet</servlet-name>
-        <servlet-class>controllers.admin.EditTariffServlet</servlet-class>
+        <servlet-name>NewTariffServlet</servlet-name>
+        <servlet-class>controllers.admin.NewTariffServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>EditTariffServlet</servlet-name>
-        <url-pattern>/admin/EditTariff</url-pattern>
+        <servlet-name>NewTariffServlet</servlet-name>
+        <url-pattern>/admin/NewTariff</url-pattern>
     </servlet-mapping>
 
     <error-page>
