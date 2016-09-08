@@ -16,23 +16,15 @@ import java.io.IOException;
  **/
 public class UserContractServlet extends HttpServlet {
     private UserCases userCases = new UserCases();
+    TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
-    // TODO: 9/2/16 do optimization
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //getting cookies
-        String userName = userCases.getCookiesValue(req, "userName");
-        String eMail = userCases.getCookiesValue(req, "eMail");
-        req.getSession(true).setAttribute("userName", userName);
-        req.setAttribute("userName", userName);
-        //work with contract
+        String userName = (String) req.getSession(true).getAttribute("userName");
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
         req.getSession(true).setAttribute("contracts", userCases.getAllContractsForUser(eMail));
-        req.setAttribute("contracts", userCases.getAllContractsForUser(eMail));
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
         req.getSession(true).setAttribute("tariffOptionService", tariffOptionService);
-        req.setAttribute("tariffOptionService", tariffOptionService);
         req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
     }
-
 
 }

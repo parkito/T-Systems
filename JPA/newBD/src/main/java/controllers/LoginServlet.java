@@ -37,11 +37,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (userCases.isManager(userCases.getCookiesValue(req, "eMail"))) {
-            req.setAttribute("userName", userCases.getUserName(req));
             req.getSession(true).setAttribute("userName", userCases.getUserName(req));
             req.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(req, resp);
         } else {
-            req.setAttribute("userName", userCases.getUserName(req));
             req.getSession(true).setAttribute("userName", userCases.getUserName(req));
             req.getRequestDispatcher("/WEB-INF/user/index.jsp").forward(req, resp);
         }
