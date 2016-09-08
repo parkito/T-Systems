@@ -19,7 +19,7 @@
     %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;">Add new tariff</h2>
+        <h2 style="margin-top:0;">Add new option</h2>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
@@ -28,6 +28,7 @@
                     <%
                         String title;
                         String price;
+                        String connectionPrice;
 
                         if (request.getSession().getAttribute("titleStat") == null)
                             title = "";
@@ -38,6 +39,11 @@
                             price = "";
                         else
                             price = (String) request.getSession(true).getAttribute("priceStat");
+
+                        if (request.getSession(true).getAttribute("connectionPriceStat") == null)
+                            connectionPrice = "";
+                        else
+                            connectionPrice = (String) request.getSession(true).getAttribute("connectionPriceStat");
 
                     %>
                     <table class="table">
@@ -58,6 +64,12 @@
                             <td><input id="price" type="text" class="form-control" placeholder="Price"></td>
                             <td><font color="blue"><%out.print(price);%></font></td>
                         </tr>
+
+                        <tr>
+                            <td><input id="connectedPrice" type="text" class="form-control"
+                                       placeholder="Connection price"></td>
+                            <td><font color="blue"><%out.print(connectionPrice);%></font></td>
+                        </tr>
                         </tbody>
                     </table>
 
@@ -71,13 +83,15 @@
                     function add() {
                         var title = document.getElementById('title').value;
                         var price = document.getElementById('price').value;
+                        var connectedPrice = document.getElementById('connectedPrice').value;
 
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewTariff?title=" + title + "&price=" + price, true);
+                                xhr.open("POST", "/admin/NewOption?title=" + title + "&price=" + price +
+                                        "&connectPrice=" + connectedPrice, true);
                                 xhr.send();
                             }
                         }
@@ -89,7 +103,7 @@
     </div>
     <%if (title.equals("OK") && price.equals("OK")) {%>
     <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Tariff added</h2>
+        <h2 align="center" style="margin-top:0;">Option added</h2>
 
     </div>
     <%}%>

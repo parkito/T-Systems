@@ -123,6 +123,16 @@
         <url-pattern>/admin/EditTariff</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NewTariffOptionServlet</servlet-name>
+        <servlet-class>controllers.admin.NewTariffOptionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewTariffOptionServlet</servlet-name>
+        <url-pattern>/admin/NewOption</url-pattern>
+    </servlet-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>

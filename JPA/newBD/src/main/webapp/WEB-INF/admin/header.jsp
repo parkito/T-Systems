@@ -21,10 +21,16 @@
                         <a class="sf-brick">Edit tariff<span class="caret"></span></a>
                         <ul>
                             <li><a href="/admin/NewTariff">New tariff</a></li>
-                            <li><a href="/admin/EditTariff">Change tariff</a></li>
+                            <li><a href="/admin/EditTariff">Delete tariff</a></li>
                         </ul>
                     </li>
-                    <li><a href="/admin/EditTariffOption" class="sf-brick-alt">Edit options</a></li>
+                    <li class="cm-submenu">
+                        <a class="sf-brick-alt">Edit tariff<span class="caret"></span></a>
+                        <ul>
+                            <li><a href="/admin/NewOption">New option</a></li>
+                            <li><a href="/admin/EditTariffOption">Delete option</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/admin/ViewClient" class="sf-lock-open">View clients</a></li>
                     <li><a href="/admin/FindClient" class="sf-window-layout">Find client</a></li>
                 </ul>
