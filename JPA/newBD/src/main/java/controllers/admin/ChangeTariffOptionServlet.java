@@ -1,8 +1,7 @@
 package controllers.admin;
 
-import entities.Tariff;
+import entities.TariffOption;
 import services.implementation.TariffOptionServiceImpl;
-import services.implementation.TariffServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,19 +13,20 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/8/16.
  * artyom-karnov@yandex.ru
  **/
-public class ChangeTariffServlet extends HttpServlet {
-    TariffServiceImpl tariffService = new TariffServiceImpl();
+public class ChangeTariffOptionServlet extends HttpServlet {
+    TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession(true).setAttribute("tariffs", tariffService.getAll());
-        req.getRequestDispatcher("/WEB-INF/admin/EditTariff.jsp").forward(req, resp);
+        req.getSession(true).setAttribute("options", tariffOptionService.getAll());
+        req.getRequestDispatcher("/WEB-INF/admin/EditTariffOption.jsp").forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int tariffId = Integer.parseInt(req.getParameter("tariffId"));
-        Tariff tariff = tariffService.getEntityById(tariffId);
-        tariffService.deleteEntity(tariff);
+        int tariffOptionId = Integer.parseInt(req.getParameter("options"));
+        TariffOption tariffOption = tariffOptionService.getEntityById(tariffOptionId);
+        tariffOptionService.deleteEntity(tariffOption);
     }
 }
