@@ -1,6 +1,8 @@
 package controllers.user;
 
 import controllers.UserCases;
+import entities.Contract;
+import services.implementation.ContractServiceImpl;
 import services.implementation.TariffOptionServiceImpl;
 
 import javax.servlet.ServletException;
@@ -16,14 +18,14 @@ import java.io.IOException;
  **/
 public class UserContractServlet extends HttpServlet {
     private UserCases userCases = new UserCases();
-    TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+    private TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = (String) req.getSession(true).getAttribute("userName");
         String eMail = (String) req.getSession(true).getAttribute("eMail");
-        req.getSession(true).setAttribute("contracts", userCases.getAllContractsForUser(eMail));
-        req.getSession(true).setAttribute("tariffOptionService", tariffOptionService);
+        req.getSession(false).setAttribute("contracts", userCases.getAllContractsForUser(eMail));
+        req.getSession(false).setAttribute("tariffOptionService", tariffOptionService);
+
         req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
     }
 

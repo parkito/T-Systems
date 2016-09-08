@@ -22,6 +22,7 @@
 
 <c:set var="userName" value="${sessionScope.userName}"/>
 <c:set var="contracts" value="${sessionScope.contracts}"/>
+<c:set var="tariffOptionService" value="${sessionScope.tariffOptionService}"/>
 
 <div id="global">
     <div class="container-fluid cm-container-white">
@@ -39,7 +40,7 @@
                             <h2>
 
                                 <small>Tariff :</small>
-                                <${contract.getTariff().getTitle()}>
+                                <c:out value="${contract.getTariff().getTitle()}"/>
                                 <br>
                                 <small>Month payment :</small>
                                 <c:out value="${contract.getTariff().getPrice()}"/> RUB
