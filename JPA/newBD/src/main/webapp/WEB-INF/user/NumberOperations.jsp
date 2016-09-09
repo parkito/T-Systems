@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="entities.Contract" %>
 <%@ page import="entities.User" %>
 <%@ page import="services.implementation.ContractServiceImpl" %>
@@ -20,22 +21,17 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-
     User user = (User) request.getSession(true).getAttribute("userObj");
-    String userName = (String) request.getSession(true).getAttribute("userName");
 %>
+<c:set var="userName" value="${sessionScope.userName}"/>
+
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><%out.print(userName);%>, your options:</h2>
+        <h2 style="margin-top:0;"><c:out value="${userName}"/>, your options:</h2>
         <p></p>
     </div>
     <div class="container-fluid ">
-        <%--<div class="col-md-6">--%>
         <div class="panel panel-default">
-            <%--<div class="panel-heading">Tables with contextual classes</div>--%>
-            <%--&lt;%&ndash;<div class="panel-body">&ndash;%&gt;--%>
-            <%--<p style="margin-bottom:0">The table is outside the <code>.panel-body</code></p>--%>
-            <%--</div>--%>
             <table class="table">
                 <thead>
                 <tr>

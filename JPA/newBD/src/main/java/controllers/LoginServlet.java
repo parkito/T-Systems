@@ -15,7 +15,6 @@ import java.io.IOException;
 // TODO: 9/7/16 try to change jsp on tag-style
 // TODO: 9/9/16 переписывать все на jstl
 
-// TODO: 9/7/16 errors
 // TODO: 9/7/16 1) Not update content after first changing on user/Tariffs
 // TODO: 9/7/16 2) Incorrect login status after sign out (users)
 // TODO: 9/7/16 3) /admin/NewClient - null from srtatch
