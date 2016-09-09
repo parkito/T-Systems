@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,36 +40,6 @@ public class TariffOptionServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        ContractServiceImpl contractService = new ContractServiceImpl();
-//        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-//
-//        String contractNumber = req.getParameter("contractNumber");
-//        int tariffId = Integer.parseInt(req.getParameter("tariff"));
-//        String method = req.getParameter("method");
-//
-//        TariffOption tariffOption = tariffOptionService.getEntityById(tariffId);
-//        Contract contract = contractService.getContractByNumber(contractNumber);
-//
-//        if (method.equals("unable")) {
-//            boolean isForbid = false;
-//            for (TariffOption tar : contract.getTariffOptions()) {
-//                if (tar.getimpossibleTogether().contains(tariffOption))
-//                    isForbid = true;
-//            }
-//            if (!isForbid) {
-//                contract.getTariffOptions().add(tariffOption);
-//                contractService.updateEntity(contract);
-//            } else {
-//                resp.setStatus(500);
-//            }
-//        } else {
-//            contract.getTariffOptions().remove(tariffOption);
-//            contractService.updateEntity(contract);
-//        }
-    }
-
-    @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
@@ -81,12 +52,20 @@ public class TariffOptionServlet extends HttpServlet {
         Contract contract = contractService.getContractByNumber(contractNumber);
 
         if (method.equals("unable")) {
+            List<TariffOption> jointOptions = new ArrayList();
+
             boolean isForbid = false;
             for (TariffOption tar : contract.getTariffOptions()) {
                 if (tar.getimpossibleTogether().contains(tariffOption))
                     isForbid = true;
             }
+
             if (!isForbid) {
+                jointOptions = tariffOption.getjointTogether();
+                for (TariffOption tar : jointOptions) {
+                    contract.getTariffOptions().add(tar);
+                    contractService.updateEntity(contract);
+                }
                 contract.getTariffOptions().add(tariffOption);
                 contractService.updateEntity(contract);
             } else {
