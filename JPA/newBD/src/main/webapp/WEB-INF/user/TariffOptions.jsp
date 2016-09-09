@@ -108,7 +108,7 @@
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
+                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
                                                         + "&tariff=" + par2 + "&method=disable", true);
                                                 xhr.send();
                                             }
@@ -139,9 +139,12 @@
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=unable", true);
+                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                                        + "&tariff=" + par2 + "&method=unable", false);
                                                 xhr.send();
+                                                if (xhr.status == 500) {
+                                                    alert('Incompatible options')
+                                                }
                                             }
                                         }
                                     }</script>

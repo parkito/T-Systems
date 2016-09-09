@@ -75,7 +75,6 @@ public class First {
 
         //5) addContract
 
-        // TODO: 8/30/16 getTariffByTittle 
 //        TariffServiceImpl tariffService = new TariffServiceImpl();
 //        UserServiceImpl userService = new UserServiceImpl();
 //        Tariff tariff1 = tariffService.getEntityById(1);
@@ -109,35 +108,36 @@ public class First {
 
         //7) add possible and joint TariffOptions
 //        ContractServiceImpl contractService = new ContractServiceImpl();
-//        Contract contract = contractService.getEntityById(2);
 //        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 //        TariffOption tar1 = tariffOptionService.getEntityById(1);
 //        TariffOption tar2 = tariffOptionService.getEntityById(2);
 //        TariffOption tar3 = tariffOptionService.getEntityById(3);
-//        tar2.addOptionsIncompatible(tar2);
-//        tar2.addjointTogether(tar2);
-//        tariffOptionService.updateEntity(tar2);
-
-//        System.out.println(tar1);
-//        System.out.println(tar2);
-//        System.out.println(tar3);
-
-//        List<TariffOption> tariffOptions = tariffOptionService.getAllImpossibleTariffOption(tar1.getTariffOptionId());
-//        List<TariffOption> tariffOptions = tariffOptionService.getAllJoinedTariffOption(tar2.getTariffOptionId());
+//        tar1.addjointTogether(tar2);
+//        tar2.addjointTogether(tar1);
 //
-//        for (TariffOption option : tariffOptions) {
-//            System.out.println(option);
+//        tar1.addOptionsIncompatible(tar3);
+//        tar3.addOptionsIncompatible(tar1);
+//        tar2.addOptionsIncompatible(tar3);
+//        tar3.addOptionsIncompatible(tar2);
+//        tariffOptionService.updateEntity(tar1);
+//        tariffOptionService.updateEntity(tar2);
+//        tariffOptionService.updateEntity(tar3);
+
+
+        //8) checking work joint and possible options
+
+//        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+//        TariffOption tariffOption = tariffOptionService.getEntityById(1);
+//        for (TariffOption tar : tariffOption.getjointTogether()) {
+//            System.out.println(tar.getTariffOptionId());
 //        }
 //
-//
-        UserServiceImpl userService = new UserServiceImpl();
-        userService.getEntityById(2);
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        List<Contract> contractList = contractService.getAllContractsForUser(2);
-        for (Contract contract : contractList) {
-            System.out.println(contract.getNumber() + " " + contract.isBlocked());
-        }
-        Contract newContract = contractList.get(0);
-        newContract.setBlocked(true);
+//        tariffOption = tariffOptionService.getEntityById(3);
+//        for (TariffOption tar : tariffOption.getimpossibleTogether()) {
+//            System.out.println(tar.getTariffOptionId());
+//        }
+
+
+
     }
 }
