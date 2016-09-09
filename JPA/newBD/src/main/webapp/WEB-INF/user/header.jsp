@@ -1,4 +1,17 @@
+<%@ page import="entities.Contract" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String eMail = (String) request.getSession(true).getAttribute("eMail");
+    UserServiceImpl userService = new UserServiceImpl();
+    List<Contract> contracts = userService.getUserByEMAil(eMail).getContracts();
+    double mainSum = 0;
+    for (Contract contract : contracts) {
+        if (!contract.isBlocked())
+        mainSum += contract.getTariff().getPrice();
+    }
+%>
 <body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
     <nav class="cm-navbar cm-navbar-primary">
@@ -40,12 +53,12 @@
                     <div class="list-group">
                         <a href="/user/Offer" class="list-group-item">
                             <h4 class="list-group-item-heading text-overflow">
-                                <i class="fa fa-fw fa-envelope"></i> New offer special for you !
+                                <i class="fa fa-fw fa-envelope"></i> My scope
                             </h4>
-                            <p class="list-group-item-text text-overflow">Less money - better quality</p>
+                            <p class="list-group-item-text text-overflow">I spend <%=mainSum%> RUB per month</p>
                         </a>
                     </div>
-                    <div style="padding:10px"><a class="btn btn-success btn-block" href="/user/Tarrifs">Show me
+                    <div style="padding:10px"><a class="btn btn-success btn-block" href="/user/Tariffs">Show me
                         more...</a></div>
                 </div>
             </div>
@@ -54,18 +67,15 @@
             <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
-                    <%
-                        String userName = (String) request.getSession(true).getAttribute("userName");
-                    %>
+                    <c:set var="userName" value="${sessionScope.userName}"/>
                     <a style="cursor:default;"><strong><c:out value='${userName}'/></strong></a>
-                    <%--<a style="cursor:default;"><strong><%out.print(userName);%></strong></a>--%>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="/user/AboutMe"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="/user/Tariffs"><i class="fa fa-fw fa-user"></i> About Me</a>
                 </li>
                 <li>
-                    <a href="/user/ChangeData"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                    <a href="/user/Contract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
                 </li>
                 <li>
                     <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>

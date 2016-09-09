@@ -86,13 +86,13 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="AboutMe" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/Exit" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/cat.svg" alt="cat">
                     </span>
-                            <h4>AboutMe</h4>
-                            <small>Have fun!</small>
+                            <h4>Exit</h4>
+                            <small>Bye!</small>
 
                         </div>
                     </a>

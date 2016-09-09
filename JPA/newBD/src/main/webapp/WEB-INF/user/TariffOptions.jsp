@@ -145,9 +145,6 @@
                                                 if (xhr.status == 500) {
                                                     alert('Incompatible options')
                                                 }
-                                                if (xhr.status == 400) {
-                                                    alert('Added joined options')
-                                                }
                                             }
                                         }
                                     }</script>
