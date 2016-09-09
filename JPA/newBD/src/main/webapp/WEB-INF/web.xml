@@ -170,4 +170,14 @@
         <servlet-name>ExitServlet</servlet-name>
         <url-pattern>/Exit</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HelpServlet</servlet-name>
+        <servlet-class>controllers.HelpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelpServlet</servlet-name>
+        <url-pattern>/Help</url-pattern>
+    </servlet-mapping>
 </web-app>

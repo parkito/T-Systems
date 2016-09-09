@@ -102,7 +102,7 @@
                 <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, <%out.print(userName);%>!</h1>
                     <p><strong><h3>Remember corporate agreements about client data! </h3></strong>
                     <h3>Clients are our past, reality, and future! </h3><a
-                            href="/user/Contract.jsp"><h3>Help here</h3></a></p>
+                            href="/Help"><h3>Help here</h3></a></p>
                 </div>
             </div>
         </div>

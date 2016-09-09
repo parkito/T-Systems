@@ -43,31 +43,12 @@
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
         <div class="cm-flex">
             <h1>Home</h1>
-            <form id="cm-search" action="index.jsp" method="get">
-                <input type="search" name="q" autocomplete="off" placeholder="Search...">
+            <form id="cm-search" action="/Help" method="get">
+                <input type="search" name="find" autocomplete="off" placeholder="Search...">
             </form>
         </div>
         <div class="pull-right">
             <div id="cm-search-btn" class="btn btn-primary md-search-white" data-toggle="cm-search"></div>
-        </div>
-        <div class="dropdown pull-right">
-            <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"><span
-                    class="label label-danger">1</span></button>
-            <div class="popover cm-popover bottom">
-                <div class="arrow"></div>
-                <div class="popover-content">
-                    <div class="list-group">
-                        <a href="/admin/Offer" class="list-group-item">
-                            <h4 class="list-group-item-heading text-overflow">
-                                <i class="fa fa-fw fa-envelope"></i> New offer special for you !
-                            </h4>
-                            <p class="list-group-item-text text-overflow">Less money - better quality</p>
-                        </a>
-                    </div>
-                    <div style="padding:10px"><a class="btn btn-success btn-block" href="/user/Tarrifs">Show me
-                        more...</a></div>
-                </div>
-            </div>
         </div>
         <div class="dropdown pull-right">
             <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
@@ -80,10 +61,10 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="/admin/AboutMe"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="/admin/FindClient"><i class="fa fa-fw fa-user"></i> Clients</a>
                 </li>
                 <li>
-                    <a href="/admin/ChangeData"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                    <a href="/admin/ChangeClient"><i class="fa fa-fw fa-cog"></i> Tariffs</a>
                 </li>
                 <li>
                     <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
