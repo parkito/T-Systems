@@ -111,7 +111,7 @@
                         <h3>Contacts:</h3>
                         <p>
                         <h3><b>E-mail </b><%out.print(contract.getUser().getEmail());%></h3>
-                        <h3><b>Adress </b><%out.print(contract.getUser().getAdress());%></h3>
+                        <h3><b>Address </b><%out.print(contract.getUser().getAdress());%></h3>
                         </p>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                                 function block(number) {
                                     popBox();
                                     function popBox() {
-                                        x = confirm('Are you sure? ' + number);
+                                        x = confirm('Are you sure?');
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "/admin/ChangeClient?blockItem=" + number, true);
@@ -251,7 +251,7 @@
                                     }
 
                                     function popBox(num1, num2) {
-                                        x = confirm('Are you sure? ');
+                                        x = confirm('Are you sure?');
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             var id = 1;
@@ -301,7 +301,7 @@
                                     function disable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure? ');
+                                            x = confirm('Are you sure?');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
                                                 xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
@@ -332,7 +332,7 @@
                                     function unable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure? ');
+                                            x = confirm('Are you sure?');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
                                                 xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1

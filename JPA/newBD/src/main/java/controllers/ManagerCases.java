@@ -12,6 +12,8 @@ import services.implementation.TariffOptionServiceImpl;
 import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
+import java.util.Random;
+
 /**
  * Created by Artyom Karnov on 9/6/16.
  * artyom-karnov@yandex.ru
@@ -81,7 +83,19 @@ public class ManagerCases {
         TariffOption tariffOption = new TariffOption(title, Double.parseDouble(price),
                 Double.parseDouble(connectionPrice));
         tariffOptionService.createEntity(tariffOption);
+    }
 
+    public String passwordGenerator(int size) {
+        Random rand = new Random();
+        int num;
+        StringBuilder sb = new StringBuilder();
+        String set = "abcdefjhijklmnoprstuqwzxyz0123456789!@#$%^&*()";
+        for (int i = 0; i < size; i++) {
+            num = rand.nextInt(set.length()-1);
+            sb.append(set.charAt(num));
+        }
+        String result = sb.toString();
+        return result;
     }
 
 }

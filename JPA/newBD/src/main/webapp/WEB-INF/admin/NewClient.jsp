@@ -33,7 +33,6 @@
                         String passport;
                         String adress;
                         String email;
-                        String password;
                         if (request.getSession().getAttribute("nameStat") == null)
                             nameStat = "";
                         else
@@ -64,10 +63,6 @@
                         else
                             email = (String) request.getSession(true).getAttribute("email");
 
-                        if (request.getSession(true).getAttribute("password") == null)
-                            password = "";
-                        else
-                            password = (String) request.getSession(true).getAttribute("password");
 
                     %>
                     <table class="table">
@@ -104,10 +99,6 @@
                             <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
                             <td><font color="blue"><%out.print(email);%></font></td>
                         </tr>
-                        <tr>
-                            <td><input id="password" type="password" class="form-control" placeholder="Password"></td>
-                            <td><font color="blue"><%out.print(password);%></font></td>
-                        </tr>
                         </tbody>
                     </table>
 
@@ -125,7 +116,6 @@
                         var passport = document.getElementById('passport').value;
                         var adress = document.getElementById('adress').value;
                         var email = document.getElementById('email').value;
-                        var password = document.getElementById('password').value;
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure? ');
@@ -133,7 +123,7 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName
                                         + "&birthday=" + birthday + "&passport=" + passport
-                                        + "&adress=" + adress + "&email=" + email + "&password=" + password, true);
+                                        + "&adress=" + adress + "&email=" + email, true);
                                 xhr.send();
                             }
                         }
@@ -144,10 +134,9 @@
         </div>
     </div>
     <%if (nameStat.equals("OK") && surName.equals("OK")&&birthday.equals("OK")&&passport.equals("OK")
-            &&adress.equals("OK")&&email.equals("OK")&&password.equals("OK")) {%>
+            &&adress.equals("OK")&&email.equals("OK")) {%>
     <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Client added</h2>
-
+        <h2 align="center" style="margin-top:0;">Client added, password generated</h2>
     </div>
     <%}%>
 </div>

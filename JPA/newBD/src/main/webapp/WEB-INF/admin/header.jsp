@@ -11,7 +11,7 @@
                     <li class="active"><a href="/login" class="sf-house">Home</a></li>
                     <li><a href="/admin/NewClient" class="sf-dashboard">New client</a></li>
                     <li class="cm-submenu">
-                        <a class="sf-notepad">Change client<span class="caret"></span></a>
+                        <a class="sf-notepad">Change contract<span class="caret"></span></a>
                         <ul>
                             <li><a href="/admin/NewContract">New contract</a></li>
                             <li><a href="/admin/ChangeClient">Change contract</a></li>
@@ -25,7 +25,7 @@
                         </ul>
                     </li>
                     <li class="cm-submenu">
-                        <a class="sf-brick-alt">Edit tariff<span class="caret"></span></a>
+                        <a class="sf-brick-alt">Edit option<span class="caret"></span></a>
                         <ul>
                             <li><a href="/admin/NewOption">New option</a></li>
                             <li><a href="/admin/EditTariffOption">Delete option</a></li>

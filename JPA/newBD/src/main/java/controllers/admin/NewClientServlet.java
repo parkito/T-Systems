@@ -16,6 +16,7 @@ import java.io.IOException;
  **/
 public class NewClientServlet extends HttpServlet {
     private ManagerCases managerCases = new ManagerCases();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/admin/NewClient.jsp").forward(req, resp);
@@ -32,16 +33,7 @@ public class NewClientServlet extends HttpServlet {
         String passport = req.getParameter("passport");
         String adress = req.getParameter("adress");
         String eMail = req.getParameter("email");
-        String password = req.getParameter("password");
 
-
-        req.getSession(false).removeAttribute("nameStat");
-        req.getSession(false).removeAttribute("surNameStat");
-        req.getSession(true).removeAttribute("birthday");
-        req.getSession(true).removeAttribute("passport");
-        req.getSession(true).removeAttribute("adress");
-        req.getSession(true).removeAttribute("email");
-        req.getSession(true).removeAttribute("password");
 
         if (name.equals("")) {
             req.getSession(true).setAttribute("nameStat", "Error");
@@ -82,15 +74,8 @@ public class NewClientServlet extends HttpServlet {
         }
 
 
-        if (password.equals("")) {
-            req.getSession(true).setAttribute("password", "Error");
-            add = false;
-        } else
-            req.getSession(true).setAttribute("password", "OK");
-
-
         if (add == true) managerCases.addUserToBase(name, secondName,
-                birthdayDate, passport, adress, eMail, password);
+                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5));
 
     }
 }
