@@ -5,6 +5,7 @@ import entities.Contract;
 import entities.Tariff;
 import entities.User;
 import services.implementation.ContractServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
 import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
@@ -24,17 +25,16 @@ public class TariffServlets extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        UserServiceImpl userService = new UserServiceImpl();
+        TariffServiceImpl tariffService = new TariffServiceImpl();
+
         String eMail = (String) req.getSession(true).getAttribute("eMail");
         String userName = (String) req.getSession(true).getAttribute("userName");
-
-        UserServiceImpl userService = new UserServiceImpl();
         User user = userService.getUserByEMAil(eMail);
-
-        ContractServiceImpl contractService = new ContractServiceImpl();
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
         req.getSession(true).setAttribute("contracts", contracts);
-        TariffServiceImpl tariffService = new TariffServiceImpl();
         req.getSession().setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/user/Tariffs.jsp").forward(req, resp);
 
@@ -44,9 +44,11 @@ public class TariffServlets extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
         TariffServiceImpl tariffService = new TariffServiceImpl();
+
         int tariffId = Integer.parseInt(req.getParameter("tariffId"));
         Contract contract = contractService.getContractByNumber(req.getParameter("contractNumber"));
         Tariff tariff = tariffService.getEntityById(tariffId);
+
         contract.setTariff(tariff);
         contractService.updateEntity(contract);
 

@@ -22,13 +22,16 @@ public class NumberOperationsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = (String) req.getSession(true).getAttribute("eMail");
+        ContractServiceImpl contractService = new ContractServiceImpl();
         UserServiceImpl userService = new UserServiceImpl();
+
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
         User user = userService.getUserByEMAil(eMail);
+
         req.getSession(true).setAttribute("userObj", user);
         String userName = user.getName();
         req.getSession(true).setAttribute("userName", userName);
-        ContractServiceImpl contractService = new ContractServiceImpl();
+
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.getSession(true).setAttribute("contracts", contracts);
         req.getRequestDispatcher("/WEB-INF/user/NumberOperations.jsp").forward(req, resp);
@@ -36,24 +39,23 @@ public class NumberOperationsServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
-
         if (req.getParameter("blockItem") != null) {
             Contract contract = contractService.getContractByNumber(req.getParameter("blockItem"));
             contract.setBlocked(true);
             contractService.updateEntity(contract);
         }
+
         if (req.getParameter("unblockItem") != null) {
             Contract contract = contractService.getContractByNumber(req.getParameter("unblockItem"));
-            if (!contract.getBlockedByAdmin())
+            if (!contract.getBlockedByAdmin()) {
                 contract.setBlocked(false);
-            else {
-                // TODO: 9/3/16 how invoke window on the page? make it
-                req.getRequestDispatcher("/404.jsp");
-            }
-            contractService.updateEntity(contract);
-        }
+                contractService.updateEntity(contract);
+            } else {
+                resp.setStatus(500);
 
+            }
+        }
     }
 }

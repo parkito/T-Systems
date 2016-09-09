@@ -78,8 +78,11 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/user/NumberOperations?unblockItem=" + number, true);
+                                xhr.open("DELETE", "/user/NumberOperations?unblockItem=" + number, false);
                                 xhr.send();
+                                if (xhr.status == 500) {
+                                    alert('Access error! Blocked by manager.')
+                                }
                             }
                         }
                     }</script>
@@ -101,7 +104,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/user/NumberOperations?blockItem=" + number, true);
+                                xhr.open("DELETE", "/user/NumberOperations?blockItem=" + number, true);
                                 xhr.send();
                             }
                         }

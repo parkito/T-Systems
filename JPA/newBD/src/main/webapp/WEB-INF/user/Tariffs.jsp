@@ -23,10 +23,8 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-
     User user = (User) request.getSession(true).getAttribute("user");
     String userName = (String) request.getSession(true).getAttribute("userName");
-
     List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
     TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
     List<Integer> tempTariff = new ArrayList();
@@ -42,7 +40,6 @@
     <div class="container-fluid">
         <%
             for (Contract contract : contracts) {
-
         %>
         <div class="row cm-fix-height">
             <div class="col-sm-6">
@@ -126,7 +123,6 @@
                                             popBox(par2[i], par3);
                                         }
                                     }
-
                                     function popBox(num1, num2) {
                                         x = confirm('Are you sure? ');
                                         if (x == true) {
@@ -136,7 +132,6 @@
                                             xhr.send();
                                         }
                                     }
-
                                 }
                             </script>
 

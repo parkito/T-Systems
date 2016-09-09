@@ -25,13 +25,14 @@ public class UserContractServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
-        String eMail = (String) req.getSession(true).getAttribute("eMail");
         UserServiceImpl userService = new UserServiceImpl();
+
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
         User user = userService.getUserByEMAil(eMail);
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+
         req.getSession(false).setAttribute("contracts", contracts);
         req.getSession(false).setAttribute("tariffOptionService", tariffOptionService);
-
         req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
     }
 

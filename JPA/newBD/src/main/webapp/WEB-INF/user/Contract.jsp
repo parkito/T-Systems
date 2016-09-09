@@ -29,9 +29,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Number: <c:out value="${contract.getNumber()}"/></div>
                         <div class="panel-body">
-
                             <h2>
-
                                 <small>Tariff :</small>
                                 <c:out value="${contract.getTariff().getTitle()}"/>
                                 <br>
@@ -47,9 +45,7 @@
                                 <c:if test="${!contract.isBlocked()}">
                                     <font color="green">Active</font>
                                 </c:if>
-
                             </h2>
-
                         </div>
                     </div>
                 </div>

@@ -21,20 +21,18 @@ import java.util.List;
  **/
 // TODO: 9/4/16 thinking about blocking again 
 public class TariffOptionServlet extends HttpServlet {
-    private UserCases userCases = new UserCases();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String eMail = (String) req.getSession(true).getAttribute("eMail");
-        String userName = (String) req.getSession(true).getAttribute("userName");
-
-        UserServiceImpl userService = new UserServiceImpl();
-        User user = userService.getUserByEMAil(eMail);
-
         ContractServiceImpl contractService = new ContractServiceImpl();
-        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-        req.getSession(true).setAttribute("contracts", contracts);
+        UserServiceImpl userService = new UserServiceImpl();
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
+        User user = userService.getUserByEMAil(eMail);
+        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+
+        req.getSession(true).setAttribute("contracts", contracts);
         req.getSession(true).setAttribute("tariffOptions", tariffOptionService.getAll());
         req.getRequestDispatcher("/WEB-INF/user/TariffOptions.jsp").forward(req, resp);
 
@@ -42,13 +40,16 @@ public class TariffOptionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+
         String contractNumber = req.getParameter("contractNumber");
         int tariffId = Integer.parseInt(req.getParameter("tariff"));
         String method = req.getParameter("method");
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+
         TariffOption tariffOption = tariffOptionService.getEntityById(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
+
         if (method.equals("unable")) {
             contract.getTariffOptions().add(tariffOption);
             contractService.updateEntity(contract);
