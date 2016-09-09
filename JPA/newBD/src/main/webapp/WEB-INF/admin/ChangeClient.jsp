@@ -24,7 +24,6 @@
 <%
     User user = (User) request.getSession(true).getAttribute("user");
     String userName = (String) request.getSession(true).getAttribute("userName");
-
     List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
     TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
     List<Integer> tempTariff = new ArrayList();
@@ -77,7 +76,6 @@
                 if (request.getSession(true).getAttribute("usr") != null) {
                     Contract contract = (Contract) request.getSession(true).getAttribute("usr");
                     contracts = contract.getUser().getContracts();
-
     %>
 
 
@@ -111,7 +109,7 @@
                         <h3>Contacts:</h3>
                         <p>
                         <h3><b>E-mail </b><%out.print(contract.getUser().getEmail());%></h3>
-                        <h3><b>Address </b><%out.print(contract.getUser().getAdress());%></h3>
+                        <h3><b>Adress </b><%out.print(contract.getUser().getAdress());%></h3>
                         </p>
                     </div>
                 </div>
@@ -145,7 +143,6 @@
                                     out.print("<font color =\"red\">Blocked by user</font>");
                                 if (!contr.isBlocked())
                                     out.print("<font color =\"green\">Active</font>");
-
                             %>
                         </h2>
                         <%if (contr.getIsBlocked()) {%>
@@ -162,8 +159,6 @@
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "/admin/ChangeClient?unblockItem=" + number, true);
                                             xhr.send();
-
-
                                         }
                                     }
                                 }</script>
@@ -178,12 +173,11 @@
                                 function block(number) {
                                     popBox();
                                     function popBox() {
-                                        x = confirm('Are you sure?');
+                                        x = confirm('Are you sure? ' + number);
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "/admin/ChangeClient?blockItem=" + number, true);
                                             xhr.send();
-
                                         }
                                     }
                                 }
@@ -249,9 +243,8 @@
                                             popBox(par2[i], par3);
                                         }
                                     }
-
                                     function popBox(num1, num2) {
-                                        x = confirm('Are you sure?');
+                                        x = confirm('Are you sure? ');
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             var id = 1;
@@ -259,7 +252,6 @@
                                             xhr.send();
                                         }
                                     }
-
                                 }
                             </script>
 
@@ -301,7 +293,7 @@
                                     function disable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure?');
+                                            x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
                                                 xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
@@ -332,7 +324,7 @@
                                     function unable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure?');
+                                            x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
                                                 xhr.open("POST", "/user/TariffOptions?contractNumber=" + par1
@@ -360,7 +352,6 @@
     <%
             i++;
         }
-
     %>
 
 

@@ -36,7 +36,7 @@
                             var text = document.getElementById('textFiled').value;
                             popBox();
                             function popBox() {
-                                x = confirm('Are you sure? ' + text);
+                                x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
                                     xhr.open("POST", "/admin/FindClient?number=" + text, true);

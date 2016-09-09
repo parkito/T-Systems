@@ -29,10 +29,12 @@
                         <ul>
                             <li><a href="/admin/NewOption">New option</a></li>
                             <li><a href="/admin/EditTariffOption">Delete option</a></li>
+                            <li><a href="/admin/ConnectOption">Join option</a></li>
                         </ul>
                     </li>
                     <li><a href="/admin/ViewClient" class="sf-lock-open">View clients</a></li>
                     <li><a href="/admin/FindClient" class="sf-window-layout">Find client</a></li>
+
                 </ul>
             </div>
         </div>

@@ -17,7 +17,6 @@ import java.io.IOException;
 // TODO: 9/4/16 что можно сделать с пустыми списками? т.е. когда на странице нет ни одного элемента.
 // TODO: 9/7/16 documentation  
 // TODO: 9/7/16 tests
-// TODO: 9/7/16 try to change jsp on tag-style
 // TODO: 9/9/16 переписывать все на jstl
 
 // TODO: 9/7/16 1) Not update content after first changing on user/Tariffs
@@ -28,7 +27,6 @@ import java.io.IOException;
 // TODO: 9/7/16 7) not remoning session after log out 
 // TODO: 9/7/16 8) If there is session - on localhost:8080 open /login, not signIn
 // TODO: 9/7/16 10) Change clien multi window on manegers main page
-// TODO: 9/7/16 11) fuckin shit with email on registration
 
 /**
  * Created by Artyom Karnov on 8/29/16.
