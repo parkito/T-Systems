@@ -14,7 +14,6 @@ import java.util.List;
  **/
 
 
-// TODO: 8/31/16 unic status for accsess level
 public class First {
     public static void main(String[] args) {
         //1) add roles for users

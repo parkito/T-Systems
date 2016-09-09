@@ -37,8 +37,8 @@
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
         <div class="cm-flex">
             <h1>Home</h1>
-            <form id="cm-search" action="index.jsp" method="get">
-                <input type="search" name="q" autocomplete="off" placeholder="Search...">
+            <form id="cm-search" action="/Help" method="get">
+                <input type="search" name="find" autocomplete="off" placeholder="Search...">
             </form>
         </div>
         <div class="pull-right">
@@ -51,7 +51,7 @@
                 <div class="arrow"></div>
                 <div class="popover-content">
                     <div class="list-group">
-                        <a href="/user/Offer" class="list-group-item">
+                        <a href="/user/Tariffs" class="list-group-item">
                             <h4 class="list-group-item-heading text-overflow">
                                 <i class="fa fa-fw fa-envelope"></i> My scope
                             </h4>

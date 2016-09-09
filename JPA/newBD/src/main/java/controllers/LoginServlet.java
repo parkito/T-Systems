@@ -1,5 +1,11 @@
 package controllers;
 
+import entities.User;
+import exceptions.UserNotFoundException;
+import services.api.AccessLevelService;
+import services.implementation.AccessLevelImpl;
+import services.implementation.UserServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -30,38 +36,53 @@ import java.io.IOException;
  **/
 // TODO: 9/4/16 thinking about failining during loginin
 public class LoginServlet extends HttpServlet {
-    private UserCases userCases = new UserCases();
-    public static boolean isPreviousDataCorrect = true;
+    private UserServiceImpl userService = new UserServiceImpl();
+    private AccessLevelImpl accessLevelService = new AccessLevelImpl();
+    public static boolean  isPreviousDataCorrect = true;
+
+    public boolean isAuthorized(String eMail, String password) {
+        User user;
+        try {
+            user = userService.getUserByEMAil(eMail);
+            if (user.getPassword().equals(password))
+                return true;
+            else return false;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        } catch (UserNotFoundException ex) {
+            return false;
+        }
+    }
+
+    public boolean isManager(String eMail) {
+        return userService.getUserByEMAil(eMail).getAccessLevel() != null ? true : false;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (userCases.isManager(userCases.getCookiesValue(req, "eMail"))) {
-            req.getSession(true).setAttribute("userName", userCases.getUserName(req));
+        String eMail = (String) req.getSession(true).getAttribute("eMail");
+        if (isManager(eMail)) {
+            req.getSession(true).setAttribute("userName", userService.getUserByEMAil(eMail).getName());
             req.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(req, resp);
         } else {
-            req.getSession(true).setAttribute("userName", userCases.getUserName(req));
+            req.getSession(true).setAttribute("userName", userService.getUserByEMAil(eMail));
             req.getRequestDispatcher("/WEB-INF/user/index.jsp").forward(req, resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserServiceImpl userService = new UserServiceImpl();
         String eMail = req.getParameter("username");
         String password = req.getParameter("password");
         String userName;
-        if (userCases.isAuthorized(eMail, password)) {
-            userName = userCases.getUserNameByEmail(eMail);
-            Cookie loginCookie = new Cookie("eMail", eMail);
-            Cookie userNameCookie = new Cookie("userName", userName);
-            loginCookie.setMaxAge(30 * 60);
-            userNameCookie.setMaxAge(30 * 60);
-            resp.addCookie(loginCookie);
-            resp.addCookie(userNameCookie);
+        if (isAuthorized(eMail, password)) {
+            userName = userService.getUserByEMAil(eMail).getName();
             req.setAttribute("userName", userName);
             req.getSession(true).setAttribute("userName", userName);
             req.getSession(true).setAttribute("eMail", eMail);
             isPreviousDataCorrect = true;
-            if (userCases.isManager(eMail)) {
+            if (isManager(eMail)) {
                 req.getRequestDispatcher("WEB-INF/admin/index.jsp").forward(req, resp);
             } else {
                 req.getRequestDispatcher("WEB-INF/user/index.jsp").forward(req, resp);

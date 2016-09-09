@@ -74,13 +74,13 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/ChangeData" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/user/Help" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/window-layout.svg" alt="window-layout">
                     </span>
-                            <h4>Change personal data</h4>
-                            <small>Give more details for better service!</small>
+                            <h4>Help</h4>
+                            <small>Help here!</small>
 
                         </div>
                     </a>
@@ -102,7 +102,7 @@
                 <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, <%out.print(userName);%>!</h1>
                     <p><strong><h3>We are glad to see you here ! </h3></strong>
                     <h3>Let's discover all opportunities and explore new horizonts! If you need a help, please</h3><a
-                            href="/user/Contract.jsp"><h3>Contact us</h3></a></p>
+                            href="/Help"><h3>Contact us</h3></a></p>
                 </div>
 
             </div>

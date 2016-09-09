@@ -1,6 +1,5 @@
 package controllers.user;
 
-import controllers.UserCases;
 import entities.Contract;
 import entities.TariffOption;
 import entities.User;
@@ -20,7 +19,6 @@ import java.util.List;
  * Created by Artyom Karnov on 9/2/16.
  * artyom-karnov@yandex.ru
  **/
-// TODO: 9/4/16 thinking about blocking again 
 public class TariffOptionServlet extends HttpServlet {
 
     @Override

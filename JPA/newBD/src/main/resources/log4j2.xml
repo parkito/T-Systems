@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="ERROR">
 
     <Appenders>
-        <File name="MyFile" fileName="/tmp/app.log">
+        <File name="MyFile" fileName="/tmp/operatorApp.log">
             <PatternLayout>
-                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>
         </File>
         <Async name="Async">
@@ -13,12 +13,12 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="main.java.controllers.LoginServlet" level="debug" additivity="true">
+        <Logger name="main.java.controllers.LoginServlet" level="DEBUG" additivity="true">
             <AppenderRef ref="Async"/>
         </Logger>
 
         <!-- Root Logger -->
-        <Root level="all">
+        <Root level="ERROR">
             <AppenderRef ref="Async"/>
         </Root>
     </Loggers>

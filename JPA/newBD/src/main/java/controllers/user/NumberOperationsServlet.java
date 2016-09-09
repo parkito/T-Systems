@@ -1,6 +1,5 @@
 package controllers.user;
 
-import controllers.UserCases;
 import entities.Contract;
 import entities.User;
 import services.implementation.ContractServiceImpl;
@@ -18,7 +17,6 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class NumberOperationsServlet extends HttpServlet {
-    private UserCases userCases = new UserCases();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

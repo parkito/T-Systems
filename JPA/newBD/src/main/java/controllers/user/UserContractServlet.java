@@ -1,6 +1,5 @@
 package controllers.user;
 
-import controllers.UserCases;
 import entities.Contract;
 import entities.User;
 import services.implementation.ContractServiceImpl;
