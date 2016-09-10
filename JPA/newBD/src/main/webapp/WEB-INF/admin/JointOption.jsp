@@ -20,27 +20,27 @@
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new contract</h2>
-        <%--<p></p>--%>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
                     <%
-                        String number;
-                        String email;
+                        String tariffOne;
+                        String tariffTwo;
 
-                        if (request.getSession().getAttribute("emailStat") == null)
-                            email = "";
+                        if (request.getSession().getAttribute("oneStat") == null)
+                            tariffOne = "";
                         else
-                            email = (String) request.getSession().getAttribute("emailStat");
+                            tariffOne = (String) request.getSession().getAttribute("oneStat");
 
-                        if (request.getSession(true).getAttribute("numberStat") == null)
-                            number = "";
+                        if (request.getSession(true).getAttribute("twoStat") == null)
+                            tariffTwo = "";
                         else
-                            number = (String) request.getSession(true).getAttribute("numberStat");
+                            tariffTwo = (String) request.getSession(true).getAttribute("twoStat");
 
                     %>
+                    <h4>Connect option</h4>
                     <table class="table">
                         <thead>
                         <tr>
@@ -50,14 +50,14 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input id="email" type="text" class="form-control" placeholder="Email"></td>
+                            <td><input id="tariffOne" type="text" class="form-control" placeholder="First tariff"></td>
                             <td>
-                                <font color="blue"><%out.print(email);%></font>
+                                <font color="blue"><%out.print(tariffOne);%></font>
                             </td>
                         </tr>
                         <tr>
-                            <td><input id="number" type="text" class="form-control" placeholder="Number"></td>
-                            <td><font color="blue"><%out.print(number);%></font></td>
+                            <td><input id="tariffTwo" type="text" class="form-control" placeholder="Second tariff"></td>
+                            <td><font color="blue"><%out.print(tariffTwo);%></font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -70,15 +70,15 @@
                 </form>
                 <script>
                     function add() {
-                        var email = document.getElementById('email').value;
-                        var number = document.getElementById('number').value;
+                        var tariffOne = document.getElementById('tariffOne').value;
+                        var tariffTwo = document.getElementById('tariffTwo').value;
 
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewContract?email=" + email + "&number=" + number, true);
+                                xhr.open("POST", "/admin/ConnectOption?tariffOne=" + tariffOne + "&tariffTwo=" + tariffTwo, true);
                                 xhr.send();
                             }
                         }
@@ -88,9 +88,9 @@
             </div>
         </div>
     </div>
-    <%if (number.equals("OK") && email.equals("OK")) {%>
+    <%if (tariffOne.equals("OK") && tariffTwo.equals("OK")) {%>
     <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Contract added</h2>
+        <h2 align="center" style="margin-top:0;">Conection added</h2>
 
     </div>
     <%}%>

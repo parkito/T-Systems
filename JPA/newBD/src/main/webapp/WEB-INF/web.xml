@@ -144,13 +144,23 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ConnectionOptionServlet</servlet-name>
-        <servlet-class>controllers.admin.ConnectionOptionServlet</servlet-class>
+        <servlet-name>JointOptionServlet</servlet-name>
+        <servlet-class>controllers.admin.JointOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ConnectionOptionServlet</servlet-name>
+        <servlet-name>JointOptionServlet</servlet-name>
         <url-pattern>/admin/ConnectOption</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ImpossibleOptionServlet</servlet-name>
+        <servlet-class>controllers.admin.ImpossibleOptionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ImpossibleOptionServlet</servlet-name>
+        <url-pattern>/admin/ImpossibleOption</url-pattern>
     </servlet-mapping>
 
     <error-page>

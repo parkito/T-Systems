@@ -12,6 +12,7 @@ import services.implementation.TariffOptionServiceImpl;
 import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -91,11 +92,38 @@ public class ManagerCases {
         StringBuilder sb = new StringBuilder();
         String set = "abcdefjhijklmnoprstuqwzxyz0123456789!@#$%^&*()";
         for (int i = 0; i < size; i++) {
-            num = rand.nextInt(set.length()-1);
+            num = rand.nextInt(set.length() - 1);
             sb.append(set.charAt(num));
         }
         String result = sb.toString();
         return result;
     }
 
+    public void addJoinOptionToBase(String tariffOne, String tarifftwo) {
+        TariffOption one = null, two = null;
+        for (TariffOption tariffOption : tariffOptionService.getAll()) {
+            if (tariffOption.getTitle().equals(tariffOne))
+                one = tariffOption;
+            if (tariffOption.getTitle().equals(tarifftwo))
+                two = tariffOption;
+        }
+        one.addjointTogether(two);
+        two.addjointTogether(one);
+        tariffOptionService.updateEntity(one);
+        tariffOptionService.updateEntity(two);
+    }
+
+    public void addImmposibleOptionToBase(String tariffOne, String tarifftwo) {
+        TariffOption one = null, two = null;
+        for (TariffOption tariffOption : tariffOptionService.getAll()) {
+            if (tariffOption.getTitle().equals(tariffOne))
+                one = tariffOption;
+            if (tariffOption.getTitle().equals(tarifftwo))
+                two = tariffOption;
+        }
+        one.addOptionsIncompatible(two);
+        two.addOptionsIncompatible(one);
+        tariffOptionService.updateEntity(one);
+        tariffOptionService.updateEntity(two);
+    }
 }
