@@ -1,14 +1,12 @@
-package services.implementation;
+package integration.implementation;
 
 
 import dao.api.TariffOptionDAO;
 import dao.implementation.TariffOptionDAOImpl;
-import entities.Tariff;
 import entities.TariffOption;
-import entities.User;
 import exceptions.CustomDAOException;
 import exceptions.OptionsForEntityNotGotException;
-import services.api.TariffOptionService;
+import integration.api.TariffOptionService;
 
 import java.util.List;
 

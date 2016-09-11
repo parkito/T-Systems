@@ -1,4 +1,4 @@
-package services.api;
+package integration.api;
 
 
 import entities.TariffOption;

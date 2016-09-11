@@ -2,7 +2,7 @@ package controllers.admin;
 
 import entities.Contract;
 import exceptions.ContractNotFoundException;
-import services.implementation.ContractServiceImpl;
+import integration.implementation.ContractServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

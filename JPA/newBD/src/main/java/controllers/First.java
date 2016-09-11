@@ -1,12 +1,7 @@
 package controllers;
 
-import entities.Contract;
-import entities.TariffOption;
-import services.implementation.ContractServiceImpl;
-import services.implementation.TariffOptionServiceImpl;
-import services.implementation.UserServiceImpl;
-
-import java.util.List;
+import integration.api.AccessLevelService;
+import integration.implementation.AccessLevelImpl;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -135,6 +130,9 @@ public class First {
 //        for (TariffOption tar : tariffOption.getimpossibleTogether()) {
 //            System.out.println(tar.getTariffOptionId());
 //        }
+
+
+        AccessLevelService accessLevelService = new AccessLevelImpl();
 
     }
 }

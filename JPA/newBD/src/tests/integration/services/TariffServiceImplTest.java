@@ -1,14 +1,12 @@
-package services;
+package integration.services;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by Artyom Karnov on 9/8/16.
+ * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
-public class AccessLevelImplTest {
+public class TariffServiceImplTest {
     @Test
     public void createEntity() throws Exception {
 
@@ -31,6 +29,11 @@ public class AccessLevelImplTest {
 
     @Test
     public void getAll() throws Exception {
+
+    }
+
+    @Test
+    public void isEntityExists() throws Exception {
 
     }
 

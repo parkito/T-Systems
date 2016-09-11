@@ -1,15 +1,11 @@
-package services;
+package integration.services;
 
 import entities.User;
-import exceptions.CustomDAOException;
-import exceptions.UserNotFoundException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import services.implementation.UserServiceImpl;
-
-import javax.persistence.EntityNotFoundException;
+import integration.implementation.UserServiceImpl;
 
 /**
  * Created by Artyom Karnov on 8/27/16.

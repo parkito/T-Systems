@@ -1,20 +1,18 @@
 package controllers.admin;
 
 import entities.Contract;
-import entities.TariffOption;
 import entities.User;
 import exceptions.ContractNotFoundException;
-import services.implementation.ContractServiceImpl;
-import services.implementation.TariffOptionServiceImpl;
-import services.implementation.TariffServiceImpl;
-import services.implementation.UserServiceImpl;
+import integration.implementation.ContractServiceImpl;
+import integration.implementation.TariffOptionServiceImpl;
+import integration.implementation.TariffServiceImpl;
+import integration.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

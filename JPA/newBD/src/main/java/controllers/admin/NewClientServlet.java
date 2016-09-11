@@ -1,9 +1,7 @@
 package controllers.admin;
 
 import controllers.ManagerCases;
-import services.implementation.UserServiceImpl;
 
-import javax.persistence.EntityNotFoundException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

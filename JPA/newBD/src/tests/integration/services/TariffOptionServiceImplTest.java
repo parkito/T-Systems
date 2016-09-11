@@ -1,8 +1,6 @@
-package services;
+package integration.services;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Artyom Karnov on 9/8/16.

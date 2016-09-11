@@ -2,8 +2,8 @@ package controllers.user;
 
 import entities.Contract;
 import entities.User;
-import services.implementation.ContractServiceImpl;
-import services.implementation.UserServiceImpl;
+import integration.implementation.ContractServiceImpl;
+import integration.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

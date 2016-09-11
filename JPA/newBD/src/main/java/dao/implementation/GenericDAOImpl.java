@@ -15,10 +15,10 @@ import java.util.List;
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
     //For testing
-//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
-//    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
+    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
     //For Servlets
-    protected EntityManager entityManager = EntityFactory.createEntityManager();
+//    protected EntityManager entityManager = EntityFactory.createEntityManager();
 
 
     public GenericDAOImpl() {
@@ -28,6 +28,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     /**
      * creating entity in base
+     *
      * @param entity
      * @throws CustomDAOException
      */
@@ -44,6 +45,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     /**
      * reading entity from base
+     *
      * @param id
      * @return
      * @throws CustomDAOException
@@ -59,6 +61,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     /**
      * refreshing entity in base
+     *
      * @param entity
      * @throws CustomDAOException
      */
@@ -78,6 +81,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     /**
      * deleting entity from base
+     *
      * @param entity
      * @throws CustomDAOException
      */
@@ -95,6 +99,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     /**
      * getting all same-type entities from base
+     *
      * @return
      * @throws CustomDAOException
      */

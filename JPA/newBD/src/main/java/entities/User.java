@@ -1,8 +1,5 @@
 package entities;
 
-import services.api.AccessLevelService;
-import services.implementation.AccessLevelImpl;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,15 @@
-package services;
+package integration.services;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by Artyom Karnov on 8/27/16.
+ * Created by Artyom Karnov on 9/8/16.
  * artyom-karnov@yandex.ru
  **/
-public class TariffServiceImplTest {
+public class ContractServiceImplTest {
+    @Before
+
     @Test
     public void createEntity() throws Exception {
 
@@ -30,12 +31,22 @@ public class TariffServiceImplTest {
     }
 
     @Test
+    public void getContractByNumber() throws Exception {
+
+    }
+
+    @Test
     public void getAll() throws Exception {
 
     }
 
     @Test
-    public void isEntityExists() throws Exception {
+    public void getAllContractsForUser() throws Exception {
+
+    }
+
+    @Test
+    public void isContractExists() throws Exception {
 
     }
 

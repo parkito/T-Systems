@@ -1,11 +1,11 @@
 <%@ page import="entities.Contract" %>
 <%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="integration.implementation.ContractServiceImpl" %>
+<%@ page import="integration.implementation.UserServiceImpl" %>
 <%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
+<%@ page import="integration.implementation.TariffOptionServiceImpl" %>
 <%@ page import="entities.TariffOption" %>
-<%@ page import="services.implementation.TariffServiceImpl" %>
+<%@ page import="integration.implementation.TariffServiceImpl" %>
 <%@ page import="entities.Tariff" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>

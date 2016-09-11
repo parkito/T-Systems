@@ -1,7 +1,5 @@
 package entities;
 
-import services.implementation.ContractServiceImpl;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

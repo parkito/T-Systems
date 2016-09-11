@@ -1,12 +1,11 @@
-package services.implementation;
+package integration.implementation;
 
 
 import dao.api.TariffDAO;
 import dao.implementation.TariffDAOImpl;
 import entities.Tariff;
-import entities.User;
 import exceptions.CustomDAOException;
-import services.api.TariffService;
+import integration.api.TariffService;
 
 import java.util.List;
 

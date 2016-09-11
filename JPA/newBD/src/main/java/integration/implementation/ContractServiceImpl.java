@@ -1,14 +1,13 @@
-package services.implementation;
+package integration.implementation;
 
 
 import dao.api.ContractDAO;
 import dao.implementation.ContractDAOImpl;
 import entities.Contract;
-import entities.User;
 import exceptions.ContractNotFoundException;
 import exceptions.ContractsForEntityNotGotException;
 import exceptions.CustomDAOException;
-import services.api.ContractService;
+import integration.api.ContractService;
 
 import java.util.List;
 

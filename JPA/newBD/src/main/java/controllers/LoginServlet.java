@@ -2,9 +2,8 @@ package controllers;
 
 import entities.User;
 import exceptions.UserNotFoundException;
-import services.api.AccessLevelService;
-import services.implementation.AccessLevelImpl;
-import services.implementation.UserServiceImpl;
+import integration.implementation.AccessLevelImpl;
+import integration.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
