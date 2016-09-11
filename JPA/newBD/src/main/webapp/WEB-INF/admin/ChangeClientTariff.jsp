@@ -72,14 +72,13 @@
     </div>
 
 
-        <% String check = (String) request.getSession(true).getAttribute("check");
+    <% String check = (String) request.getSession(true).getAttribute("check");
         if (check.equals("work"))
             if (request.getSession(true).getAttribute("usr") != null) {
                 Contract contract1 = (Contract) request.getSession(true).getAttribute("usr");
                 contracts.clear();
                 contracts.add(contract1);
     %>
-
 
 
     <%--------------------------------------------------------------------------------------------%>
@@ -108,8 +107,8 @@
                                     out.print("<font color =\"red\">Blocked by user</font>");
                                 if (!contract.isBlocked())
                                     out.print("<font color =\"green\">Active</font>");
-                            %>
 
+                            %>
                         </h2>
 
                     </div>
@@ -175,7 +174,7 @@
                                             var id = 1;
                                             xhr.open("POST", "/user/Tariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                             xhr.send();
-                                            document.getElementById('textFiled').value=num2;
+                                            document.getElementById('textFiled').value = num2;
                                             find();
                                         }
                                     }
@@ -193,7 +192,7 @@
             }
         %>
     </div>
-        <%} else {%>
+    <%} else {%>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -202,7 +201,7 @@
             </div>
         </div>
     </div>
-        <%}%>
-    </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+    <%}%>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

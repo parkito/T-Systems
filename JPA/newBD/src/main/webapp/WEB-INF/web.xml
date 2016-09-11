@@ -94,6 +94,17 @@
 
 
     <servlet>
+        <servlet-name>ContractControlServlet</servlet-name>
+        <servlet-class>controllers.admin.ContractControlServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ContractControlServlet</servlet-name>
+        <url-pattern>/admin/ContractControl</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>ChangeClientTariffServlet</servlet-name>
         <servlet-class>controllers.admin.ChangeClientTariffServlet</servlet-class>
     </servlet>

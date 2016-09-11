@@ -16,6 +16,7 @@
                             <li><a href="/admin/NewContract">New contract</a></li>
                             <li><a href="/admin/ChangeClientTariff">Change tariff</a></li>
                             <li><a href="/admin/ChangeClient">Change options</a></li>
+                            <li><a href="/admin/ContractControl">Contract control</a></li>
                         </ul>
                     </li>
                     <li class="cm-submenu">
