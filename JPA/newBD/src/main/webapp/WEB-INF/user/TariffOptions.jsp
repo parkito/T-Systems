@@ -27,6 +27,8 @@
 
     List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
     List<TariffOption> allTariffOptions = (List<TariffOption>) request.getSession(true).getAttribute("tariffOptions");
+    List<Integer> tempTariff = new ArrayList();
+
 
 %>
 <div id="global">
@@ -166,6 +168,7 @@
             }
         %>
     </div>
+</div>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

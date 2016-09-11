@@ -92,6 +92,17 @@
         <url-pattern>/admin/ChangeClient</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>ChangeClientTariffServlet</servlet-name>
+        <servlet-class>controllers.admin.ChangeClientTariffServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeClientTariffServlet</servlet-name>
+        <url-pattern>/admin/ChangeClientTariff</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>NewContractServlet</servlet-name>
         <servlet-class>controllers.admin.NewContractServlet</servlet-class>

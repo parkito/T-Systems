@@ -96,7 +96,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h2><p align="center">
-                    User wasn' t found</p></h2>
+                        User wasn' t found</p></h2>
                 </div>
             </div>
         </div>

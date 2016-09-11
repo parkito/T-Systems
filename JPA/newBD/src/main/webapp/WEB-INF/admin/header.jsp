@@ -14,7 +14,8 @@
                         <a class="sf-notepad">Change contract<span class="caret"></span></a>
                         <ul>
                             <li><a href="/admin/NewContract">New contract</a></li>
-                            <li><a href="/admin/ChangeClient">Change contract</a></li>
+                            <li><a href="/admin/ChangeClientTariff">Change tariff</a></li>
+                            <li><a href="/admin/ChangeClient">Change options</a></li>
                         </ul>
                     </li>
                     <li class="cm-submenu">
