@@ -36,6 +36,48 @@
         <h2 style="margin-top:0;"><%out.print(userName);%>, your contracts:</h2>
         <p></p>
     </div>
+    <%----------------------------------------------%>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3 style="margin-top:0px">Enter contract number</h3>
+                <div class="input-group input-group-lg">
+
+                    <input type="text" class="form-control" placeholder="Searching" id="textFiled">
+
+                    <span class="input-group-btn">
+                        <form name="new" onclick="find()" class="btn btn-primary md-search-white">
+                         <button style="z-index:2" class="btn btn-primary md-search-white" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </form>
+                    </span>
+
+                    <script>
+                        function find() {
+                            var text = document.getElementById('textFiled').value;
+                            popBox();
+                            function popBox() {
+                                x = confirm('Are you sure?');
+                                if (x == true) {
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.send();
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% String check = (String) request.getSession(true).getAttribute("check");
+        if (check.equals("work"))
+            if (request.getSession(true).getAttribute("usr") != null) {
+                Contract contract1 = (Contract) request.getSession(true).getAttribute("usr");
+                contracts.clear();
+                contracts.add(contract1);
+    %>
+    <%-----------------------------------------------%>
 
     <div class="container-fluid">
         <%
@@ -107,13 +149,13 @@
                                     function disable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure? ');
-                                            if (x == true) {
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=disable", true);
-                                                xhr.send();
-                                            }
+
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                                    + "&tariff=" + par2 + "&method=disable", true);
+                                            xhr.send();
+                                            document.getElementById('textFiled').value = par1;
+                                            find();
                                         }
                                     }</script>
                             </tr>
@@ -138,16 +180,18 @@
                                     function unable(par1, par2) {
                                         popBox();
                                         function popBox() {
-                                            x = confirm('Are you sure? ');
-                                            if (x == true) {
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=unable", false);
-                                                xhr.send();
-                                                if (xhr.status == 500) {
-                                                    alert('Incompatible options')
-                                                }
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                                    + "&tariff=" + par2 + "&method=unable", false);
+                                            xhr.send();
+                                            if (xhr.status == 500) {
+                                                alert('Incompatible options')
                                             }
+                                            else {
+                                                document.getElementById('textFiled').value = par1;
+                                                find();
+                                            }
+
                                         }
                                     }</script>
                             </tr>
@@ -165,7 +209,8 @@
             <%}%>
         </div>
         <%
-            }
+                    }
+                }
         %>
     </div>
 </div>

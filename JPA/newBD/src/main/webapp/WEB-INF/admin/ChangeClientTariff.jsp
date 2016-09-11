@@ -75,21 +75,12 @@
         <% String check = (String) request.getSession(true).getAttribute("check");
         if (check.equals("work"))
             if (request.getSession(true).getAttribute("usr") != null) {
-                Contract contract = (Contract) request.getSession(true).getAttribute("usr");
+                Contract contract1 = (Contract) request.getSession(true).getAttribute("usr");
                 contracts.clear();
-                contracts.add(contract);
+                contracts.add(contract1);
     %>
 
-        <%} else {%>
-    <div class="container-fluid">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <h2><p align="center">
-                    User wasn' t found</p></h2>
-            </div>
-        </div>
-    </div>
-        <%}%>
+
 
     <%--------------------------------------------------------------------------------------------%>
     <div class="container-fluid">
@@ -201,6 +192,17 @@
                 i++;
             }
         %>
+    </div>
+        <%} else {%>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h2><p align="center">
+                    User wasn' t found</p></h2>
+            </div>
+        </div>
+    </div>
+        <%}%>
     </div>
     <jsp:include page="footer.jsp"></jsp:include>
 </html>

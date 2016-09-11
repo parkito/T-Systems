@@ -49,16 +49,7 @@ public class ChangeClientServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String number = req.getParameter("number");
-        req.getSession(true).setAttribute("check", "work");
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        try {
-            Contract contract = contractService.getContractByNumber(number);
-            req.getSession(true).setAttribute("usr", contract);
-
-        } catch (ContractNotFoundException ex) {
-            req.getSession(true).setAttribute("usr", null);
-        }
+        
 
     }
 }
