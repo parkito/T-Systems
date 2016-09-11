@@ -1,7 +1,7 @@
 package controllers;
 
-import integration.api.AccessLevelService;
-import integration.implementation.AccessLevelImpl;
+import services.api.AccessLevelService;
+import services.implementation.AccessLevelImpl;
 
 /**
  * Created by Artyom Karnov on 8/26/16.

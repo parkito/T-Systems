@@ -2,8 +2,8 @@ package controllers;
 
 import entities.User;
 import exceptions.UserNotFoundException;
-import integration.implementation.AccessLevelImpl;
-import integration.implementation.UserServiceImpl;
+import services.implementation.AccessLevelImpl;
+import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
             req.getSession(true).setAttribute("userName", userService.getUserByEMAil(eMail).getName());
             req.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(req, resp);
         } else {
-            req.getSession(true).setAttribute("userName", userService.getUserByEMAil(eMail));
+            req.getSession(true).setAttribute("userName", userService.getUserByEMAil(eMail).getName());
             req.getRequestDispatcher("/WEB-INF/user/index.jsp").forward(req, resp);
         }
     }

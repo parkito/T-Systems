@@ -1,4 +1,4 @@
-<%@ page import="integration.implementation.UserServiceImpl" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

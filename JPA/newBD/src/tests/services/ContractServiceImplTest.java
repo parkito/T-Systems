@@ -1,11 +1,11 @@
-package integration.services;
+package services;
 
 import entities.Contract;
 import entities.Tariff;
-import integration.api.UserService;
-import integration.implementation.ContractServiceImpl;
-import integration.implementation.TariffServiceImpl;
-import integration.implementation.UserServiceImpl;
+import services.api.UserService;
+import services.implementation.ContractServiceImpl;
+import services.implementation.TariffServiceImpl;
+import services.implementation.UserServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

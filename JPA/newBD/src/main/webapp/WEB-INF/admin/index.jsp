@@ -1,4 +1,4 @@
-<%@ page import="integration.implementation.UserServiceImpl" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,6 @@
 <%
     String userName = (String) request.getSession(true).getAttribute("userName");
 %>
-
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Welcome to K-Mobile</h2>

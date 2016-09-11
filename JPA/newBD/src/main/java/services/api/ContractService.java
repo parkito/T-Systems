@@ -1,4 +1,4 @@
-package integration.api;
+package services.api;
 
 
 import entities.Contract;

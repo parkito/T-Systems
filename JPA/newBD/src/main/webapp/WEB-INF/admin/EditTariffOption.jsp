@@ -1,9 +1,9 @@
 <%@ page import="entities.Contract" %>
 <%@ page import="entities.User" %>
-<%@ page import="integration.implementation.ContractServiceImpl" %>
-<%@ page import="integration.implementation.UserServiceImpl" %>
+<%@ page import="services.implementation.ContractServiceImpl" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
 <%@ page import="java.util.List" %>
-<%@ page import="integration.implementation.TariffOptionServiceImpl" %>
+<%@ page import="services.implementation.TariffOptionServiceImpl" %>
 <%@ page import="entities.TariffOption" %>
 <%@ page import="entities.Tariff" %>
 
@@ -26,7 +26,7 @@
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;">Delete tariffs</h2>
+        <h2 style="margin-top:0;">Delete options</h2>
         <p></p>
     </div>
     <div class="container-fluid ">

@@ -1,7 +1,7 @@
-package integration.services;
+package services;
 
 import entities.AccessLevel;
-import integration.implementation.AccessLevelImpl;
+import services.implementation.AccessLevelImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,12 +15,12 @@ public class AccessLevelImplTest {
     AccessLevel accessLevel = new AccessLevel("test");
 
     @Before
-    public void initTst() {
+    public void TestInitTst() {
         accessLevelimpl = new AccessLevelImpl();
     }
 
     @Test
-    public void createEntityTest() throws Exception {
+    public void TestCreateEntityTest() throws Exception {
 
         accessLevelimpl.createEntity(accessLevel);
         Assert.assertEquals(accessLevelimpl.

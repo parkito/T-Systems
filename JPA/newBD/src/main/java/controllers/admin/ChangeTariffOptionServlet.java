@@ -1,7 +1,7 @@
 package controllers.admin;
 
 import entities.TariffOption;
-import integration.implementation.TariffOptionServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

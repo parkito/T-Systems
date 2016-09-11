@@ -108,18 +108,19 @@
     </dependencies>
 
     <build>
-    <plugins>
-    <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-            <url>http://localhost:8080/manager/text</url>
-            <server>TomcatServer</server>
-            <path>/kMobile</path>
-        </configuration>
-    </plugin>
-    </plugins>
+        <testSourceDirectory>/src/tests</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>TomcatServer</server>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

@@ -3,9 +3,9 @@ package controllers.user;
 import entities.Contract;
 import entities.TariffOption;
 import entities.User;
-import integration.implementation.ContractServiceImpl;
-import integration.implementation.TariffOptionServiceImpl;
-import integration.implementation.UserServiceImpl;
+import services.implementation.ContractServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
+import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

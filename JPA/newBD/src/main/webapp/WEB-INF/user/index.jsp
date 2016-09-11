@@ -1,4 +1,4 @@
-<%@ page import="integration.implementation.UserServiceImpl" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>K-Mobile</title>
 </head>
-
 <jsp:include page="header.jsp"></jsp:include>
 <%
     String userName = (String) request.getSession(true).getAttribute("userName");

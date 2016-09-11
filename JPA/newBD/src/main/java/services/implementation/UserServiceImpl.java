@@ -1,4 +1,4 @@
-package integration.implementation;
+package services.implementation;
 
 
 import dao.api.UserDAO;
@@ -7,7 +7,7 @@ import entities.AccessLevel;
 import entities.User;
 import exceptions.CustomDAOException;
 import exceptions.UserNotFoundException;
-import integration.api.UserService;
+import services.api.UserService;
 
 import java.util.List;
 

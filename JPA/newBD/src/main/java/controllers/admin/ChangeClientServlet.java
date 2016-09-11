@@ -3,10 +3,10 @@ package controllers.admin;
 import entities.Contract;
 import entities.User;
 import exceptions.ContractNotFoundException;
-import integration.implementation.ContractServiceImpl;
-import integration.implementation.TariffOptionServiceImpl;
-import integration.implementation.TariffServiceImpl;
-import integration.implementation.UserServiceImpl;
+import services.implementation.ContractServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
+import services.implementation.TariffServiceImpl;
+import services.implementation.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

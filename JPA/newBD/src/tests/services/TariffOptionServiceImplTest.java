@@ -1,4 +1,4 @@
-package integration.services;
+package services;
 
 import org.junit.Test;
 

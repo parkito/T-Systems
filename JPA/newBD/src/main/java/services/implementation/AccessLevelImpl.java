@@ -1,11 +1,11 @@
-package integration.implementation;
+package services.implementation;
 
 
 import dao.api.AccessLevelDAO;
 import dao.implementation.AccessLevelDAOImpl;
 import entities.AccessLevel;
 import exceptions.CustomDAOException;
-import integration.api.AccessLevelService;
+import services.api.AccessLevelService;
 
 import java.util.List;
 

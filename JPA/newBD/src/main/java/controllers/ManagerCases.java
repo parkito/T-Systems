@@ -6,10 +6,10 @@ import entities.TariffOption;
 import entities.User;
 import exceptions.ContractNotFoundException;
 import exceptions.UserNotFoundException;
-import integration.implementation.ContractServiceImpl;
-import integration.implementation.TariffOptionServiceImpl;
-import integration.implementation.TariffServiceImpl;
-import integration.implementation.UserServiceImpl;
+import services.implementation.ContractServiceImpl;
+import services.implementation.TariffOptionServiceImpl;
+import services.implementation.TariffServiceImpl;
+import services.implementation.UserServiceImpl;
 
 import java.util.Random;
 

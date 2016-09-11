@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="entities.Contract" %>
 <%@ page import="entities.User" %>
-<%@ page import="integration.implementation.ContractServiceImpl" %>
-<%@ page import="integration.implementation.UserServiceImpl" %>
+<%@ page import="services.implementation.ContractServiceImpl" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
 <%@ page import="java.util.List" %>
-<%@ page import="integration.implementation.TariffOptionServiceImpl" %>
+<%@ page import="services.implementation.TariffOptionServiceImpl" %>
 <%@ page import="entities.TariffOption" %>
 
 <!DOCTYPE html>

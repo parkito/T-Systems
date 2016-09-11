@@ -1,5 +1,5 @@
 <%@ page import="entities.Contract" %>
-<%@ page import="integration.implementation.UserServiceImpl" %>
+<%@ page import="services.implementation.UserServiceImpl" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
