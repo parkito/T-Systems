@@ -15,7 +15,6 @@ import java.util.List;
  * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
-// TODO: 8/31/16 work with blocking
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAOImpl();
 

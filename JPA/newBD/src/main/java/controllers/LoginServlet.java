@@ -23,12 +23,12 @@ import java.io.IOException;
 // TODO: 9/7/16 7) not remoning session after log out 
 // TODO: 9/7/16 8) If there is session - on localhost:8080 open /login, not signIn
 // TODO: 9/7/16 10) Change clien multi window on manegers main page
+// TODO: 9/11/16 mockito aor how make tests 
 
 /**
  * Created by Artyom Karnov on 8/29/16.
  * artyom-karnov@yandex.ru
  **/
-// TODO: 9/4/16 thinking about failining during loginin
 public class LoginServlet extends HttpServlet {
     private UserServiceImpl userService = new UserServiceImpl();
     private AccessLevelImpl accessLevelService = new AccessLevelImpl();
