@@ -12,12 +12,11 @@ import org.junit.Test;
  **/
 public class AccessLevelImplTest {
     AccessLevelImpl accessLevelimpl;
-    AccessLevel accessLevel;
+    AccessLevel accessLevel = new AccessLevel("test");
 
     @Before
     public void initTst() {
         accessLevelimpl = new AccessLevelImpl();
-        accessLevel = new AccessLevel("test");
     }
 
     @Test

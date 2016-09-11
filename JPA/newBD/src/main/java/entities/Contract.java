@@ -189,10 +189,7 @@ public class Contract {
         if (number != null ? !number.equals(contract.number) : contract.number != null) return false;
         if (whoBlockedId != null ? !whoBlockedId.equals(contract.whoBlockedId) : contract.whoBlockedId != null)
             return false;
-//        if (user != null ? !user.equals(contract.user) : contract.user != null) return false;
-//        if (tariffOptions != null ? !tariffOptions.equals(contract.tariffOptions) : contract.tariffOptions != null)
-//            return false;
-//        if (tariff != null ? !tariff.equals(contract.tariff) : contract.tariff != null) return false;
+
 
         return true;
     }
