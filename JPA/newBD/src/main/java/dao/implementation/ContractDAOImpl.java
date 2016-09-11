@@ -20,7 +20,7 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
     /**
      * get contract by number
      * @param number
-     * @return
+     * @return contract with adjusted number
      * @throws ContractNotFoundException
      */
     @Override
@@ -36,7 +36,7 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
     /**
      * get all contracts that user has
      * @param id
-     * @return
+     * @return list of all contracts for adjusted user
      * @throws ContractsForEntityNotGotException
      */
     @Override

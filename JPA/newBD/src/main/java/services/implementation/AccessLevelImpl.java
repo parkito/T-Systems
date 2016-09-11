@@ -31,7 +31,7 @@ public class AccessLevelImpl implements AccessLevelService {
     /**
      *getting accessLevel entity by id
      * @param id
-     * @return
+     * @return level with adjusted id
      * @throws CustomDAOException
      */
 
@@ -63,7 +63,7 @@ public class AccessLevelImpl implements AccessLevelService {
 
     /**
      *
-     * @return
+     * @return list of all levels
      * @throws CustomDAOException
      */
     @Override

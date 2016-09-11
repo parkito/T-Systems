@@ -32,7 +32,7 @@ public class TariffServiceImpl implements TariffService {
     /**
      * get tariff entity by id
      * @param id
-     * @return
+     * @return tariff with adjusted id
      * @throws CustomDAOException
      */
     @Override
@@ -63,7 +63,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * getting all tariff entities from base
-     * @return
+     * @return list of all tariffs
      * @throws CustomDAOException
      */
     @Override
@@ -75,7 +75,7 @@ public class TariffServiceImpl implements TariffService {
     /**
      * checking contract existing in base
      * @param tariff
-     * @return
+     * @return true - if tariff exists, false if doesn't
      */
     @Override
     public boolean isTariffExists(Tariff tariff) {

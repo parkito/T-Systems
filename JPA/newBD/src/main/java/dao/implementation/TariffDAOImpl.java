@@ -20,7 +20,7 @@ public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements Ta
     /**
      * getting tariff entity by number
      * @param title
-     * @return
+     * @return tariff with adjusted number
      */
     public Tariff getTariffByTitle(String title) {
         try {

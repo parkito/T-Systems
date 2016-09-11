@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     /**
      * get user entity by id
      * @param id
-     * @return
+     * @return user with adjusted id
      * @throws CustomDAOException
      */
     @Override

@@ -4,15 +4,16 @@ import entities.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import services.implementation.UserServiceImpl;
+
+import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
 public class UserServiceImplTest {
-    UserServiceImpl userService = new UserServiceImpl();
+    UserServiceImpl userService;
     User user0 = new User("Ivan", "Ivanov", "08.10.1990", "pass1", "spb", "a@2.ru", "1234");
     User user01 = new User("Ivan", "Ivanov", "08.10.1990", "pass1", "msk", "a@2.ru", "1234");
     User user1 = new User("Petr", "Ivanov", "08.10.2000", "123", "spb", "a@b.ru", "123");
@@ -26,8 +27,7 @@ public class UserServiceImplTest {
     @Before
     public void before() {
         userService = new UserServiceImpl();
-//        if (userService.getUserByEMAil("c@c.ru")==null)
-        userService.createEntity(user6);
+
     }
 
     @Test//(expected = IllegalArgumentException.class)
@@ -46,8 +46,8 @@ public class UserServiceImplTest {
 
     @Test
     public void getEntityById() throws Exception {
-//        User user = userService.getEntityById(1);
-//        Assert.assertNotEquals(user, user0);
+        User user = userService.getEntityById(1);
+        Assert.assertEquals(user.getEmail(), user0.getEmail());
     }
 
     @Test
@@ -58,9 +58,8 @@ public class UserServiceImplTest {
         Assert.assertEquals(user.getAdress(), "msk");
     }
 
-    @Test(expected = Exception.class)
-    public void deleteEntity() throws Exception {
-        System.out.println(user6.getUserId());
+    @Test(expected = IllegalArgumentException.class)
+    public void deleteEntity() {
         userService.deleteEntity(userService.getEntityById(user6.getUserId()));
         userService.updateEntity(user6);
         userService.getUserByEMAil("c@c.ru");
@@ -69,22 +68,26 @@ public class UserServiceImplTest {
 
     @Test
     public void getAll() throws Exception {
-
+        List<User> users = userService.getAll();
+        Assert.assertNotEquals(users, null);
     }
 
     @Test
     public void isEntityExists() throws Exception {
-
+        User user = userService.getEntityById(1);
+        Assert.assertEquals(userService.isUserExists(user), true);
     }
 
     @Test
     public void getUserByNumber() throws Exception {
-
+        User user = userService.getUserByNumber("214189");
+        Assert.assertEquals(user.getEmail(), "e@b.ru");
     }
 
     @Test
     public void getUserByEMAil() throws Exception {
-
+        User user = userService.getUserByEMAil("e@b.ru");
+        Assert.assertEquals(user.getSecondName(), "Ivanov");
     }
 
 }

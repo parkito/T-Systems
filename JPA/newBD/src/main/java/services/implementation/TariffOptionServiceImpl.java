@@ -32,7 +32,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     /**
      * getting tariff option entity by id
      * @param id
-     * @return
+     * @return tariff option with adjusted id
      * @throws CustomDAOException
      */
     @Override
@@ -62,7 +62,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
 
     /**
      * getting all tariff option entity from base
-     * @return
+     * @return list of all tariff option
      * @throws CustomDAOException
      */
     public List<TariffOption> getAll() throws CustomDAOException {
@@ -72,7 +72,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     /**
      * getting tariff option for current tariff
      * @param id
-     * @return
+     * @return list of all option for tariff
      * @throws OptionsForEntityNotGotException
      */
     @Override
@@ -83,7 +83,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     /**
      *  getting tariff option for current contract
      * @param id
-     * @return
+     * @return list of all options for contract
      * @throws OptionsForEntityNotGotException
      */
     @Override
@@ -94,7 +94,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     /**
      * getting joint tariff options
      * @param id
-     * @return
+     * @return list of all joint options
      * @throws OptionsForEntityNotGotException
      */
     @Override
@@ -105,7 +105,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     /**
      * getting impossible tariff options
      * @param id
-     * @return
+     * @return list of all impossible options
      * @throws OptionsForEntityNotGotException
      */
     @Override
@@ -116,7 +116,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
     /**
      * checking tariff existing in base
      * @param tariffOption
-     * @return
+     * @return true - if option exists, false - if doesn't
      */
     public boolean isTariffOptionExists(TariffOption tariffOption) {
         try {

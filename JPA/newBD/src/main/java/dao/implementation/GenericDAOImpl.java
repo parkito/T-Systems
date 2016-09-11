@@ -47,7 +47,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
      * reading entity from base
      *
      * @param id
-     * @return
+     * @return E-entity if it exists
      * @throws CustomDAOException
      */
     @Override

@@ -17,10 +17,12 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
-
-//    @PersistenceContext
-//    private EntityManager entityManager;
-
+    /**
+     *
+     * @param id
+     * @return list of all tariff option for tariff
+     * @throws OptionsForEntityNotGotException
+     */
     @Override
     public List<TariffOption> getAllTariffOptionsForTariff(int id) throws OptionsForEntityNotGotException {
         try {
@@ -32,6 +34,12 @@ public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> i
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return list of all contracts for adjusted contract
+     * @throws OptionsForEntityNotGotException
+     */
     @Override
     public List<TariffOption> getAllTariffOptionsForContract(int id) throws OptionsForEntityNotGotException {
         try {

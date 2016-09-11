@@ -14,7 +14,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
     /**
      * getting user entity by number
      * @param number
-     * @return
+     * @return user with adjusted number
      * @throws UserNotFoundException
      */
     @Override
@@ -32,7 +32,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
     /**
      * getting user entity by email
      * @param eMail
-     * @return
+     * @return user with adjusted number
      * @throws UserNotFoundException
      */
     @Override

@@ -34,7 +34,7 @@ public class ContractServiceImpl implements ContractService {
     /**
      * get contract entity by id
      * @param id
-     * @return
+     * @return contract with adjusted id
      * @throws CustomDAOException
      */
     @Override
@@ -65,7 +65,7 @@ public class ContractServiceImpl implements ContractService {
     /**
      * getting contract entity by number
      * @param number
-     * @return
+     * @return contract with adjusted number
      * @throws ContractNotFoundException
      */
     @Override
@@ -75,7 +75,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * getting all contract entity from base
-     * @return
+     * @return list of all contracts
      * @throws CustomDAOException
      */
     @Override
@@ -86,7 +86,7 @@ public class ContractServiceImpl implements ContractService {
     /**
      * getting all contract for user
      * @param id
-     * @return
+     * @return list of all contracts for current user
      * @throws ContractsForEntityNotGotException
      */
     @Override
@@ -97,7 +97,7 @@ public class ContractServiceImpl implements ContractService {
     /**
      * checking contract existing in base
      * @param contract
-     * @return
+     * @return true - contract exists, false - contract doesn't exist
      */
     public boolean isContractExists(Contract contract) {
         try {
