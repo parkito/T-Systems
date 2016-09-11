@@ -20,11 +20,17 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     //For Servlets
     protected EntityManager entityManager = EntityFactory.createEntityManager();
 
+
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
     }
 
+    /**
+     * creating entity in base
+     * @param entity
+     * @throws CustomDAOException
+     */
     @Override
     public void create(E entity) throws CustomDAOException {
         try {
@@ -36,6 +42,12 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         }
     }
 
+    /**
+     * reading entity from base
+     * @param id
+     * @return
+     * @throws CustomDAOException
+     */
     @Override
     public E read(K id) throws CustomDAOException {
         try {
@@ -45,6 +57,11 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         }
     }
 
+    /**
+     * refreshing entity in base
+     * @param entity
+     * @throws CustomDAOException
+     */
     @Override
     public void update(E entity) throws CustomDAOException {
         try {
@@ -59,6 +76,11 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     }
 
+    /**
+     * deleting entity from base
+     * @param entity
+     * @throws CustomDAOException
+     */
     @Override
     public void delete(E entity) throws CustomDAOException {
         try {
@@ -71,6 +93,11 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     }
 
+    /**
+     * getting all same-type entities from base
+     * @return
+     * @throws CustomDAOException
+     */
     @Override
     public List<E> getAll() throws CustomDAOException {
         try {

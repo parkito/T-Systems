@@ -19,6 +19,11 @@ import java.util.List;
 public class TariffOptionServiceImpl implements TariffOptionService {
     private TariffOptionDAO optionDAO = new TariffOptionDAOImpl();
 
+    /**
+     * creating tariff option entity in base
+     * @param option
+     * @throws CustomDAOException
+     */
     @Override
     public void createEntity(TariffOption option) throws CustomDAOException {
         if (!isTariffOptionExists(option))
@@ -26,47 +31,95 @@ public class TariffOptionServiceImpl implements TariffOptionService {
         else System.out.println("TariffOption already exists");
     }
 
+    /**
+     * getting tariff option entity by id
+     * @param id
+     * @return
+     * @throws CustomDAOException
+     */
     @Override
     public TariffOption getEntityById(Integer id) throws CustomDAOException {
         return optionDAO.read(id);
     }
 
+    /**
+     * update tariff option entity in base
+     * @param option
+     * @throws CustomDAOException
+     */
     @Override
     public void updateEntity(TariffOption option) throws CustomDAOException {
         optionDAO.update(option);
     }
 
+    /**
+     * deleting tariff option entity from base
+     * @param option
+     * @throws CustomDAOException
+     */
     @Override
     public void deleteEntity(TariffOption option) throws CustomDAOException {
         optionDAO.delete(option);
     }
 
-
+    /**
+     * getting all tariff option entity from base
+     * @return
+     * @throws CustomDAOException
+     */
     public List<TariffOption> getAll() throws CustomDAOException {
         return optionDAO.getAll();
     }
 
+    /**
+     * getting tariff option for current tariff
+     * @param id
+     * @return
+     * @throws OptionsForEntityNotGotException
+     */
     @Override
     public List<TariffOption> getAllTariffOptions(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllTariffOptionsForTariff(id);
     }
 
+    /**
+     *  getting tariff option for current contract
+     * @param id
+     * @return
+     * @throws OptionsForEntityNotGotException
+     */
     @Override
     public List<TariffOption> getAllTariffOptionForContract(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllTariffOptionsForContract(id);
     }
 
+    /**
+     * getting joint tariff options
+     * @param id
+     * @return
+     * @throws OptionsForEntityNotGotException
+     */
     @Override
-
     public List<TariffOption> getAllJoinedTariffOption(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllJointTariffOptions(id);
     }
 
+    /**
+     * getting impossible tariff options
+     * @param id
+     * @return
+     * @throws OptionsForEntityNotGotException
+     */
     @Override
     public List<TariffOption> getAllImpossibleTariffOption(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllImpossibleTariffOptions(id);
     }
 
+    /**
+     * checking tariff existing in base
+     * @param tariffOption
+     * @return
+     */
     public boolean isTariffOptionExists(TariffOption tariffOption) {
         try {
             return optionDAO.getTariffOptionByTitle(tariffOption.getTitle()) != null ? true : false;

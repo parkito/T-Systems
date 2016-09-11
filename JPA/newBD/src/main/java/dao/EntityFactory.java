@@ -17,11 +17,19 @@ import javax.servlet.annotation.WebListener;
 public class EntityFactory implements ServletContextListener {
     private static EntityManagerFactory emf;
 
+    /**
+     * creating manager factory on servlet initialization
+     * @param servletContextEvent
+     */
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         emf = Persistence.createEntityManagerFactory("operator");
     }
 
+    /**
+     * closing factories on servlet destroing
+     * @param servletContextEvent
+     */
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         emf.close();

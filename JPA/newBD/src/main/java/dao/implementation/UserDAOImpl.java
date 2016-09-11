@@ -11,11 +11,12 @@ import javax.persistence.*;
  * artyom-karnov@yandex.ru
  **/
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
-    //    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("operator");
-//    private EntityManager entityManager = emf.createEntityManager();
-//    @PersistenceContext
-//    private EntityManager entityManager = emf.createEntityManager();
-
+    /**
+     * getting user entity by number
+     * @param number
+     * @return
+     * @throws UserNotFoundException
+     */
     @Override
     public User getUserByNumber(String number) throws UserNotFoundException {
         try {
@@ -28,6 +29,12 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
 
     }
 
+    /**
+     * getting user entity by email
+     * @param eMail
+     * @return
+     * @throws UserNotFoundException
+     */
     @Override
     public User getUserByEMAil(String eMail) throws UserNotFoundException {
         try {

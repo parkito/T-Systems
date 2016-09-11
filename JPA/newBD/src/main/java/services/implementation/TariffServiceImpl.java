@@ -17,6 +17,11 @@ import java.util.List;
 public class TariffServiceImpl implements TariffService {
     private TariffDAO tariffDAO = new TariffDAOImpl();
 
+    /**
+     * creating tariff entity in base
+     * @param tariff
+     * @throws CustomDAOException
+     */
     @Override
     public void createEntity(Tariff tariff) throws CustomDAOException {
         if (!isTariffExists(tariff))
@@ -25,28 +30,54 @@ public class TariffServiceImpl implements TariffService {
 
     }
 
+    /**
+     * get tariff entity by id
+     * @param id
+     * @return
+     * @throws CustomDAOException
+     */
     @Override
     public Tariff getEntityById(Integer id) throws CustomDAOException {
         return tariffDAO.read(id);
     }
 
+    /**
+     * update tariff entity in base
+     * @param tariff
+     * @throws CustomDAOException
+     */
     @Override
     public void updateEntity(Tariff tariff) throws CustomDAOException {
         tariffDAO.update(tariff);
 
     }
 
+    /**
+     * delete tariff entity from base
+     * @param tariff
+     * @throws CustomDAOException
+     */
     @Override
     public void deleteEntity(Tariff tariff) throws CustomDAOException {
         tariffDAO.delete(tariff);
     }
 
+    /**
+     * getting all tariff entities from base
+     * @return
+     * @throws CustomDAOException
+     */
     @Override
     public List<Tariff> getAll() throws CustomDAOException {
         return tariffDAO.getAll();
 
     }
 
+    /**
+     * checking contract existing in base
+     * @param tariff
+     * @return
+     */
     @Override
     public boolean isTariffExists(Tariff tariff) {
         try {
@@ -56,6 +87,11 @@ public class TariffServiceImpl implements TariffService {
         }
     }
 
+    /**
+     * getting tariff entity by title
+     * @param title
+     * @return
+     */
     @Override
     public Tariff getTariffByTitle(String title) {
         return tariffDAO.getTariffByTitle(title);

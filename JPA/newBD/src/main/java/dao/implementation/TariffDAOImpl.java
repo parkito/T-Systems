@@ -15,7 +15,13 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 
+
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
+    /**
+     * getting tariff entity by number
+     * @param title
+     * @return
+     */
     public Tariff getTariffByTitle(String title) {
         try {
             Query query = entityManager.createQuery("select t from Tariff t where title=:title")

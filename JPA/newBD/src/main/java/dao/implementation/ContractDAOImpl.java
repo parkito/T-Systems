@@ -17,7 +17,12 @@ import java.util.List;
  **/
 
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
-
+    /**
+     * get contract by number
+     * @param number
+     * @return
+     * @throws ContractNotFoundException
+     */
     @Override
     public Contract getContractByNumber(String number) throws ContractNotFoundException {
         try {
@@ -28,6 +33,12 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
         }
     }
 
+    /**
+     * get all contracts that user has
+     * @param id
+     * @return
+     * @throws ContractsForEntityNotGotException
+     */
     @Override
     public List<Contract> getAllUserContracts(int id) throws ContractsForEntityNotGotException {
         try {
