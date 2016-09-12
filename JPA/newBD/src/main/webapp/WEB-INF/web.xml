@@ -185,6 +185,18 @@
         <url-pattern>/admin/ImpossibleOption</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FindClientByEmail</servlet-name>
+        <servlet-class>controllers.admin.FindClientByEmailServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FindClientByEmail</servlet-name>
+        <url-pattern>/admin/ViewClient</url-pattern>
+    </servlet-mapping>
+
+
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>

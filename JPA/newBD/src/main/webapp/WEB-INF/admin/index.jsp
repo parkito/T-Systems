@@ -79,7 +79,7 @@
                     <img src="../assets/img/sf/lock.svg" alt="window-layout">
                     </span>
                             <h4>View clients</h4>
-                            <small>Block/Unblock</small>
+                            <small>Searching by email</small>
 
                         </div>
                     </a>
