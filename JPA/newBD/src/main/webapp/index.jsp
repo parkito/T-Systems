@@ -4,16 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="demo/assets/css/bootstrap-clearmin.min.css">
-    <link rel="stylesheet" type="text/css" href="demo/assets/css/roboto.css">
-    <link rel="stylesheet" type="text/css" href="demo/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/roboto.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>K-Mobile</title>
     <style></style>
 </head>
 <body class="cm-login">
 
 <div class="text-center" style="padding:90px 0 30px 0;background:#fff;border-bottom:1px solid #ddd">
-    <img src="demo/assets/img/logo-big.svg" width="300" height="45">
+    <img src="../assets/img/logo-big.svg" width="300" height="45">
 </div>
 
 <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
