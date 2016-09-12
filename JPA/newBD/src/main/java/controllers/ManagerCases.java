@@ -24,9 +24,9 @@ public class ManagerCases {
     TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
     /**
-     * checking user
+     * checking user existing
      * @param eMail
-     * @return
+     * @return true - if exists, false - if doesn't
      */
     public boolean isUserExists(String eMail) {
         try {
@@ -37,6 +37,16 @@ public class ManagerCases {
         return true;
     }
 
+    /**
+     * creating user entity and saving it to base
+     * @param name
+     * @param secondName
+     * @param birthdayData
+     * @param passport
+     * @param adress
+     * @param email
+     * @param password
+     */
     public void addUserToBase(String name, String secondName, String birthdayData,
                               String passport, String adress,
                               String email, String password) {
@@ -46,6 +56,11 @@ public class ManagerCases {
         userService.createEntity(user);
     }
 
+    /**
+     *checking number existing
+     * @param number
+     * @return true - if exists, false - if doesn't
+     */
     public boolean isNumberExists(String number) {
         try {
             contractService.getContractByNumber(number);
@@ -63,11 +78,21 @@ public class ManagerCases {
         return false;
     }
 
+    /**
+     * creating tariff entity and saving it to base
+     * @param title
+     * @param price
+     */
     public void addTariffToBase(String title, String price) {
         Tariff tariff = new Tariff(title, Double.parseDouble(price));
         tariffService.createEntity(tariff);
     }
 
+    /**
+     * creating contract entity and saving it to base
+     * @param eMail
+     * @param number
+     */
     public void addContractToBase(String eMail, String number) {
 
         Contract contract = new Contract(number, userService.getUserByEMAil(eMail),
@@ -75,6 +100,11 @@ public class ManagerCases {
         contractService.createEntity(contract);
     }
 
+    /**
+     * checking number existing
+     * @param title
+     * @return true - if exists, false - if doesn't
+     */
     public boolean isOptionExists(String title) {
         for (TariffOption tariffOption : tariffOptionService.getAll()) {
             if (tariffOption.getTitle().equals(title))
@@ -83,12 +113,23 @@ public class ManagerCases {
         return false;
     }
 
+    /**
+     * creating tariff option entity and saving it to base
+     * @param title
+     * @param price
+     * @param connectionPrice
+     */
     public void addOptionToBase(String title, String price, String connectionPrice) {
         TariffOption tariffOption = new TariffOption(title, Double.parseDouble(price),
                 Double.parseDouble(connectionPrice));
         tariffOptionService.createEntity(tariffOption);
     }
 
+    /**
+     * generate password for user
+     * @param size
+     * @return n-length password
+     */
     public String passwordGenerator(int size) {
         Random rand = new Random();
         int num;
@@ -102,6 +143,11 @@ public class ManagerCases {
         return result;
     }
 
+    /**
+     * adding joint tariffs and saving to base
+     * @param tariffOne
+     * @param tarifftwo
+     */
     public void addJoinOptionToBase(String tariffOne, String tarifftwo) {
         TariffOption one = null, two = null;
         for (TariffOption tariffOption : tariffOptionService.getAll()) {
@@ -116,6 +162,11 @@ public class ManagerCases {
         tariffOptionService.updateEntity(two);
     }
 
+    /**
+     * adding impossible tariffs and saving to base
+     * @param tariffOne
+     * @param tarifftwo
+     */
     public void addImmposibleOptionToBase(String tariffOne, String tarifftwo) {
         TariffOption one = null, two = null;
         for (TariffOption tariffOption : tariffOptionService.getAll()) {
