@@ -28,7 +28,7 @@
 
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><c:out value="${userName}"/>, your options:</h2>
+        <h2 style="margin-top:0;">Block/unblock contracts</h2>
         <p></p>
     </div>
 

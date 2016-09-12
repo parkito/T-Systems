@@ -32,11 +32,9 @@ public class FindClientByEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         req.getSession(true).setAttribute("check", "work");
-        System.out.println(email);
         UserServiceImpl userService = new UserServiceImpl();
         try {
             User user = userService.getUserByEMAil(email);
-            System.out.println(user);
             req.getSession(true).setAttribute("usrs", user);
 
         } catch (UserNotFoundException ex) {

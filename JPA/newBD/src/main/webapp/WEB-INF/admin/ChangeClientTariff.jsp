@@ -33,7 +33,7 @@
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><c:out value='${userName}'/>, your tariffs:</h2>
+        <h2 style="margin-top:0;">Change tariff</h2>
         <%--<h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>--%>
         <p></p>
     </div>

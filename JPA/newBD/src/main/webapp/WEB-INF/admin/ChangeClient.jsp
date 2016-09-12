@@ -33,7 +33,7 @@
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><%out.print(userName);%>, your contracts:</h2>
+        <h2 style="margin-top:0;">Change contract options</h2>
         <p></p>
     </div>
     <%----------------------------------------------%>

@@ -18,8 +18,13 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 public class ChangeClientTariffServlet extends HttpServlet {
+    public static int count =1;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (count == 1) {
+            req.getSession(true).setAttribute("check", "start");
+            count++;
+        }
         ContractServiceImpl contractService = new ContractServiceImpl();
         UserServiceImpl userService = new UserServiceImpl();
         TariffServiceImpl tariffService = new TariffServiceImpl();
@@ -29,14 +34,10 @@ public class ChangeClientTariffServlet extends HttpServlet {
         User user = userService.getUserByEMAil(eMail);
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
+//        req.getSession(true).setAttribute("check", "work");
         req.getSession(true).setAttribute("contracts", contracts);
         req.getSession().setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/admin/ChangeClientTariff.jsp").forward(req, resp);
 
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
     }
 }

@@ -23,6 +23,11 @@ public class ManagerCases {
     TariffServiceImpl tariffService = new TariffServiceImpl();
     TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
+    /**
+     * checking user
+     * @param eMail
+     * @return
+     */
     public boolean isUserExists(String eMail) {
         try {
             userService.getUserByEMAil(eMail).getEmail();
