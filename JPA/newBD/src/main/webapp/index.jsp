@@ -1,4 +1,4 @@
-<%@ page import="controllers.LoginServlet" %>
+<%@ page import="servlets.LoginServlet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

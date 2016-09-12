@@ -1,6 +1,7 @@
-package services;
+package integration;
 
 import entities.AccessLevel;
+import org.junit.Ignore;
 import services.implementation.AccessLevelImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,12 +14,13 @@ import org.junit.Test;
 public class AccessLevelImplTest {
     AccessLevelImpl accessLevelimpl;
     AccessLevel accessLevel = new AccessLevel("test");
-
+    @Ignore
     @Before
     public void TestInitTst() {
         accessLevelimpl = new AccessLevelImpl();
     }
 
+    @Ignore
     @Test
     public void TestCreateEntityTest() throws Exception {
 
@@ -28,13 +30,14 @@ public class AccessLevelImplTest {
 
     }
 
+    @Ignore
     @Test
     public void getEntityById() throws Exception {
         accessLevel = accessLevelimpl.getEntityById(3);
         Assert.assertEquals(accessLevel.getStatus(), "Manager");
     }
 
-
+    @Ignore
     @Test
     public void updateEntity() throws Exception {
         if (accessLevel.getStatus().equals("test")) {
@@ -47,14 +50,14 @@ public class AccessLevelImplTest {
             Assert.assertEquals(accessLevel.getStatus(), "test1");
         }
     }
-
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void deleteEntity() {
         accessLevelimpl.deleteEntity(accessLevelimpl.getEntityById(accessLevel.getAccessLevelId()));
 
 
     }
-
+    @Ignore
     @Test
     public void getAll() throws Exception {
         Assert.assertNotEquals(accessLevelimpl.getAll().size(), 0);

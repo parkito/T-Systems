@@ -1,5 +1,6 @@
 package services;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -7,31 +8,37 @@ import org.junit.Test;
  * artyom-karnov@yandex.ru
  **/
 public class TariffServiceImplTest {
+    @Ignore
     @Test
     public void createEntity() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void getEntityById() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void updateEntity() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void deleteEntity() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void getAll() throws Exception {
 
     }
 
+    @Ignore
     @Test
     public void isEntityExists() throws Exception {
 

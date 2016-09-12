@@ -1,4 +1,4 @@
-package controllers;
+package servlets;
 
 import services.api.AccessLevelService;
 import services.implementation.AccessLevelImpl;

@@ -2,7 +2,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controllers.LoginServlet</servlet-class>
+        <servlet-class>servlets.LoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -12,7 +12,7 @@
 
     <servlet>
         <servlet-name>userContractServlet</servlet-name>
-        <servlet-class>controllers.user.UserContractServlet</servlet-class>
+        <servlet-class>servlets.user.UserContractServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -22,7 +22,7 @@
 
     <servlet>
         <servlet-name>NumberOperationsServlet</servlet-name>
-        <servlet-class>controllers.user.NumberOperationsServlet</servlet-class>
+        <servlet-class>servlets.user.NumberOperationsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>TariffServlet</servlet-name>
-        <servlet-class>controllers.user.TariffServlets</servlet-class>
+        <servlet-class>servlets.user.TariffServlets</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -42,7 +42,7 @@
 
     <servlet>
         <servlet-name>TariffOptionServlet</servlet-name>
-        <servlet-class>controllers.user.TariffOptionServlet</servlet-class>
+        <servlet-class>servlets.user.TariffOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -53,7 +53,7 @@
 
     <servlet>
         <servlet-name>FindClientServlet</servlet-name>
-        <servlet-class>controllers.admin.FindClientServlet</servlet-class>
+        <servlet-class>servlets.admin.FindClientServlet</servlet-class>
     </servlet>
 
     <!--<servlet-mapping>-->
@@ -64,7 +64,7 @@
 
     <!--<servlet>-->
     <!--<servlet-name>FindClientServlet</servlet-name>-->
-    <!--<servlet-class>controllers.admin.FindClientServlet</servlet-class>-->
+    <!--<servlet-class>servlets.admin.FindClientServlet</servlet-class>-->
     <!--</servlet>-->
 
     <servlet-mapping>
@@ -74,7 +74,7 @@
 
     <servlet>
         <servlet-name>NewClientServlet</servlet-name>
-        <servlet-class>controllers.admin.NewClientServlet</servlet-class>
+        <servlet-class>servlets.admin.NewClientServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -84,7 +84,7 @@
 
     <servlet>
         <servlet-name>ChangeClientServlet</servlet-name>
-        <servlet-class>controllers.admin.ChangeClientServlet</servlet-class>
+        <servlet-class>servlets.admin.ChangeClientServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -95,7 +95,7 @@
 
     <servlet>
         <servlet-name>ContractControlServlet</servlet-name>
-        <servlet-class>controllers.admin.ContractControlServlet</servlet-class>
+        <servlet-class>servlets.admin.ContractControlServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -106,7 +106,7 @@
 
     <servlet>
         <servlet-name>ChangeClientTariffServlet</servlet-name>
-        <servlet-class>controllers.admin.ChangeClientTariffServlet</servlet-class>
+        <servlet-class>servlets.admin.ChangeClientTariffServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -116,7 +116,7 @@
 
     <servlet>
         <servlet-name>NewContractServlet</servlet-name>
-        <servlet-class>controllers.admin.NewContractServlet</servlet-class>
+        <servlet-class>servlets.admin.NewContractServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -127,7 +127,7 @@
 
     <servlet>
         <servlet-name>NewTariffServlet</servlet-name>
-        <servlet-class>controllers.admin.NewTariffServlet</servlet-class>
+        <servlet-class>servlets.admin.NewTariffServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -137,7 +137,7 @@
 
     <servlet>
         <servlet-name>ChangeTariffChangeTariffServlet</servlet-name>
-        <servlet-class>controllers.admin.ChangeTariffServlet</servlet-class>
+        <servlet-class>servlets.admin.ChangeTariffServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -147,7 +147,7 @@
 
     <servlet>
         <servlet-name>NewTariffOptionServlet</servlet-name>
-        <servlet-class>controllers.admin.NewTariffOptionServlet</servlet-class>
+        <servlet-class>servlets.admin.NewTariffOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -157,7 +157,7 @@
 
     <servlet>
         <servlet-name>ChangeTariffOptionServlet</servlet-name>
-        <servlet-class>controllers.admin.ChangeTariffOptionServlet</servlet-class>
+        <servlet-class>servlets.admin.ChangeTariffOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -167,7 +167,7 @@
 
     <servlet>
         <servlet-name>JointOptionServlet</servlet-name>
-        <servlet-class>controllers.admin.JointOptionServlet</servlet-class>
+        <servlet-class>servlets.admin.JointOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -177,7 +177,7 @@
 
     <servlet>
         <servlet-name>ImpossibleOptionServlet</servlet-name>
-        <servlet-class>controllers.admin.ImpossibleOptionServlet</servlet-class>
+        <servlet-class>servlets.admin.ImpossibleOptionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -187,7 +187,7 @@
 
     <servlet>
         <servlet-name>FindClientByEmail</servlet-name>
-        <servlet-class>controllers.admin.FindClientByEmailServlet</servlet-class>
+        <servlet-class>servlets.admin.FindClientByEmailServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -217,7 +217,7 @@
 
     <servlet>
         <servlet-name>ExitServlet</servlet-name>
-        <servlet-class>controllers.ExitServlet</servlet-class>
+        <servlet-class>servlets.ExitServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -227,7 +227,7 @@
 
     <servlet>
         <servlet-name>HelpServlet</servlet-name>
-        <servlet-class>controllers.HelpServlet</servlet-class>
+        <servlet-class>servlets.HelpServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

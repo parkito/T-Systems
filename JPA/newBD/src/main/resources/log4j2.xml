@@ -13,7 +13,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="main.java.controllers.LoginServlet" level="DEBUG" additivity="true">
+        <Logger name="main.java.servlets.LoginServlet" level="DEBUG" additivity="true">
             <AppenderRef ref="Async"/>
         </Logger>
 

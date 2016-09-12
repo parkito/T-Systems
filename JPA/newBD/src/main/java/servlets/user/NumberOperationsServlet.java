@@ -1,4 +1,4 @@
-package controllers.admin;
+package servlets.user;
 
 import entities.Contract;
 import entities.User;
@@ -13,20 +13,15 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Artyom Karnov on 9/11/16.
+ * Created by Artyom Karnov on 9/1/16.
  * artyom-karnov@yandex.ru
  **/
-public class ContractControlServlet extends HttpServlet {
-    private static int count = 1;
+public class NumberOperationsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ContractServiceImpl contractService = new ContractServiceImpl();
         UserServiceImpl userService = new UserServiceImpl();
-        if (count == 1) {
-            req.getSession(true).setAttribute("check", "start");
-            count++;
-        }
 
         String eMail = (String) req.getSession(true).getAttribute("eMail");
         User user = userService.getUserByEMAil(eMail);
@@ -37,7 +32,7 @@ public class ContractControlServlet extends HttpServlet {
 
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.getSession(true).setAttribute("contracts", contracts);
-        req.getRequestDispatcher("/WEB-INF/admin/ContractControl.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/user/NumberOperations.jsp").forward(req, resp);
 
     }
 
@@ -47,16 +42,18 @@ public class ContractControlServlet extends HttpServlet {
         if (req.getParameter("blockItem") != null) {
             Contract contract = contractService.getContractByNumber(req.getParameter("blockItem"));
             contract.setBlocked(true);
-            contract.setBlockedByAdmin(true);
             contractService.updateEntity(contract);
         }
 
         if (req.getParameter("unblockItem") != null) {
             Contract contract = contractService.getContractByNumber(req.getParameter("unblockItem"));
-            contract.setBlocked(false);
-            contract.setBlockedByAdmin(false);
-            contractService.updateEntity(contract);
+            if (!contract.getBlockedByAdmin()) {
+                contract.setBlocked(false);
+                contractService.updateEntity(contract);
+            } else {
+                resp.setStatus(500);
 
+            }
         }
     }
 }

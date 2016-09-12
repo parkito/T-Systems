@@ -1,4 +1,4 @@
-package controllers.admin;
+package servlets.admin;
 
 import entities.TariffOption;
 import services.implementation.TariffOptionServiceImpl;

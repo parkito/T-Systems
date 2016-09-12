@@ -1,4 +1,4 @@
-package controllers;
+package servlets;
 
 import entities.User;
 import exceptions.UserNotFoundException;

@@ -1,7 +1,6 @@
-package controllers.admin;
+package servlets.admin;
 
 import entities.User;
-import exceptions.ContractNotFoundException;
 import exceptions.UserNotFoundException;
 import services.implementation.UserServiceImpl;
 

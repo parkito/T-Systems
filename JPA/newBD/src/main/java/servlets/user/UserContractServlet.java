@@ -1,4 +1,4 @@
-package controllers.user;
+package servlets.user;
 
 import entities.Contract;
 import entities.User;
