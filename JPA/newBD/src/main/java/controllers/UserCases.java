@@ -3,6 +3,7 @@ package controllers;
 
 import entities.Contract;
 import entities.User;
+import exceptions.CustomDAOException;
 import exceptions.UserNotFoundException;
 import services.implementation.AccessLevelImpl;
 import services.implementation.ContractServiceImpl;
@@ -22,25 +23,27 @@ public class UserCases {
     private ContractServiceImpl contractService = new ContractServiceImpl();
 
     /**
-     *
      * @param user
      */
-    public void makeUserManager(User user) {
-        userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
+    public boolean makeUserManager(User user) {
+        try {
+            userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
+        } catch (CustomDAOException ex) {
+            return false;
+        }
+        return true;
     }
 
     /**
-     *
      * @param contract
      * @return
      */
     public String getUserName(Contract contract) {
-        return contract.getUser().getName();
+            return contract.getUser().getName();
 
     }
 
     /**
-     *
      * @param eMail
      * @return
      */
@@ -49,7 +52,6 @@ public class UserCases {
     }
 
     /**
-     *
      * @param eMail
      * @return
      */
@@ -58,7 +60,6 @@ public class UserCases {
     }
 
     /**
-     *
      * @param eMail
      * @return
      */
