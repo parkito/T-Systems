@@ -75,7 +75,7 @@ public class UserCasesTest {
         Assert.assertEquals(userCasesMock.isManager("b@b.ru"), true);
         Assert.assertEquals(userCasesMock.isManager("a@2.ru"), false);
     }
-    
+
     @Test
     public void getAllContractsForUser() throws Exception {
         Assert.assertEquals(userCasesMock.getAllContractsForUser("a@2.ru").size(), 0);
