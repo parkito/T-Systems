@@ -50,13 +50,13 @@
             </div>
         </div>
     </div>
-        <%
+    <%
 
-         String check = (String) request.getSession(true).getAttribute("check");
+        String check = (String) request.getSession(true).getAttribute("check");
         if (check.equals("work"))
             if (request.getSession(true).getAttribute("usrs") != null) {
                 User user = (User) request.getSession(true).getAttribute("usrs");
-       %>
+    %>
 
     <div class="container-fluid">
         <div class="row cm-fix-height">
@@ -108,7 +108,7 @@
             </div>
         </div>
         <%}%>
-
     </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>
