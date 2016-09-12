@@ -8,10 +8,19 @@ package exceptions;
  * exception for situation when option for entity  couldn't be found
  */
 public class OptionsForEntityNotGotException extends CustomDAOException {
+    /**
+     * exception with message for situation when entity has incorrect state
+     * @param message
+     */
     public OptionsForEntityNotGotException(String message) {
         super(message);
     }
 
+    /**
+     * exception with message and throwable for situation when entity has incorrect state
+     * @param message
+     * @param throwable
+     */
     public OptionsForEntityNotGotException(String message, Throwable throwable) {
         super(message, throwable);
     }

@@ -70,6 +70,11 @@ public class ManagerCases {
         return true;
     }
 
+    /**
+     * checking tariff existing
+     * @param title
+     * @return true - if exists, false - if doesn't
+     */
     public boolean isTariffExists(String title) {
         for (Tariff tariff : tariffService.getAll()) {
             if (tariff.getTitle().equals(title))
