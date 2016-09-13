@@ -16,12 +16,16 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 
+
+/**
+ * Contract operations
+ */
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
     /**
-     * get contract by number
-     * @param number
+     * Get contract by number
+     * @param number entity for getting
      * @return contract with adjusted number
-     * @throws ContractNotFoundException
+     * @throws ContractNotFoundException if contract not found
      */
     @Override
     public Contract getContractByNumber(String number) throws ContractNotFoundException {
@@ -35,9 +39,9 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
 
     /**
      * get all contracts that user has
-     * @param id
+     * @param id id for getting
      * @return list of all contracts for adjusted user
-     * @throws ContractsForEntityNotGotException
+     * @throws ContractsForEntityNotGotException if contract not found
      */
     @Override
     public List<Contract> getAllUserContracts(int id) throws ContractsForEntityNotGotException {

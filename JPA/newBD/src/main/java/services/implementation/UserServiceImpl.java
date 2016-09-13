@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Creating contract user in base
+     *
      * @param user entity for creating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -32,6 +33,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Get user entity by id
+     *
      * @param id id for getting
      * @return user with adjusted id
      * @throws CustomDAOException if connect with DAO goes wrong
@@ -43,6 +45,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Update user entity in base
+     *
      * @param entity entity for updating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -53,6 +56,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Delete user entity from base
+     *
      * @param entity entity for deleting
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -63,6 +67,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Getting all user entities from base
+     *
      * @return list of all users
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -74,6 +79,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Getting user entity by number
+     *
      * @param number entity for getting
      * @return user with adjusted number
      * @throws UserNotFoundException if user not found
@@ -85,6 +91,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Getting user entity by email
+     *
      * @param eMail entity for getting
      * @return user with adjusted email
      * @throws UserNotFoundException if user not found
@@ -96,6 +103,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Checking user existing in base
+     *
      * @param user entity for checking
      * @return true - if user exists, false if doesn't
      */
@@ -109,7 +117,8 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Changing user's access level in base
-     * @param user entity for changing level
+     *
+     * @param user        entity for changing level
      * @param accessLevel new level
      */
     public void cahngeUserAccessLevel(User user, AccessLevel accessLevel) {

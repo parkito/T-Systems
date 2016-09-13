@@ -5,12 +5,12 @@ package exceptions;
  * artyom-karnov@yandex.ru
  **/
 /**
- * exception for situation when user couldn't be available
+ * Exception for situation when user couldn't be available
  */
 public class UserNotFoundException extends CustomDAOException {
     /**
-     * exception with message for situation when user wasn't found
-     * @param message
+     * Exception with message for situation when user wasn't found
+     * @param message message for exception
      */
     public UserNotFoundException(String message) {
         super(message);
@@ -18,8 +18,8 @@ public class UserNotFoundException extends CustomDAOException {
 
     /**
      * exception with message and throwable for situation when user wasn't found
-     * @param message
-     * @param throwable
+     * @param message message for exception
+     * @param throwable object for exception
      */
     public UserNotFoundException(String message, Throwable throwable) {
         super(message, throwable);

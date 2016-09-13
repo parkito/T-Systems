@@ -6,12 +6,12 @@ package exceptions;
  **/
 
 /**
- * exception for situation when operation with entities couldn't be executed
+ * Exception for situation when operation with entities couldn't be executed
  */
 public class CustomDAOException extends RuntimeException {
     /**
-     * exception with message for situation when something goes wrong on DAO
-     * @param message
+     * Exception with message for situation when something goes wrong on DAO
+     * @param message message for exception
      */
     public CustomDAOException(String message) {
         super(message);
@@ -19,8 +19,8 @@ public class CustomDAOException extends RuntimeException {
 
     /**
      * exception with message and throwable for situation when something goes wrong on DAO
-     * @param message
-     * @param throwable
+     * @param message message for exception
+     * @param throwable object for exception
      */
     public CustomDAOException(String message, Throwable throwable) {
         super(message, throwable);

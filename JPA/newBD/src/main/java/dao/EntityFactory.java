@@ -13,13 +13,17 @@ import javax.servlet.annotation.WebListener;
  * Created by Artyom Karnov on 8/30/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Creating new factory for each servlet
+ */
 @WebListener
 public class EntityFactory implements ServletContextListener {
     private static EntityManagerFactory emf;
 
     /**
-     * creating manager factory on servlet initialization
-     * @param servletContextEvent
+     * Creating manager factory on servlet initialization
+     * @param servletContextEvent entity for initialization
      */
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
@@ -28,7 +32,7 @@ public class EntityFactory implements ServletContextListener {
 
     /**
      * closing factories on servlet destroing
-     * @param servletContextEvent
+     * @param servletContextEvent entity for destroying
      */
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {

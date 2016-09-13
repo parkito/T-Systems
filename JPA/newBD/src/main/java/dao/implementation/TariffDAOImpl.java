@@ -18,8 +18,8 @@ import java.util.List;
 
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
     /**
-     * getting tariff entity by number
-     * @param title
+     * Getting tariff entity by number
+     * @param title entity for getting
      * @return tariff with adjusted number
      */
     public Tariff getTariffByTitle(String title) {

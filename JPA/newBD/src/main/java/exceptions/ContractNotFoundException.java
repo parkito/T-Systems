@@ -6,21 +6,23 @@ package exceptions;
  **/
 
 /**
- * exception for situation when contract couldn't be available
+ * Exception for situation when contract couldn't be available
  */
 public class ContractNotFoundException extends CustomDAOException {
     /**
-     * Exeption with message for situation when contract couldn't be available
-     * @param message
+     * Exception with message for situation when contract couldn't be available
+     *
+     * @param message message for exception
      */
     public ContractNotFoundException(String message) {
         super(message);
     }
 
     /**
-     * exception with message and throwable for situation when contract couldn't be available
-     * @param message
-     * @param throwable
+     * Exception with message and throwable for situation when contract couldn't be available
+     *
+     * @param message   message for exception
+     * @param throwable object for message
      */
     public ContractNotFoundException(String message, Throwable throwable) {
         super(message, throwable);

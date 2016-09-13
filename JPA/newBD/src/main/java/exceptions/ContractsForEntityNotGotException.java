@@ -6,21 +6,23 @@ package exceptions;
  **/
 
 /**
- * exception for situation when contract for user couldn't be available
+ * Exception for situation when contract for user couldn't be available
  */
 public class ContractsForEntityNotGotException extends CustomDAOException {
     /**
-     * exception with message for situation when user's contract couldn't be available
-     * @param message
+     * Exception with message for situation when user's contract couldn't be available
+     *
+     * @param message message for exception
      */
     public ContractsForEntityNotGotException(String message) {
         super(message);
     }
 
     /**
-     * exception with message and throwable for situation when user's contract couldn't be available
-     * @param message
-     * @param throwable
+     * Exception with message and throwable for situation when user's contract couldn't be available
+     *
+     * @param message   for exception
+     * @param throwable object for exception
      */
     public ContractsForEntityNotGotException(String message, Throwable throwable) {
         super(message, throwable);

@@ -12,10 +12,11 @@ import javax.persistence.*;
  **/
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
     /**
-     * getting user entity by number
-     * @param number
+     * Getting user entity by number
+     *
+     * @param number entity for getting
      * @return user with adjusted number
-     * @throws UserNotFoundException
+     * @throws UserNotFoundException if user not found
      */
     @Override
     public User getUserByNumber(String number) throws UserNotFoundException {
@@ -30,10 +31,11 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
     }
 
     /**
-     * getting user entity by email
-     * @param eMail
+     * Getting user entity by email
+     *
+     * @param eMail entity for getting
      * @return user with adjusted number
-     * @throws UserNotFoundException
+     * @throws UserNotFoundException if user not found
      */
     @Override
     public User getUserByEMAil(String eMail) throws UserNotFoundException {
