@@ -17,9 +17,9 @@ public class TariffServiceImpl implements TariffService {
     private TariffDAO tariffDAO = new TariffDAOImpl();
 
     /**
-     * creating tariff entity in base
-     * @param tariff
-     * @throws CustomDAOException
+     * Creating tariff entity in base
+     * @param tariff entity for creating
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void createEntity(Tariff tariff) throws CustomDAOException {
@@ -30,10 +30,10 @@ public class TariffServiceImpl implements TariffService {
     }
 
     /**
-     * get tariff entity by id
-     * @param id
+     * Get tariff entity by id
+     * @param id id for getting
      * @return tariff with adjusted id
-     * @throws CustomDAOException
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public Tariff getEntityById(Integer id) throws CustomDAOException {
@@ -41,9 +41,9 @@ public class TariffServiceImpl implements TariffService {
     }
 
     /**
-     * update tariff entity in base
-     * @param tariff
-     * @throws CustomDAOException
+     * Update tariff entity in base
+     * @param tariff entity for updating
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void updateEntity(Tariff tariff) throws CustomDAOException {
@@ -52,9 +52,9 @@ public class TariffServiceImpl implements TariffService {
     }
 
     /**
-     * delete tariff entity from base
-     * @param tariff
-     * @throws CustomDAOException
+     * Delete tariff entity from base
+     * @param tariff entity for deleting
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void deleteEntity(Tariff tariff) throws CustomDAOException {
@@ -62,9 +62,9 @@ public class TariffServiceImpl implements TariffService {
     }
 
     /**
-     * getting all tariff entities from base
+     * Getting all tariff entities from base
      * @return list of all tariffs
-     * @throws CustomDAOException
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public List<Tariff> getAll() throws CustomDAOException {
@@ -73,8 +73,8 @@ public class TariffServiceImpl implements TariffService {
     }
 
     /**
-     * checking contract existing in base
-     * @param tariff
+     * Checking contract existing in base
+     * @param tariff entity for checking
      * @return true - if tariff exists, false if doesn't
      */
     @Override
@@ -87,9 +87,9 @@ public class TariffServiceImpl implements TariffService {
     }
 
     /**
-     * getting tariff entity by title
-     * @param title
-     * @return
+     * Getting tariff entity by title
+     * @param title entity for getting
+     * @return tariff entity
      */
     @Override
     public Tariff getTariffByTitle(String title) {

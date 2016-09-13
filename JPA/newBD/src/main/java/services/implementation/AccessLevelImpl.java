@@ -14,15 +14,16 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 
-
+/**
+ * Access level operations
+ */
 public class AccessLevelImpl implements AccessLevelService {
     private AccessLevelDAO accessLevelDAO = new AccessLevelDAOImpl();
 
-
     /**
-     *creating accessLevel entity in base
-     * @param accessLevel
-     * @throws CustomDAOException
+     * Creating accessLevel entity in base
+     * @param accessLevel entity for creating
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void createEntity(AccessLevel accessLevel) throws CustomDAOException {
@@ -30,10 +31,10 @@ public class AccessLevelImpl implements AccessLevelService {
     }
 
     /**
-     *getting accessLevel entity by id
-     * @param id
+     * Getting accessLevel entity by id
+     * @param id id for getting
      * @return level with adjusted id
-     * @throws CustomDAOException
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
 
     @Override
@@ -42,9 +43,9 @@ public class AccessLevelImpl implements AccessLevelService {
     }
 
     /**
-     *updateing accessLevel entity in base
-     * @param accessLevel
-     * @throws CustomDAOException
+     * Updating accessLevel entity in base
+     * @param accessLevel entity for updating
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void updateEntity(AccessLevel accessLevel) throws CustomDAOException {
@@ -52,9 +53,9 @@ public class AccessLevelImpl implements AccessLevelService {
     }
 
     /**
-     *deleting accessLevel entity from base
-     * @param accessLevel
-     * @throws CustomDAOException
+     * Deleting accessLevel entity from base
+     * @param accessLevel entity for deleting
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void deleteEntity(AccessLevel accessLevel) throws CustomDAOException {
@@ -63,15 +64,14 @@ public class AccessLevelImpl implements AccessLevelService {
     }
 
     /**
-     *
+     * Getting list of access levels entities
      * @return list of all levels
-     * @throws CustomDAOException
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public List<AccessLevel> getAll() throws CustomDAOException {
         return accessLevelDAO.getAll();
     }
-
 
 }
 

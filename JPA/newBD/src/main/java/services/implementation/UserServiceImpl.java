@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAOImpl();
 
     /**
-     * creating contract user in base
-     * @param user
-     * @throws CustomDAOException
+     * Creating contract user in base
+     * @param user entity for creating
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void createEntity(User user) throws CustomDAOException {
@@ -31,10 +31,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * get user entity by id
-     * @param id
+     * Get user entity by id
+     * @param id id for getting
      * @return user with adjusted id
-     * @throws CustomDAOException
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public User getEntityById(Integer id) throws CustomDAOException {
@@ -42,9 +42,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * update user entity in base
-     * @param entity
-     * @throws CustomDAOException
+     * Update user entity in base
+     * @param entity entity for updating
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void updateEntity(User entity) throws CustomDAOException {
@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * delete user entity from base
-     * @param entity
-     * @throws CustomDAOException
+     * Delete user entity from base
+     * @param entity entity for deleting
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public void deleteEntity(User entity) throws CustomDAOException {
@@ -62,9 +62,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * getting all user entities from base
-     * @return
-     * @throws CustomDAOException
+     * Getting all user entities from base
+     * @return list of all users
+     * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
     public List<User> getAll() throws CustomDAOException {
@@ -73,10 +73,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * getting user entity by number
-     * @param number
-     * @return
-     * @throws UserNotFoundException
+     * Getting user entity by number
+     * @param number entity for getting
+     * @return user with adjusted number
+     * @throws UserNotFoundException if user not found
      */
     @Override
     public User getUserByNumber(String number) throws UserNotFoundException {
@@ -84,10 +84,10 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * getting user entity by email
-     * @param eMail
-     * @return
-     * @throws UserNotFoundException
+     * Getting user entity by email
+     * @param eMail entity for getting
+     * @return user with adjusted email
+     * @throws UserNotFoundException if user not found
      */
     @Override
     public User getUserByEMAil(String eMail) throws UserNotFoundException {
@@ -95,9 +95,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * checking user existing in base
-     * @param user
-     * @return
+     * Checking user existing in base
+     * @param user entity for checking
+     * @return true - if user exists, false if doesn't
      */
     public boolean isUserExists(User user) {
         try {
@@ -108,9 +108,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * changing user's access level in base
-     * @param user
-     * @param accessLevel
+     * Changing user's access level in base
+     * @param user entity for changing level
+     * @param accessLevel new level
      */
     public void cahngeUserAccessLevel(User user, AccessLevel accessLevel) {
         user.setAccessLevel(accessLevel);

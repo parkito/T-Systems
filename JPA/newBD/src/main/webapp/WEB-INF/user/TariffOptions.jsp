@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
-    <title>K-Mobile/Contracts</title>
+    <title>Tariff options</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
