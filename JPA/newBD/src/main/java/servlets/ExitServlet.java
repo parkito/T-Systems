@@ -10,6 +10,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/7/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for user exit controlling
+ */
 public class ExitServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -13,6 +13,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/8/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for change tariff controlling
+ */
 public class ChangeTariffServlet extends HttpServlet {
     TariffServiceImpl tariffService = new TariffServiceImpl();
 

@@ -18,6 +18,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/30/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for controlling tariff operation page
+ */
 public class TariffServlets extends HttpServlet {
 
     @Override

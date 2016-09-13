@@ -12,6 +12,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/7/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for new contract controlling
+ */
 public class NewContractServlet extends HttpServlet {
     private ManagerCases managerCases = new ManagerCases();
 

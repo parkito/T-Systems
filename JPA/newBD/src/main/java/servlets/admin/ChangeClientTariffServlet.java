@@ -17,6 +17,10 @@ import java.util.List;
  * Created by Artyom Karnov on 9/11/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for controlling changing client's  tariffs
+ */
 public class ChangeClientTariffServlet extends HttpServlet {
     public static int count =1;
     @Override
@@ -34,7 +38,6 @@ public class ChangeClientTariffServlet extends HttpServlet {
         User user = userService.getUserByEMAil(eMail);
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
-//        req.getSession(true).setAttribute("check", "work");
         req.getSession(true).setAttribute("contracts", contracts);
         req.getSession().setAttribute("tariffService", tariffService);
         req.getRequestDispatcher("/WEB-INF/admin/ChangeClientTariff.jsp").forward(req, resp);

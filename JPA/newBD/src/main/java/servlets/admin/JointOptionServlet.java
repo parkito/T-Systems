@@ -12,6 +12,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/9/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for joint tariffs controlling
+ */
 public class JointOptionServlet extends HttpServlet {
     ManagerCases managerCases = new ManagerCases();
 

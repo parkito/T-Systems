@@ -12,6 +12,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/9/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for impossible tariffs controlling
+ */
 public class ImpossibleOptionServlet extends HttpServlet {
     ManagerCases managerCases = new ManagerCases();
 

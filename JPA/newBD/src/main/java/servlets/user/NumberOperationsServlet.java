@@ -16,6 +16,10 @@ import java.util.List;
  * Created by Artyom Karnov on 9/1/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for controlling number operation page
+ */
 public class NumberOperationsServlet extends HttpServlet {
 
     @Override

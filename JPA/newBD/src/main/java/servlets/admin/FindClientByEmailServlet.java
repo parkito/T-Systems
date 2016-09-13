@@ -14,6 +14,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/12/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for find client controlling
+ */
 public class FindClientByEmailServlet extends HttpServlet {
     public static int count = 1;
 

@@ -18,6 +18,10 @@ import java.util.List;
  * Created by Artyom Karnov on 9/6/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for change client controlling page
+ */
 public class ChangeClientServlet extends HttpServlet {
     public static int count = 1;
 

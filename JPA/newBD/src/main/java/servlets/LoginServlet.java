@@ -13,11 +13,9 @@ import java.io.IOException;
 // TODO: 9/4/16  прибраться в коде. Все засрано. особенно в сервлетах
 // TODO: 9/4/16 что можно сделать с пустыми списками? т.е. когда на странице нет ни одного элемента.
 // TODO: 9/7/16 documentation  
-// TODO: 9/7/16 tests
 // TODO: 9/9/16 переписывать все на jstl
 
 // TODO: 9/7/16 1) Not update content after first changing on user/Tariffs
-// TODO: 9/7/16 2) Incorrect login status after sign out (users)
 // TODO: 9/7/16 5) http://localhost:8080/admin/NewClient - mistaken access
 // TODO: 9/7/16 6) for security set up getting password from session
 // TODO: 9/7/16 7) not remoning session after log out 
@@ -29,11 +27,21 @@ import java.io.IOException;
  * Created by Artyom Karnov on 8/29/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for authorization controlling
+ */
 public class LoginServlet extends HttpServlet {
     private UserServiceImpl userService = new UserServiceImpl();
     private AccessLevelImpl accessLevelService = new AccessLevelImpl();
-    public static boolean  isPreviousDataCorrect = true;
+    public static boolean isPreviousDataCorrect = true;
 
+    /**
+     * Method for user authorization
+     * @param eMail Email for checking
+     * @param password Password for checking
+     * @return true - if user with current data exists, else if doesn't
+     */
     public boolean isAuthorized(String eMail, String password) {
         User user;
         try {

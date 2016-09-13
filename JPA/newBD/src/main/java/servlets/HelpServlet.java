@@ -10,6 +10,10 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/9/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Servlet for help-page control
+ */
 public class HelpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
