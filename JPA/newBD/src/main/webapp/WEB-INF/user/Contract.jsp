@@ -36,10 +36,10 @@
                                 <small>Month payment :</small>
                                 <c:out value="${contract.getTariff().getPrice()}"/> RUB
                                 <small><br>Status :</small>
-                                <c:if test="${contract.isBlocked() && contr.isBlockedByAdmin()}">
+                                <c:if test="${contract.isBlocked() && contract.isBlockedByAdmin()}">
                                     <font color="red">Blocked by manager</font>
                                 </c:if>
-                                <c:if test="${contract.isBlocked() && !contr.isBlockedByAdmin()}">
+                                <c:if test="${contract.isBlocked() && !contract.isBlockedByAdmin()}">
                                     <font color="red">Blocked by user</font>
                                 </c:if>
                                 <c:if test="${!contract.isBlocked()}">

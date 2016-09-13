@@ -14,10 +14,11 @@ import java.io.IOException;
  * artyom-karnov@yandex.ru
  **/
 public class ChangeTariffOptionServlet extends HttpServlet {
-    TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+
         req.getSession(true).setAttribute("options", tariffOptionService.getAll());
         req.getRequestDispatcher("/WEB-INF/admin/EditTariffOption.jsp").forward(req, resp);
 
@@ -25,6 +26,8 @@ public class ChangeTariffOptionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+
         int tariffOptionId = Integer.parseInt(req.getParameter("tariffOptionId"));
         TariffOption tariffOption = tariffOptionService.getEntityById(tariffOptionId);
         tariffOptionService.deleteEntity(tariffOption);
