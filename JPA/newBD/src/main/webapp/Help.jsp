@@ -70,7 +70,7 @@
     <br>
     <a href="mailto:artyom-karnov@yandex.ru"><h2>Contact administrator</h2></a>
     <br>
-    <a href="/"><h2>Back to home</h2></a>
+    <a href="/login"><h2>Back to home</h2></a>
 </div>
 </body>
 </html>

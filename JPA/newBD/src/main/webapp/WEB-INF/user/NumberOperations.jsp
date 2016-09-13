@@ -22,6 +22,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%
     User user = (User) request.getSession(true).getAttribute("userObj");
+    List<Contract> contracts = (List<Contract>)request.getSession(true).getAttribute("contracts");
 %>
 <c:set var="userName" value="${sessionScope.userName}"/>
 
@@ -44,8 +45,7 @@
                 <tbody>
 
                 <%
-                    ContractServiceImpl contractService = new ContractServiceImpl();
-                    List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+
                     for (int i = 0; i < contracts.size(); i++) {
                         if (contracts.get(i).getIsBlocked())
                             out.print("<tr class=\"danger\">");
@@ -76,7 +76,7 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("DELETE", "/user/NumberOperations?unblockItem=" + number, false);
                                 xhr.send();
-                                if (xhr.status == 500) {
+                                if (xhr.status == 600) {
                                     alert('Access error! Blocked by manager.')
                                 }
                             }
