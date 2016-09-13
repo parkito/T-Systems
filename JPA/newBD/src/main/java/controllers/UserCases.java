@@ -17,13 +17,18 @@ import java.util.List;
  * Created by Artyom Karnov on 8/30/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Business logic for users
+ */
 public class UserCases {
     private UserServiceImpl userService = new UserServiceImpl();
     private AccessLevelImpl accessLevelService = new AccessLevelImpl();
     private ContractServiceImpl contractService = new ContractServiceImpl();
 
     /**
-     * @param user
+     * User become manager
+     * @param user entity for changing
      */
     public boolean makeUserManager(User user) {
         try {
@@ -35,8 +40,9 @@ public class UserCases {
     }
 
     /**
-     * @param contract
-     * @return
+     * Getting user name from contract
+     * @param contract entity for getting info
+     * @return user name
      */
     public String getUserName(Contract contract) {
             return contract.getUser().getName();
@@ -44,30 +50,31 @@ public class UserCases {
     }
 
     /**
+     * Checking manager status
      * @param eMail
-     * @return
+     * @return true - user manager, false - if not
      */
     public boolean isManager(String eMail) {
         return userService.getUserByEMAil(eMail).getAccessLevel() != null ? true : false;
     }
 
     /**
-     * @param eMail
-     * @return
+     * Getting user name by email
+     * @param eMail entity for getting
+     * @return user name
      */
     public String getUserNameByEmail(String eMail) {
         return userService.getUserByEMAil(eMail).getName();
     }
 
     /**
-     * @param eMail
-     * @return
+     * Getting contract list for adjusted user
+     * @param eMail entity for getting
+     * @return contract list for adjusted user
      */
     public List<Contract> getAllContractsForUser(String eMail) {
         userService.updateEntity(userService.getUserByEMAil(eMail));
         return contractService.getAllContractsForUser(userService.getUserByEMAil(eMail).getUserId());
 
     }
-
-
 }

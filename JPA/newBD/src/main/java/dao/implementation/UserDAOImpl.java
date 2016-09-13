@@ -13,7 +13,6 @@ import javax.persistence.*;
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
     /**
      * Getting user entity by number
-     *
      * @param number entity for getting
      * @return user with adjusted number
      * @throws UserNotFoundException if user not found
@@ -32,7 +31,6 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
 
     /**
      * Getting user entity by email
-     *
      * @param eMail entity for getting
      * @return user with adjusted number
      * @throws UserNotFoundException if user not found

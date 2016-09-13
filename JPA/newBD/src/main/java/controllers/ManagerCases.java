@@ -17,6 +17,10 @@ import java.util.Random;
  * Created by Artyom Karnov on 9/6/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Business logic for managers
+ */
 public class ManagerCases {
     private UserServiceImpl userService = new UserServiceImpl();
     private ContractServiceImpl contractService = new ContractServiceImpl();
@@ -24,8 +28,9 @@ public class ManagerCases {
     TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
     /**
-     * checking user existing
-     * @param eMail
+     * Checking user existing
+     *
+     * @param eMail entity for checking
      * @return true - if exists, false - if doesn't
      */
     public boolean isUserExists(String eMail) {
@@ -38,14 +43,15 @@ public class ManagerCases {
     }
 
     /**
-     * creating user entity and saving it to base
-     * @param name
-     * @param secondName
-     * @param birthdayData
-     * @param passport
-     * @param adress
-     * @param email
-     * @param password
+     * Creating user entity and saving it to base
+     *
+     * @param name         name for user
+     * @param secondName   second name for user
+     * @param birthdayData birthday for user
+     * @param passport     passport for user
+     * @param adress       address for user
+     * @param email        email for user
+     * @param password     password for user
      */
     public void addUserToBase(String name, String secondName, String birthdayData,
                               String passport, String adress,
@@ -57,8 +63,9 @@ public class ManagerCases {
     }
 
     /**
-     *checking number existing
-     * @param number
+     * Checking number existing
+     *
+     * @param number entity for checking
      * @return true - if exists, false - if doesn't
      */
     public boolean isNumberExists(String number) {
@@ -71,8 +78,9 @@ public class ManagerCases {
     }
 
     /**
-     * checking tariff existing
-     * @param title
+     * Checking tariff existing
+     *
+     * @param title entity for checking
      * @return true - if exists, false - if doesn't
      */
     public boolean isTariffExists(String title) {
@@ -84,9 +92,10 @@ public class ManagerCases {
     }
 
     /**
-     * creating tariff entity and saving it to base
-     * @param title
-     * @param price
+     * Creating tariff entity and saving it to base
+     *
+     * @param title tariff title for adding
+     * @param price tariff price for adding
      */
     public void addTariffToBase(String title, String price) {
         Tariff tariff = new Tariff(title, Double.parseDouble(price));
@@ -94,9 +103,10 @@ public class ManagerCases {
     }
 
     /**
-     * creating contract entity and saving it to base
-     * @param eMail
-     * @param number
+     * Creating contract entity and saving it to base
+     *
+     * @param eMail  contract email for adding
+     * @param number contract number for adding
      */
     public void addContractToBase(String eMail, String number) {
 
@@ -106,8 +116,9 @@ public class ManagerCases {
     }
 
     /**
-     * checking number existing
-     * @param title
+     * Checking number existing
+     *
+     * @param title title option for checking
      * @return true - if exists, false - if doesn't
      */
     public boolean isOptionExists(String title) {
@@ -119,10 +130,11 @@ public class ManagerCases {
     }
 
     /**
-     * creating tariff option entity and saving it to base
-     * @param title
-     * @param price
-     * @param connectionPrice
+     * Creating tariff option entity and saving it to base
+     *
+     * @param title           option title for adding
+     * @param price           option price for adding
+     * @param connectionPrice option connection price for adding
      */
     public void addOptionToBase(String title, String price, String connectionPrice) {
         TariffOption tariffOption = new TariffOption(title, Double.parseDouble(price),
@@ -131,8 +143,9 @@ public class ManagerCases {
     }
 
     /**
-     * generate password for user
-     * @param size
+     * Generate password for user
+     *
+     * @param size password length
      * @return n-length password
      */
     public String passwordGenerator(int size) {
@@ -149,9 +162,10 @@ public class ManagerCases {
     }
 
     /**
-     * adding joint tariffs and saving to base
-     * @param tariffOne
-     * @param tarifftwo
+     * Adding joint tariffs and saving to base
+     *
+     * @param tariffOne first tariff for adding
+     * @param tarifftwo second tariff for adding
      */
     public void addJoinOptionToBase(String tariffOne, String tarifftwo) {
         TariffOption one = null, two = null;
@@ -168,9 +182,10 @@ public class ManagerCases {
     }
 
     /**
-     * adding impossible tariffs and saving to base
-     * @param tariffOne
-     * @param tarifftwo
+     * Adding impossible tariffs and saving to base
+     *
+     * @param tariffOne first tariff for adding
+     * @param tarifftwo second tariff for adding
      */
     public void addImmposibleOptionToBase(String tariffOne, String tarifftwo) {
         TariffOption one = null, two = null;
