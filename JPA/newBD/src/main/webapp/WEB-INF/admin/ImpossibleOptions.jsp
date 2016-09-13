@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
-    <title>K-Mobile</title>
+    <title>Incompatible options</title>
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
@@ -19,7 +19,7 @@
     %>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;">Add new contract</h2>
+        <h2 style="margin-top:0;">Add incompatible options</h2>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
@@ -40,7 +40,7 @@
                             tariffTwo = (String) request.getSession(true).getAttribute("twoStat");
 
                     %>
-                    <h4>Connect option</h4>
+                    <h4>Add options</h4>
                     <table class="table">
                         <thead>
                         <tr>

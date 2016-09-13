@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
-    <title>Number operations</title>
+    <title>Contract control</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%

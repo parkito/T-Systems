@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
-    <title>K-Mobile</title>
+    <title>Find client</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="global">
@@ -101,7 +101,7 @@
             </div>
         </div>
         <%}%>
-
+</div>
     </div>
     <jsp:include page="footer.jsp"></jsp:include>
 </html>

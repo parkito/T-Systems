@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/Help" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="/Help" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/window-layout.svg" alt="window-layout">

@@ -31,8 +31,8 @@
                         <ul>
                             <li><a href="/admin/NewOption">New option</a></li>
                             <li><a href="/admin/EditTariffOption">Delete option</a></li>
-                            <li><a href="/admin/ConnectOption">Join option</a></li>
-                            <li><a href="/admin/ImpossibleOption">Incompatible option</a></li>
+                            <li><a href="/admin/ConnectOption">Join options</a></li>
+                            <li><a href="/admin/ImpossibleOption">Incompatible options</a></li>
                         </ul>
                     </li>
                     <li><a href="/admin/ViewClient" class="sf-lock-open">View clients</a></li>
