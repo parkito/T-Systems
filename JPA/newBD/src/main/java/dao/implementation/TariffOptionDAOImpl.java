@@ -16,6 +16,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Access to tariff option functionality
+ */
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
     /**
      * Getting tariff option list of adjusted tariff

@@ -38,7 +38,7 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
     }
 
     /**
-     * get all contracts that user has
+     * Get all contracts that user has
      * @param id id for getting
      * @return list of all contracts for adjusted user
      * @throws ContractsForEntityNotGotException if contract not found

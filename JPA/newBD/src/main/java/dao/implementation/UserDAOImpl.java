@@ -10,6 +10,11 @@ import javax.persistence.*;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Access to user functionality
+ */
+
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
     /**
      * Getting user entity by number

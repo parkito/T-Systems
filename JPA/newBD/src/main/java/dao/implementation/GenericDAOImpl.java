@@ -12,25 +12,33 @@ import java.util.List;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+
+/**
+ * Access to entity functionality
+ */
+
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
     //For testing
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
-    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
+//    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
     //For Servlets
-//    protected EntityManager entityManager = EntityFactory.createEntityManager();
+    protected EntityManager entityManager = EntityFactory.createEntityManager();
 
-
+    /**
+     * Parametrized constructor
+     */
     public GenericDAOImpl() {
         daoType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
     }
 
     /**
-     * creating entity in base
+     * Creating entity in base
      *
-     * @param entity
-     * @throws CustomDAOException
+     * @param entity entity for creating
+     * @throws CustomDAOException if connect with base goes wrong
      */
     @Override
     public void create(E entity) throws CustomDAOException {
@@ -44,11 +52,11 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     }
 
     /**
-     * reading entity from base
+     * Reading entity from base
      *
-     * @param id
+     * @param id id for reading
      * @return E-entity if it exists
-     * @throws CustomDAOException
+     * @throws CustomDAOException if connect with base goes wrong
      */
     @Override
     public E read(K id) throws CustomDAOException {
@@ -60,10 +68,10 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     }
 
     /**
-     * refreshing entity in base
+     * Refreshing entity in base
      *
-     * @param entity
-     * @throws CustomDAOException
+     * @param entity entity for upgrade
+     * @throws CustomDAOException if connect with base goes wrong
      */
     @Override
     public void update(E entity) throws CustomDAOException {
@@ -80,10 +88,10 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     }
 
     /**
-     * deleting entity from base
+     * Deleting entity from base
      *
-     * @param entity
-     * @throws CustomDAOException
+     * @param entity entity for deleting
+     * @throws CustomDAOException if connect with base goes wrong
      */
     @Override
     public void delete(E entity) throws CustomDAOException {
@@ -98,10 +106,10 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     }
 
     /**
-     * getting all same-type entities from base
+     * Getting all same-type entities from base
      *
-     * @return
-     * @throws CustomDAOException
+     * @return list of all entities
+     * @throws CustomDAOException if connect with base goes wrong
      */
     @Override
     public List<E> getAll() throws CustomDAOException {

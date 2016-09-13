@@ -15,6 +15,9 @@ import java.util.List;
  * artyom-karnov@yandex.ru
  **/
 
+/**
+ * Access to tariff functionality
+ */
 
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
     /**
