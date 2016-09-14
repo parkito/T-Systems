@@ -41,7 +41,6 @@ public class FindClientByEmailServlet extends HttpServlet {
             req.getSession(true).setAttribute("usrs", user);
 
         } catch (UserNotFoundException ex) {
-            System.out.println("hee");
             req.getSession(true).setAttribute("usrs", null);
         }
     }
