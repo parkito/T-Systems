@@ -185,6 +185,25 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>DeleteImOptions</servlet-name>
+        <servlet-class>servlets.admin.DeleteImOptionsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteImOptions</servlet-name>
+        <url-pattern>/admin/DeleteImOptions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteJoOptionsServlet</servlet-name>
+        <servlet-class>servlets.admin.DeleteJoOptionsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteJoOptionsServlet</servlet-name>
+        <url-pattern>/admin/DeleteJoOptions</url-pattern>
+    </servlet-mapping>
 
     <error-page>
         <error-code>404</error-code>

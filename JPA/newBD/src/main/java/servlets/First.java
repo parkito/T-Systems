@@ -1,7 +1,9 @@
 package servlets;
 
+import entities.TariffOption;
 import services.api.AccessLevelService;
 import services.implementation.AccessLevelImpl;
+import services.implementation.TariffOptionServiceImpl;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -131,8 +133,10 @@ public class First {
 //            System.out.println(tar.getTariffOptionId());
 //        }
 
-
-        AccessLevelService accessLevelService = new AccessLevelImpl();
+        TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+        for (TariffOption tariffOption : tariffOptionService.getAllImpossibleTariffOption(0)) {
+            System.out.println(tariffOption);
+        }
 
     }
 }
