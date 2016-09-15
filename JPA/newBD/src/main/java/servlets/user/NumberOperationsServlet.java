@@ -55,7 +55,7 @@ public class NumberOperationsServlet extends HttpServlet {
                 contract.setBlocked(false);
                 contractService.updateEntity(contract);
             } else {
-                resp.setStatus(500);
+                resp.setStatus(600);
 
             }
         }

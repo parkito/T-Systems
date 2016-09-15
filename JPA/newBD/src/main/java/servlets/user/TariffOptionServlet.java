@@ -35,6 +35,7 @@ public class TariffOptionServlet extends HttpServlet {
         User user = userService.getUserByEMAil(eMail);
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
+        req.getSession(true).setAttribute("user", user);
         req.getSession(true).setAttribute("contracts", contracts);
         req.getSession(true).setAttribute("tariffOptions", tariffOptionService.getAll());
         req.getRequestDispatcher("/WEB-INF/user/TariffOptions.jsp").forward(req, resp);

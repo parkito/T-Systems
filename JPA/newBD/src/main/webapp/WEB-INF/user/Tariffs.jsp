@@ -130,6 +130,7 @@
                                             var id = 1;
                                             xhr.open("POST", "/user/Tariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                             xhr.send();
+//
                                         }
                                     }
                                 }

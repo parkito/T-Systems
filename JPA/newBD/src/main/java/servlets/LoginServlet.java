@@ -11,17 +11,10 @@ import java.io.IOException;
 
 
 // TODO: 9/4/16  прибраться в коде. Все засрано. особенно в сервлетах
-// TODO: 9/4/16 что можно сделать с пустыми списками? т.е. когда на странице нет ни одного элемента.
-// TODO: 9/7/16 documentation  
 // TODO: 9/9/16 переписывать все на jstl
+// TODO: 9/13/16 refresh problem
 
 // TODO: 9/7/16 1) Not update content after first changing on user/Tariffs
-// TODO: 9/7/16 5) http://localhost:8080/admin/NewClient - mistaken access
-// TODO: 9/7/16 6) for security set up getting password from session
-// TODO: 9/7/16 7) not remoning session after log out 
-// TODO: 9/7/16 8) If there is session - on localhost:8080 open /login, not signIn
-// TODO: 9/7/16 10) Change clien multi window on manegers main page
-// TODO: 9/11/16 mockito aor how make tests
 
 /**
  * Created by Artyom Karnov on 8/29/16.
