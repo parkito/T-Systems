@@ -21,14 +21,10 @@ import java.util.List;
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
     //For testing
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
-    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
+//    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
     //For Servlets
-<<<<<<< HEAD
-//    protected EntityManager entityManager = EntityFactory.createEntityManager();
-=======
     protected static EntityManager entityManager = EntityFactory.createEntityManager();
->>>>>>> feb59947d70f42f8df1deb1ee46d5e6cc1853e50
 
     /**
      * Parametrized constructor
