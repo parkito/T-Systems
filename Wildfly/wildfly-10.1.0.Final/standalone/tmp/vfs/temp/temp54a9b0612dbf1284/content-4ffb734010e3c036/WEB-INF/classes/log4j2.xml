@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR">
+
+    <Appenders>
+        <File name="MyFile" fileName="/tmp/operatorApp.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <Async name="Async">
+            <AppenderRef ref="MyFile"/>
+        </Async>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="main.java.servlets.LoginServlet" level="DEBUG" additivity="true">
+            <AppenderRef ref="Async"/>
+        </Logger>
+
+        <!-- Root Logger -->
+        <Root level="ERROR">
+            <AppenderRef ref="Async"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

@@ -1,0 +1,3 @@
+http://localhost:9990 - адрес админки
+./jboss-cli.sh --connect command=:shutdown - остановить wildfly
+mvn wildfly:deploy - деплой
