@@ -1,4 +1,3 @@
-<%@ page import="servlets.LoginServlet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,11 +45,11 @@
 <br>
 <br>
 <font color="red">
-    <h3 align="center">
-        <% if (!LoginServlet.isPreviousDataCorrect)
-            out.print("E-mail or password is incorrect. Try again");
-        %>
-    </h3>
+    <%--<h3 align="center">--%>
+        <%--<% if (!LoginServlet.isPreviousDataCorrect)--%>
+            <%--out.print("E-mail or password is incorrect. Try again");--%>
+        <%--%>--%>
+    <%--</h3>--%>
 </font>
 </body>
 </html>
