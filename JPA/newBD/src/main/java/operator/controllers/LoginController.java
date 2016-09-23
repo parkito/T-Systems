@@ -13,6 +13,8 @@ import java.util.Locale;
  * Created by Artyom Karnov on 9/24/16.
  * artyom-karnov@yandex.ru
  **/
+// TODO: 9/24/16 Изменить в дао о существующих пользователях действия. Не по провославному это
+// TODO: 9/24/16 Продумать штуку про разрешенные тарифы. Видно, что в базе надо впихивать что-то
 @Controller
 public class LoginController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
