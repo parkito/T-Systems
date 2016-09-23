@@ -1,261 +1,33 @@
-<web-app>
-    <display-name>Archetype Created Web Application</display-name>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+    <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring/root-context.xml</param-value>
+    </context-param>
+
+    <!-- Creates the Spring Container shared by all Servlets and Filters -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Processes application requests -->
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>servlets.LoginServlet</servlet-class>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>userContractServlet</servlet-name>
-        <servlet-class>servlets.user.UserContractServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>userContractServlet</servlet-name>
-        <url-pattern>/user/Contract</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>NumberOperationsServlet</servlet-name>
-        <servlet-class>servlets.user.NumberOperationsServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>NumberOperationsServlet</servlet-name>
-        <url-pattern>/user/NumberOperations</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>TariffServlet</servlet-name>
-        <servlet-class>servlets.user.TariffServlets</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TariffServlet</servlet-name>
-        <url-pattern>/user/Tariffs</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>TariffOptionServlet</servlet-name>
-        <servlet-class>servlets.user.TariffOptionServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TariffOptionServlet</servlet-name>
-        <url-pattern>/user/TariffOptions</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>FindClientServlet</servlet-name>
-        <servlet-class>servlets.admin.FindClientServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>FindClientServlet</servlet-name>
-        <url-pattern>/admin/FindClient</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>NewClientServlet</servlet-name>
-        <servlet-class>servlets.admin.NewClientServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>NewClientServlet</servlet-name>
-        <url-pattern>/admin/NewClient</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ChangeClientServlet</servlet-name>
-        <servlet-class>servlets.admin.ChangeClientServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeClientServlet</servlet-name>
-        <url-pattern>/admin/ChangeClient</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>ContractControlServlet</servlet-name>
-        <servlet-class>servlets.admin.ContractControlServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ContractControlServlet</servlet-name>
-        <url-pattern>/admin/ContractControl</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>ChangeClientTariffServlet</servlet-name>
-        <servlet-class>servlets.admin.ChangeClientTariffServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeClientTariffServlet</servlet-name>
-        <url-pattern>/admin/ChangeClientTariff</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>NewContractServlet</servlet-name>
-        <servlet-class>servlets.admin.NewContractServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>NewContractServlet</servlet-name>
-        <url-pattern>/admin/NewContract</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>NewTariffServlet</servlet-name>
-        <servlet-class>servlets.admin.NewTariffServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>NewTariffServlet</servlet-name>
-        <url-pattern>/admin/NewTariff</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ChangeTariffChangeTariffServlet</servlet-name>
-        <servlet-class>servlets.admin.ChangeTariffServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeTariffChangeTariffServlet</servlet-name>
-        <url-pattern>/admin/EditTariff</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>NewTariffOptionServlet</servlet-name>
-        <servlet-class>servlets.admin.NewTariffOptionServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>NewTariffOptionServlet</servlet-name>
-        <url-pattern>/admin/NewOption</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ChangeTariffOptionServlet</servlet-name>
-        <servlet-class>servlets.admin.ChangeTariffOptionServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeTariffOptionServlet</servlet-name>
-        <url-pattern>/admin/EditTariffOption</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>JointOptionServlet</servlet-name>
-        <servlet-class>servlets.admin.JointOptionServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>JointOptionServlet</servlet-name>
-        <url-pattern>/admin/ConnectOption</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ImpossibleOptionServlet</servlet-name>
-        <servlet-class>servlets.admin.ImpossibleOptionServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ImpossibleOptionServlet</servlet-name>
-        <url-pattern>/admin/ImpossibleOption</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>FindClientByEmail</servlet-name>
-        <servlet-class>servlets.admin.FindClientByEmailServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>FindClientByEmail</servlet-name>
-        <url-pattern>/admin/ViewClient</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>DeleteImOptions</servlet-name>
-        <servlet-class>servlets.admin.DeleteImOptionsServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DeleteImOptions</servlet-name>
-        <url-pattern>/admin/DeleteImOptions</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DeleteJoOptionsServlet</servlet-name>
-        <servlet-class>servlets.admin.DeleteJoOptionsServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DeleteJoOptionsServlet</servlet-name>
-        <url-pattern>/admin/DeleteJoOptions</url-pattern>
-    </servlet-mapping>
-
-    <error-page>
-        <error-code>404</error-code>
-        <location>/404.jsp</location>
-    </error-page>
-
-    <!--<error-page>-->
-    <!--<error-code>500</error-code>-->
-    <!--<location>/404.jsp</location>-->
-    <!--</error-page>-->
-
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
-    <session-config>
-        <session-timeout>30</session-timeout> <!-- in minutes -->
-    </session-config>
-
-    <servlet>
-        <servlet-name>ExitServlet</servlet-name>
-        <servlet-class>servlets.ExitServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ExitServlet</servlet-name>
-        <url-pattern>/Exit</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>HelpServlet</servlet-name>
-        <servlet-class>servlets.HelpServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>HelpServlet</servlet-name>
-        <url-pattern>/Help</url-pattern>
-    </servlet-mapping>
-
-    <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>servlets.AccessControlFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/user/*</url-pattern>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/admin/*</url-pattern>
-    </filter-mapping>
 
 </web-app>
