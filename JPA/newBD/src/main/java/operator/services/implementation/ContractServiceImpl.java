@@ -8,6 +8,7 @@ import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.ContractService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void createEntity(Contract contract) throws CustomDAOException {
         if (!isContractExists(contract))
             contractDAO.create(contract);
@@ -38,6 +40,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public Contract getEntityById(Integer id) throws CustomDAOException {
         return contractDAO.read(id);
     }
@@ -48,6 +51,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void updateEntity(Contract contract) throws CustomDAOException {
         contractDAO.update(contract);
     }
@@ -58,6 +62,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void deleteEntity(Contract contract) throws CustomDAOException {
         contractDAO.delete(contract);
     }
@@ -69,6 +74,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws ContractNotFoundException if contract not found
      */
     @Override
+    @Transactional
     public Contract getContractByNumber(String number) throws ContractNotFoundException {
         return contractDAO.getContractByNumber(number);
     }
@@ -79,6 +85,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public List<Contract> getAll() throws CustomDAOException {
         return contractDAO.getAll();
     }
@@ -90,6 +97,7 @@ public class ContractServiceImpl implements ContractService {
      * @throws ContractsForEntityNotGotException if contract not found
      */
     @Override
+    @Transactional
     public List<Contract> getAllContractsForUser(int id) throws ContractsForEntityNotGotException {
         return contractDAO.getAllUserContracts(id);
     }

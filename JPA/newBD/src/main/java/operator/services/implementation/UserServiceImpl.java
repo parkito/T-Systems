@@ -8,6 +8,9 @@ import operator.entities.User;
 import operator.exceptions.CustomDAOException;
 import operator.exceptions.UserNotFoundException;
 import operator.services.api.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,8 +18,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
+//@Service("userService")
 public class UserServiceImpl implements UserService {
-    private UserDAO userDAO = new UserDAOImpl();
+    @Autowired
+    private UserDAO userDAO;
 
     /**
      * Creating contract user in base
@@ -25,6 +30,7 @@ public class UserServiceImpl implements UserService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void createEntity(User user) throws CustomDAOException {
         if (!isUserExists(user)) {
             userDAO.create(user);
@@ -39,6 +45,7 @@ public class UserServiceImpl implements UserService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public User getEntityById(Integer id) throws CustomDAOException {
         return userDAO.read(id);
     }
@@ -50,6 +57,7 @@ public class UserServiceImpl implements UserService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void updateEntity(User entity) throws CustomDAOException {
         userDAO.update(entity);
     }
@@ -61,6 +69,7 @@ public class UserServiceImpl implements UserService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void deleteEntity(User entity) throws CustomDAOException {
         userDAO.delete(entity);
     }
@@ -72,6 +81,7 @@ public class UserServiceImpl implements UserService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public List<User> getAll() throws CustomDAOException {
         return userDAO.getAll();
 
@@ -85,6 +95,7 @@ public class UserServiceImpl implements UserService {
      * @throws UserNotFoundException if user not found
      */
     @Override
+    @Transactional
     public User getUserByNumber(String number) throws UserNotFoundException {
         return userDAO.getUserByNumber(number);
     }
@@ -97,6 +108,7 @@ public class UserServiceImpl implements UserService {
      * @throws UserNotFoundException if user not found
      */
     @Override
+    @Transactional
     public User getUserByEMAil(String eMail) throws UserNotFoundException {
         return userDAO.getUserByEMAil(eMail);
     }

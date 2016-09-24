@@ -6,6 +6,7 @@ import operator.dao.implementation.TariffDAOImpl;
 import operator.entities.Tariff;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.TariffService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class TariffServiceImpl implements TariffService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void createEntity(Tariff tariff) throws CustomDAOException {
         if (!isTariffExists(tariff))
             tariffDAO.create(tariff);
@@ -36,6 +38,7 @@ public class TariffServiceImpl implements TariffService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public Tariff getEntityById(Integer id) throws CustomDAOException {
         return tariffDAO.read(id);
     }
@@ -46,6 +49,7 @@ public class TariffServiceImpl implements TariffService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void updateEntity(Tariff tariff) throws CustomDAOException {
         tariffDAO.update(tariff);
 
@@ -57,6 +61,7 @@ public class TariffServiceImpl implements TariffService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void deleteEntity(Tariff tariff) throws CustomDAOException {
         tariffDAO.delete(tariff);
     }
@@ -67,6 +72,7 @@ public class TariffServiceImpl implements TariffService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public List<Tariff> getAll() throws CustomDAOException {
         return tariffDAO.getAll();
 
@@ -78,6 +84,7 @@ public class TariffServiceImpl implements TariffService {
      * @return true - if tariff exists, false if doesn't
      */
     @Override
+    @Transactional
     public boolean isTariffExists(Tariff tariff) {
         try {
             return tariffDAO.getTariffByTitle(tariff.getTitle()) != null ? true : false;
@@ -92,6 +99,7 @@ public class TariffServiceImpl implements TariffService {
      * @return tariff entity
      */
     @Override
+    @Transactional
     public Tariff getTariffByTitle(String title) {
         return tariffDAO.getTariffByTitle(title);
     }

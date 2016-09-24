@@ -5,6 +5,7 @@ import operator.entities.Tariff;
 import operator.entities.TariffOption;
 import operator.exceptions.OptionsForEntityNotGotException;
 import operator.exceptions.UserNotFoundException;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * Access to tariff option functionality
  */
+@Repository("TariffOption")
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
     @PersistenceContext
     private EntityManager entityManager;

@@ -7,6 +7,7 @@ import operator.entities.TariffOption;
 import operator.exceptions.CustomDAOException;
 import operator.exceptions.OptionsForEntityNotGotException;
 import operator.services.api.TariffOptionService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void createEntity(TariffOption option) throws CustomDAOException {
         if (!isTariffOptionExists(option))
             optionDAO.create(option);
@@ -36,6 +38,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public TariffOption getEntityById(Integer id) throws CustomDAOException {
         return optionDAO.read(id);
     }
@@ -46,6 +49,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void updateEntity(TariffOption option) throws CustomDAOException {
         optionDAO.update(option);
     }
@@ -56,6 +60,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void deleteEntity(TariffOption option) throws CustomDAOException {
         optionDAO.delete(option);
     }
@@ -65,6 +70,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @return list of all tariff option
      * @throws CustomDAOException if connect with DAO goes wrong
      */
+    @Transactional
     public List<TariffOption> getAll() throws CustomDAOException {
         return optionDAO.getAll();
     }
@@ -76,6 +82,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws OptionsForEntityNotGotException if option not found
      */
     @Override
+    @Transactional
     public List<TariffOption> getAllTariffOptions(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllTariffOptionsForTariff(id);
     }
@@ -87,6 +94,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws OptionsForEntityNotGotException if option not found
      */
     @Override
+    @Transactional
     public List<TariffOption> getAllTariffOptionForContract(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllTariffOptionsForContract(id);
     }
@@ -98,6 +106,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws OptionsForEntityNotGotException if option not found
      */
     @Override
+    @Transactional
     public List<TariffOption> getAllJoinedTariffOption(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllJointTariffOptions(id);
     }
@@ -109,6 +118,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
      * @throws OptionsForEntityNotGotException if option not found
      */
     @Override
+    @Transactional
     public List<TariffOption> getAllImpossibleTariffOption(int id) throws OptionsForEntityNotGotException {
         return optionDAO.getAllImpossibleTariffOptions(id);
     }

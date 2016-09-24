@@ -3,6 +3,7 @@ package operator.dao.implementation;
 import operator.dao.api.TariffDAO;
 import operator.entities.Tariff;
 import operator.exceptions.UserNotFoundException;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +18,7 @@ import javax.persistence.Query;
 /**
  * Access to tariff functionality
  */
-
+@Repository("Tariff")
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
     @PersistenceContext
     private EntityManager entityManager;

@@ -4,6 +4,7 @@ import operator.dao.api.ContractDAO;
 import operator.entities.Contract;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * Contract operations
  */
+@Repository("Contract")
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
     @PersistenceContext
     private EntityManager entityManager;

@@ -6,6 +6,7 @@ import operator.dao.implementation.AccessLevelDAOImpl;
 import operator.entities.AccessLevel;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.AccessLevelService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class AccessLevelImpl implements AccessLevelService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void createEntity(AccessLevel accessLevel) throws CustomDAOException {
         accessLevelDAO.create(accessLevel);
     }
@@ -38,6 +40,7 @@ public class AccessLevelImpl implements AccessLevelService {
      */
 
     @Override
+    @Transactional
     public AccessLevel getEntityById(Integer id) throws CustomDAOException {
         return accessLevelDAO.read(id);
     }
@@ -48,6 +51,7 @@ public class AccessLevelImpl implements AccessLevelService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void updateEntity(AccessLevel accessLevel) throws CustomDAOException {
         accessLevelDAO.update(accessLevel);
     }
@@ -58,6 +62,7 @@ public class AccessLevelImpl implements AccessLevelService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public void deleteEntity(AccessLevel accessLevel) throws CustomDAOException {
         accessLevelDAO.delete(accessLevel);
 
@@ -69,6 +74,7 @@ public class AccessLevelImpl implements AccessLevelService {
      * @throws CustomDAOException if connect with DAO goes wrong
      */
     @Override
+    @Transactional
     public List<AccessLevel> getAll() throws CustomDAOException {
         return accessLevelDAO.getAll();
     }

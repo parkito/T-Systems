@@ -3,8 +3,12 @@ package operator.dao.implementation;
 import operator.dao.api.UserDAO;
 import operator.entities.User;
 import operator.exceptions.UserNotFoundException;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -14,7 +18,7 @@ import javax.persistence.*;
 /**
  * Access to user functionality
  */
-
+@Repository("userDAO")
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
     @PersistenceContext
     private EntityManager entityManager;
