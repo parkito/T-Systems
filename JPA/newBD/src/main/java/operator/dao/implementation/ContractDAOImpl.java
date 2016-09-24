@@ -21,6 +21,8 @@ import java.util.List;
  * Contract operations
  */
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
+    @PersistenceContext
+    private EntityManager entityManager;
     /**
      * Get contract by number
      * @param number entity for getting

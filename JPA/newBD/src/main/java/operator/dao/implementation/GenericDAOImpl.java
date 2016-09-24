@@ -1,10 +1,11 @@
 package operator.dao.implementation;
 
-import operator.dao.EntityFactory;
 import operator.dao.api.GenericDAO;
 import operator.exceptions.CustomDAOException;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -24,8 +25,10 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 //    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
 //    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
     //For Servlets
-    protected static EntityManager entityManager = EntityFactory.createEntityManager();
+//    protected static EntityManager entityManager = EntityFactory.createEntityManager();
 
+    @PersistenceContext
+    private EntityManager entityManager;
     /**
      * Parametrized constructor
      */

@@ -16,6 +16,8 @@ import javax.persistence.*;
  */
 
 public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDAO {
+    @PersistenceContext
+    private EntityManager entityManager;
     /**
      * Getting user entity by number
      * @param number entity for getting

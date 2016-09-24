@@ -2,13 +2,12 @@ package operator.dao.implementation;
 
 import operator.dao.api.TariffDAO;
 import operator.entities.Tariff;
-import operator.entities.User;
-import operator.exceptions.CustomDAOException;
 import operator.exceptions.UserNotFoundException;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
-import java.util.List;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -20,6 +19,8 @@ import java.util.List;
  */
 
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
+    @PersistenceContext
+    private EntityManager entityManager;
     /**
      * Getting tariff entity by number
      * @param title entity for getting

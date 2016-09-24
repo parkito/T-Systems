@@ -21,6 +21,8 @@ import java.util.List;
  * Access to tariff option functionality
  */
 public class TariffOptionDAOImpl extends GenericDAOImpl<TariffOption, Integer> implements TariffOptionDAO {
+    @PersistenceContext
+    private EntityManager entityManager;
     /**
      * Getting tariff option list of adjusted tariff
      * @param id entity for getting
