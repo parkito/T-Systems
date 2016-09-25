@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <beans:import resource="appServlet/servlet-context.xml"/>
+
+    <beans:bean id="roleVoter"
+                class="org.springframework.security.access.vote.RoleVoter">
+        <beans:property name="rolePrefix" value=""></beans:property>
+    </beans:bean>
+
+    <beans:bean id="accessDecisionManager"
+                class="org.springframework.security.access.vote.AffirmativeBased">
+        <beans:constructor-arg name="decisionVoters"
+                               ref="roleVoter"/>
+    </beans:bean>
+
+
+    <http authentication-manager-ref="dao-auth"
+          access-decision-manager-ref="accessDecisionManager">
+        <intercept-url pattern="/admin**" access="Admin"/>
+        <intercept-url pattern="/user**" access="User"/>
+        <form-login login-page="/login" authentication-failure-url="/login-denied"
+                    username-parameter="username" password-parameter="password"
+                    default-target-url="/main"/>
+        <logout invalidate-session="true" logout-success-url="/login"
+                logout-url="/j_spring_security_logout"/>
+        <access-denied-handler error-page="/denied"/>
+        <session-management invalid-session-url="/login">
+            <concurrency-control max-sessions="1"
+                                 expired-url="/login"/>
+        </session-management>
+        <!--remember me-->
+        <remember-me token-validity-seconds="1209600"
+                     remember-me-parameter="remember-me"
+                     user-service-ref="userDetailsService"/>
+    </http>
+
+    <authentication-manager id="dao-auth">
+        <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder ref="passwordEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+    <beans:bean id="passwordEncoder"
+                class="operator.utils.Converter">
+    </beans:bean>
+
+
+</beans:beans>
