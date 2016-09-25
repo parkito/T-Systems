@@ -17,7 +17,7 @@ import java.util.Locale;
  **/
 // TODO: 9/24/16 Изменить в дао о существующих пользователях действия. Не по провославному это
 // TODO: 9/24/16 Продумать штуку про разрешенные тарифы. Видно, что в базе надо впихивать что-то
-@Controller
+@Controller ("LoginController")
 public class LoginController {
     @Autowired
     private UserService userService;
