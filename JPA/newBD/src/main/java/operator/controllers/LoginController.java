@@ -25,32 +25,20 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public String home(Locale locale, Model model) {
-//
-//        return "index";
-//    }
-//
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public String login(@RequestParam("username") String eMail, @RequestParam("password") String pass) {
-//        System.out.println(userService.getUserByEMAil(eMail));
-//        return "index";
-//    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Locale locale, Model model) {
-        return "login";
+        System.out.println("Here");
+        return "index";
     }
 
     /**
-     * '
      * This method returns the login page when logout is required.
      *
      * @return login.jsp
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage() {
+
         return "index";
     }
 
@@ -61,7 +49,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/denied", method = RequestMethod.GET)
     public String deniedPage() {
-        return "404";
+        return "";
     }
 
     /**
@@ -94,7 +82,7 @@ public class LoginController {
         request.getSession().setAttribute("language", RussianLanguage.getRussianLanguage());
         if (currentUser.getAccessLevel() == null) {
             return "user/index";
-        } else  {
+        } else {
             return "admin/index";
         }
     }
