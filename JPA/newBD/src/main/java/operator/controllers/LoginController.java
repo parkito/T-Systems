@@ -26,17 +26,17 @@ public class LoginController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Locale locale, Model model) {
-
-        return "index";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam("username") String eMail, @RequestParam("password") String pass) {
-        System.out.println(userService.getUserByEMAil(eMail));
-        return "index";
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public String home(Locale locale, Model model) {
+//
+//        return "index";
+//    }
+//
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String login(@RequestParam("username") String eMail, @RequestParam("password") String pass) {
+//        System.out.println(userService.getUserByEMAil(eMail));
+//        return "index";
+//    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Locale locale, Model model) {

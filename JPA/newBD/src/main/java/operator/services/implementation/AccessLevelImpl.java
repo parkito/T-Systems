@@ -6,6 +6,7 @@ import operator.dao.implementation.AccessLevelDAOImpl;
 import operator.entities.AccessLevel;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.AccessLevelService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Access level operations
  */
+@Service("accessLevel")
 public class AccessLevelImpl implements AccessLevelService {
     private AccessLevelDAO accessLevelDAO = new AccessLevelDAOImpl();
 

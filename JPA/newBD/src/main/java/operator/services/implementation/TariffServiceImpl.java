@@ -6,6 +6,7 @@ import operator.dao.implementation.TariffDAOImpl;
 import operator.entities.Tariff;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.TariffService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
+@Service("tariffService")
 public class TariffServiceImpl implements TariffService {
     private TariffDAO tariffDAO = new TariffDAOImpl();
 

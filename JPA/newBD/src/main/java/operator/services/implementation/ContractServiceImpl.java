@@ -8,6 +8,7 @@ import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.ContractService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by Artyom Karnov on 8/27/16.
  * artyom-karnov@yandex.ru
  **/
-
+@Service("contractService")
 public class ContractServiceImpl implements ContractService {
     private ContractDAO contractDAO = new ContractDAOImpl();
 
