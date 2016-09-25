@@ -8,17 +8,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-    <import resource="classpath*:spring.xml"/>
+    <!--<import resource="classpath*:spring.xml"/>-->
     <aop:aspectj-autoproxy/>
     <context:annotation-config/>
     <context:component-scan base-package="operator"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:annotation-driven/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/tproject"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/operator"/>
         <property name="username" value="root"/>
         <property name="password" value="214189"/>
     </bean>
