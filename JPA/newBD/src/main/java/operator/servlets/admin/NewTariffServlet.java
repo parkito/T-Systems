@@ -12,6 +12,7 @@ import java.io.IOException;
  * Created by Artyom Karnov on 9/8/16.
  * artyom-karnov@yandex.ru
  **/
+
 /**
  * Servlet for new tariff controlling
  */

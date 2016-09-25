@@ -25,8 +25,10 @@ import java.util.List;
 public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implements ContractDAO {
     @PersistenceContext
     private EntityManager entityManager;
+
     /**
      * Get contract by number
+     *
      * @param number entity for getting
      * @return contract with adjusted number
      * @throws ContractNotFoundException if contract not found
@@ -43,6 +45,7 @@ public class ContractDAOImpl extends GenericDAOImpl<Contract, Integer> implement
 
     /**
      * Get all contracts that user has
+     *
      * @param id id for getting
      * @return list of all contracts for adjusted user
      * @throws ContractsForEntityNotGotException if contract not found

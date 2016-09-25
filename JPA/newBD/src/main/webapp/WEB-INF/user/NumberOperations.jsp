@@ -22,7 +22,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%
     User user = (User) request.getSession(true).getAttribute("userObj");
-    List<Contract> contracts = (List<Contract>)request.getSession(true).getAttribute("contracts");
+    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
 %>
 <c:set var="userName" value="${sessionScope.userName}"/>
 

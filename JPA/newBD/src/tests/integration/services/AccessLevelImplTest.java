@@ -14,6 +14,7 @@ import org.junit.Test;
 public class AccessLevelImplTest {
     AccessLevelImpl accessLevelimpl;
     AccessLevel accessLevel = new AccessLevel("test");
+
     @Ignore
     @Before
     public void TestInitTst() {
@@ -50,6 +51,7 @@ public class AccessLevelImplTest {
             Assert.assertEquals(accessLevel.getStatus(), "test1");
         }
     }
+
     @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void deleteEntity() {
@@ -57,6 +59,7 @@ public class AccessLevelImplTest {
 
 
     }
+
     @Ignore
     @Test
     public void getAll() throws Exception {

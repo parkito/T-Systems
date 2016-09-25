@@ -28,6 +28,7 @@ public class UserCases {
 
     /**
      * User become manager
+     *
      * @param user entity for changing
      */
     public boolean makeUserManager(User user) {
@@ -41,16 +42,18 @@ public class UserCases {
 
     /**
      * Getting user name from contract
+     *
      * @param contract entity for getting info
      * @return user name
      */
     public String getUserName(Contract contract) {
-            return contract.getUser().getName();
+        return contract.getUser().getName();
 
     }
 
     /**
      * Checking manager status
+     *
      * @param eMail
      * @return true - user manager, false - if not
      */
@@ -60,6 +63,7 @@ public class UserCases {
 
     /**
      * Getting user name by email
+     *
      * @param eMail entity for getting
      * @return user name
      */
@@ -69,6 +73,7 @@ public class UserCases {
 
     /**
      * Getting contract list for adjusted user
+     *
      * @param eMail entity for getting
      * @return contract list for adjusted user
      */

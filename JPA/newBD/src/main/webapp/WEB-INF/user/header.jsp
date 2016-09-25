@@ -9,7 +9,7 @@
     double mainSum = 0;
     for (Contract contract : contracts) {
         if (!contract.isBlocked())
-        mainSum += contract.getTariff().getPrice();
+            mainSum += contract.getTariff().getPrice();
     }
 %>
 <body class="cm-no-transition cm-1-navbar">

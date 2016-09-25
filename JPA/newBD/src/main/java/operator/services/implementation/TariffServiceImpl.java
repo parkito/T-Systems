@@ -19,6 +19,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Creating tariff entity in base
+     *
      * @param tariff entity for creating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -33,6 +34,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Get tariff entity by id
+     *
      * @param id id for getting
      * @return tariff with adjusted id
      * @throws CustomDAOException if connect with DAO goes wrong
@@ -45,6 +47,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Update tariff entity in base
+     *
      * @param tariff entity for updating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -57,6 +60,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Delete tariff entity from base
+     *
      * @param tariff entity for deleting
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -68,6 +72,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Getting all tariff entities from base
+     *
      * @return list of all tariffs
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -80,6 +85,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Checking contract existing in base
+     *
      * @param tariff entity for checking
      * @return true - if tariff exists, false if doesn't
      */
@@ -95,6 +101,7 @@ public class TariffServiceImpl implements TariffService {
 
     /**
      * Getting tariff entity by title
+     *
      * @param title entity for getting
      * @return tariff entity
      */

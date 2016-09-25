@@ -17,10 +17,11 @@ import java.util.Locale;
  **/
 // TODO: 9/24/16 Изменить в дао о существующих пользователях действия. Не по провославному это
 // TODO: 9/24/16 Продумать штуку про разрешенные тарифы. Видно, что в базе надо впихивать что-то
-@Controller ("LoginController")
+@Controller("LoginController")
 public class LoginController {
     @Autowired
     private UserService userService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
 

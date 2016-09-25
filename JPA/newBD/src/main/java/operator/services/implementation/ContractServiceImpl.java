@@ -22,6 +22,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Creating contract entity in base
+     *
      * @param contract entity for creating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -35,6 +36,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Get contract entity by id
+     *
      * @param id id for getting
      * @return contract with adjusted id
      * @throws CustomDAOException if connect with DAO goes wrong
@@ -47,6 +49,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Update contract entity in base
+     *
      * @param contract entity updating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -58,6 +61,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Delete contract entity from base
+     *
      * @param contract entity for deleting
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -69,6 +73,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Getting contract entity by number
+     *
      * @param number number for getting
      * @return contract with adjusted number
      * @throws ContractNotFoundException if contract not found
@@ -81,6 +86,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Getting all contract entity from base
+     *
      * @return list of all contracts
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -92,6 +98,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Getting all contract for user
+     *
      * @param id id for getting
      * @return list of all contracts for current user
      * @throws ContractsForEntityNotGotException if contract not found
@@ -104,6 +111,7 @@ public class ContractServiceImpl implements ContractService {
 
     /**
      * Checking contract existing in base
+     *
      * @param contract entity for checking
      * @return true - contract exists, false - contract doesn't exist
      */

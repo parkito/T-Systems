@@ -48,6 +48,6 @@ public class NewTariffOptionServlet extends HttpServlet {
         } else
             req.getSession(true).setAttribute("connectionPriceStat", "OK");
 
-        if (add == true) managerCases.addOptionToBase(title, price,connectionPrice);
+        if (add == true) managerCases.addOptionToBase(title, price, connectionPrice);
     }
 }

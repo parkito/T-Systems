@@ -22,8 +22,10 @@ import javax.persistence.Query;
 public class TariffDAOImpl extends GenericDAOImpl<Tariff, Integer> implements TariffDAO {
     @PersistenceContext
     private EntityManager entityManager;
+
     /**
      * Getting tariff entity by number
+     *
      * @param title entity for getting
      * @return tariff with adjusted number
      */

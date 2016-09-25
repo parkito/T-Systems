@@ -31,7 +31,8 @@ public class LoginServlet extends HttpServlet {
 
     /**
      * Method for user authorization
-     * @param eMail Email for checking
+     *
+     * @param eMail    Email for checking
      * @param password Password for checking
      * @return true - if user with current data exists, else if doesn't
      */

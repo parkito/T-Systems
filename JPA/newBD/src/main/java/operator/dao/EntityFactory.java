@@ -23,6 +23,7 @@ public class EntityFactory implements ServletContextListener {
 
     /**
      * Creating manager factory on servlet initialization
+     *
      * @param servletContextEvent entity for initialization
      */
     @Override
@@ -32,6 +33,7 @@ public class EntityFactory implements ServletContextListener {
 
     /**
      * closing factories on servlet destroing
+     *
      * @param servletContextEvent entity for destroying
      */
     @Override

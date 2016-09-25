@@ -22,7 +22,8 @@ import java.util.List;
  * Servlet for controlling changing client's  tariffs
  */
 public class ChangeClientTariffServlet extends HttpServlet {
-    public static int count =1;
+    public static int count = 1;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (count == 1) {

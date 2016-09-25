@@ -23,6 +23,7 @@ public class AccessLevelImpl implements AccessLevelService {
 
     /**
      * Creating accessLevel entity in base
+     *
      * @param accessLevel entity for creating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -34,6 +35,7 @@ public class AccessLevelImpl implements AccessLevelService {
 
     /**
      * Getting accessLevel entity by id
+     *
      * @param id id for getting
      * @return level with adjusted id
      * @throws CustomDAOException if connect with DAO goes wrong
@@ -47,6 +49,7 @@ public class AccessLevelImpl implements AccessLevelService {
 
     /**
      * Updating accessLevel entity in base
+     *
      * @param accessLevel entity for updating
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -58,6 +61,7 @@ public class AccessLevelImpl implements AccessLevelService {
 
     /**
      * Deleting accessLevel entity from base
+     *
      * @param accessLevel entity for deleting
      * @throws CustomDAOException if connect with DAO goes wrong
      */
@@ -70,6 +74,7 @@ public class AccessLevelImpl implements AccessLevelService {
 
     /**
      * Getting list of access levels entities
+     *
      * @return list of all levels
      * @throws CustomDAOException if connect with DAO goes wrong
      */

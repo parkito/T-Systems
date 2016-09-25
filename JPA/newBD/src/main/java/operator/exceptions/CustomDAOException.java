@@ -11,6 +11,7 @@ package operator.exceptions;
 public class CustomDAOException extends RuntimeException {
     /**
      * Exception with message for situation when something goes wrong on DAO
+     *
      * @param message message for exception
      */
     public CustomDAOException(String message) {
@@ -19,7 +20,8 @@ public class CustomDAOException extends RuntimeException {
 
     /**
      * exception with message and throwable for situation when something goes wrong on DAO
-     * @param message message for exception
+     *
+     * @param message   message for exception
      * @param throwable object for exception
      */
     public CustomDAOException(String message, Throwable throwable) {

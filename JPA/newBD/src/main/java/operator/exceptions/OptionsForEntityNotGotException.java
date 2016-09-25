@@ -11,6 +11,7 @@ package operator.exceptions;
 public class OptionsForEntityNotGotException extends CustomDAOException {
     /**
      * Exception with message for situation when entity has incorrect state
+     *
      * @param message message for exception
      */
     public OptionsForEntityNotGotException(String message) {
@@ -19,7 +20,8 @@ public class OptionsForEntityNotGotException extends CustomDAOException {
 
     /**
      * exception with message and throwable for situation when entity has incorrect state
-     * @param message message for exception
+     *
+     * @param message   message for exception
      * @param throwable object for exception
      */
     public OptionsForEntityNotGotException(String message, Throwable throwable) {

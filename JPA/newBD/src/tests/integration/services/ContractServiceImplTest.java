@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Artyom Karnov on 9/8/16.
  * artyom-karnov@yandex.ru
  **/
-public class ContractServiceImplTest  {
+public class ContractServiceImplTest {
     UserService userService = new UserServiceImpl();
     TariffServiceImpl tariffService = new TariffServiceImpl();
     ContractServiceImpl contractService = new ContractServiceImpl();

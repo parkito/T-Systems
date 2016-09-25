@@ -29,6 +29,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
 
     @PersistenceContext
     private EntityManager entityManager;
+
     /**
      * Parametrized constructor
      */
