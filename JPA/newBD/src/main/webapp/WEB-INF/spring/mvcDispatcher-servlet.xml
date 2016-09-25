@@ -45,7 +45,7 @@
     </bean>
 
     <mvc:interceptors>
-        <bean class="operator.utils.RequestInterceptor" />
+            <bean class="operator.utils.RequestInterceptor" />
     </mvc:interceptors>
 
     <!--<bean name="mainAspect" class="ru.tsystems.tproject.aspect.MainAspect" />-->
