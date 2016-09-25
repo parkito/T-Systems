@@ -1,17 +1,3 @@
-<%@ page import="entities.Contract" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
-<%@ page import="java.util.List" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String eMail = (String) request.getSession(true).getAttribute("eMail");
-    UserServiceImpl userService = new UserServiceImpl();
-    List<Contract> contracts = userService.getUserByEMAil(eMail).getContracts();
-    double mainSum = 0;
-    for (Contract contract : contracts) {
-        if (!contract.isBlocked())
-            mainSum += contract.getTariff().getPrice();
-    }
-%>
 <body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
     <nav class="cm-navbar cm-navbar-primary">
@@ -55,7 +41,7 @@
                             <h4 class="list-group-item-heading text-overflow">
                                 <i class="fa fa-fw fa-envelope"></i> My scope
                             </h4>
-                            <p class="list-group-item-text text-overflow">I spend <%=mainSum%> RUB per month</p>
+                            <p class="list-group-item-text text-overflow">I spend  RUB per month</p>
                         </a>
                     </div>
                     <div style="padding:10px"><a class="btn btn-success btn-block" href="/user/Tariffs">Show me
@@ -67,8 +53,8 @@
             <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
-                    <c:set var="userName" value="${sessionScope.userName}"/>
-                    <a style="cursor:default;"><strong><c:out value='${userName}'/></strong></a>
+                    <%--<c:set var="userName" value="${sessionScope.userName}"/>--%>
+                    <%--<a style="cursor:default;"><strong><c:out value='${userName}'/></strong></a>--%>
                 </li>
                 <li class="divider"></li>
                 <li>
