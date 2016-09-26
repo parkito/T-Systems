@@ -18,45 +18,41 @@
     <beans:bean id="accessDecisionManager"
                 class="org.springframework.security.access.vote.AffirmativeBased">
         <beans:constructor-arg name="decisionVoters"
-                               ref="roleVoter" />
+                               ref="roleVoter"/>
     </beans:bean>
 
 
-    <http realm="JavaStudy example" use-expressions="false">
-        <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/admin*" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/exitUser*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/user*" access="ROLE_USER"/>
-
-        <form-login login-page="/index.jsp"
-                    authentication-failure-url="/login.jsp?login_error=1"/>
-        <http-basic/>
-        <logout logout-success-url="/exitUser.jsp"/>
-        <!--<remember-me />-->
-        <headers/>
-        <csrf/>
+    <http realm="JavaStudy example" use-expressions="false"
+          authentication-manager-ref="dao-auth"
+          access-decision-manager-ref="accessDecisionManager">
+        <intercept-url pattern="/main" access="ROLE_USER,ROLE_ANONYMOUS"/>
+        <intercept-url pattern="/user/*" access="ROLE_USER"/>
+        <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
+        <form-login login-page="/index" default-target-url="/main"
+                    authentication-failure-url="/login.jsp?error=true"/>
+        <logout logout-url="/logout" logout-success-url="/main"/>
+        <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
+        <csrf disabled="true"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="user" password="user" authorities="ROLE_USER" />
-                <user name="guest" password="guest" authorities="ROLE_GUEST" />
+                <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
+                <user name="user" password="user" authorities="ROLE_USER"/>
+                <user name="guest" password="guest" authorities="ROLE_GUEST"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
 
     <authentication-manager id="dao-auth">
         <authentication-provider user-service-ref="userDetailsService">
-            <password-encoder ref="passwordEncoder" />
+            <password-encoder ref="passwordEncoder"/>
         </authentication-provider>
     </authentication-manager>
     <beans:bean id="passwordEncoder"
                 class="operator.utils.Converter">
     </beans:bean>
-
 
 
 </beans:beans>

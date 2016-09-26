@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,23 +17,24 @@
 </div>
 
 <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
-    <form method="post" action="/login">
+    <form method="post" action="/main">
+        <c:url var="loginUrl" value="/j_spring_security_check"></c:url>
         <div class="col-xs-12">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
-                    <input type="email" name="username" class="form-control" placeholder="E-mail">
+                    <input type="email" name="j_username" class="form-control" placeholder="E-mail">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="j_password" class="form-control" placeholder="Password">
                 </div>
             </div>
         </div>
         <div class="col-xs-6">
-            <div class="checkbox"><label><input type="checkbox"> Remember me</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="_spring_security_remember_me"> Remember me</label></div>
         </div>
         <div class="col-xs-6">
             <button type="submit" class="btn btn-block btn-primary">Sign in</button>

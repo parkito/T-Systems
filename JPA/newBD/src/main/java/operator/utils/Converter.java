@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Converter extends org.springframework.security.authentication.encoding.BasePasswordEncoder {
     public static String getMD5(String word) throws NoSuchAlgorithmException{
-        String password = "notParanoic" + word + "really";
+        String password = "one two free" + word + "four five six";
         MessageDigest messageDigest = MessageDigest.getInstance("MD5");
         byte[] array = messageDigest.digest(password.getBytes());
         StringBuilder sb = new StringBuilder();

@@ -44,4 +44,21 @@ public class LoginController {
         }
         return "index";
     }
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String dispatch(HttpServletRequest request, Locale locale, Model model) {
+        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userService.getUserByEMAil(user.getUsername());
+        request.getSession().setAttribute("currentUserU", currentUser);
+        request.getSession().setAttribute("language", RussianLanguage.getRussianLanguage());
+        if (currentUser.getAccessLevel().getAccessLevelId() == 1) {
+            return "user/index";
+        }
+        else if (currentUser.getAccessLevel().getAccessLevelId() == 3){
+            return "admin/index";
+        }
+        else return "index";
+    }
+
 }
