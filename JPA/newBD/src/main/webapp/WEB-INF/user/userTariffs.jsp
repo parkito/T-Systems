@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +12,9 @@
     <title>Tariffs</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<%
-    User user = (User) request.getSession(true).getAttribute("user");
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
-    TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
-    List<Integer> tempTariff = new ArrayList();
-    int i = 1, k;
-%>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><c:out value='${userName}'/>, your tariffs:</h2>
-        <%--<h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>--%>
+        <h2 style="margin-top:0;">${currentUser.name}, your tariffs:</h2>
         <p></p>
     </div>
 
@@ -110,7 +100,7 @@
                                                 if (x == true) {
                                                     var xhr = new XMLHttpRequest();
                                                     var id = 1;
-                                                    xhr.open("POST", "/user/Tariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
+                                                    xhr.open("POST", "/userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                                     xhr.send();
                                                 }
                                             }

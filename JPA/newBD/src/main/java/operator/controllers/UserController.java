@@ -1,6 +1,9 @@
 
 package operator.controllers;
 
+import operator.entities.Contract;
+import operator.entities.Tariff;
+import operator.entities.TariffOption;
 import operator.entities.User;
 import operator.integration.ContractValidator;
 import operator.services.api.ContractService;
@@ -12,8 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -47,10 +53,22 @@ public class UserController {
         return "user/userContract";
     }
 
-    @RequestMapping(value = "/userContract", method = RequestMethod.GET)
+    @RequestMapping(value = "/userTariffs", method = RequestMethod.GET)
     public String tariffs(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
+        return "user/userTariffs";
+    }
+
+    @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
+    public String changeTariff(HttpServletRequest request, Locale locale, Model model,
+                                @RequestParam(value = "tariffId") int tariffId,
+                                @RequestParam(value = "contractNumber") String contractNumber) {
+
+        Contract contract = contractService.getContractByNumber(contractNumber);
+        Tariff tariff = tariffService.getEntityById(tariffId);
+        contract.setTariff(tariff);
+        contractService.updateEntity(contract);
         return "user/userContract";
     }
 

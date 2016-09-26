@@ -50,7 +50,6 @@ public class LoginController {
 //                           @RequestParam(value = "error", required = false) String error,
                            @RequestParam(value = "username", required = false) String username,
                            @RequestParam(value = "password", required = false) String pass) {
-//        System.out.println(error + " " + username + " " + pass);
         try {
             User currentUser = userService.getUserByEMAil(username);
             System.out.println(currentUser);
