@@ -2,6 +2,7 @@ package operator.controllers;
 
 import operator.entities.User;
 import operator.exceptions.UserNotFoundException;
+import operator.services.api.ContractService;
 import operator.services.api.UserService;
 import operator.utils.Locale.RussianLanguage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,9 @@ import java.util.Locale;
 public class LoginController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private ContractService contractService;
 
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public String home(Locale locale, Model model) {
-//
-//        return "index";
-//    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam("username") String eMail, @RequestParam("password") String pass) {
@@ -69,5 +67,6 @@ public class LoginController {
         }
         return "index";
     }
+
 
 }

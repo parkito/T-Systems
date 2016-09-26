@@ -61,7 +61,7 @@
                     <a href="/user/Tariffs"><i class="fa fa-fw fa-user"></i> About Me</a>
                 </li>
                 <li>
-                    <a href="/user/Contract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
+                    <a href="Contract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
                 </li>
                 <li>
                     <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>

@@ -6,6 +6,7 @@ import operator.dao.implementation.TariffDAOImpl;
 import operator.entities.Tariff;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.TariffService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,8 @@ import java.util.List;
  **/
 @Service("tariffService")
 public class TariffServiceImpl implements TariffService {
-    private TariffDAO tariffDAO = new TariffDAOImpl();
+    @Autowired
+    private TariffDAO tariffDAO;
 
     /**
      * Creating tariff entity in base

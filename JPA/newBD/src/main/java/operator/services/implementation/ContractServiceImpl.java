@@ -8,6 +8,7 @@ import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.ContractService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +20,8 @@ import java.util.List;
  **/
 @Service("contractService")
 public class ContractServiceImpl implements ContractService {
-    private ContractDAO contractDAO = new ContractDAOImpl();
+    @Autowired
+    private ContractDAO contractDAO;
 
     /**
      * Creating contract entity in base

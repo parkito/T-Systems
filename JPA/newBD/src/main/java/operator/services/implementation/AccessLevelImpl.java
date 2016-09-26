@@ -6,6 +6,7 @@ import operator.dao.implementation.AccessLevelDAOImpl;
 import operator.entities.AccessLevel;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.AccessLevelService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,8 @@ import java.util.List;
  */
 @Service("accessLevel")
 public class AccessLevelImpl implements AccessLevelService {
-    private AccessLevelDAO accessLevelDAO = new AccessLevelDAOImpl();
+    @Autowired
+    private AccessLevelDAO accessLevelDAO;
 
     /**
      * Creating accessLevel entity in base

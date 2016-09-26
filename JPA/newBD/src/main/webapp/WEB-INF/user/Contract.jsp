@@ -13,28 +13,28 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 
-<c:set var="userName" value="${sessionScope.userName}"/>
-<c:set var="contracts" value="${sessionScope.contracts}"/>
-<c:set var="tariffOptionService" value="${sessionScope.tariffOptionService}"/>
+<%--<c:set var="userName" value="${sessionScope.userName}"/>--%>
+<%--<c:set var="contracts" value="${sessionScope.contracts}"/>--%>
+<%--<c:set var="tariffOptionService" value="${sessionScope.tariffOptionService}"/>--%>
 
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><c:out value="${userName}"/>, your contracts:</h2>
+        <h2 style="margin-top:0;">${currentUser.name}, your contracts:</h2>
         <p></p>
     </div>
     <div class="container-fluid">
-        <c:forEach var="contract" items="${contracts}">
+        <c:forEach var="contract" items="${contractsUserList}">
             <div class="row cm-fix-height">
                 <div class="col-sm-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Number: <c:out value="${contract.getNumber()}"/></div>
+                        <div class="panel-heading">Number: ${contract.number}</div>
                         <div class="panel-body">
                             <h2>
                                 <small>Tariff :</small>
-                                <c:out value="${contract.getTariff().getTitle()}"/>
+                                ${contract.tariff.title}
                                 <br>
                                 <small>Month payment :</small>
-                                <c:out value="${contract.getTariff().getPrice()}"/> RUB
+                                ${contract.tariff.price} RUB
                                 <small><br>Status :</small>
                                 <c:if test="${contract.isBlocked() && contract.isBlockedByAdmin()}">
                                     <font color="red">Blocked by manager</font>
@@ -54,18 +54,18 @@
                         <div class="panel-heading">options</div>
                         <div class="panel-body">
                             <h2>
-                                <c:forEach var="tariffOption" items="${tariffOptionService
-                                .getAllTariffOptionForContract(contract.getContractId())}">
-                                    <small>Option :</small>
-                                    <c:out value="${tariffOption.getTitle()}"/>
-                                    <br>
-                                    <small>Price :</small>
-                                    <c:out value="${tariffOption.getPrice()}"/>
-                                    <br>
-                                    <p>------------------------------------------------</p>
-                                    <br>
+                                <%--<c:forEach var="tariffOption" items="${tariffOptionService--%>
+                                    <%--.getAllTariffOptionForContract(contract.getContractId())}">--%>
+                                    <%--<small>Option :</small>--%>
+                                    <%--<c:out value="${tariffOption.getTitle()}"/>--%>
+                                    <%--<br>--%>
+                                    <%--<small>Price :</small>--%>
+                                    <%--<c:out value="${tariffOption.getPrice()}"/>--%>
+                                    <%--<br>--%>
+                                    <%--<p>------------------------------------------------</p>--%>
+                                    <%--<br>--%>
 
-                                </c:forEach>
+                                    <%--</c:forEach>--%>
                             </h2>
                         </div>
                     </div>
