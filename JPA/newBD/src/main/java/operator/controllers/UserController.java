@@ -1,7 +1,7 @@
 
 package operator.controllers;
 
-import operator.entities.TariffOption;
+import operator.entities.Contract;
 import operator.entities.User;
 import operator.integration.ContractValidator;
 import operator.services.api.ContractService;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -46,8 +45,6 @@ public class UserController {
     public String Contracts(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
-//        List<TariffOption> list = optionService.getAllTariffOptionForContract()
-//        model.addAllAttributes("tariffOptions", )
         return "user/Contract";
     }
 

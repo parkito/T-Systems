@@ -41,7 +41,7 @@ public class Contract {
         this.user = user;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "ConnectedOptions",
             joinColumns = @JoinColumn(name = "contract_id"),

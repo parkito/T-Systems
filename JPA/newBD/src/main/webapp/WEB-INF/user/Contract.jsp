@@ -13,9 +13,6 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 
-<%--<c:set var="userName" value="${sessionScope.userName}"/>--%>
-<%--<c:set var="contracts" value="${sessionScope.contracts}"/>--%>
-<%--<c:set var="tariffOptionService" value="${sessionScope.tariffOptionService}"/>--%>
 
 <div id="global">
     <div class="container-fluid cm-container-white">
@@ -54,18 +51,17 @@
                         <div class="panel-heading">options</div>
                         <div class="panel-body">
                             <h2>
-                                <%--<c:forEach var="tariffOption" items="${tariffOptionService--%>
-                                    <%--.getAllTariffOptionForContract(contract.getContractId())}">--%>
-                                    <%--<small>Option :</small>--%>
-                                    <%--<c:out value="${tariffOption.getTitle()}"/>--%>
-                                    <%--<br>--%>
-                                    <%--<small>Price :</small>--%>
-                                    <%--<c:out value="${tariffOption.getPrice()}"/>--%>
-                                    <%--<br>--%>
-                                    <%--<p>------------------------------------------------</p>--%>
-                                    <%--<br>--%>
+                                <c:forEach var="tariffOption" items="${contract.tariffOptions}">
+                                    <small>Option :</small>
+                                    ${tariffOption.title}
+                                    <br>
+                                    <small>Price :</small>
+                                    ${tariffOption.price}
+                                    <br>
+                                    <p>------------------------------------------------</p>
+                                    <br>
 
-                                    <%--</c:forEach>--%>
+                                    </c:forEach>
                             </h2>
                         </div>
                     </div>
