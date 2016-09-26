@@ -17,7 +17,8 @@
         <h2 style="margin-top:0;">${currentUser.name}, your tariffs:</h2>
         <p></p>
     </div>
-
+    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
+           value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
         <c:forEach var="contract" items="${contractsUserList}" varStatus="loop">
             <div class="row cm-fix-height">
@@ -43,19 +44,17 @@
                                     <font color="green">Active</font>
                                 </c:if>
                             </h2>
-
                         </div>
                     </div>
                 </div>
-                <c:if test="!${contract.getIsBlocked()}">
+                <c:if test="${contract.getIsBlocked()!=true}">
                     <div class="col-sm-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">Tariff list</div>
                             <div class="panel-body">
-                                <c:forEach var="tariff" items="${contract.tariff}">
+                                <c:forEach var="tariff" items="${allTariffs}">
                                     <c:set var="tempId" value="${contract.tariff.tariffId}"/>
-                                    <c:if test="${contract.getTariff().equals(tariff)}">
-
+                                    <c:if test="${contract.tariff==tariff}">
                                         <h3>
                                             <div class="radio">
                                                 <label>
@@ -67,7 +66,7 @@
                                             </div>
                                         </h3>
                                     </c:if>
-                                    <c:if test="${!contract.getTariff().equals(tariff)}">
+                                    <c:if test="${contract.tariff!=tariff}">
                                         <h3>
                                             <div class="radio">
                                                 <label>
@@ -100,7 +99,7 @@
                                                 if (x == true) {
                                                     var xhr = new XMLHttpRequest();
                                                     var id = 1;
-                                                    xhr.open("POST", "/userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, true);
+                                                    xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                                     xhr.send();
                                                 }
                                             }
