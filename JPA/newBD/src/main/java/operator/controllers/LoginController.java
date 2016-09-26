@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -46,19 +47,26 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.POST)
-    public String dispatch(HttpServletRequest request, Locale locale, Model model) {
-        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
-                SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userService.getUserByEMAil(user.getUsername());
-        request.getSession().setAttribute("currentUserU", currentUser);
-        request.getSession().setAttribute("language", RussianLanguage.getRussianLanguage());
-        if (currentUser.getAccessLevel().getAccessLevelId() == 1) {
-            return "user/index";
+    public String dispatch(HttpServletRequest request, Locale locale, Model model,
+//                           @RequestParam(value = "error", required = false) String error,
+                           @RequestParam(value = "username", required = false) String username,
+                           @RequestParam(value = "password", required = false) String pass) {
+//        System.out.println(error + " " + username + " " + pass);
+        try {
+            User currentUser = userService.getUserByEMAil(username);
+            System.out.println(currentUser);
+            if (currentUser.getPassword().equals(pass)) {
+                request.getSession().setAttribute("currentUserU", currentUser);
+                if (currentUser.getAccessLevel()==null) {
+                    return "user/index";
+                } else if (currentUser.getAccessLevel().getAccessLevelId() == 3) {
+                    return "admin/index";
+                }
+            }
+        } catch (UserNotFoundException ex) {
+            return "index";
         }
-        else if (currentUser.getAccessLevel().getAccessLevelId() == 3){
-            return "admin/index";
-        }
-        else return "index";
+        return "index";
     }
 
 }

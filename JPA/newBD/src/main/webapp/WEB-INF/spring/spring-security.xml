@@ -32,7 +32,7 @@
                     authentication-failure-url="/login.jsp?error=true"
                     username-parameter="username" password-parameter="password"/>
 
-        <logout logout-url="/logout" logout-success-url="/main"/>
+        <logout logout-url="/logout" logout-success-url="/index"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <!--<csrf disabled="true"/>-->
     </http>
