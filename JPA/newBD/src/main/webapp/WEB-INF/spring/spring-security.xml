@@ -34,7 +34,7 @@
 
         <logout logout-url="/logout" logout-success-url="/index"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-        <csrf disabled="true"/>
+        <!--<csrf disabled="true"/>-->
     </http>
 
     <authentication-manager>

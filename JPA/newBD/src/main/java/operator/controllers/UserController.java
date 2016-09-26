@@ -55,16 +55,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
-    public String changeTariff(HttpServletRequest request, Locale locale, Model model,
-                               @RequestParam(value = "tariffId") String tariffId,
-                               @RequestParam(value = "contractNumber") String contractNumber) {
+    public String changeTariff(HttpServletRequest request, Locale locale, Model model)
+//                               @RequestParam(value = "tariffId") String tariffId,
+//                               @RequestParam(value = "contractNumber") String contractNumber)
+    {
+        String tariffId = (String) request.getAttribute("tariffId");
+        String contractNumber = (String) request.getAttribute("contractNumber");
         System.out.println(tariffId + " " + contractNumber);
-        int tariffID=Integer.valueOf(tariffId);
+        int tariffID = Integer.valueOf(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);
         contract.setTariff(tariff);
         contractService.updateEntity(contract);
-        return "user/userContract";
+        return "user/userTariffs";
     }
 
 }

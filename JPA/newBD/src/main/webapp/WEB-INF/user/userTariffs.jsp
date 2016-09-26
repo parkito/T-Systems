@@ -81,24 +81,21 @@
                                 </c:forEach>
                                 <div class="modal-footer">
                                     <form name="test"
-                                          onclick="change(${loop.index},${tempId},${contract.number}">
+                                          onclick="change(${loop.index},${tempId},${contract.number})">
                                         <button type="submit" class="btn btn-success">Change</button>
                                     </form>
                                     <script>
                                         function change(par1, par2, par3) {
                                             var rad = document.getElementsByName('optionsRadios' + par1);
-                                            for (var i = 0; i
-                                            < rad.length
-                                                    ; i++) {
+                                            for (var i = 0; i < rad.length; i++) {
                                                 if (rad[i].checked) {
-                                                    popBox(par2[i], par3);
+                                                    popBox(par2, par3);
                                                 }
                                             }
                                             function popBox(num1, num2) {
                                                 x = confirm('Are you sure? ');
                                                 if (x == true) {
                                                     var xhr = new XMLHttpRequest();
-                                                    var id = 1;
                                                     xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                                     xhr.send();
                                                 }
