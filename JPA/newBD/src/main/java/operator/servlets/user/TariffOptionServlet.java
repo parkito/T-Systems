@@ -38,7 +38,7 @@ public class TariffOptionServlet extends HttpServlet {
         req.getSession(true).setAttribute("user", user);
         req.getSession(true).setAttribute("contracts", contracts);
         req.getSession(true).setAttribute("tariffOptions", tariffOptionService.getAll());
-        req.getRequestDispatcher("/WEB-INF/user/TariffOptions.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/user/userTariffOptions.jsp").forward(req, resp);
 
     }
 

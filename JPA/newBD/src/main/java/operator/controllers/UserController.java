@@ -1,7 +1,6 @@
 
 package operator.controllers;
 
-import operator.entities.Contract;
 import operator.entities.User;
 import operator.integration.ContractValidator;
 import operator.services.api.ContractService;
@@ -41,11 +40,18 @@ public class UserController {
         return "cp_client/cp_client_contracts";
     }
 
-    @RequestMapping(value = "/Contract", method = RequestMethod.GET)
-    public String Contracts(HttpServletRequest request, Locale locale, Model model) {
+    @RequestMapping(value = "/userContract", method = RequestMethod.GET)
+    public String contracts(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
-        return "user/Contract";
+        return "user/userContract";
+    }
+
+    @RequestMapping(value = "/userContract", method = RequestMethod.GET)
+    public String tariffs(HttpServletRequest request, Locale locale, Model model) {
+        User user = (User) request.getSession().getAttribute("currentUser");
+        model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
+        return "user/userContract";
     }
 
 }

@@ -20,7 +20,7 @@
         <div class="row cm-fix-height">
             <div class="row cm-fix-height">
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/Contract" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="userContract" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/dashboard.svg" alt="dashboard">
@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/Tariffs" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="userTariffs" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/notepad.svg" alt="notepad">
@@ -44,7 +44,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/TariffOptions" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="userTariffOptions" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/brick.svg" alt="brick">
@@ -56,7 +56,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/user/NumberOperations" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="userNumberOperations" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                                 <span class="svg-48">
                                     <img src="../assets/img/sf/lock-open.svg" alt="lock-open">

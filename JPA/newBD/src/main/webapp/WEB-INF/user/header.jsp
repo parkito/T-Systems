@@ -9,10 +9,10 @@
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
                     <li class="active"><a href="/login" class="sf-house">Home</a></li>
-                    <li><a href="/user/Contract" class="sf-dashboard">Contracts</a></li>
-                    <li><a href="/user/Tariffs" class="sf-notepad">Tariffs</a></li>
-                    <li><a href="/user/TariffOptions" class="sf-brick">Tariff options</a></li>
-                    <li><a href="/user/NumberOperations" class="sf-lock-open">Unlock number</a></li>
+                    <li><a href="userContract" class="sf-dashboard">Contracts</a></li>
+                    <li><a href="userTariffs" class="sf-notepad">Tariffs</a></li>
+                    <li><a href="userTariffOptions" class="sf-brick">Tariff options</a></li>
+                    <li><a href="userNumberOperations" class="sf-lock-open">Unlock number</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <div class="arrow"></div>
                 <div class="popover-content">
                     <div class="list-group">
-                        <a href="/user/Tariffs" class="list-group-item">
+                        <a href="userTariffs" class="list-group-item">
                             <h4 class="list-group-item-heading text-overflow">
                                 <i class="fa fa-fw fa-envelope"></i> My scope
                             </h4>
@@ -58,10 +58,10 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="/user/Tariffs"><i class="fa fa-fw fa-user"></i> About Me</a>
+                    <a href="userTariffs"><i class="fa fa-fw fa-user"></i> About Me</a>
                 </li>
                 <li>
-                    <a href="Contract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
+                    <a href="userContract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
                 </li>
                 <li>
                     <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>

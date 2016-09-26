@@ -31,7 +31,7 @@ public class UserContractServlet extends HttpServlet {
 
         req.getSession(false).setAttribute("contracts", contracts);
         req.getSession(false).setAttribute("tariffOptionService", tariffOptionService);
-        req.getRequestDispatcher("/WEB-INF/user/Contract.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/user/userContract.jsp").forward(req, resp);
     }
 
 }

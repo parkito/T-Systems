@@ -36,7 +36,7 @@ public class NumberOperationsServlet extends HttpServlet {
 
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.getSession(true).setAttribute("contracts", contracts);
-        req.getRequestDispatcher("/WEB-INF/user/NumberOperations.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/user/userNumberOperations.jsp").forward(req, resp);
 
     }
 
