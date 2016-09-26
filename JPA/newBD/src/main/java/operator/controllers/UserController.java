@@ -70,5 +70,13 @@ public class UserController {
         return "user/userTariffs";
     }
 
+    @RequestMapping(value = "/userTariffOptions", method = RequestMethod.GET)
+    public String tariffOptions(HttpServletRequest request, Locale locale, Model model) {
+        User user = (User) request.getSession().getAttribute("currentUser");
+        model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
+        model.addAttribute("allTariffOptions", optionService.getAll());
+        return "user/userTariffOptions";
+    }
+
 }
 

@@ -1,13 +1,4 @@
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
-<%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
-<%@ page import="entities.TariffOption" %>
-<%@ page import="services.implementation.TariffServiceImpl" %>
-<%@ page import="entities.Tariff" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,152 +12,130 @@
     <title>Tariff options</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<%
-    User user = (User) request.getSession(true).getAttribute("user");
-    String userName = (String) request.getSession(true).getAttribute("userName");
 
-    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
-    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getSession(true).getAttribute("tariffOptions");
-    List<Integer> tempTariff = new ArrayList();
-
-
-%>
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><%out.print(userName);%>, your contracts:</h2>
+        <h2 style="margin-top:0;">${currentUser.name}, your contracts:</h2>
         <p></p>
     </div>
 
     <div class="container-fluid">
-        <%
-            for (Contract contract : contracts) {
-                List<TariffOption> contractOptions = contract.getTariffOptions();
-
-        %>
-        <div class="row cm-fix-height">
-            <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Number: <%out.print(contract.getNumber());%></div>
-                    <div class="panel-body">
-
-                        <h2>
-
-                            <%
-                                out.print("<small>Tariff : </small>");
-                                out.print(contract.getTariff().getTitle());
-                                out.print("<br>");
-                                out.print("<small>Month payment : </small>");
-                                out.print(contract.getTariff().getPrice() + " RUB\n");
-                                out.print("<small><br>Status : </small>");
-                                if (contract.isBlocked() && contract.isBlockedByAdmin())
-                                    out.print("<font color =\"red\">Blocked by manager</font>");
-                                if (contract.isBlocked() && !contract.isBlockedByAdmin())
-                                    out.print("<font color =\"red\">Blocked by user</font>");
-                                if (!contract.isBlocked())
-                                    out.print("<font color =\"green\">Active</font>");
-                            %>
-
-                        </h2>
-
+        <c:forEach var="contract" items="${contractsUserList}">
+            <div class="row cm-fix-height">
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Number: ${contract.number}</div>
+                        <div class="panel-body">
+                            <h2>
+                                <small>Tariff :</small>
+                                    ${contract.tariff.title}
+                                <br>
+                                <small>Month payment :</small>
+                                    ${contract.tariff.price} " RUB"
+                                <small><br>Status :</small>
+                                <c:if test="${contract.isBlocked() && contract.isBlockedByAdmin()}">
+                                    <font color="red">Blocked by manager</font>
+                                </c:if>
+                                <c:if test="${contract.isBlocked() && !contract.isBlockedByAdmin()}">
+                                    <font color="red">Blocked by user</font>
+                                </c:if>
+                                <c:if test="${!contract.isBlocked()}">
+                                    <font color="green">Active</font>
+                                </c:if>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <%if (!contract.isBlocked()) {%>
-            <div class="col-sm-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Tariff option list</div>
-                    <div class="panel-body">
-                        <%%>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Option</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <%
-                                for (int i = 0; i < allTariffOptions.size(); i++) {
-                                    if (contractOptions.contains(allTariffOptions.get(i))) {
-                            %>
-                            <tr class="success">
-                                <th scope="row"><%out.print(i + 1);%></th>
-                                <td><%out.print(allTariffOptions.get(i).getTitle());%></td>
-                                <td>Activated</td>
-                                <td>
+                <c:if test="!${contract.isBlocked()}">
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Tariff option list</div>
+                            <div class="panel-body">
+                                <%%>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Option</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="allOption" items="${allTariffOptions}" varStatus="loop">
+                                        <c:forEach var="contractOption" items="${contract.tariffOptions}">
+                                            <c:if test="${allOption==contractOption}">
+                                                <tr class="success">
+                                                    <th scope="row">${loop.index+1}</th>
+                                                    <td>${allOption.title}</td>
+                                                    <td>Activated</td>
+                                                    <td>
 
-                                    <form name="test"
-                                          onclick="disable(<%=contract.getNumber()%>,<%=allTariffOptions.get(i).getTariffOptionId()%>)">
-                                        <button type="submit" class="btn btn-danger">Disable</button>
-                                    </form>
+                                                        <form name="test"
+                                                              onclick="disable(${contract.number},${allOption.tariffOptionId})">
+                                                            <button type="submit" class="btn btn-danger">Disable
+                                                            </button>
+                                                        </form>
 
-                                </td>
-                                <script>
-                                    function disable(par1, par2) {
-                                        popBox();
-                                        function popBox() {
-                                            x = confirm('Are you sure? ');
-                                            if (x == true) {
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=disable", true);
-                                                xhr.send();
-                                            }
-                                        }
-                                    }</script>
-                            </tr>
-                            <%
-                            } else {
-                            %>
+                                                    </td>
+                                                    <script>
+                                                        function disable(par1, par2) {
+                                                            popBox();
+                                                            function popBox() {
+                                                                x = confirm('Are you sure? ');
+                                                                if (x == true) {
+                                                                    var xhr = new XMLHttpRequest();
+                                                                    xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                                                            + "&tariff=" + par2 + "&method=disable", true);
+                                                                    xhr.send();
+                                                                }
+                                                            }
+                                                        }</script>
+                                                </tr>
+                                            </c:if>
+                                            <c:if test="${allOption!=contractOption}">
 
-                            <tr class="active">
-                                <th scope="row"><%out.print(i + 1);%></th>
-                                <td><%out.print(allTariffOptions.get(i).getTitle());%></td>
-                                <td>Disabled</td>
-                                <td>
+                                                <tr class="active">
+                                                    <th scope="row">${loop.index+1}</th>
+                                                    <td>${allOption.title}</td>
+                                                    <td>Disabled</td>
+                                                    <td>
+                                                        <form name="test"
+                                                              onclick="unable(${contract.number},${allOption.tariffOptionId})">
+                                                            <button type="submit" class="btn btn-success">Activate
+                                                            </button>
+                                                        </form>
 
-                                    <form name="test"
-                                          onclick="unable(<%=contract.getNumber()%>,<%=allTariffOptions.get(i).getTariffOptionId()%>)">
-                                        <button type="submit" class="btn btn-success">Activate</button>
-                                    </form>
+                                                    </td>
 
-                                </td>
-
-                                <script>
-                                    function unable(par1, par2) {
-                                        popBox();
-                                        function popBox() {
-                                            x = confirm('Are you sure? ');
-                                            if (x == true) {
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=unable", false);
-                                                xhr.send();
-                                                if (xhr.status == 500) {
-                                                    alert('Incompatible options')
-                                                }
-                                            }
-                                        }
-                                    }</script>
-                            </tr>
-
-                            <%
-                                    }
-                                }
-                            %>
-
-                            </tbody>
-                        </table>
+                                                    <script>
+                                                        function unable(par1, par2) {
+                                                            popBox();
+                                                            function popBox() {
+                                                                x = confirm('Are you sure? ');
+                                                                if (x == true) {
+                                                                    var xhr = new XMLHttpRequest();
+                                                                    xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                                                            + "&tariff=" + par2 + "&method=unable", false);
+                                                                    xhr.send();
+                                                                    if (xhr.status == 500) {
+                                                                        alert('Incompatible options')
+                                                                    }
+                                                                }
+                                                            }
+                                                        }</script>
+                                                </tr>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </c:if>
             </div>
-            <%}%>
-        </div>
-        <%
-            }
-        %>
+        </c:forEach>
     </div>
 </div>
 </div>
