@@ -45,7 +45,7 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String dispatch(HttpServletRequest request, Locale locale, Model model) {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();

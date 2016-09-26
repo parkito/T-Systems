@@ -29,10 +29,12 @@
         <intercept-url pattern="/user/*" access="ROLE_USER"/>
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
         <form-login login-page="/index" default-target-url="/main"
-                    authentication-failure-url="/login.jsp?error=true"/>
+                    authentication-failure-url="/login.jsp?error=true"
+                    username-parameter="username" password-parameter="password"/>
+
         <logout logout-url="/logout" logout-success-url="/main"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-        <csrf disabled="true"/>
+        <!--<csrf disabled="true"/>-->
     </http>
 
     <authentication-manager>
