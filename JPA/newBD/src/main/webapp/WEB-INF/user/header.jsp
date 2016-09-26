@@ -53,8 +53,8 @@
             <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
-                    <%--<c:set var="userName" value="${sessionScope.userName}"/>--%>
-                    <%--<a style="cursor:default;"><strong><c:out value='${userName}'/></strong></a>--%>
+                    <%--<c:set var="userName" value="${currentUser.name}"/>--%>
+                    <a style="cursor:default;"><strong>${currentUser.name}</strong></a>
                 </li>
                 <li class="divider"></li>
                 <li>

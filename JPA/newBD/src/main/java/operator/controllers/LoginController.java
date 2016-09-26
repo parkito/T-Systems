@@ -22,6 +22,7 @@ import java.util.Locale;
  **/
 // TODO: 9/24/16 Изменить в дао о существующих пользователях действия. Не по провославному это
 // TODO: 9/24/16 Продумать штуку про разрешенные тарифы. Видно, что в базе надо впихивать что-то
+// TODO: 9/26/16 у меня спринг секурити не задейстован!!!
 @Controller("LoginController")
 public class LoginController {
     @Autowired
@@ -56,7 +57,7 @@ public class LoginController {
             User currentUser = userService.getUserByEMAil(username);
             System.out.println(currentUser);
             if (currentUser.getPassword().equals(pass)) {
-                request.getSession().setAttribute("currentUserU", currentUser);
+                request.getSession().setAttribute("currentUser", currentUser);
                 if (currentUser.getAccessLevel()==null) {
                     return "user/index";
                 } else if (currentUser.getAccessLevel().getAccessLevelId() == 3) {
