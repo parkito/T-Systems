@@ -31,7 +31,7 @@
                                     ${contract.tariff.title}
                                 <br>
                                 <small>Month payment :</small>
-                                    ${contract.tariff.price} " RUB"
+                                    ${contract.tariff.price} "RUB"
                                 <small><br>Status :</small>
                                 <c:if test="${contract.isBlocked() && contract.isBlockedByAdmin()}">
                                     <font color="red">Blocked by manager</font>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <c:if test="!${contract.isBlocked()}">
+                <c:if test="${contract.isBlocked()==false}">
                     <div class="col-sm-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">Tariff option list</div>
@@ -62,6 +62,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     <c:forEach var="allOption" items="${allTariffOptions}" varStatus="loop">
                                         <c:forEach var="contractOption" items="${contract.tariffOptions}">
                                             <c:if test="${allOption==contractOption}">
@@ -93,8 +94,12 @@
                                                         }</script>
                                                 </tr>
                                             </c:if>
-                                            <c:if test="${allOption!=contractOption}">
+                                        </c:forEach>
+                                    </c:forEach>
 
+                                    <c:forEach var="contractOption" items="${contract.tariffOptions}">
+                                    <c:forEach var="allOption" items="${allTariffOptions}" varStatus="loop">
+                                            <c:if test="${contractOption!=allOption}">
                                                 <tr class="active">
                                                     <th scope="row">${loop.index+1}</th>
                                                     <td>${allOption.title}</td>
@@ -126,8 +131,9 @@
                                                         }</script>
                                                 </tr>
                                             </c:if>
-                                        </c:forEach>
                                     </c:forEach>
+                                    </c:forEach>
+
                                     </tbody>
                                 </table>
                             </div>
