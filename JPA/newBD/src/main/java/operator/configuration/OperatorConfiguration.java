@@ -31,6 +31,6 @@ public class OperatorConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/WEB-INF/assets/**").addResourceLocations("/WEB-INF/assets/");
+        registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
     }
 }
