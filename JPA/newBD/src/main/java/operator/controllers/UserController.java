@@ -46,6 +46,7 @@ public class UserController {
         return "user/userContract";
     }
 
+    // TODO: 9/27/16 анот для юзеров
     @RequestMapping(value = "/userTariffs", method = RequestMethod.GET)
     public String tariffs(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
@@ -61,12 +62,12 @@ public class UserController {
                                @RequestParam(value = "contractNumber") String contractNumber) {
 //        String tariffId = (String) request.getAttribute("tariffId");
 //        String contractNumber = (String) request.getAttribute("contractNumber");
-        System.out.println(tariffId + " " + contractNumber);
-//        int tariffID = Integer.valueOf(tariffId);
-//        Contract contract = contractService.getContractByNumber(contractNumber);
-//        Tariff tariff = tariffService.getEntityById(tariffID);
-//        contract.setTariff(tariff);
-//        contractService.updateEntity(contract);
+//        System.out.println(tariffId + " " + contractNumber);
+        int tariffID = Integer.valueOf(tariffId);
+        Contract contract = contractService.getContractByNumber(contractNumber);
+        Tariff tariff = tariffService.getEntityById(tariffID);
+        contract.setTariff(tariff);
+        contractService.updateEntity(contract);
         return "user/userTariffs";
     }
 

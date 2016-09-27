@@ -54,7 +54,7 @@
                             <div class="panel-body">
                                     ${tempId.clear()}
                                 <c:forEach var="tariff" items="${allTariffs}" varStatus="loop">
-                                    ${tempId.add(tariff.tariffId)}
+                                    <c:set var="t">${tempId.add(tariff.tariffId)}</c:set>
                                     <c:if test="${contract.tariff==tariff}">
                                         <h3>
                                             <div class="radio">
@@ -97,7 +97,9 @@
                                                 x = confirm('Are you sure? ');
                                                 if (x == true) {
                                                     var xhr = new XMLHttpRequest();
-                                                    xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, true);
+                                                    xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
+                                                    xhr.send();
+                                                    xhr.open("GET", "userTariffs", false);
                                                     xhr.send();
                                                 }
                                             }

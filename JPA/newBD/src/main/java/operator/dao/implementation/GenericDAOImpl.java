@@ -21,11 +21,6 @@ import java.util.List;
 
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     protected Class<E> daoType;
-    //For testing
-//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("operator");
-//    protected EntityManager entityManager = entityManagerFactory.createEntityManager();
-    //For Servlets
-//    protected static EntityManager entityManager = EntityFactory.createEntityManager();
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -47,9 +42,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public void create(E entity) throws CustomDAOException {
         try {
-            entityManager.getTransaction().begin();
             entityManager.persist(entity);
-            entityManager.getTransaction().commit();
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't created: " + entity, e);
         }
@@ -80,9 +73,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public void update(E entity) throws CustomDAOException {
         try {
-            entityManager.getTransaction().begin();
             entityManager.merge(entity);
-            entityManager.getTransaction().commit();
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't updated: " + entity, e);
         } catch (IllegalStateException e) {
@@ -100,9 +91,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     @Override
     public void delete(E entity) throws CustomDAOException {
         try {
-            entityManager.getTransaction().begin();
             entityManager.remove(entityManager.merge(entity));
-            entityManager.getTransaction().commit();
         } catch (PersistenceException e) {
             throw new CustomDAOException("Entity wasn't deleted: " + entity, e);
         }
