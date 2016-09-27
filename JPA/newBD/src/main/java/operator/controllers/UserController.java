@@ -51,22 +51,22 @@ public class UserController {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         model.addAttribute("allTariffs", tariffService.getAll());
+        model.addAttribute("tempId", new ArrayList<Integer>());
         return "user/userTariffs";
     }
 
     @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
-    public String changeTariff(HttpServletRequest request, Locale locale, Model model)
-//                               @RequestParam(value = "tariffId") String tariffId,
-//                               @RequestParam(value = "contractNumber") String contractNumber)
-    {
-        String tariffId = (String) request.getAttribute("tariffId");
-        String contractNumber = (String) request.getAttribute("contractNumber");
+    public String changeTariff(HttpServletRequest request, Locale locale, Model model,
+                               @RequestParam(value = "tariffId") String tariffId,
+                               @RequestParam(value = "contractNumber") String contractNumber) {
+//        String tariffId = (String) request.getAttribute("tariffId");
+//        String contractNumber = (String) request.getAttribute("contractNumber");
         System.out.println(tariffId + " " + contractNumber);
-        int tariffID = Integer.valueOf(tariffId);
-        Contract contract = contractService.getContractByNumber(contractNumber);
-        Tariff tariff = tariffService.getEntityById(tariffID);
-        contract.setTariff(tariff);
-        contractService.updateEntity(contract);
+//        int tariffID = Integer.valueOf(tariffId);
+//        Contract contract = contractService.getContractByNumber(contractNumber);
+//        Tariff tariff = tariffService.getEntityById(tariffID);
+//        contract.setTariff(tariff);
+//        contractService.updateEntity(contract);
         return "user/userTariffs";
     }
 

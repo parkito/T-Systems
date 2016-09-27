@@ -20,7 +20,7 @@
     <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
            value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
-        <c:forEach var="contract" items="${contractsUserList}" varStatus="loop">
+        <c:forEach var="contract" items="${contractsUserList}" varStatus="loopOne">
             <div class="row cm-fix-height">
                 <div class="col-sm-6">
                     <div class="panel panel-default">
@@ -32,7 +32,7 @@
                                     ${contract.tariff.title}
                                 <br>
                                 <small>Month payment :</small>
-                                    ${contract.tariff.price} " RUB"
+                                    ${contract.tariff.price} "RUB"
                                 <small><br>Status :</small>
                                 <c:if test="${contract.isBlocked() && contract.isBlockedByAdmin()}">
                                     <font color="red">Blocked by manager</font>
@@ -52,14 +52,15 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Tariff list</div>
                             <div class="panel-body">
-                                <c:forEach var="tariff" items="${allTariffs}">
-                                    <c:set var="tempId" value="${contract.tariff.tariffId}"/>
+                                    ${tempId.clear()}
+                                <c:forEach var="tariff" items="${allTariffs}" varStatus="loop">
+                                    ${tempId.add(tariff.tariffId)}
                                     <c:if test="${contract.tariff==tariff}">
                                         <h3>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="optionsRadios${loop.index}"
-                                                           id="optionsRadios${loop.index}"
+                                                    <input type="radio" name="optionsRadios${loopOne.index}"
+                                                           id="optionsRadios${loopOne.index}"
                                                         ${loop.index} value="option${loop.index}" checked disabled>
                                                     <b>${tariff.title}</b>
                                                 </label>
@@ -70,8 +71,8 @@
                                         <h3>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="optionsRadios${loop.index}"
-                                                           id="optionsRadios${loop.index}"
+                                                    <input type="radio" name="optionsRadios${loopOne.index}"
+                                                           id="optionsRadios${loopOne.index}"
                                                         ${loop.index} value="option${loop.index}">
                                                     <b>${tariff.title}</b>
                                                 </label>
@@ -81,7 +82,7 @@
                                 </c:forEach>
                                 <div class="modal-footer">
                                     <form name="test"
-                                          onclick="change(${loop.index},${tempId},${contract.number})">
+                                          onclick="change(${loopOne.index},${tempId},${contract.number})">
                                         <button type="submit" class="btn btn-success">Change</button>
                                     </form>
                                     <script>
@@ -89,7 +90,7 @@
                                             var rad = document.getElementsByName('optionsRadios' + par1);
                                             for (var i = 0; i < rad.length; i++) {
                                                 if (rad[i].checked) {
-                                                    popBox(par2, par3);
+                                                    popBox(par2[i], par3);
                                                 }
                                             }
                                             function popBox(num1, num2) {
