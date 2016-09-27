@@ -6,13 +6,13 @@ import operator.services.api.ContractService;
 import operator.services.api.UserService;
 import operator.utils.Locale.RussianLanguage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -52,22 +52,31 @@ public class LoginController {
 //                           @RequestParam(value = "error", required = false) String error,
                            @RequestParam(value = "username", required = false) String username,
                            @RequestParam(value = "password", required = false) String pass) {
-        try {
-            User currentUser = userService.getUserByEMAil(username);
-            System.out.println(currentUser);
-            if (currentUser.getPassword().equals(pass)) {
-                request.getSession().setAttribute("currentUser", currentUser);
-                if (currentUser.getAccessLevel()==null) {
-                    return "user/index";
-                } else if (currentUser.getAccessLevel().getAccessLevelId() == 3) {
-                    return "admin/index";
-                }
-            }
-        } catch (UserNotFoundException ex) {
-            return "index";
-        }
-        return "index";
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(auth.getDetails());
+        System.out.println(auth.getPrincipal());
+        System.out.println(principal);
+        return "user/index";
+
+
     }
-
-
+//        try {
+//            User currentUser = userService.getUserByEMAil(username);
+//            if (currentUser.getPassword().equals(pass)) {
+//                request.getSession().setAttribute("currentUser", currentUser);
+//                if (currentUser.getAccessLevel().getAccessLevelId() == 1) {
+//                    return "user/index";
+//                } else if (currentUser.getAccessLevel().getAccessLevelId() == 3) {
+//                    return "admin/index";
+//                }
+//            }
+//        } catch (UserNotFoundException ex) {
+//            return "index";
+//        }
+//        return "user/index";
 }
+
+
+//}

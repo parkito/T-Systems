@@ -33,16 +33,16 @@ public class UserDetailsServiceDAO implements UserDetailsService {
      * @throws UsernameNotFoundException when eMail isn't correct
      */
     @Override
-    public UserDetails loadUserByUsername(final String eMail) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String EMail) throws UsernameNotFoundException {
         User user;
         try {
-            user = this.userDAO.getUserByEMAil(eMail);
+            user = userDAO.getUserByEMAil(EMail);
             List<SimpleGrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority(user.getAccessLevel().getStatus()));
-            return new org.springframework.security.core.userdetails.User(eMail, user.getPassword(), true, true, true, true, authorities);
+            return new org.springframework.security.core.userdetails.User(EMail, user.getPassword(), true, true, true, true, authorities);
         }
         catch (CustomDAOException ex) {
-            throw new UsernameNotFoundException(eMail + " not found");
+            throw new UsernameNotFoundException(EMail + " not found");
         }
         catch (Exception ex) {
             return null;
