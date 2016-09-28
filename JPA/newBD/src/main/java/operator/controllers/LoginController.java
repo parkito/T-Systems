@@ -4,10 +4,10 @@ import operator.entities.User;
 import operator.exceptions.UserNotFoundException;
 import operator.services.api.ContractService;
 import operator.services.api.UserService;
-import operator.utils.Locale.RussianLanguage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,31 +34,16 @@ public class LoginController {
     private ContractService contractService;
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam("username") String eMail, @RequestParam("password") String pass) {
-        try {
-            User user = userService.getUserByEMAil(eMail);
-            if (user.getPassword().equals(pass))
-                return "user/index";
-            else return "404";
-        } catch (UserNotFoundException ex) {
-            System.out.println("error");
-        }
-        return "index";
-    }
 
-    @RequestMapping(value = "/main", method = RequestMethod.POST)
-    public String dispatch(HttpServletRequest request, Locale locale, Model model,
-//                           @RequestParam(value = "error", required = false) String error,
-                           @RequestParam(value = "username", required = false) String username,
-                           @RequestParam(value = "password", required = false) String pass) {
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(HttpServletRequest request, Locale locale, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(auth.getDetails());
         System.out.println(auth.getPrincipal());
         System.out.println(principal);
-        return "user/index";
+        return "index";
 
 
     }
@@ -76,6 +61,18 @@ public class LoginController {
 //            return "index";
 //        }
 //        return "user/index";
+
+    private String getPrincipal() {
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails) principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
+    }
 }
 
 
