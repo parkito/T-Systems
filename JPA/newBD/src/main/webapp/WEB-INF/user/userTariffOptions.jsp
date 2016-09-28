@@ -16,13 +16,14 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    List<TariffOption> allOptions = (List<TariffOption>) session.getAttribute("allTariffOptions");
-    List<Contract> contracts = (List<Contract>) session.getAttribute("contractsUserList");
+    List<TariffOption> allOptions = (List<TariffOption>) request.getAttribute("allTariffOptions");
+    List<Contract> contracts = (List<Contract>)request.getAttribute("contractsUserList");
+
 %>
 
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;">${currentUser.name}, your contracts:</h2>
+        <h2 style="margin-top:0;">${currentUser.name}, your options:</h2>
         <p></p>
     </div>
 
