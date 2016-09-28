@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -51,7 +52,7 @@ public class UserController {
     public String tariffs(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
-        model.addAttribute("allTariffs", optionService.getAll());
+        model.addAttribute("allTariffs", tariffService.getAll());
         model.addAttribute("tempId", new ArrayList<Integer>());
         return "user/userTariffs";
     }
@@ -60,9 +61,6 @@ public class UserController {
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
                                @RequestParam(value = "contractNumber") String contractNumber) {
-//        String tariffId = (String) request.getAttribute("tariffId");
-//        String contractNumber = (String) request.getAttribute("contractNumber");
-//        System.out.println(tariffId + " " + contractNumber);
         int tariffID = Integer.valueOf(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);
@@ -76,6 +74,43 @@ public class UserController {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         model.addAttribute("allTariffOptions", optionService.getAll());
+        return "user/userTariffOptions";
+    }
+
+    // TODO: 9/28/16 тут случаются глюки. Быть осторожным 
+    @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.GET)
+    public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
+                                       @RequestParam(value = "contractNumber") String contractNumber,
+                                       @RequestParam(value = "tariffOptionId") String tariffOptionId,
+                                       @RequestParam(value = "method") String method) {
+        User user = (User) request.getSession().getAttribute("currentUser");
+        int tariffOptionID = Integer.parseInt(tariffOptionId);
+        Contract contract = contractService.getContractByNumber(contractNumber);
+        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
+        if (method.equals("unable")) {
+            List<TariffOption> jointOptions = new ArrayList();
+
+            boolean isForbid = false;
+            for (TariffOption tar : contract.getTariffOptions()) {
+                if (tar.getimpossibleTogether().contains(tariffOption))
+                    isForbid = true;
+            }
+
+            if (!isForbid) {
+                jointOptions = tariffOption.getjointTogether();
+                for (TariffOption tar : jointOptions) {
+                    contract.getTariffOptions().add(tar);
+                    contractService.updateEntity(contract);
+                }
+                contract.getTariffOptions().add(tariffOption);
+                contractService.updateEntity(contract);
+            } else {
+                resp.setStatus(430);
+            }
+        } else {
+            contract.getTariffOptions().remove(tariffOption);
+            contractService.updateEntity(contract);
+        }
         return "user/userTariffOptions";
     }
 

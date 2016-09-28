@@ -26,7 +26,8 @@
         <h2 style="margin-top:0;">${currentUser.name}, your options:</h2>
         <p></p>
     </div>
-
+    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
+           value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
         <%for (Contract contract : contracts) {%>
         <div class="row cm-fix-height">
@@ -92,8 +93,8 @@
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=disable", true);
+                                                xhr.open("GET", "userChangeTariffOptions?contractNumber=" + par1
+                                                        + "&tariffOptionId=" + par2 +  "&method=disable", false);
                                                 xhr.send();
                                             }
                                         }
@@ -123,10 +124,10 @@
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
-                                                        + "&tariff=" + par2 + "&method=unable", false);
+                                                xhr.open("GET", "userChangeTariffOptions?contractNumber=" + par1
+                                                        + "&tariffOptionId=" + par2 + "&method=unable", false);
                                                 xhr.send();
-                                                if (xhr.status == 500) {
+                                                if (xhr.status == 430) {
                                                     alert('Incompatible options')
                                                 }
                                             }
