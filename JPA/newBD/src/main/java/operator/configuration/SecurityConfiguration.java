@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").access("hasRole('Manager')")
                 .antMatchers("/user/*").access("hasRole('userAvailable')")
                 //.and().formLogin().loginPage("/login")
-                .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
+                .and().formLogin().loginPage("/").loginProcessingUrl("/login").successHandler(customSuccessHandler)
                 .usernameParameter("username").passwordParameter("password")
                 .and().csrf()
                 .and().exceptionHandling().accessDeniedPage("/404");
