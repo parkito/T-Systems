@@ -37,7 +37,7 @@ public class ContractControlServlet extends HttpServlet {
 
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.getSession(true).setAttribute("contracts", contracts);
-        req.getRequestDispatcher("/WEB-INF/admin/ContractControl.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminContractControl.jsp").forward(req, resp);
 
     }
 

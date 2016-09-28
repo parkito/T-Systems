@@ -17,7 +17,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%
     List<TariffOption> allOptions = (List<TariffOption>) request.getAttribute("allTariffOptions");
-    List<Contract> contracts = (List<Contract>)request.getAttribute("contractsUserList");
+    List<Contract> contracts = (List<Contract>) request.getAttribute("contractsUserList");
 
 %>
 
@@ -70,8 +70,9 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <%int i = 0;%>
                             <% for (TariffOption option : allOptions) {
-                                int i=1;
+                                i++;
                                 if (contract.getTariffOptions().contains(option)) {
                             %>
                             <tr class="success">
@@ -94,7 +95,7 @@
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
                                                 xhr.open("GET", "userChangeTariffOptions?contractNumber=" + par1
-                                                        + "&tariffOptionId=" + par2 +  "&method=disable", false);
+                                                        + "&tariffOptionId=" + par2 + "&method=disable", false);
                                                 xhr.send();
                                             }
                                         }

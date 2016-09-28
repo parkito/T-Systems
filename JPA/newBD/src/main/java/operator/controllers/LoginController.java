@@ -33,7 +33,13 @@ public class LoginController {
     @Autowired
     private ContractService contractService;
 
-
+    /**
+     * Method for dispatching requests to login page
+     *
+     * @param locale locale for page
+     * @param model  model for page view
+     * @return page for view login
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Locale locale, Model model) {
         return "index";

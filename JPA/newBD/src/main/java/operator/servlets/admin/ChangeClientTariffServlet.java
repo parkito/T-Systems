@@ -41,7 +41,7 @@ public class ChangeClientTariffServlet extends HttpServlet {
 
         req.getSession(true).setAttribute("contracts", contracts);
         req.getSession().setAttribute("tariffService", tariffService);
-        req.getRequestDispatcher("/WEB-INF/admin/ChangeClientTariff.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminChangeClientTariff.jsp").forward(req, resp);
 
     }
 }

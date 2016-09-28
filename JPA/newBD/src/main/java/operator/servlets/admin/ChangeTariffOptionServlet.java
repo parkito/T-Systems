@@ -20,7 +20,7 @@ public class ChangeTariffOptionServlet extends HttpServlet {
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
 
         req.getSession(true).setAttribute("options", tariffOptionService.getAll());
-        req.getRequestDispatcher("/WEB-INF/admin/EditTariffOption.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminEditTariffOption.jsp").forward(req, resp);
 
     }
 

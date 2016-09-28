@@ -18,7 +18,7 @@ public class DeleteImOptionsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
         req.getSession(true).setAttribute("options", tariffOptionService.getAllImpossibleTariffOption(0));
-        req.getRequestDispatcher("/WEB-INF/admin/DeleteImOptions.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminDeleteImOptions.jsp").forward(req, resp);
     }
 
     @Override

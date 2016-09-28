@@ -40,12 +40,30 @@ public class UserController {
     @Autowired
     private ContractValidator contractValidator;
 
+    /**
+     * Method for dispatching the requests to user's contracts
+     *
+     * @param request request from page
+     * @param locale  locale for page
+     * @param model   model for page view
+     * @return page for view user's contract
+     */
+
     @RequestMapping(value = "/userContract", method = RequestMethod.GET)
     public String contracts(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         return "user/userContract";
     }
+
+    /**
+     * Method for dispatching the requests to user's tariffs
+     *
+     * @param request request from page
+     * @param locale  locale for page
+     * @param model   model for page view
+     * @return page for view user's tariffs
+     */
 
     // TODO: 9/27/16 анот для юзеров
     @RequestMapping(value = "/userTariffs", method = RequestMethod.GET)
@@ -57,6 +75,16 @@ public class UserController {
         return "user/userTariffs";
     }
 
+    /**
+     * Method for dispatching the requests to user's user's tariff changing
+     *
+     * @param request        request from page
+     * @param locale         locale for page
+     * @param model          model for page view
+     * @param tariffId       of of changing tariff
+     * @param contractNumber contract number for changing
+     * @return page for view tariff changing
+     */
     @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
@@ -69,6 +97,14 @@ public class UserController {
         return "user/userTariffs";
     }
 
+    /**
+     * Method for dispatching the requests to user's tariff options changing
+     *
+     * @param request request from page
+     * @param locale  locale for page
+     * @param model   model for page view
+     * @return page for view options changing
+     */
     @RequestMapping(value = "/userTariffOptions", method = RequestMethod.GET)
     public String tariffOptions(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
@@ -77,7 +113,19 @@ public class UserController {
         return "user/userTariffOptions";
     }
 
-    // TODO: 9/28/16 тут случаются глюки. Быть осторожным 
+    /**
+     * Method for dispatching the requests to user's tariff options changing
+     *
+     * @param request        request from page
+     * @param resp           request to page
+     * @param locale         locale for page
+     * @param model          model for page view
+     * @param contractNumber number for changing
+     * @param tariffOptionId tariff option id for changing
+     * @param method         method for changing
+     * @return page for view user's tariff options changing
+     */
+    // TODO: 9/28/16 тут случаются глюки. Быть осторожным
     @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.GET)
     public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
@@ -115,4 +163,3 @@ public class UserController {
     }
 
 }
-

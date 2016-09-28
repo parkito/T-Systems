@@ -27,7 +27,7 @@ public class FindClientServlet extends HttpServlet {
             req.getSession(true).setAttribute("check", "start");
             count++;
         }
-        req.getRequestDispatcher("/WEB-INF/admin/FindClient.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminFindClient.jsp").forward(req, resp);
 
     }
 

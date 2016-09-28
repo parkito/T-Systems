@@ -21,7 +21,7 @@ public class ImpossibleOptionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/admin/ImpossibleOptions.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminImpossibleOptions.jsp").forward(req, resp);
 
     }
 

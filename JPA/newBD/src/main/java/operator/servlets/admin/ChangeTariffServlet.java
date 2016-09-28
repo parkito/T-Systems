@@ -23,7 +23,7 @@ public class ChangeTariffServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession(true).setAttribute("tariffs", tariffService.getAll());
-        req.getRequestDispatcher("/WEB-INF/admin/EditTariff.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminEditTariff.jsp").forward(req, resp);
     }
 
     @Override

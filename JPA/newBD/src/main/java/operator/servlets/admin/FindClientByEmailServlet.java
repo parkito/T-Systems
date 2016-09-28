@@ -27,7 +27,7 @@ public class FindClientByEmailServlet extends HttpServlet {
             req.getSession(true).setAttribute("check", "start");
             count++;
         }
-        req.getRequestDispatcher("/WEB-INF/admin/ViewClient.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/admin/adminViewClient.jsp").forward(req, resp);
 
     }
 
