@@ -18,7 +18,7 @@
 </div>
 
 <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
-    <c:url var="loginUrl" value="/main" />
+    <c:url var="loginUrl" value="/login" />
     <form method="post" action="${loginUrl}">
         <div class="col-xs-12">
             <div class="form-group">
