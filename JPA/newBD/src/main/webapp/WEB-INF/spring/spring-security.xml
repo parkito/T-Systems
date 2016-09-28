@@ -23,26 +23,25 @@
 
 
     <http realm="JavaStudy example" use-expressions="false"
-     authentication-manager-ref="dao-auth"
+          authentication-manager-ref="dao-auth"
           access-decision-manager-ref="accessDecisionManager">
-        <intercept-url pattern="/admin/*" access="Manager" />
-        <intercept-url pattern="/user**" access="userAvailable" />
+        <intercept-url pattern="/admin**" access="Manager"/>
+        <intercept-url pattern="/user**" access="userAvailable"/>
         <form-login login-page="/login" authentication-failure-url="/login-denied"
                     username-parameter="username" password-parameter="password"
-                    default-target-url="/main" />
+                    default-target-url="/main"/>
         <logout invalidate-session="true" logout-success-url="/"
-                logout-url="/" />
+                logout-url="/"/>
         <access-denied-handler error-page="/denied"/>
         <session-management invalid-session-url="/">
             <concurrency-control max-sessions="1"
-                                 expired-url="/login" />
+                                 expired-url="/login"/>
         </session-management>
         <!--remember me-->
         <remember-me token-validity-seconds="1209600"
                      remember-me-parameter="remember-me"
-                     user-service-ref="userDetailsService"  />
+                     user-service-ref="userDetailsService"/>
     </http>
-
 
 
     <authentication-manager id="dao-auth">
@@ -51,7 +50,7 @@
         </authentication-provider>
     </authentication-manager>
     <!--<beans:bean id="passwordEncoder"-->
-                <!--class="operator.utils.Converter">-->
+    <!--class="operator.utils.Converter">-->
     <!--</beans:bean>-->
 
 

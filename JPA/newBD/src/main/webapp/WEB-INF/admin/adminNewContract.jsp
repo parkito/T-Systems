@@ -1,4 +1,3 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +13,12 @@
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
 
-    <%
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new contract</h2>
-        <%--<p></p>--%>
     </div>
+    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
+           value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -78,7 +75,7 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewContract?email=" + email + "&number=" + number, true);
+                                xhr.open("POST", "adminNewContract?email=" + email + "&number=" + number, true);
                                 xhr.send();
                             }
                         }

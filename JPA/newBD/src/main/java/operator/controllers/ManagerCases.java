@@ -6,10 +6,13 @@ import operator.entities.TariffOption;
 import operator.entities.User;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.UserNotFoundException;
-import operator.services.implementation.ContractServiceImpl;
+import operator.services.api.ContractService;
+import operator.services.api.TariffOptionService;
+import operator.services.api.TariffService;
+import operator.services.api.UserService;
 import operator.services.implementation.TariffOptionServiceImpl;
-import operator.services.implementation.TariffServiceImpl;
-import operator.services.implementation.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
@@ -21,11 +24,16 @@ import java.util.Random;
 /**
  * Business logic for managers
  */
+@Service("ManagerCases")
 public class ManagerCases {
-    private UserServiceImpl userService = new UserServiceImpl();
-    private ContractServiceImpl contractService = new ContractServiceImpl();
-    TariffServiceImpl tariffService = new TariffServiceImpl();
-    TariffOptionServiceImpl tariffOptionService = new TariffOptionServiceImpl();
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ContractService contractService;
+    @Autowired
+    TariffService tariffService;
+    @Autowired
+    TariffOptionService tariffOptionService;
 
     /**
      * Checking user existing
