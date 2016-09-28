@@ -51,7 +51,7 @@ public class UserController {
     public String tariffs(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
-        model.addAttribute("allTariffs", tariffService.getAll());
+        model.addAttribute("allTariffs", optionService.getAll());
         model.addAttribute("tempId", new ArrayList<Integer>());
         return "user/userTariffs";
     }
