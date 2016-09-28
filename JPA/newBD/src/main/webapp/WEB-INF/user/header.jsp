@@ -8,7 +8,7 @@
         <div id="cm-menu-items-wrapper">
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
-                    <li class="active"><a href="/login" class="sf-house">Home</a></li>
+                    <li class="active"><a href="/main" class="sf-house">Home</a></li>
                     <li><a href="userContract" class="sf-dashboard">Contracts</a></li>
                     <li><a href="userTariffs" class="sf-notepad">Tariffs</a></li>
                     <li><a href="userTariffOptions" class="sf-brick">Tariff options</a></li>
@@ -23,7 +23,7 @@
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
         <div class="cm-flex">
             <h1>Home</h1>
-            <form id="cm-search" action="/Help" method="get">
+            <form id="cm-search" action="Help" method="get">
                 <input type="search" name="find" autocomplete="off" placeholder="Search...">
             </form>
         </div>
@@ -53,7 +53,6 @@
             <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
-                    <%--<c:set var="userName" value="${currentUser.name}"/>--%>
                     <a style="cursor:default;"><strong>${currentUser.name}</strong></a>
                 </li>
                 <li class="divider"></li>
@@ -64,7 +63,7 @@
                     <a href="userContract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
                 </li>
                 <li>
-                    <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                    <a href="Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
                 </li>
             </ul>
         </div>

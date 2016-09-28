@@ -8,38 +8,37 @@
         <div id="cm-menu-items-wrapper">
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
-                    <li class="active"><a href="/login" class="sf-house">Home</a></li>
-                    <li><a href="/admin/NewClient" class="sf-dashboard">New client</a></li>
+                    <li class="active"><a href="/main" class="sf-house">Home</a></li>
+                    <li><a href="adminNewClient" class="sf-dashboard">New client</a></li>
                     <li class="cm-submenu">
                         <a class="sf-notepad">Change contract<span class="caret"></span></a>
                         <ul>
-                            <li><a href="/admin/NewContract">New contract</a></li>
-                            <li><a href="/admin/ChangeClientTariff">Change tariff</a></li>
-                            <li><a href="/admin/ChangeClient">Change options</a></li>
-                            <li><a href="/admin/ContractControl">Contract control</a></li>
+                            <li><a href="adminNewContract">New contract</a></li>
+                            <li><a href="adminChangeClientTariff">Change tariff</a></li>
+                            <li><a href="adminChangeClient">Change options</a></li>
+                            <li><a href="adminContractControl">Contract control</a></li>
                         </ul>
                     </li>
                     <li class="cm-submenu">
                         <a class="sf-brick">Edit tariff<span class="caret"></span></a>
                         <ul>
-                            <li><a href="/admin/NewTariff">New tariff</a></li>
-                            <li><a href="/admin/EditTariff">Delete tariff</a></li>
+                            <li><a href="adminNewTariff">New tariff</a></li>
+                            <li><a href="adminEditTariff">Delete tariff</a></li>
                         </ul>
                     </li>
                     <li class="cm-submenu">
                         <a class="sf-brick-alt">Edit option<span class="caret"></span></a>
                         <ul>
-                            <li><a href="/admin/NewOption">New option</a></li>
-                            <li><a href="/admin/EditTariffOption">Delete option</a></li>
-                            <li><a href="/admin/ConnectOption">Join options</a></li>
-                            <li><a href="/admin/ImpossibleOption">Incompatible options</a></li>
-                            <li><a href="/admin/DeleteImOptions">Delete incompatibles</a></li>
-                            <li><a href="/admin/DeleteJoOptions">Delete join</a></li>
+                            <li><a href="adminNewOption">New option</a></li>
+                            <li><a href="adminEditTariffOption">Delete option</a></li>
+                            <li><a href="adminConnectOption">Join options</a></li>
+                            <li><a href="adminImpossibleOption">Incompatible options</a></li>
+                            <li><a href="adminDeleteImOptions">Delete incompatibles</a></li>
+                            <li><a href="adminDeleteJoOptions">Delete join</a></li>
                         </ul>
                     </li>
-                    <li><a href="/admin/ViewClient" class="sf-lock-open">View clients</a></li>
-                    <li><a href="/admin/FindClient" class="sf-window-layout">Find client</a></li>
-
+                    <li><a href="adminViewClient" class="sf-lock-open">View clients</a></li>
+                    <li><a href="adminFindClient" class="sf-window-layout">Find client</a></li>
                 </ul>
             </div>
         </div>
@@ -50,7 +49,7 @@
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
         <div class="cm-flex">
             <h1>Home</h1>
-            <form id="cm-search" action="/Help" method="get">
+            <form id="cm-search" action="Help" method="get">
                 <input type="search" name="find" autocomplete="off" placeholder="Search...">
             </form>
         </div>
@@ -61,10 +60,7 @@
             <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
             <ul class="dropdown-menu">
                 <li class="disabled text-center">
-                    <%
-                        String userName = (String) request.getSession().getAttribute("userName");
-                    %>
-                    <a style="cursor:default;"><strong><%out.print(userName);%></strong></a>
+                    <a style="cursor:default;"><strong>${currentUser.name}</strong></a>
                 </li>
                 <li class="divider"></li>
                 <li>

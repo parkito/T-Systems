@@ -45,6 +45,19 @@ public class LoginController {
         return "index";
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage() {
+        return "login";
+    }
+
+    /**
+     * Method for dispatching requests to admin's and user's pages
+     *
+     * @param request
+     * @param locale
+     * @param model
+     * @return adjusted page
+     */
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String loginPage(HttpServletRequest request, Locale locale, Model model) {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
@@ -58,18 +71,4 @@ public class LoginController {
         } else return "login";
     }
 
-    private String getPrincipal() {
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails) principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
-    }
 }
-
-
-//}

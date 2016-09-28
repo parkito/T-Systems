@@ -30,10 +30,10 @@
         <form-login login-page="/login" authentication-failure-url="/login-denied"
                     username-parameter="username" password-parameter="password"
                     default-target-url="/main" />
-        <logout invalidate-session="true" logout-success-url="/login"
-                logout-url="/j_spring_security_logout" />
+        <logout invalidate-session="true" logout-success-url="/"
+                logout-url="/" />
         <access-denied-handler error-page="/denied"/>
-        <session-management invalid-session-url="/login1">
+        <session-management invalid-session-url="/">
             <concurrency-control max-sessions="1"
                                  expired-url="/login" />
         </session-management>

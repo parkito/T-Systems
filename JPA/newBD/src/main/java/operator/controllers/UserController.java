@@ -41,7 +41,7 @@ public class UserController {
     private ContractValidator contractValidator;
 
     /**
-     * Method for dispatching the requests to user's contracts
+     * Method for dispatching requests to user's contracts
      *
      * @param request request from page
      * @param locale  locale for page
@@ -57,7 +57,7 @@ public class UserController {
     }
 
     /**
-     * Method for dispatching the requests to user's tariffs
+     * Method for dispatching requests to user's tariffs
      *
      * @param request request from page
      * @param locale  locale for page
@@ -76,7 +76,7 @@ public class UserController {
     }
 
     /**
-     * Method for dispatching the requests to user's user's tariff changing
+     * Method for dispatching requests to user's user's tariff changing
      *
      * @param request        request from page
      * @param locale         locale for page
@@ -98,7 +98,7 @@ public class UserController {
     }
 
     /**
-     * Method for dispatching the requests to user's tariff options changing
+     * Method for dispatching requests to user's tariff options changing
      *
      * @param request request from page
      * @param locale  locale for page
@@ -114,7 +114,7 @@ public class UserController {
     }
 
     /**
-     * Method for dispatching the requests to user's tariff options changing
+     * Method for dispatching requests to user's tariff options changing
      *
      * @param request        request from page
      * @param resp           request to page
