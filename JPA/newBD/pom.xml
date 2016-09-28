@@ -119,10 +119,17 @@
         </dependency>
 
         <!--<dependency>-->
-        <!--<groupId>org.wildfly.plugins</groupId>-->
-        <!--<artifactId>wildfly-maven-plugin</artifactId>-->
-        <!--<version>1.1.0.Alpha11</version>-->
+            <!--<groupId>org.wildfly.plugins</groupId>-->
+            <!--<artifactId>wildfly-maven-plugin</artifactId>-->
+            <!--<version>1.1.0.Alpha11</version>-->
         <!--</dependency>-->
+
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -148,12 +155,26 @@
             <version>${org.springframework-version}</version>
         </dependency>
 
+        <!--<dependency>-->
+        <!--<groupId>org.aspectj</groupId>-->
+        <!--<artifactId>aspectjrt</artifactId>-->
+        <!--<version>${org.aspectj-version}</version>-->
+        <!--</dependency>-->
 
+        <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.9</version>
         </dependency>
+
+
+        <!-- Apache Commons DBCP -->
+        <!--<dependency>-->
+        <!--<groupId>commons-dbcp</groupId>-->
+        <!--<artifactId>commons-dbcp</artifactId>-->
+        <!--<version>1.4</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -161,18 +182,22 @@
             <version>2.1.1</version>
         </dependency>
 
+
+        <!-- Spring ORM -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
             <version>4.1.3.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -185,16 +210,11 @@
             <version>4.1.3.RELEASE</version>
         </dependency>
 
+        <!-- Spring Security JSP Taglib -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
             <version>4.1.3.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.1</version>
         </dependency>
 
     </dependencies>
@@ -215,9 +235,9 @@
             </plugin>
 
             <!--<plugin>-->
-            <!--<groupId>org.wildfly.plugins</groupId>-->
-            <!--<artifactId>wildfly-maven-plugin</artifactId>-->
-            <!--<version>1.1.0.Alpha11</version>-->
+                <!--<groupId>org.wildfly.plugins</groupId>-->
+                <!--<artifactId>wildfly-maven-plugin</artifactId>-->
+                <!--<version>1.1.0.Alpha11</version>-->
             <!--</plugin>-->
 
             <plugin>

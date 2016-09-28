@@ -35,18 +35,30 @@ public class LoginController {
 
 
 
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(Locale locale, Model model) {
+        return "index";
+    }
+    @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String loginPage(HttpServletRequest request, Locale locale, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(auth.getDetails());
         System.out.println(auth.getPrincipal());
         System.out.println(principal);
-        return "index";
-
-
+        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userService.getUserByEMAil(user.getUsername());
+        request.getSession().setAttribute("currentUserU", currentUser);
+        if (currentUser.getAccessLevel().getAccessLevelId() == 1) {
+            return "user/index";
+        }
+        else if (currentUser.getAccessLevel().getAccessLevelId() == 3){
+            return "admin/index";
+        }
+        else return "login";
     }
+
 //        try {
 //            User currentUser = userService.getUserByEMAil(username);
 //            if (currentUser.getPassword().equals(pass)) {
