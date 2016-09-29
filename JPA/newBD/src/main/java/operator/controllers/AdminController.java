@@ -84,7 +84,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
-    public String adminChangeClientTariff(HttpServletRequest req,  Locale locale, Model model) {
+    public String adminChangeClientTariff(HttpServletRequest req, Locale locale, Model model) {
         int count = 1;
         if (count == 1) {
             model.addAttribute("check", "start");
@@ -113,5 +113,43 @@ public class AdminController {
         model.addAttribute("tariffOptions", optionService.getAll());
 
         return "admin/adminChangeClient";
+    }
+
+    @RequestMapping(value = "/adminContractControl", method = RequestMethod.GET)
+    public String adminContractControl(HttpServletRequest req, Locale locale, Model model) {
+        int count = 1;
+        if (count == 1) {
+            model.addAttribute("check", "start");
+            count++;
+        }
+        User user = (User) req.getSession().getAttribute("currentUser");
+        model.addAttribute("userObj", user);
+        String userName = user.getName();
+        model.addAttribute("userName", userName);
+        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+        model.addAttribute("contracts", contracts);
+        return "admin/adminContractControl";
+    }
+
+    @RequestMapping(value = "/adminContractControl", method = RequestMethod.DELETE)
+    public String adminContractControlDelete(HttpServletRequest req, Locale locale, Model model,
+                                             @RequestParam(value = "unblockItem") String unblockItem,
+                                             @RequestParam(value = "blockItem") String blockItem) {
+        if (blockItem != null) {
+            Contract contract = contractService.getContractByNumber(req.getParameter("blockItem"));
+            contract.setBlocked(true);
+            contract.setBlockedByAdmin(true);
+            contractService.updateEntity(contract);
+        }
+
+        if (unblockItem != null) {
+            Contract contract = contractService.getContractByNumber(req.getParameter("unblockItem"));
+            contract.setBlocked(false);
+            contract.setBlockedByAdmin(false);
+            contractService.updateEntity(contract);
+
+
+        }
+        return "admin/adminContractControl";
     }
 }
