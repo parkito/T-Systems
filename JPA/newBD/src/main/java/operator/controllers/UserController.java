@@ -12,6 +12,8 @@ import operator.services.api.TariffService;
 import operator.services.api.UserService;
 import operator.services.implementation.TariffServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -162,4 +164,51 @@ public class UserController {
         return "user/userTariffOptions";
     }
 
+    /**
+     * Method for dispatching requests to user's number operations
+     *
+     * @param locale locale for page
+     * @param model  model for page view
+     * @return page for view user's number operations
+     */
+
+    @RequestMapping(value = "/userNumberOperations", method = RequestMethod.GET)
+    public String userNumberOperations(HttpServletRequest request, Locale locale, Model model) {
+        User user = (User) request.getSession().getAttribute("currentUser");
+        model.addAttribute("contracts", contractService.getAllContractsForUser(user.getUserId()));
+        return "user/userNumberOperations";
+    }
+
+    /**
+     * Method for dispatching requests to user's number operations
+     *
+     * @param resp        request to page
+     * @param locale      locale for page
+     * @param model       model for page view
+     * @param unblockItem element for blocking
+     * @param blockItem   element for unblocking
+     * @return page for view user's number operations
+     */
+    @RequestMapping(value = "/userNumberOperations", method = RequestMethod.DELETE)
+    public String userNumberOperationsDelete(HttpServletResponse resp, Locale locale, Model model,
+                                             @RequestParam(value = "unblockItem") String unblockItem,
+                                             @RequestParam(value = "blockItem") String blockItem) {
+        if (blockItem != null) {
+            Contract contract = contractService.getContractByNumber(blockItem);
+            contract.setBlocked(true);
+            contractService.updateEntity(contract);
+        }
+
+        if (unblockItem != null) {
+            Contract contract = contractService.getContractByNumber(unblockItem);
+            if (!contract.getBlockedByAdmin()) {
+                contract.setBlocked(false);
+                contractService.updateEntity(contract);
+            } else {
+                resp.setStatus(600);
+
+            }
+        }
+        return "user/userNumberOperations";
+    }
 }

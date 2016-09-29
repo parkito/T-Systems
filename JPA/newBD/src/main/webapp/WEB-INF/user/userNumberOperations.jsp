@@ -1,11 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="operator.entities.Contract" %>
+<%@ page import="operator.entities.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
-<%@ page import="entities.TariffOption" %>
+<%@ page import="operator.entities.TariffOption" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,16 +18,15 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    User user = (User) request.getSession(true).getAttribute("userObj");
-    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
+    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
 %>
-<c:set var="userName" value="${sessionScope.userName}"/>
-
 <div id="global">
     <div class="container-fluid cm-container-white">
-        <h2 style="margin-top:0;"><c:out value="${userName}"/>, your options:</h2>
+        <h2 style="margin-top:0;">${currentUser.name}, your options:</h2>
         <p></p>
     </div>
+    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
+           value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid ">
         <div class="panel panel-default">
             <table class="table">
@@ -74,7 +70,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("DELETE", "/user/NumberOperations?unblockItem=" + number, false);
+                                xhr.open("DELETE", "userNumberOperations?unblockItem=" + number, false);
                                 xhr.send();
                                 if (xhr.status == 600) {
                                     alert('Access error! Blocked by manager.')
@@ -100,7 +96,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("DELETE", "/user/NumberOperations?blockItem=" + number, true);
+                                xhr.open("DELETE", "userNumberOperations?blockItem=" + number, false);
                                 xhr.send();
                             }
                         }
