@@ -105,7 +105,7 @@ public class AdminController {
         return "admin/adminChangeClientTariff";
     }
 
-    @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminChangeClient", method = RequestMethod.POST)
     public String adminChangeClient(HttpServletRequest req, Locale locale, Model model) {
         int count = 1;
         if (count == 1) {
@@ -334,13 +334,13 @@ public class AdminController {
         return "admin/adminDeleteImOptions";
     }
 
-    @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.GET)
     public String adminDeleteJoOptionsGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
-        return "admin/adminDeleteImOptions";
+        return "admin/adminDeleteJoOptionss";
     }
 
-    @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.POST)
+    @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.POST)
     public String adminDeleteJoOptionsPost(HttpServletRequest request, Locale locale, Model model,
                                            @RequestParam(value = "tariffOptionId") String tariffOptionId) {
         int tariffOptionID = Integer.parseInt(tariffOptionId);
