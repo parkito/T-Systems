@@ -107,7 +107,7 @@ public class AdminController {
     public String adminChangeClient(HttpServletRequest req, Locale locale, Model model) {
         int count = 1;
         if (count == 1) {
-            req.getSession(true).setAttribute("check", "start");
+            model.addAttribute("check", "start");
             count++;
         }
         User user = (User) req.getSession().getAttribute("currentUser");
@@ -169,6 +169,7 @@ public class AdminController {
         return "admin/adminNewTariff";
     }
 
+    // TODO: 9/30/16 Фигня какая-то. Проверь!!!! 
     @RequestMapping(value = "/adminNewTariff", method = RequestMethod.POST)
     public String adminNewTariffPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "title") String title,
@@ -218,24 +219,131 @@ public class AdminController {
         boolean add = true;
         String connectionPrice = req.getParameter("connectPrice");
         if (title.equals("") || managerCases.isOptionExists(title)) {
-            req.getSession(true).setAttribute("titleStat", "Error");
+            model.addAttribute("titleStat", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("titleStat", "OK");
+            model.addAttribute("titleStat", "OK");
 
         if (price.equals("")) {
-            req.getSession(true).setAttribute("priceStat", "Error");
+            model.addAttribute("priceStat", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("priceStat", "OK");
+            model.addAttribute("priceStat", "OK");
 
         if (connectionPrice.equals("")) {
-            req.getSession(true).setAttribute("connectionPriceStat", "Error");
+            model.addAttribute("connectionPriceStat", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("connectionPriceStat", "OK");
+            model.addAttribute("connectionPriceStat", "OK");
 
         if (add == true) managerCases.addOptionToBase(title, price, connectionPrice);
         return "admin/adminNewOption";
+    }
+
+    @RequestMapping(value = "/adminEditTariffOption", method = RequestMethod.GET)
+    public String adminEditTariffOptionGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("options", optionService.getAll());
+        return "admin/adminEditTariffOption";
+    }
+
+    @RequestMapping(value = "/adminEditTariffOption", method = RequestMethod.POST)
+    public String adminEditTariffOptionPost(HttpServletRequest request, Locale locale, Model model,
+                                            @RequestParam(value = "tariffOptionId") String tariffOptionId) {
+        int tariffOptionID = Integer.parseInt(tariffOptionId);
+        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
+        optionService.deleteEntity(tariffOption);
+        return "admin/adminEditTariffOption";
+    }
+
+    @RequestMapping(value = "/adminConnectOption", method = RequestMethod.GET)
+    public String adminConnectOptionGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminEditTariffOption";
+    }
+
+    @RequestMapping(value = "/adminConnectOption", method = RequestMethod.POST)
+    public String adminConnectOptionPost(HttpServletRequest request, Locale locale, Model model,
+                                         @RequestParam(value = "tariffOne") String tariffOne,
+                                         @RequestParam(value = "tariffTwo") String tariffTwo) {
+        boolean add = true;
+        System.out.println(tariffOne + " " + tariffTwo);
+
+        if (tariffOne.equals("") || !managerCases.isOptionExists(tariffOne)) {
+            model.addAttribute("oneStat", "Error");
+            add = false;
+        } else
+            model.addAttribute("oneStat", "OK");
+
+        if (tariffTwo.equals("") || !managerCases.isOptionExists(tariffTwo)) {
+            model.addAttribute("twoStat", "Error");
+            add = false;
+        } else
+            model.addAttribute("twoStat", "OK");
+
+        if (add == true) {
+            System.out.println("here");
+            managerCases.addJoinOptionToBase(tariffOne, tariffTwo);
+        }
+
+        return "admin/adminEditTariffOption";
+    }
+
+    @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.GET)
+    public String adminImpossibleOptionGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminImpossibleOption";
+    }
+
+    @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.POST)
+    public String adminImpossibleOptionPost(HttpServletRequest request, Locale locale, Model model,
+                                            @RequestParam(value = "tariffOne") String tariffOne,
+                                            @RequestParam(value = "tariffTwo") String tariffTwo) {
+        boolean add = true;
+        System.out.println(tariffOne + " " + tariffTwo);
+
+        if (tariffOne.equals("") || !managerCases.isOptionExists(tariffOne)) {
+            model.addAttribute("oneStat", "Error");
+            add = false;
+        } else
+            model.addAttribute("oneStat", "OK");
+
+        if (tariffTwo.equals("") || !managerCases.isOptionExists(tariffTwo)) {
+            model.addAttribute("twoStat", "Error");
+            add = false;
+        } else
+            model.addAttribute("twoStat", "OK");
+
+        if (add == true) {
+            managerCases.addImmposibleOptionToBase(tariffOne, tariffTwo);
+        }
+        return "admin/adminImpossibleOptions";
+    }
+
+    @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.GET)
+    public String adminDeleteImOptionsGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("options", optionService.getAllImpossibleTariffOption(0));
+        return "admin/adminDeleteImOptions";
+    }
+
+    @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.POST)
+    public String adminDeleteImOptionsPost(HttpServletRequest request, Locale locale, Model model,
+                                           @RequestParam(value = "tariffOptionId") String tariffOptionId) {
+        int tariffOptionID = Integer.parseInt(tariffOptionId);
+        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
+        optionService.deleteEntity(tariffOption);
+        return "admin/adminDeleteImOptions";
+    }
+
+    @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.GET)
+    public String adminDeleteJoOptionsGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
+        return "admin/adminDeleteImOptions";
+    }
+
+    @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.POST)
+    public String adminDeleteJoOptionsPost(HttpServletRequest request, Locale locale, Model model,
+                                           @RequestParam(value = "tariffOptionId") String tariffOptionId) {
+        int tariffOptionID = Integer.parseInt(tariffOptionId);
+        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
+        optionService.deleteEntity(tariffOption);
+        return "admin/adminDeleteJoOptions";
     }
 }
