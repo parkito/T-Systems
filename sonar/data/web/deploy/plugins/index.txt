@@ -1,0 +1,5 @@
+csharp,false,sonar-csharp-plugin-5.3.1.jar|3187f69c874f4c493979904c86f41485
+java,false,sonar-java-plugin-4.0.jar|de15554d72648a16048d2a4d87df64c3
+scmgit,false,sonar-scm-git-plugin-1.2.jar|7eb5e3ad8c8a2ea587ff7df0d3e1512b
+scmsvn,false,sonar-scm-svn-plugin-1.3.jar|58c8c866070a317d412d700dfa0175b7
+javascript,false,sonar-javascript-plugin-2.14.jar|946ba9ca384b000e94008da1797e3984
