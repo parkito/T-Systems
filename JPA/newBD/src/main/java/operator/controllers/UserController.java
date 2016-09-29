@@ -50,7 +50,7 @@ public class UserController {
      * @param model   model for page view
      * @return page for view user's contract
      */
-
+// TODO: 9/29/16 Добавить колько он всего платит денег
     @RequestMapping(value = "/userContract", method = RequestMethod.GET)
     public String contracts(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
@@ -178,7 +178,7 @@ public class UserController {
         model.addAttribute("contracts", contractService.getAllContractsForUser(user.getUserId()));
         return "user/userNumberOperations";
     }
-
+    // TODO: 9/29/16 Оптимизация
     /**
      * Method for dispatching requests to user's number operations
      *

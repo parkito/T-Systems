@@ -117,7 +117,6 @@ public class ManagerCases {
      * @param number contract number for adding
      */
     public void addContractToBase(String eMail, String number) {
-
         Contract contract = new Contract(number, userService.getUserByEMAil(eMail),
                 tariffService.getTariffByTitle("base"));
         contractService.createEntity(contract);

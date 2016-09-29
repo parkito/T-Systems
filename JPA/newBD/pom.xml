@@ -60,7 +60,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
+            <version>6.0.4</version>
         </dependency>
 
         <dependency>
@@ -169,7 +169,7 @@
         </dependency>
 
 
-        <!-- Apache Commons DBCP -->
+         <!--Apache Commons DBCP-->
         <!--<dependency>-->
         <!--<groupId>commons-dbcp</groupId>-->
         <!--<artifactId>commons-dbcp</artifactId>-->

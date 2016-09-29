@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * A controllers to dispatch the queries of the employees.
+ * A controllers to dispatch the queries of admins.
  */
 @Controller
 public class AdminController {
@@ -51,7 +51,12 @@ public class AdminController {
     @Autowired
     private ManagerCases managerCases;
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    public String check(HttpServletRequest request, Locale locale, Model model) {
+        User user = new User("name", "second", "08.02.1992", "pass", "msk", "mail.com", "pass");
+        userService.createEntity(user);
+        return "index";
+    }
 
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.GET)
     public String adminNewContractGet(HttpServletRequest request, Locale locale, Model model) {
@@ -78,7 +83,7 @@ public class AdminController {
         } else {
             model.addAttribute("numberStat", "OK");
         }
-        if (add == true) managerCases.addContractToBase(eMail, number);
+        if (add == true) addContractToBase(eMail, number);
 
         return "admin/adminNewContract";
     }
@@ -151,5 +156,86 @@ public class AdminController {
 
         }
         return "admin/adminContractControl";
+    }
+
+    public void addContractToBase(String eMail, String number) {
+        Contract contract = new Contract(number, userService.getUserByEMAil(eMail),
+                tariffService.getTariffByTitle("base"));
+        contractService.createEntity(contract);
+    }
+
+    @RequestMapping(value = "/adminNewTariff", method = RequestMethod.GET)
+    public String adminNewTariffGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminNewTariff";
+    }
+
+    @RequestMapping(value = "/adminNewTariff", method = RequestMethod.POST)
+    public String adminNewTariffPost(HttpServletRequest req, Locale locale, Model model,
+                                     @RequestParam(value = "title") String title,
+                                     @RequestParam(value = "price") String price) {
+        boolean add = true;
+
+        if (title.equals("") || managerCases.isTariffExists(title)) {
+            model.addAttribute("titleStat", "Error");
+            add = false;
+        } else
+            model.addAttribute("titleStat", "OK");
+
+        if (price.equals("")) {
+            model.addAttribute("priceStat", "Error");
+            add = false;
+        } else
+            model.addAttribute("priceStat", "OK");
+
+        if (add == true) managerCases.addTariffToBase(title, price);
+        return "admin/adminNewTariff";
+    }
+
+    @RequestMapping(value = "/adminEditTariff", method = RequestMethod.GET)
+    public String adminEditTariffGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("tariffs", tariffService.getAll());
+        return "admin/adminEditTariff";
+    }
+
+    @RequestMapping(value = "/adminEditTariff", method = RequestMethod.POST)
+    public String adminEditTariffPost(HttpServletRequest request, Locale locale, Model model,
+                                      @RequestParam(value = "tariffId") String tariffId) {
+        int tariffID = Integer.parseInt(tariffId);
+        Tariff tariff = tariffService.getEntityById(tariffID);
+        tariffService.deleteEntity(tariff);
+        return "admin/adminEditTariff";
+    }
+
+    @RequestMapping(value = "/adminNewOption", method = RequestMethod.GET)
+    public String adminNewOptionGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminNewOption";
+    }
+
+    @RequestMapping(value = "/adminNewOption", method = RequestMethod.POST)
+    public String adminNewOptionPost(HttpServletRequest req, Locale locale, Model model,
+                                     @RequestParam(value = "title") String title,
+                                     @RequestParam(value = "price") String price) {
+        boolean add = true;
+        String connectionPrice = req.getParameter("connectPrice");
+        if (title.equals("") || managerCases.isOptionExists(title)) {
+            req.getSession(true).setAttribute("titleStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("titleStat", "OK");
+
+        if (price.equals("")) {
+            req.getSession(true).setAttribute("priceStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("priceStat", "OK");
+
+        if (connectionPrice.equals("")) {
+            req.getSession(true).setAttribute("connectionPriceStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("connectionPriceStat", "OK");
+
+        if (add == true) managerCases.addOptionToBase(title, price, connectionPrice);
+        return "admin/adminNewOption";
     }
 }
