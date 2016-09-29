@@ -4,6 +4,8 @@ import operator.entities.Contract;
 import operator.entities.Tariff;
 import operator.entities.TariffOption;
 import operator.entities.User;
+import operator.exceptions.ContractNotFoundException;
+import operator.exceptions.UserNotFoundException;
 import operator.integration.ContractValidator;
 import operator.integration.EntityRemoval;
 import operator.integration.UserUpdater;
@@ -345,5 +347,44 @@ public class AdminController {
         TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
         optionService.deleteEntity(tariffOption);
         return "admin/adminDeleteJoOptions";
+    }
+
+    @RequestMapping(value = "/adminViewClient", method = RequestMethod.GET)
+    public String adminViewClientGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminViewClient";
+    }
+
+    @RequestMapping(value = "/adminViewClient", method = RequestMethod.POST)
+    public String adminViewClientPost(HttpServletRequest request, Locale locale, Model model,
+                                      @RequestParam(value = "email") String email) {
+        model.addAttribute("check", "work");
+        try {
+            User user = userService.getUserByEMAil(email);
+            model.addAttribute("usrs", user);
+
+        } catch (UserNotFoundException ex) {
+            model.addAttribute("usrs", null);
+        }
+        return "admin/adminViewClient";
+    }
+
+    @RequestMapping(value = "/adminFindClient", method = RequestMethod.GET)
+    public String adminFindClientGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminViewClient";
+    }
+
+    @RequestMapping(value = "/adminFindClient", method = RequestMethod.POST)
+    public String adminFindClientPost(HttpServletRequest request, Locale locale, Model model,
+                                      @RequestParam(value = "number") String number) {
+        model.addAttribute("check", "work");
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        try {
+            Contract contract = contractService.getContractByNumber(number);
+            model.addAttribute("usr", contract);
+
+        } catch (ContractNotFoundException ex) {
+            model.addAttribute("usr", null);
+        }
+        return "admin/adminViewClient";
     }
 }
