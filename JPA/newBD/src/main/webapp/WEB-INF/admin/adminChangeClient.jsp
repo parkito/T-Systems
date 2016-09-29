@@ -1,12 +1,8 @@
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="operator.entities.Contract" %>
+<%@ page import="operator.entities.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
-<%@ page import="entities.TariffOption" %>
-<%@ page import="services.implementation.TariffServiceImpl" %>
-<%@ page import="entities.Tariff" %>
+<%@ page import="operator.entities.TariffOption" %>
+<%@ page import="operator.entities.Tariff" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +18,8 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    User user = (User) request.getSession(true).getAttribute("user");
-    String userName = (String) request.getSession(true).getAttribute("userName");
-
-    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
-    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getSession(true).getAttribute("tariffOptions");
+    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
+    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getAttribute("tariffOptions");
     List<Integer> tempTariff = new ArrayList();
 
 
@@ -59,7 +52,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.open("POST", "adminFindClient?number=" + text, true);
                                     xhr.send();
                                 }
                             }
@@ -70,10 +63,10 @@
         </div>
     </div>
 
-    <% String check = (String) request.getSession(true).getAttribute("check");
+    <% String check = (String) request.getAttribute("check");
         if (check.equals("work"))
             if (request.getSession(true).getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getSession(true).getAttribute("usr");
+                Contract contract1 = (Contract) request.getAttribute("usr");
                 contracts.clear();
                 contracts.add(contract1);
     %>
@@ -181,7 +174,7 @@
                                         popBox();
                                         function popBox() {
                                             var xhr = new XMLHttpRequest();
-                                            xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                            xhr.open("DELETE", "userTariffOptions?contractNumber=" + par1
                                                     + "&tariff=" + par2 + "&method=unable", false);
                                             xhr.send();
                                             if (xhr.status == 500) {
