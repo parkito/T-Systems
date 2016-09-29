@@ -128,7 +128,7 @@ public class UserController {
      * @return page for view user's tariff options changing
      */
     // TODO: 9/28/16 тут случаются глюки. Быть осторожным
-    @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.GET)
+    @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.DELETE)
     public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
@@ -189,10 +189,11 @@ public class UserController {
      * @param blockItem   element for unblocking
      * @return page for view user's number operations
      */
-    @RequestMapping(value = "/userNumberOperations", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/userNumberOperations", method = RequestMethod.POST)
     public String userNumberOperationsDelete(HttpServletResponse resp, Locale locale, Model model,
                                              @RequestParam(value = "unblockItem") String unblockItem,
                                              @RequestParam(value = "blockItem") String blockItem) {
+        System.out.println(unblockItem + " " + blockItem);
         if (blockItem != null) {
             Contract contract = contractService.getContractByNumber(blockItem);
             contract.setBlocked(true);

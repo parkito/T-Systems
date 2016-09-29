@@ -12,6 +12,7 @@ import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
 import operator.services.implementation.ContractServiceImpl;
+import operator.services.implementation.TariffOptionServiceImpl;
 import operator.services.implementation.TariffServiceImpl;
 import operator.services.implementation.UserServiceImpl;
 import operator.utils.Parser;
@@ -65,41 +66,52 @@ public class AdminController {
         System.out.println(eMail + " " + number);
         boolean add = true;
         if (!managerCases.isUserExists(eMail) || eMail.equals("")) {
-            req.getSession(true).setAttribute("emailStat", "Error");
+            model.addAttribute("emailStat", "Error");
             add = false;
         } else {
-            req.getSession(true).setAttribute("emailStat", "OK");
+            model.addAttribute("emailStat", "OK");
         }
 
         if (managerCases.isNumberExists(number) || number.equals("")) {
-            req.getSession(true).setAttribute("numberStat", "Error");
+            model.addAttribute("numberStat", "Error");
             add = false;
         } else {
-            req.getSession(true).setAttribute("numberStat", "OK");
+            model.addAttribute("numberStat", "OK");
         }
         if (add == true) managerCases.addContractToBase(eMail, number);
 
         return "admin/adminNewContract";
     }
 
-//    @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
-//    public String adminChangeClientTariff(HttpServletRequest re, Locale locale, Model model) {
-//         int count = 1;
-//        if (count == 1) {
-//            req.getSession(true).setAttribute("check", "start");
-//            count++;
-//        }
-//
-//
-//        String eMail = (String) req.getSession(true).getAttribute("eMail");
-//        String userName = (String) req.getSession(true).getAttribute("userName");
-//        User user = userService.getUserByEMAil(eMail);
-//        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-//
-//        req.getSession(true).setAttribute("contracts", contracts);
-//        req.getSession().setAttribute("tariffService", tariffService);
-//        req.getRequestDispatcher("/WEB-INF/admin/adminChangeClientTariff.jsp").forward(req, resp);
-//        return "admin/adminChangeClientTariff";
-//    }
+    @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
+    public String adminChangeClientTariff(HttpServletRequest req,  Locale locale, Model model) {
+        int count = 1;
+        if (count == 1) {
+            model.addAttribute("check", "start");
+            count++;
+        }
+        User user = (User) req.getSession().getAttribute("currentUser");
+        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
+        model.addAttribute("contracts", contracts);
+        model.addAttribute("tariffService", tariffService);
+        return "admin/adminChangeClientTariff";
+    }
+
+    @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
+    public String adminChangeClient(HttpServletRequest req, Locale locale, Model model) {
+        int count = 1;
+        if (count == 1) {
+            req.getSession(true).setAttribute("check", "start");
+            count++;
+        }
+        User user = (User) req.getSession().getAttribute("currentUser");
+        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+
+        model.addAttribute("contracts", contracts);
+        model.addAttribute("tariffService", tariffService);
+        model.addAttribute("tariffOptions", optionService.getAll());
+
+        return "admin/adminChangeClient";
+    }
 }

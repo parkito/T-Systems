@@ -94,7 +94,7 @@
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open("GET", "userChangeTariffOptions?contractNumber=" + par1
+                                                xhr.open("DELETE", "userChangeTariffOptions?contractNumber=" + par1
                                                         + "&tariffOptionId=" + par2 + "&method=disable", false);
                                                 xhr.send();
                                             }
@@ -125,7 +125,7 @@
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open("GET", "userChangeTariffOptions?contractNumber=" + par1
+                                                xhr.open("DELETE", "userChangeTariffOptions?contractNumber=" + par1
                                                         + "&tariffOptionId=" + par2 + "&method=unable", false);
                                                 xhr.send();
                                                 if (xhr.status == 430) {

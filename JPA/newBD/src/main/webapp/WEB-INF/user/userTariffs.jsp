@@ -94,6 +94,8 @@
                                                 }
                                             }
                                             function popBox(num1, num2) {
+//                                                var token = $("meta[name='_csrf']").attr("content");
+//                                                var header = $("meta[name='_csrf_header']").attr("content");
                                                 x = confirm('Are you sure? ');
                                                 if (x == true) {
                                                     var xhr = new XMLHttpRequest();
