@@ -128,7 +128,7 @@
                                                 xhr.open("DELETE", "userChangeTariffOptions?contractNumber=" + par1
                                                         + "&tariffOptionId=" + par2 + "&method=unable", false);
                                                 xhr.send();
-                                                if (xhr.status == 430) {
+                                                if (xhr.status == 530) {
                                                     alert('Incompatible options')
                                                 }
                                             }

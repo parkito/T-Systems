@@ -70,7 +70,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "userNumberOperations?unblockItem=" + number, false);
+                                xhr.open("POST", "userNumberOperations?number=" + number + "&status=unblock", false);
                                 xhr.send();
                                 if (xhr.status == 600) {
                                     alert('Access error! Blocked by manager.')
@@ -96,7 +96,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "userNumberOperations?blockItem=" + number, false);
+                                xhr.open("POST", "userNumberOperations?number=" + number + "&status=block", false);
                                 xhr.send();
                             }
                         }

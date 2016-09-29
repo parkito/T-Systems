@@ -155,7 +155,7 @@ public class UserController {
                 contract.getTariffOptions().add(tariffOption);
                 contractService.updateEntity(contract);
             } else {
-                resp.setStatus(430);
+                resp.setStatus(530);
             }
         } else {
             contract.getTariffOptions().remove(tariffOption);
@@ -190,18 +190,23 @@ public class UserController {
      * @return page for view user's number operations
      */
     @RequestMapping(value = "/userNumberOperations", method = RequestMethod.POST)
-    public String userNumberOperationsDelete(HttpServletResponse resp, Locale locale, Model model,
-                                             @RequestParam(value = "unblockItem") String unblockItem,
-                                             @RequestParam(value = "blockItem") String blockItem) {
-        System.out.println(unblockItem + " " + blockItem);
+    public String userNumberOperationsDelete(HttpServletRequest req, HttpServletResponse resp, Locale locale, Model model,
+                                             @RequestParam(value = "number") String number,
+                                             @RequestParam(value = "status") String status) {
+        User user = (User) req.getSession().getAttribute("currentUser");
+        model.addAttribute("contracts", contractService.getAllContractsForUser(user.getUserId()));
+        String blockItem = null, unblockItem = null;
+        if (status.equals("block"))
+            blockItem = status;
+        else unblockItem = status;
         if (blockItem != null) {
-            Contract contract = contractService.getContractByNumber(blockItem);
+            Contract contract = contractService.getContractByNumber(number);
             contract.setBlocked(true);
             contractService.updateEntity(contract);
         }
 
         if (unblockItem != null) {
-            Contract contract = contractService.getContractByNumber(unblockItem);
+            Contract contract = contractService.getContractByNumber(number);
             if (!contract.getBlockedByAdmin()) {
                 contract.setBlocked(false);
                 contractService.updateEntity(contract);
