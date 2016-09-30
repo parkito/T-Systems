@@ -91,7 +91,6 @@ public class User {
         this.secondName = secondName;
     }
 
-
     public String getBirthdayData() {
         return birthdayData;
     }
@@ -99,7 +98,6 @@ public class User {
     public void setBirthdayData(String birthdayData) {
         this.birthdayData = birthdayData;
     }
-
 
     public String getPassport() {
         return passport;
@@ -109,7 +107,6 @@ public class User {
         this.passport = passport;
     }
 
-
     public String getAdress() {
         return adress;
     }
@@ -118,7 +115,6 @@ public class User {
         this.adress = adress;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -126,7 +122,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getPassword() {
         return password;
@@ -173,7 +168,6 @@ public class User {
 
         User user = (User) o;
 
-//        if (userId != user.userId) return false;
         if (Double.compare(user.balance, balance) != 0) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (secondName != null ? !secondName.equals(user.secondName) : user.secondName != null) return false;
@@ -182,7 +176,6 @@ public class User {
         if (adress != null ? !adress.equals(user.adress) : user.adress != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-//        if (accessLevel != null ? !accessLevel.equals(user.accessLevel) : user.
 
         return true;
     }

@@ -30,7 +30,6 @@ public class Tariff {
         this.tariffId = tariffId;
     }
 
-
     public String getTitle() {
         return title;
     }
@@ -39,16 +38,13 @@ public class Tariff {
         this.title = title;
     }
 
-
     public Double getPrice() {
         return price;
     }
 
-
     public void setPrice(Double price) {
         this.price = price;
     }
-
 
     public Tariff(String title, Double price) {
         this.title = title;

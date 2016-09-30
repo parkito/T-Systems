@@ -22,10 +22,8 @@ public class AccessLevel {
         this.status = status;
     }
 
-
     public AccessLevel() {
     }
-
 
     public int getAccessLevelId() {
         return accessLevelId;
@@ -34,7 +32,6 @@ public class AccessLevel {
     public void setAccessLevelId(int accessLevelId) {
         this.accessLevelId = accessLevelId;
     }
-
 
     public String getStatus() {
         return status;

@@ -54,7 +54,6 @@ public class Contract {
     @JoinColumn(name = "tariff_id")
     private Tariff tariff;
 
-
     public Contract() {
 
     }
@@ -63,7 +62,6 @@ public class Contract {
         return tariffOptions;
     }
 
-
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;
     }
@@ -71,7 +69,6 @@ public class Contract {
     public void setTariff(Tariff tariff) {
         this.tariff = tariff;
     }
-
 
     public Contract(String number, Tariff tariff) {
         this.number = number;
@@ -86,11 +83,9 @@ public class Contract {
         return blockedByAdmin;
     }
 
-
     public Tariff getTariff() {
         return tariff;
     }
-
 
     public int getContractId() {
         return contractId;
@@ -100,7 +95,6 @@ public class Contract {
         this.contractId = contractId;
     }
 
-
     public String getNumber() {
         return number;
     }
@@ -108,7 +102,6 @@ public class Contract {
     public void setNumber(String number) {
         this.number = number;
     }
-
 
     public boolean getIsBlocked() {
         return isBlocked;
@@ -118,7 +111,6 @@ public class Contract {
         this.isBlocked = isBlocked;
     }
 
-
     public boolean getBlockedByAdmin() {
         return blockedByAdmin;
     }
@@ -126,7 +118,6 @@ public class Contract {
     public void setBlockedByAdmin(boolean blockedByAdmin) {
         this.blockedByAdmin = blockedByAdmin;
     }
-
 
     public String getWhoBlockedId() {
         return whoBlockedId;

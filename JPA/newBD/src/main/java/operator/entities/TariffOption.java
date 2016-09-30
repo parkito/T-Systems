@@ -33,7 +33,6 @@ public class TariffOption {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tariffOptions")
     private final List<Contract> contracts = new ArrayList();
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "JoinOptions",
             joinColumns = @JoinColumn(name = "joinOptions_id"),
@@ -74,7 +73,6 @@ public class TariffOption {
         this.price = price;
     }
 
-
     public Double getConnectionPrice() {
         return connectionPrice;
     }
@@ -104,14 +102,9 @@ public class TariffOption {
         this.jointTogether.add(jointTogether);
     }
 
-
     public List<TariffOption> getimpossibleTogether() {
         return impossibleTogether;
     }
-
-    /**
-     * Removes all options that are incompatible with current option.
-     */
 
     public void removeimpossibleTogether() {
         impossibleTogether.clear();

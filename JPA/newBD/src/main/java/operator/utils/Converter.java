@@ -1,21 +1,23 @@
 package operator.utils;
 
-import java.security.MessageDigest;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.security.NoSuchAlgorithmException;
 
 /**
- * A controllers that converts to MD5.
+ * Password hashing.
  */
 public class Converter extends org.springframework.security.authentication.encoding.BasePasswordEncoder {
-    public static String getMD5(String word) throws NoSuchAlgorithmException{
-        String password = "one two free" + word + "four five six";
-        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-        byte[] array = messageDigest.digest(password.getBytes());
-        StringBuilder sb = new StringBuilder();
-        for (byte anArray : array) {
-            sb.append(Integer.toHexString((anArray & 0xFF) | 0x100).substring(1, 3));
-        }
-        return sb.toString();
+    /**
+     * Method for password encoding
+     * @param secret user's password
+     * @return encoded password
+     * @throws NoSuchAlgorithmException if algorithm goes wrong
+     */
+    public static String getMD5(String secret) throws NoSuchAlgorithmException{
+        String password = "one two free" + secret + "four five six";
+        String md5Hex = DigestUtils.md5Hex(password);
+        return md5Hex;
     }
 
     @Override

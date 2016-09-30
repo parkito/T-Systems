@@ -47,12 +47,12 @@
 
     <authentication-manager id="dao-auth">
         <authentication-provider user-service-ref="userDetailsService">
-            <!--<password-encoder ref="passwordEncoder"/>-->
+            <password-encoder ref="passwordEncoder"/>
         </authentication-provider>
     </authentication-manager>
-    <!--<beans:bean id="passwordEncoder"-->
-    <!--class="operator.utils.Converter">-->
-    <!--</beans:bean>-->
+    <beans:bean id="passwordEncoder"
+                class="operator.utils.Converter">
+    </beans:bean>
 
 
 </beans:beans>

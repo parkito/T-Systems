@@ -16,8 +16,8 @@ import java.util.Arrays;
  * Class for logging functionality
  */
 @Aspect
-public class Loging {
-    private static final Logger logger = Logger.getLogger(Loging.class);
+public class Logging {
+    private static final Logger logger = Logger.getLogger(Logging.class);
 
     /**
      * Pointcut at createEntity action
