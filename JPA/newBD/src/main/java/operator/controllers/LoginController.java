@@ -42,20 +42,25 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Locale locale, Model model) {
+        model.addAttribute("userData", true);
         return "index";
     }
 
     /**
      * Method for logout
+     *
+     * @param model model for page view
      * @return page for logout
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage() {
-        return "/login";
+    public String logoutPage(Model model) {
+        model.addAttribute("userData", false);
+        return "index";
     }
 
     /**
      * Method for denied actions
+     *
      * @return page for denied
      */
     @RequestMapping(value = "/denied", method = RequestMethod.GET)
@@ -65,14 +70,15 @@ public class LoginController {
 
     /**
      * This method returns a login page with an error block after an unsuccessful attempt.
+     *
      * @param locale locale;
-     * @param model model;
+     * @param model  model;
      * @return login.jsp
      */
     @RequestMapping(value = "/login-denied", method = RequestMethod.GET)
-    public String loginDenied(Locale locale, Model model) {
-        model.addAttribute("isInputValid", "false");
-        return "login";
+    public String loginDenied(HttpServletRequest req, Locale locale, Model model) {
+        model.addAttribute("userData", false);
+        return "index";
     }
 
     /**

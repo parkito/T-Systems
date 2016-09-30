@@ -39,7 +39,8 @@ public class UserDetailsServiceDAO implements UserDetailsService {
             user = this.userDAO.getUserByEMAil(eMail);
             List<SimpleGrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority(user.getAccessLevel().getStatus()));
-            return new org.springframework.security.core.userdetails.User(eMail, user.getPassword(), true, true, true, true, authorities);
+            return new org.springframework.security.core.userdetails.User(eMail, user.getPassword(),
+                    true, true, true, true, authorities);
         }
         catch (CustomDAOException ex) {
             throw new UsernameNotFoundException(eMail + " not found");

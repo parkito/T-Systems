@@ -27,7 +27,6 @@
                                 </span>
                             <h4>Contracts</h4>
                             <small>How much money do I have?</small>
-
                         </div>
                     </a>
                 </div>
@@ -69,7 +68,7 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/Help" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="Help" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/window-layout.svg" alt="window-layout">
@@ -81,7 +80,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="/Exit" class="panel panel-default thumbnail cm-thumbnail">
+                    <a href="logout" class="panel panel-default thumbnail cm-thumbnail">
                         <div class="panel-body text-center">
                     <span class="svg-48">
                     <img src="../assets/img/sf/cat.svg" alt="cat">
@@ -97,7 +96,7 @@
                 <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, ${currentUser.name} !</h1>
                     <p><strong><h3>We are glad to see you here ! </h3></strong>
                     <h3>Let's discover all opportunities and explore new horizonts! If you need a help, please</h3><a
-                            href="/Help"><h3>Contact us</h3></a></p>
+                            href="Help"><h3>Contact us</h3></a></p>
                 </div>
 
             </div>

@@ -27,7 +27,6 @@
                                 </span>
                             <h4>New client</h4>
                             <small>Add new contract</small>
-
                         </div>
                     </a>
                 </div>
@@ -39,7 +38,6 @@
                                 </span>
                             <h4>Change client</h4>
                             <small>Edit exist data</small>
-
                         </div>
                     </a>
                 </div>
@@ -51,7 +49,6 @@
                                 </span>
                             <h4>Edit tariff</h4>
                             <small>Edit tariff data</small>
-
                         </div>
                     </a>
                 </div>
@@ -63,7 +60,6 @@
                                 </span>
                             <h4>Edit options</h4>
                             <small>Edit tariff options</small>
-
                         </div>
                     </a>
                 </div>

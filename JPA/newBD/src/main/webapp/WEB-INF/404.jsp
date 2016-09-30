@@ -18,7 +18,7 @@
         }
 
         body {
-            background: url('/404.png') center no-repeat #fff
+            background: url('/WEB-INF/404.png/404.png') center no-repeat #fff
         }
 
         .content {

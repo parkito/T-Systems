@@ -8,7 +8,7 @@
         <div id="cm-menu-items-wrapper">
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
-                    <li class="active"><a href="/main" class="sf-house">Home</a></li>
+                    <li class="active"><a href="main" class="sf-house">Home</a></li>
                     <li><a href="adminNewClient" class="sf-dashboard">New client</a></li>
                     <li class="cm-submenu">
                         <a class="sf-notepad">Change contract<span class="caret"></span></a>
@@ -64,13 +64,13 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="/admin/FindClient"><i class="fa fa-fw fa-user"></i> Clients</a>
+                    <a href="adminFindClient"><i class="fa fa-fw fa-user"></i> Clients</a>
                 </li>
                 <li>
-                    <a href="/admin/ChangeClient"><i class="fa fa-fw fa-cog"></i> Tariffs</a>
+                    <a href="adminChangeClient"><i class="fa fa-fw fa-cog"></i> Tariffs</a>
                 </li>
                 <li>
-                    <a href="/Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                    <a href="Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
                 </li>
             </ul>
         </div>

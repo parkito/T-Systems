@@ -43,8 +43,6 @@
                      user-service-ref="userDetailsService"/>
         <csrf disabled="true"/>
     </http>
-
-
     <authentication-manager id="dao-auth">
         <authentication-provider user-service-ref="userDetailsService">
             <password-encoder ref="passwordEncoder"/>
@@ -53,6 +51,4 @@
     <beans:bean id="passwordEncoder"
                 class="operator.utils.Converter">
     </beans:bean>
-
-
 </beans:beans>
