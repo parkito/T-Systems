@@ -1,4 +1,3 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +12,6 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-
-    <%
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new tariff</h2>
@@ -29,15 +24,15 @@
                         String title;
                         String price;
 
-                        if (request.getSession().getAttribute("titleStat") == null)
+                        if (request.getAttribute("titleStat") == null)
                             title = "";
                         else
-                            title = (String) request.getSession().getAttribute("titleStat");
+                            title = (String) request.getAttribute("titleStat");
 
-                        if (request.getSession(true).getAttribute("priceStat") == null)
+                        if (request.getAttribute("priceStat") == null)
                             price = "";
                         else
-                            price = (String) request.getSession(true).getAttribute("priceStat");
+                            price = (String) request.getAttribute("priceStat");
 
                     %>
                     <table class="table">
@@ -77,7 +72,7 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewTariff?title=" + title + "&price=" + price, true);
+                                xhr.open("POST", "adminNewTariff?title=" + title + "&price=" + price, true);
                                 xhr.send();
                             }
                         }

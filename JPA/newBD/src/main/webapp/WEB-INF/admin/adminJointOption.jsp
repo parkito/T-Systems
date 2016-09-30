@@ -1,4 +1,3 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 
     <%
-    String userName = (String) request.getSession(true).getAttribute("userName");
+    String userName = (String) request.getAttribute("userName");
     %>
 <div id="global">
     <div class="container-fluid cm-container-white">
@@ -29,15 +28,15 @@
                         String tariffOne;
                         String tariffTwo;
 
-                        if (request.getSession().getAttribute("oneStat") == null)
+                        if (request.getAttribute("oneStat") == null)
                             tariffOne = "";
                         else
-                            tariffOne = (String) request.getSession().getAttribute("oneStat");
+                            tariffOne = (String) request.getAttribute("oneStat");
 
-                        if (request.getSession(true).getAttribute("twoStat") == null)
+                        if (request.getAttribute("twoStat") == null)
                             tariffTwo = "";
                         else
-                            tariffTwo = (String) request.getSession(true).getAttribute("twoStat");
+                            tariffTwo = (String) request.getAttribute("twoStat");
 
                     %>
                     <h4>Connect option</h4>
@@ -78,7 +77,7 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/ConnectOption?tariffOne=" + tariffOne + "&tariffTwo=" + tariffTwo, true);
+                                xhr.open("POST", "adminConnectOption?tariffOne=" + tariffOne + "&tariffTwo=" + tariffTwo, true);
                                 xhr.send();
                             }
                         }
@@ -91,7 +90,6 @@
     <%if (tariffOne.equals("OK") && tariffTwo.equals("OK")) {%>
     <div class="container-fluid cm-container-white">
         <h2 align="center" style="margin-top:0;">Conection added</h2>
-
     </div>
     <%}%>
 </div>

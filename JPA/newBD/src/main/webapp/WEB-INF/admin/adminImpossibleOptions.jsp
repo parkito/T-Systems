@@ -1,4 +1,3 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +12,6 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-
-    <%
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add incompatible options</h2>
@@ -29,15 +24,15 @@
                         String tariffOne;
                         String tariffTwo;
 
-                        if (request.getSession().getAttribute("oneStat") == null)
+                        if (request.getAttribute("oneStat") == null)
                             tariffOne = "";
                         else
-                            tariffOne = (String) request.getSession().getAttribute("oneStat");
+                            tariffOne = (String) request.getAttribute("oneStat");
 
-                        if (request.getSession(true).getAttribute("twoStat") == null)
+                        if (request.getAttribute("twoStat") == null)
                             tariffTwo = "";
                         else
-                            tariffTwo = (String) request.getSession(true).getAttribute("twoStat");
+                            tariffTwo = (String) request.getAttribute("twoStat");
 
                     %>
                     <h4>Add options</h4>
@@ -78,7 +73,7 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/ImpossibleOption?tariffOne=" + tariffOne + "&tariffTwo=" + tariffTwo, true);
+                                xhr.open("POST", "adminImpossibleOption?tariffOne=" + tariffOne + "&tariffTwo=" + tariffTwo, true);
                                 xhr.send();
                             }
                         }

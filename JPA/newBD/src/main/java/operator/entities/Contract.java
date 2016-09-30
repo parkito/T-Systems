@@ -14,7 +14,7 @@ import java.util.List;
 @NamedQuery(name = "Contract.getAll", query = "SELECT c FROM Contract c")
 public class Contract {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")
     private int contractId;
     @Basic

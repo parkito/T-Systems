@@ -13,7 +13,7 @@
         <class>operator.entities.TariffOption</class>
         <class>operator.entities.User</class>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="org.hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
         </properties>
     </persistence-unit>

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @NamedQuery(name = "Tariff.getAll", query = "SELECT tar FROM Tariff tar")
 public class Tariff {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tariff_id")
     private int tariffId;
     @Basic

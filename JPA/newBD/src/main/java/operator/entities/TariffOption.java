@@ -13,7 +13,7 @@ import java.util.List;
 @NamedQuery(name = "TariffOption.getAll", query = "SELECT opt FROM TariffOption opt")
 public class TariffOption {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tariffOption_id")
     private int tariffOptionId;
     @Basic

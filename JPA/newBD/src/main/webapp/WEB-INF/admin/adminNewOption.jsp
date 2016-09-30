@@ -1,4 +1,3 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +12,6 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-
-    <%
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new option</h2>
@@ -30,20 +25,20 @@
                         String price;
                         String connectionPrice;
 
-                        if (request.getSession().getAttribute("titleStat") == null)
+                        if (request.getAttribute("titleStat") == null)
                             title = "";
                         else
-                            title = (String) request.getSession().getAttribute("titleStat");
+                            title = (String) request.getAttribute("titleStat");
 
-                        if (request.getSession(true).getAttribute("priceStat") == null)
+                        if (request.getAttribute("priceStat") == null)
                             price = "";
                         else
-                            price = (String) request.getSession(true).getAttribute("priceStat");
+                            price = (String) request.getAttribute("priceStat");
 
-                        if (request.getSession(true).getAttribute("connectionPriceStat") == null)
+                        if (request.getAttribute("connectionPriceStat") == null)
                             connectionPrice = "";
                         else
-                            connectionPrice = (String) request.getSession(true).getAttribute("connectionPriceStat");
+                            connectionPrice = (String) request.getAttribute("connectionPriceStat");
 
                     %>
                     <table class="table">
@@ -90,7 +85,7 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewOption?title=" + title + "&price=" + price +
+                                xhr.open("POST", "adminNewOption?title=" + title + "&price=" + price +
                                         "&connectPrice=" + connectedPrice, true);
                                 xhr.send();
                             }

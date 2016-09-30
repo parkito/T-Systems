@@ -1,5 +1,5 @@
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
+<%@ page import="operator.entities.Contract" %>
+<%@ page import="operator.entities.User" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,6 @@
                          <button style="z-index:2" class="btn btn-primary md-search-white" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </form>
                     </span>
-
                     <script>
                         function finding() {
                             var text = document.getElementById('textFiled1').value;
@@ -40,7 +39,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/admin/ViewClient?email=" + text, true);
+                                    xhr.open("POST", "adminViewClient?email=" + text, true);
                                     xhr.send();
                                 }
                             }
@@ -52,10 +51,10 @@
     </div>
     <%
 
-        String check = (String) request.getSession(true).getAttribute("check");
+        String check = (String) request.getAttribute("check");
         if (check.equals("work"))
-            if (request.getSession(true).getAttribute("usrs") != null) {
-                User user = (User) request.getSession(true).getAttribute("usrs");
+            if (request.getAttribute("usrs") != null) {
+                User user = (User) request.getAttribute("usrs");
     %>
 
     <div class="container-fluid">

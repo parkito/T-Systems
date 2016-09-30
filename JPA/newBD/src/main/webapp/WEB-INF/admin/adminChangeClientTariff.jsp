@@ -1,13 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="operator.entities.Contract" %>
+<%@ page import="operator.entities.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
-<%@ page import="entities.TariffOption" %>
-<%@ page import="services.implementation.TariffServiceImpl" %>
-<%@ page import="entities.Tariff" %>
+<%@ page import="operator.entities.TariffOption" %>
+<%@ page import="operator.entities.Tariff" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,18 +19,15 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    ContractServiceImpl contractService = new ContractServiceImpl();
-    User user = (User) request.getSession(true).getAttribute("user");
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    List<Contract> contracts = (List<Contract>) request.getSession(true).getAttribute("contracts");
-    TariffServiceImpl tariffService = (TariffServiceImpl) request.getSession(true).getAttribute("tariffService");
+    String userName = (String) request.getAttribute("userName");
+    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
+    List<Tariff>allTariffs =(List<Tariff>)request.getAttribute("allTariffs");
     List<Integer> tempTariff = new ArrayList();
     int i = 1, k;
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Change tariff</h2>
-        <%--<h2 style="margin-top:0;"><%out.print(userName);%>, your tariffs:</h2>--%>
         <p></p>
     </div>
     <%----------------------------------------------------------------------------------------------%>
@@ -60,7 +53,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.open("POST", "adminFindClient?number=" + text, false);
                                     xhr.send();
                                 }
                             }
@@ -72,10 +65,10 @@
     </div>
 
 
-    <% String check = (String) request.getSession(true).getAttribute("check");
+    <% String check = (String) request.getAttribute("check");
         if (check.equals("work"))
-            if (request.getSession(true).getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getSession(true).getAttribute("usr");
+            if (request.getAttribute("usr") != null) {
+                Contract contract1 = (Contract) request.getAttribute("usr");
                 contracts.clear();
                 contracts.add(contract1);
     %>
@@ -119,7 +112,7 @@
                     <div class="panel-heading">Tariff list</div>
                     <div class="panel-body">
                         <%
-                            for (Tariff tariff : tariffService.getAll()) {
+                            for (Tariff tariff : allTariffs) {
                                 tempTariff.add(tariff.getTariffId());
                                 if (contract.getTariff().equals(tariff)) {%>
 
@@ -172,7 +165,7 @@
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
                                             var id = 1;
-                                            xhr.open("POST", "/user/Tariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
+                                            xhr.open("POST", "userTariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
                                             xhr.send();
                                             document.getElementById('textFiled').value = num2;
                                             find();

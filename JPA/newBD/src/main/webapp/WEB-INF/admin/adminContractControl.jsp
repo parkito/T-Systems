@@ -1,11 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="operator.entities.Contract" %>
+<%@ page import="operator.entities.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
-<%@ page import="entities.TariffOption" %>
+<%@ page import="operator.entities.TariffOption" %>
 <%@ page import="java.util.ArrayList" %>
 
 <!DOCTYPE html>
@@ -21,11 +18,6 @@
     <title>Contract control</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<%
-    User user = (User) request.getSession(true).getAttribute("userObj");
-%>
-<c:set var="userName" value="${sessionScope.userName}"/>
-
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Block/unblock contracts</h2>
@@ -55,7 +47,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.open("POST", "adminFindClient?number=" + text, true);
                                     xhr.send();
                                 }
                             }
@@ -67,12 +59,11 @@
     </div>
 
     <%
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        List<Contract> contracts = new ArrayList();// contractService.getAllContractsForUser(user.getUserId());
-        String check = (String) request.getSession(true).getAttribute("check");
+        List<Contract> contracts = new ArrayList();
+        String check = (String) request.getAttribute("check");
         if (check.equals("work"))
-            if (request.getSession(true).getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getSession(true).getAttribute("usr");
+            if (request.getAttribute("usr") != null) {
+                Contract contract1 = (Contract) request.getAttribute("usr");
                 contracts.clear();
                 contracts.add(contract1);
     %>
@@ -118,7 +109,7 @@
                         popBox();
                         function popBox() {
                             var xhr = new XMLHttpRequest();
-                            xhr.open("DELETE", "/admin/ContractControl?unblockItem=" + number, false);
+                            xhr.open("DELETE", "adminContractControl?unblockItem=" + number, false);
                             xhr.send();
                             document.getElementById('textFiled').value = number;
                             find();
@@ -141,7 +132,7 @@
                         popBox();
                         function popBox() {
                             var xhr = new XMLHttpRequest();
-                            xhr.open("DELETE", "/admin/ContractControl?blockItem=" + number, true);
+                            xhr.open("DELETE", "adminContractControl?blockItem=" + number, true);
                             xhr.send();
                             document.getElementById('textFiled').value = number;
                             find();

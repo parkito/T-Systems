@@ -1,5 +1,4 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
-<%@ page import="entities.Contract" %>
+<%@ page import="operator.entities.Contract" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +38,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/admin/FindClient?number=" + text, true);
+                                    xhr.open("POST", "adminFindClient?number=" + text, true);
                                     xhr.send();
                                 }
                             }
@@ -49,10 +48,10 @@
             </div>
         </div>
     </div>
-    <% String check = (String) request.getSession(true).getAttribute("check");
+    <% String check = (String) request.getAttribute("check");
         if (check.equals("work"))
-            if (request.getSession(true).getAttribute("usr") != null) {
-                Contract contract = (Contract) request.getSession(true).getAttribute("usr");
+            if (request.getAttribute("usr") != null) {
+                Contract contract = (Contract) request.getAttribute("usr");
     %>
 
     <div class="container-fluid">

@@ -1,11 +1,8 @@
-<%@ page import="entities.Contract" %>
-<%@ page import="entities.User" %>
-<%@ page import="services.implementation.ContractServiceImpl" %>
-<%@ page import="services.implementation.UserServiceImpl" %>
+<%@ page import="operator.entities.Contract" %>
+<%@ page import="operator.entities.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="services.implementation.TariffOptionServiceImpl" %>
-<%@ page import="entities.TariffOption" %>
-<%@ page import="entities.Tariff" %>
+<%@ page import="operator.entities.TariffOption" %>
+<%@ page import="operator.entities.Tariff" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +18,8 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    List<TariffOption> tariffs = (List<TariffOption>) request.getSession(true).getAttribute("options");
-    String userName = (String) request.getSession(true).getAttribute("userName");
+    List<TariffOption> tariffs = (List<TariffOption>) request.getAttribute("options");
+
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
@@ -62,7 +59,7 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/EditTariffOption?tariffOptionId=" + number, true);
+                                xhr.open("POST", "adminEditTariffOption?tariffOptionId=" + number, true);
                                 xhr.send();
                             }
                         }

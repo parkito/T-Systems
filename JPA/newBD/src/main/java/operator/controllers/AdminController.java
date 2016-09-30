@@ -99,13 +99,14 @@ public class AdminController {
         }
         User user = (User) req.getSession().getAttribute("currentUser");
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+        List<Tariff> tariffs = tariffService.getAll();
 
         model.addAttribute("contracts", contracts);
-        model.addAttribute("tariffService", tariffService);
+        model.addAttribute("allTariffs", tariffs);
         return "admin/adminChangeClientTariff";
     }
 
-    @RequestMapping(value = "/adminChangeClient", method = RequestMethod.POST)
+    @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
     public String adminChangeClient(HttpServletRequest req, Locale locale, Model model) {
         int count = 1;
         if (count == 1) {
@@ -116,7 +117,6 @@ public class AdminController {
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
 
         model.addAttribute("contracts", contracts);
-        model.addAttribute("tariffService", tariffService);
         model.addAttribute("tariffOptions", optionService.getAll());
 
         return "admin/adminChangeClient";
@@ -259,6 +259,7 @@ public class AdminController {
 
     @RequestMapping(value = "/adminConnectOption", method = RequestMethod.GET)
     public String adminConnectOptionGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("options",optionService.getAllJoinedTariffOption(0));
         return "admin/adminEditTariffOption";
     }
 
@@ -291,7 +292,7 @@ public class AdminController {
 
     @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.GET)
     public String adminImpossibleOptionGet(HttpServletRequest request, Locale locale, Model model) {
-        return "admin/adminImpossibleOption";
+        return "admin/adminImpossibleOptions";
     }
 
     @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.POST)
@@ -337,7 +338,7 @@ public class AdminController {
     @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.GET)
     public String adminDeleteJoOptionsGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
-        return "admin/adminDeleteJoOptionss";
+        return "admin/adminDeleteJoOptions";
     }
 
     @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.POST)
