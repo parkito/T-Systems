@@ -51,9 +51,8 @@ public class LoginController {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage() {
-        return "login";
+        return "/login";
     }
-
 
     /**
      * Method for denied actions
