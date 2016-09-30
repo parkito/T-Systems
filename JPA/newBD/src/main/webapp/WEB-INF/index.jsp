@@ -53,7 +53,6 @@
 <br>
 <font color="red">
     <c:if test="${userData!=null||userData==false}">
-        <%--<%if(request.getAttribute("userData")!=null){%>--%>
         <h3 align="center">
             E-mail or password is incorrect. Try again
         </h3>

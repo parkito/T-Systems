@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-xs-6">
-            <div class="checkbox"><label><input type="checkbox" name="_spring_security_remember_me"> Remember me</label>
+            <div class="checkbox"><label><input type="checkbox" name="remember-me-param"> Remember me</label>
             </div>
         </div>
         <div class="col-xs-6">
@@ -53,7 +53,6 @@
 <br>
 <font color="red">
     <c:if test="${userData!=null||userData==false}">
-        <%--<%if(request.getAttribute("userData")!=null){%>--%>
         <h3 align="center">
             E-mail or password is incorrect. Try again
         </h3>
