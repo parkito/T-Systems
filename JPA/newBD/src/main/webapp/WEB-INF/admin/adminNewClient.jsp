@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>New client</title>
 </head>
-<body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
 
 <div id="global">
@@ -21,51 +21,51 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <%
-                        String nameStat;
-                        String surName;
-                        String birthday;
-                        String passport;
-                        String adress;
-                        String email;
-                        String number;
-                        if (request.getAttribute("nameStat") == null)
-                            nameStat = "";
-                        else
-                            nameStat = (String) request.getAttribute("nameStat");
+                    <%--<%--%>
+                    <%--String nameStat;--%>
+                    <%--String surName;--%>
+                    <%--String birthday;--%>
+                    <%--String passport;--%>
+                    <%--String adress;--%>
+                    <%--String email;--%>
+                    <%--String number;--%>
+                    <%--if (request.getAttribute("nameStat") == null)--%>
+                    <%--nameStat = "";--%>
+                    <%--else--%>
+                    <%--nameStat = (String) request.getAttribute("nameStat");--%>
 
-                        if (request.getAttribute("surNameStat") == null)
-                            surName = "";
-                        else
-                            surName = (String) request.getAttribute("surNameStat");
+                    <%--if (request.getAttribute("surNameStat") == null)--%>
+                    <%--surName = "";--%>
+                    <%--else--%>
+                    <%--surName = (String) request.getAttribute("surNameStat");--%>
 
-                        if (request.getAttribute("birthday") == null)
-                            birthday = "";
-                        else
-                            birthday = (String) request.getAttribute("birthday");
+                    <%--if (request.getAttribute("birthday") == null)--%>
+                    <%--birthday = "";--%>
+                    <%--else--%>
+                    <%--birthday = (String) request.getAttribute("birthday");--%>
 
-                        if (request.getAttribute("passport") == null)
-                            passport = "";
-                        else
-                            passport = (String) request.getAttribute("passport");
+                    <%--if (request.getAttribute("passport") == null)--%>
+                    <%--passport = "";--%>
+                    <%--else--%>
+                    <%--passport = (String) request.getAttribute("passport");--%>
 
-                        if (request.getAttribute("adress") == null)
-                            adress = "";
-                        else
-                            adress = (String) request.getAttribute("adress");
+                    <%--if (request.getAttribute("adress") == null)--%>
+                    <%--adress = "";--%>
+                    <%--else--%>
+                    <%--adress = (String) request.getAttribute("adress");--%>
 
-                        if (request.getAttribute("email") == null)
-                            email = "";
-                        else
-                            email = (String) request.getAttribute("email");
+                    <%--if (request.getAttribute("email") == null)--%>
+                    <%--email = "";--%>
+                    <%--else--%>
+                    <%--email = (String) request.getAttribute("email");--%>
 
-                        if (request.getAttribute("number") == null)
-                            number = "";
-                        else
-                            number = (String) request.getAttribute("number");
+                    <%--if (request.getAttribute("number") == null)--%>
+                    <%--number = "";--%>
+                    <%--else--%>
+                    <%--number = (String) request.getAttribute("number");--%>
 
 
-                    %>
+                    <%--%>--%>
                     <table class="table">
                         <thead>
                         <tr>
@@ -77,32 +77,39 @@
                         <tr>
                             <td><input id="name" type="text" class="form-control" placeholder="Enter name"></td>
                             <td>
-                                <font color="blue"><%out.print(nameStat);%></font>
+                                <font color="blue">
+                                    <c:if test="${nameStat==null}">
+                                        ${surNameStat}
+                                    </c:if>
+                                    <c:if test="${nameStat!=null}">
+                                        ${surNameStat}
+                                    </c:if>
+                                </font>
                             </td>
                         </tr>
                         <tr>
                             <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
-                            <td><font color="blue"><%out.print(surName);%></font></td>
+                            <%--<td><font color="blue"><%out.print(surName);%></font></td>--%>
                         </tr>
                         <tr>
                             <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
-                            <td><font color="blue"><%out.print(birthday);%></font></td>
+                            <%--<td><font color="blue"><%out.print(birthday);%></font></td>--%>
                         </tr>
                         <tr>
                             <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
-                            <td><font color="blue"><%out.print(passport);%></font></td>
+                            <%--<td><font color="blue"><%out.print(passport);%></font></td>--%>
                         </tr>
                         <tr>
                             <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
-                            <td><font color="blue"><%out.print(adress);%></font></td>
+                            <%--<td><font color="blue"><%out.print(adress);%></font></td>--%>
                         </tr>
                         <tr>
                             <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
-                            <td><font color="blue"><%out.print(email);%></font></td>
+                            <%--<td><font color="blue"><%out.print(email);%></font></td>--%>
                         </tr>
                         <tr>
                             <td><input id="number" type="email" class="form-control" placeholder="Number"></td>
-                            <td><font color="blue"><%out.print(number);%></font></td>
+                            <%--<td><font color="blue"><%out.print(number);%></font></td>--%>
                         </tr>
                         </tbody>
                     </table>
@@ -129,7 +136,9 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminNewClient?name=" + name + "&surName=" + surName
                                         + "&birthday=" + birthday + "&passport=" + passport
-                                        + "&adress=" + adress + "&email=" + email + "&number=" + number, true);
+                                        + "&adress=" + adress + "&email=" + email + "&number=" + number, false);
+                                xhr.send();
+                                xhr.open("GET", "adminNewClient", false);
                                 xhr.send();
                             }
                         }
@@ -139,14 +148,14 @@
             </div>
         </div>
     </div>
-    <%
-        if (nameStat.equals("OK") && surName.equals("OK") && birthday.equals("OK") && passport.equals("OK")
-                && adress.equals("OK") && email.equals("OK")) {
-    %>
+    <%--<%--%>
+    <%--if (nameStat.equals("OK") && surName.equals("OK") && birthday.equals("OK") && passport.equals("OK")--%>
+    <%--&& adress.equals("OK") && email.equals("OK")) {--%>
+    <%--%>--%>
     <div class="container-fluid cm-container-white">
         <h2 align="center" style="margin-top:0;">Client added, password generated</h2>
     </div>
-    <%}%>
+    <%--<%}%>--%>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

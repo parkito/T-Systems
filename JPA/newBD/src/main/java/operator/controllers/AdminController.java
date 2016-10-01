@@ -60,7 +60,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.POST)
-    public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
+    @ResponseBody public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "name") String name,
                                      @RequestParam(value = "surName") String secondName,
                                      @RequestParam(value = "birthday") String birthdayDate,
@@ -69,10 +69,10 @@ public class AdminController {
                                      @RequestParam(value = "email") String eMail,
                                      @RequestParam(value = "number") String number) {
         boolean add = true;
-
-
+        System.out.println(name +" "+ secondName);
         if (name.equals("")) {
-            model.addAttribute("nameStat", "Error");
+            model.addAttribute("nameStat", true);
+            req.setAttribute("nameStat", "Error");
             add = false;
         } else
             model.addAttribute("nameStat", "OK");
@@ -111,7 +111,8 @@ public class AdminController {
 
 
         if (add == true) managerCases.addUserToBase(name, secondName,
-                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5,number));
+                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number));
+        
         return "admin/adminNewClient";
     }
 
