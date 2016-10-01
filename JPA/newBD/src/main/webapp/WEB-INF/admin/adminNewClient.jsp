@@ -116,7 +116,7 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "/admin/NewClient?name=" + name + "&surName=" + surName
+                                xhr.open("POST", "adminNewClient?name=" + name + "&surName=" + surName
                                         + "&birthday=" + birthday + "&passport=" + passport
                                         + "&adress=" + adress + "&email=" + email, true);
                                 xhr.send();

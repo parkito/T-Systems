@@ -59,6 +59,61 @@ public class AdminController {
         return "admin/adminNewClient";
     }
 
+    @RequestMapping(value = "/adminNewClient", method = RequestMethod.POST)
+    public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
+                                     @RequestParam(value = "name") String name,
+                                     @RequestParam(value = "surName") String secondName,
+                                     @RequestParam(value = "birthday") String birthdayDate,
+                                     @RequestParam(value = "passport") String passport,
+                                     @RequestParam(value = "adress") String adress,
+                                     @RequestParam(value = "email") String eMail) {
+        boolean add = true;
+
+        
+        if (name.equals("")) {
+            req.getSession(true).setAttribute("nameStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("nameStat", "OK");
+
+        if (secondName.equals("")) {
+            req.getSession(true).setAttribute("surNameStat", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("surNameStat", "OK");
+
+        if (birthdayDate.equals("")) {
+            req.getSession(true).setAttribute("birthday", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("birthday", "OK");
+
+        if (passport.equals("")) {
+            req.getSession(true).setAttribute("passport", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("passport", "OK");
+
+        if (adress.equals("")) {
+            req.getSession(true).setAttribute("adress", "Error");
+            add = false;
+        } else
+            req.getSession(true).setAttribute("adress", "OK");
+
+
+        if (managerCases.isUserExists(eMail) || eMail.equals("")) {
+            req.getSession(true).setAttribute("email", "Error");
+            add = false;
+        } else {
+            req.getSession(true).setAttribute("email", "OK");
+        }
+
+
+        if (add == true) managerCases.addUserToBase(name, secondName,
+                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5));
+        return "admin/adminNewClient";
+    }
+
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.GET)
     public String adminNewContractGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewContract";
@@ -258,7 +313,7 @@ public class AdminController {
 
     @RequestMapping(value = "/adminConnectOption", method = RequestMethod.GET)
     public String adminConnectOptionGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("options",optionService.getAllJoinedTariffOption(0));
+        model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
         return "admin/adminEditTariffOption";
     }
 
