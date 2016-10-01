@@ -91,7 +91,6 @@
                         </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
             <div class="modal-footer">
@@ -125,14 +124,11 @@
             </div>
         </div>
     </div>
-    <%--<%--%>
-    <%--if (nameStat.equals("OK") && surName.equals("OK") && birthday.equals("OK") && passport.equals("OK")--%>
-    <%--&& adress.equals("OK") && email.equals("OK")) {--%>
-    <%--%>--%>
-    <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Client added, password generated</h2>
-    </div>
-    <%--<%}%>--%>
+    <c:if test="${newClient!=null}">
+        <div class="container-fluid cm-container-white">
+            <h2 align="center" style="margin-top:0;">Client added, password generated</h2>
+        </div>
+    </c:if>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

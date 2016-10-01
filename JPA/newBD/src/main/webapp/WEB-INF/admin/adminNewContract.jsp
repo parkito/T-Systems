@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,21 +24,6 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <%
-                        String number;
-                        String email;
-
-                        if (request.getSession().getAttribute("emailStat") == null)
-                            email = "";
-                        else
-                            email = (String) request.getSession().getAttribute("emailStat");
-
-                        if (request.getSession(true).getAttribute("numberStat") == null)
-                            number = "";
-                        else
-                            number = (String) request.getSession(true).getAttribute("numberStat");
-
-                    %>
                     <table class="table">
                         <thead>
                         <tr>
@@ -54,7 +40,7 @@
                         </tr>
                         <tr>
                             <td><input id="number" type="text" class="form-control" placeholder="Number"></td>
-                            <td><font color="blue"><%out.print(number);%></font></td>
+                            <td><font color="blue">${numberStat}</font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -85,12 +71,12 @@
             </div>
         </div>
     </div>
-    <%if (number.equals("OK") && email.equals("OK")) {%>
-    <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Contract added</h2>
+    <c:if test="${newContract!=null}">
+        <div class="container-fluid cm-container-white">
+            <h2 align="center" style="margin-top:0;">Contract added</h2>
 
-    </div>
-    <%}%>
+        </div>
+    </c:if>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

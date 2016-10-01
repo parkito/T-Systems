@@ -52,7 +52,6 @@ public class AdminController {
 
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("nameStat", "ckeck");
         return "admin/adminNewClient";
     }
 
@@ -105,15 +104,17 @@ public class AdminController {
         }
 
 
-        if (add == true) managerCases.addUserToBase(name, secondName,
-                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number));
+        if (add == true) {
+            managerCases.addUserToBase(name, secondName,
+                    birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number));
+            model.addAttribute("newClient", true);
+        }
 
         return "admin/adminNewClient";
     }
 
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.GET)
     public String adminNewContractGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("emailStat", "Ok");
         return "admin/adminNewContract";
     }
 
@@ -137,7 +138,10 @@ public class AdminController {
         } else {
             model.addAttribute("numberStat", "OK");
         }
-        if (add == true) addContractToBase(eMail, number);
+        if (add == true) {
+            model.addAttribute("newContract", true);
+            addContractToBase(eMail, number);
+        }
 
         return "admin/adminNewContract";
     }
