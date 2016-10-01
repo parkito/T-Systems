@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
@@ -22,7 +23,7 @@ import java.util.Locale;
  * artyom-karnov@yandex.ru
  **/
 // TODO: 9/24/16 Продумать штуку про разрешенные тарифы. Видно, что в базе надо впихивать что-то
-// TODO: 9/27/16 Испраить фигню с аджаксом 
+// TODO: 9/27/16 Испраить фигню с аджаксом
 // TODO: 9/27/16 Исправить фигню с тарифными опциями, которые хер пойми как групируюся
 // TODO: 9/30/16 При лог ауте вылетает надпись о неправильном логине и пароле
 @Controller("LoginController")
@@ -53,7 +54,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(Model model) {
-        model.addAttribute("userData", false);
+        model.addAttribute("userData", true);
         return "index";
     }
 

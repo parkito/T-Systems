@@ -53,11 +53,10 @@ public class AdminController {
     @Autowired
     private ManagerCases managerCases;
 
-    @RequestMapping(value = "/check", method = RequestMethod.GET)
-    public String check(HttpServletRequest request, Locale locale, Model model) {
-        User user = new User("name", "second", "08.02.1992", "pass", "msk", "mail.com", "pass");
-        userService.createEntity(user);
-        return "index";
+
+    @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
+    public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminNewClient";
     }
 
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.GET)

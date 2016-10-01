@@ -10,15 +10,13 @@ import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
-import operator.services.implementation.TariffServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -128,11 +126,12 @@ public class UserController {
      * @return page for view user's tariff options changing
      */
     // TODO: 9/28/16 тут случаются глюки. Быть осторожным
-    @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.POST)
     public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
+        System.out.println(contractNumber + " " + tariffOptionId + " " + method);
         User user = (User) request.getSession().getAttribute("currentUser");
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         Contract contract = contractService.getContractByNumber(contractNumber);
@@ -155,7 +154,9 @@ public class UserController {
                 contract.getTariffOptions().add(tariffOption);
                 contractService.updateEntity(contract);
             } else {
-                resp.setStatus(530);
+                resp.addHeader("Access-Control-Allow-Origin", "*");
+                resp.addHeader("X-XSS-Protection", "0");
+                resp.setStatus(405);
             }
         } else {
             contract.getTariffOptions().remove(tariffOption);
@@ -179,6 +180,7 @@ public class UserController {
         return "user/userNumberOperations";
     }
     // TODO: 9/29/16 Оптимизация
+
     /**
      * Method for dispatching requests to user's number operations
      *
@@ -211,8 +213,9 @@ public class UserController {
                 contract.setBlocked(false);
                 contractService.updateEntity(contract);
             } else {
+                resp.addHeader("Access-Control-Allow-Origin", "*");
+                resp.addHeader("X-XSS-Protection", "0");
                 resp.setStatus(600);
-
             }
         }
         return "user/userNumberOperations";

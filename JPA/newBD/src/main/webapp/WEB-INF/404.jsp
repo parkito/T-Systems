@@ -4,8 +4,6 @@
     <title>404 - page not fount</title>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <%--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700&subset=latin,cyrillic'--%>
-    <%--rel='stylesheet' type='text/css'>--%>
     <style type="text/css">
         html, body {
             width: 100%;
@@ -18,7 +16,7 @@
         }
 
         body {
-            background: url('/WEB-INF/404.png/404.png') center no-repeat #fff
+            background: url('/404.png') center no-repeat #fff
         }
 
         .content {

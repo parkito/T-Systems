@@ -1,4 +1,3 @@
-<%@ page import="services.implementation.UserServiceImpl" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +12,10 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-    <%
-    String userName = (String) request.getSession(true).getAttribute("userName");
-    %>
 
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new client</h2>
-        <%--<p></p>--%>
     </div>
     <div class="container-fluid">
         <div class="panel panel-default">
@@ -33,35 +28,35 @@
                         String passport;
                         String adress;
                         String email;
-                        if (request.getSession().getAttribute("nameStat") == null)
+                        if (request.getAttribute("nameStat") == null)
                             nameStat = "";
                         else
-                            nameStat = (String) request.getSession().getAttribute("nameStat");
+                            nameStat = (String) request.getAttribute("nameStat");
 
-                        if (request.getSession(true).getAttribute("surNameStat") == null)
+                        if (request.getAttribute("surNameStat") == null)
                             surName = "";
                         else
-                            surName = (String) request.getSession(true).getAttribute("surNameStat");
+                            surName = (String) request.getAttribute("surNameStat");
 
-                        if (request.getSession(true).getAttribute("birthday") == null)
+                        if (request.getAttribute("birthday") == null)
                             birthday = "";
                         else
-                            birthday = (String) request.getSession(true).getAttribute("birthday");
+                            birthday = (String) request.getAttribute("birthday");
 
-                        if (request.getSession(true).getAttribute("passport") == null)
+                        if (request.getAttribute("passport") == null)
                             passport = "";
                         else
-                            passport = (String) request.getSession(true).getAttribute("passport");
+                            passport = (String) request.getAttribute("passport");
 
-                        if (request.getSession(true).getAttribute("adress") == null)
+                        if (request.getAttribute("adress") == null)
                             adress = "";
                         else
-                            adress = (String) request.getSession(true).getAttribute("adress");
+                            adress = (String) request.getAttribute("adress");
 
-                        if (request.getSession(true).getAttribute("email") == null)
+                        if (request.getAttribute("email") == null)
                             email = "";
                         else
-                            email = (String) request.getSession(true).getAttribute("email");
+                            email = (String) request.getAttribute("email");
 
 
                     %>

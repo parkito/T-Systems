@@ -16,7 +16,7 @@
         }
 
         body {
-            background: url('/WEB-INF/help.png') center no-repeat #fff
+            background: url('/help.png') center no-repeat #fff
         }
 
         .content {
