@@ -28,6 +28,7 @@
                         String passport;
                         String adress;
                         String email;
+                        String number;
                         if (request.getAttribute("nameStat") == null)
                             nameStat = "";
                         else
@@ -57,6 +58,11 @@
                             email = "";
                         else
                             email = (String) request.getAttribute("email");
+
+                        if (request.getAttribute("number") == null)
+                            number = "";
+                        else
+                            number = (String) request.getAttribute("number");
 
 
                     %>
@@ -94,6 +100,10 @@
                             <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
                             <td><font color="blue"><%out.print(email);%></font></td>
                         </tr>
+                        <tr>
+                            <td><input id="number" type="email" class="form-control" placeholder="Number"></td>
+                            <td><font color="blue"><%out.print(number);%></font></td>
+                        </tr>
                         </tbody>
                     </table>
 
@@ -111,6 +121,7 @@
                         var passport = document.getElementById('passport').value;
                         var adress = document.getElementById('adress').value;
                         var email = document.getElementById('email').value;
+                        var number = document.getElementById('number').value;
                         popBox();
                         function popBox() {
                             x = confirm('Are you sure? ');
@@ -118,7 +129,7 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminNewClient?name=" + name + "&surName=" + surName
                                         + "&birthday=" + birthday + "&passport=" + passport
-                                        + "&adress=" + adress + "&email=" + email, true);
+                                        + "&adress=" + adress + "&email=" + email + "&number=" + number, true);
                                 xhr.send();
                             }
                         }

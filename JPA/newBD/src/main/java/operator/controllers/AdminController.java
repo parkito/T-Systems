@@ -66,10 +66,11 @@ public class AdminController {
                                      @RequestParam(value = "birthday") String birthdayDate,
                                      @RequestParam(value = "passport") String passport,
                                      @RequestParam(value = "adress") String adress,
-                                     @RequestParam(value = "email") String eMail) {
+                                     @RequestParam(value = "email") String eMail,
+                                     @RequestParam(value = "number") String number) {
         boolean add = true;
 
-        
+
         if (name.equals("")) {
             req.getSession(true).setAttribute("nameStat", "Error");
             add = false;
@@ -110,7 +111,7 @@ public class AdminController {
 
 
         if (add == true) managerCases.addUserToBase(name, secondName,
-                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5));
+                birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5,number));
         return "admin/adminNewClient";
     }
 

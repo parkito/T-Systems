@@ -11,9 +11,12 @@ import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
 import operator.services.implementation.TariffOptionServiceImpl;
+import operator.utils.Converter;
+import operator.utils.Smsc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 /**
@@ -155,7 +158,7 @@ public class ManagerCases {
      * @param size password length
      * @return n-length password
      */
-    public String passwordGenerator(int size) {
+    public String passwordGenerator(int size, String number) {
         Random rand = new Random();
         int num;
         StringBuilder sb = new StringBuilder();
@@ -165,6 +168,13 @@ public class ManagerCases {
             sb.append(set.charAt(num));
         }
         String result = sb.toString();
+        Smsc sms = new Smsc("parkito", "214189");
+//        sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
+        try {
+            result = Converter.getMD5(result);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 
