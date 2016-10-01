@@ -14,27 +14,23 @@ import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
 import operator.services.implementation.ContractServiceImpl;
-import operator.services.implementation.TariffOptionServiceImpl;
-import operator.services.implementation.TariffServiceImpl;
-import operator.services.implementation.UserServiceImpl;
-import operator.utils.Parser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
 /**
  * A controllers to dispatch the queries of admins.
  */
-@Controller
+@Controller("AdminController")
 public class AdminController {
     @Autowired
     private UserService userService;
@@ -56,11 +52,12 @@ public class AdminController {
 
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("nameStat", "ckeck");
         return "admin/adminNewClient";
     }
 
-    @RequestMapping(value = "/adminNewClient", method = RequestMethod.POST)
-    @ResponseBody public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
+    @RequestMapping(value = "/adminNewClient", method = RequestMethod.DELETE)
+    public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "name") String name,
                                      @RequestParam(value = "surName") String secondName,
                                      @RequestParam(value = "birthday") String birthdayDate,
@@ -69,13 +66,11 @@ public class AdminController {
                                      @RequestParam(value = "email") String eMail,
                                      @RequestParam(value = "number") String number) {
         boolean add = true;
-        System.out.println(name +" "+ secondName);
         if (name.equals("")) {
-            model.addAttribute("nameStat", true);
-            req.setAttribute("nameStat", "Error");
+            model.addAttribute("nameStat", name);
             add = false;
         } else
-            model.addAttribute("nameStat", "OK");
+            model.addAttribute("nameStat", name);
 
         if (secondName.equals("")) {
             model.addAttribute("surNameStat", "Error");
@@ -112,12 +107,13 @@ public class AdminController {
 
         if (add == true) managerCases.addUserToBase(name, secondName,
                 birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number));
-        
+
         return "admin/adminNewClient";
     }
 
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.GET)
     public String adminNewContractGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("emailStat", "Ok");
         return "admin/adminNewContract";
     }
 

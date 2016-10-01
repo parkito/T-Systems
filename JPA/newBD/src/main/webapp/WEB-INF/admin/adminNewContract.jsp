@@ -49,7 +49,7 @@
                         <tr>
                             <td><input id="email" type="text" class="form-control" placeholder="Email"></td>
                             <td>
-                                <font color="blue"><%out.print(email);%></font>
+                                <font color="blue">${emailStat}</font>
                             </td>
                         </tr>
                         <tr>

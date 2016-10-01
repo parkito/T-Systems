@@ -21,51 +21,6 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <%--<%--%>
-                    <%--String nameStat;--%>
-                    <%--String surName;--%>
-                    <%--String birthday;--%>
-                    <%--String passport;--%>
-                    <%--String adress;--%>
-                    <%--String email;--%>
-                    <%--String number;--%>
-                    <%--if (request.getAttribute("nameStat") == null)--%>
-                    <%--nameStat = "";--%>
-                    <%--else--%>
-                    <%--nameStat = (String) request.getAttribute("nameStat");--%>
-
-                    <%--if (request.getAttribute("surNameStat") == null)--%>
-                    <%--surName = "";--%>
-                    <%--else--%>
-                    <%--surName = (String) request.getAttribute("surNameStat");--%>
-
-                    <%--if (request.getAttribute("birthday") == null)--%>
-                    <%--birthday = "";--%>
-                    <%--else--%>
-                    <%--birthday = (String) request.getAttribute("birthday");--%>
-
-                    <%--if (request.getAttribute("passport") == null)--%>
-                    <%--passport = "";--%>
-                    <%--else--%>
-                    <%--passport = (String) request.getAttribute("passport");--%>
-
-                    <%--if (request.getAttribute("adress") == null)--%>
-                    <%--adress = "";--%>
-                    <%--else--%>
-                    <%--adress = (String) request.getAttribute("adress");--%>
-
-                    <%--if (request.getAttribute("email") == null)--%>
-                    <%--email = "";--%>
-                    <%--else--%>
-                    <%--email = (String) request.getAttribute("email");--%>
-
-                    <%--if (request.getAttribute("number") == null)--%>
-                    <%--number = "";--%>
-                    <%--else--%>
-                    <%--number = (String) request.getAttribute("number");--%>
-
-
-                    <%--%>--%>
                     <table class="table">
                         <thead>
                         <tr>
@@ -78,38 +33,61 @@
                             <td><input id="name" type="text" class="form-control" placeholder="Enter name"></td>
                             <td>
                                 <font color="blue">
-                                    <c:if test="${nameStat==null}">
-                                        ${surNameStat}
-                                    </c:if>
                                     <c:if test="${nameStat!=null}">
-                                        ${surNameStat}
+                                        ${nameStat}
                                     </c:if>
                                 </font>
                             </td>
                         </tr>
                         <tr>
                             <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
-                            <%--<td><font color="blue"><%out.print(surName);%></font></td>--%>
+                            <td>
+                                <font color="blue">
+                                    <c:if test="${surName!=null}">
+                                        ${surName}
+                                    </c:if>
+                                </font>
+                            </td>
                         </tr>
                         <tr>
                             <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
-                            <%--<td><font color="blue"><%out.print(birthday);%></font></td>--%>
+                            <font color="blue">
+                                <c:if test="${birthday!=null}">
+                                    ${birthday}
+                                </c:if>
+                            </font>
                         </tr>
                         <tr>
                             <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
-                            <%--<td><font color="blue"><%out.print(passport);%></font></td>--%>
+                            <font color="blue">
+                                <c:if test="${passport!=null}">
+                                    ${passport}
+                                </c:if>
+                            </font>
                         </tr>
                         <tr>
                             <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
-                            <%--<td><font color="blue"><%out.print(adress);%></font></td>--%>
+                            <font color="blue">
+                                <c:if test="${adress!=null}">
+                                    ${adress}
+                                </c:if>
+                            </font>
                         </tr>
                         <tr>
                             <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
-                            <%--<td><font color="blue"><%out.print(email);%></font></td>--%>
+                            <font color="blue">
+                                <c:if test="${email!=null}">
+                                    ${email}
+                                </c:if>
+                            </font>
                         </tr>
                         <tr>
                             <td><input id="number" type="email" class="form-control" placeholder="Number"></td>
-                            <%--<td><font color="blue"><%out.print(number);%></font></td>--%>
+                            <font color="blue">
+                                <c:if test="${number!=null}">
+                                    ${number}
+                                </c:if>
+                            </font>
                         </tr>
                         </tbody>
                     </table>
@@ -134,12 +112,11 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "adminNewClient?name=" + name + "&surName=" + surName
+                                xhr.open("DELETE", "adminNewClient?name=" + name + "&surName=" + surName
                                         + "&birthday=" + birthday + "&passport=" + passport
                                         + "&adress=" + adress + "&email=" + email + "&number=" + number, false);
                                 xhr.send();
-                                xhr.open("GET", "adminNewClient", false);
-                                xhr.send();
+
                             }
                         }
 
