@@ -72,41 +72,41 @@ public class AdminController {
 
 
         if (name.equals("")) {
-            req.getSession(true).setAttribute("nameStat", "Error");
+            model.addAttribute("nameStat", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("nameStat", "OK");
+            model.addAttribute("nameStat", "OK");
 
         if (secondName.equals("")) {
-            req.getSession(true).setAttribute("surNameStat", "Error");
+            model.addAttribute("surNameStat", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("surNameStat", "OK");
+            model.addAttribute("surNameStat", "OK");
 
         if (birthdayDate.equals("")) {
-            req.getSession(true).setAttribute("birthday", "Error");
+            model.addAttribute("birthday", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("birthday", "OK");
+            model.addAttribute("birthday", "OK");
 
         if (passport.equals("")) {
-            req.getSession(true).setAttribute("passport", "Error");
+            model.addAttribute("passport", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("passport", "OK");
+            model.addAttribute("passport", "OK");
 
         if (adress.equals("")) {
-            req.getSession(true).setAttribute("adress", "Error");
+            model.addAttribute("adress", "Error");
             add = false;
         } else
-            req.getSession(true).setAttribute("adress", "OK");
+            model.addAttribute("adress", "OK");
 
 
         if (managerCases.isUserExists(eMail) || eMail.equals("")) {
-            req.getSession(true).setAttribute("email", "Error");
+            model.addAttribute("email", "Error");
             add = false;
         } else {
-            req.getSession(true).setAttribute("email", "OK");
+            model.addAttribute("email", "OK");
         }
 
 
