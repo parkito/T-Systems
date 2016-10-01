@@ -13,15 +13,13 @@ import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
-import operator.services.implementation.ContractServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -56,6 +54,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.DELETE)
+    @Scope("session")
     public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "name") String name,
                                      @RequestParam(value = "surName") String secondName,
@@ -66,10 +65,10 @@ public class AdminController {
                                      @RequestParam(value = "number") String number) {
         boolean add = true;
         if (name.equals("")) {
-            model.addAttribute("nameStat", name);
+            model.addAttribute("nameStat", "Error");
             add = false;
         } else
-            model.addAttribute("nameStat", name);
+            model.addAttribute("nameStat", "OK");
 
         if (secondName.equals("")) {
             model.addAttribute("surNameStat", "Error");
