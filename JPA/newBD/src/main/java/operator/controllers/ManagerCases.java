@@ -6,6 +6,7 @@ import operator.exceptions.UserNotFoundException;
 import operator.services.api.*;
 import operator.services.implementation.TariffOptionServiceImpl;
 import operator.utils.Converter;
+import operator.utils.EmailSender;
 import operator.utils.Smsc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -155,7 +156,7 @@ public class ManagerCases {
      * @param size password length
      * @return n-length password
      */
-    public String passwordGenerator(int size, String number) {
+    public String passwordGenerator(int size, String number,String eMail,String user) {
         Random rand = new Random();
         int num;
         StringBuilder sb = new StringBuilder();
@@ -167,6 +168,7 @@ public class ManagerCases {
         String result = sb.toString();
         Smsc sms = new Smsc("parkito", "214189");
 //        sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
+        EmailSender.send(eMail,user,result);
         try {
             result = Converter.getMD5(result);
         } catch (NoSuchAlgorithmException e) {
@@ -174,6 +176,8 @@ public class ManagerCases {
         }
         return result;
     }
+
+
 
     /**
      * Adding joint tariffs and saving to base

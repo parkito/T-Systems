@@ -106,7 +106,8 @@ public class AdminController {
 
         if (add == true) {
             managerCases.addUserToBase(name, secondName,
-                    birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number));
+                    birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number, eMail, name));
+
             model.addAttribute("newClient", true);
         }
 

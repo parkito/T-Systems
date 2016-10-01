@@ -40,7 +40,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "accessLevel_id")
     private AccessLevel accessLevel;
 
@@ -48,7 +48,7 @@ public class User {
         this.accessLevel = accessLevel;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     private final List<Contract> contracts = new ArrayList();
 
     public AccessLevel getAccessLevel() {
@@ -136,7 +136,7 @@ public class User {
 
     public User(String name, String secondName, String birthdayData,
                 String passport, String adress,
-                String email, String password,AccessLevel accessLevel) {
+                String email, String password, AccessLevel accessLevel) {
         this.name = name;
         this.secondName = secondName;
         this.birthdayData = birthdayData;
@@ -144,7 +144,7 @@ public class User {
         this.adress = adress;
         this.email = email;
         this.password = password;
-        this.accessLevel=accessLevel;
+        this.accessLevel = accessLevel;
     }
 
     @Override
