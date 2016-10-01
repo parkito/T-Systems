@@ -43,51 +43,57 @@
                             <td><input id="surName" type="text" class="form-control" placeholder="Surname"></td>
                             <td>
                                 <font color="blue">
-                                    <c:if test="${surName!=null}">
-                                        ${surName}
+                                    <c:if test="${surNameStat!=null}">
+                                        ${surNameStat}
                                     </c:if>
                                 </font>
                             </td>
                         </tr>
-                        <tr>
-                            <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
+
+                        <td><input id="birthday" type="date" class="form-control" placeholder="Birthday date"></td>
+                        <td>
                             <font color="blue">
                                 <c:if test="${birthday!=null}">
                                     ${birthday}
                                 </c:if>
                             </font>
+                        </td>
                         </tr>
                         <tr>
                             <td><input id="passport" type="text" class="form-control" placeholder="Passport"></td>
-                            <font color="blue">
+                            <td><font color="blue">
                                 <c:if test="${passport!=null}">
                                     ${passport}
                                 </c:if>
                             </font>
+                            </td>
                         </tr>
                         <tr>
                             <td><input id="adress" type="text" class="form-control" placeholder="Adress"></td>
-                            <font color="blue">
+                            <td><font color="blue">
                                 <c:if test="${adress!=null}">
                                     ${adress}
                                 </c:if>
                             </font>
+                            </td>
                         </tr>
                         <tr>
                             <td><input id="email" type="email" class="form-control" placeholder="Email"></td>
-                            <font color="blue">
+                            <td><font color="blue">
                                 <c:if test="${email!=null}">
                                     ${email}
                                 </c:if>
                             </font>
+                            </td>
                         </tr>
                         <tr>
                             <td><input id="number" type="email" class="form-control" placeholder="Number"></td>
-                            <font color="blue">
+                            <td><font color="blue">
                                 <c:if test="${number!=null}">
                                     ${number}
                                 </c:if>
                             </font>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

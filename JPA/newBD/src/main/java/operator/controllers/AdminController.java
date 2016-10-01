@@ -65,41 +65,41 @@ public class AdminController {
                                      @RequestParam(value = "number") String number) {
         boolean add = true;
         if (name.equals("")) {
-            model.addAttribute("nameStat", "Error");
+            req.getSession().setAttribute("nameStat", "Error");
             add = false;
         } else
-            model.addAttribute("nameStat", "OK");
+            req.getSession().setAttribute("nameStat", "OK");
 
         if (secondName.equals("")) {
-            model.addAttribute("surNameStat", "Error");
+            req.getSession().setAttribute("surNameStat", "Error");
             add = false;
         } else
-            model.addAttribute("surNameStat", "OK");
+            req.getSession().setAttribute("surNameStat", "OK");
 
         if (birthdayDate.equals("")) {
-            model.addAttribute("birthday", "Error");
+            req.getSession().setAttribute("birthday", "Error");
             add = false;
         } else
-            model.addAttribute("birthday", "OK");
+            req.getSession().setAttribute("birthday", "OK");
 
         if (passport.equals("")) {
-            model.addAttribute("passport", "Error");
+            req.getSession().setAttribute("passport", "Error");
             add = false;
         } else
-            model.addAttribute("passport", "OK");
+            req.getSession().setAttribute("passport", "OK");
 
         if (adress.equals("")) {
-            model.addAttribute("adress", "Error");
+            req.getSession().setAttribute("adress", "Error");
             add = false;
         } else
-            model.addAttribute("adress", "OK");
+            req.getSession().setAttribute("adress", "OK");
 
 
         if (managerCases.isUserExists(eMail) || eMail.equals("")) {
-            model.addAttribute("email", "Error");
+            req.getSession().setAttribute("email", "Error");
             add = false;
         } else {
-            model.addAttribute("email", "OK");
+            req.getSession().setAttribute("email", "OK");
         }
 
 
@@ -107,7 +107,7 @@ public class AdminController {
             managerCases.addUserToBase(name, secondName,
                     birthdayDate, passport, adress, eMail, managerCases.passwordGenerator(5, number, eMail, name));
 
-            model.addAttribute("newClient", true);
+            req.getSession().setAttribute("newClient", true);
         }
 
         return "admin/adminNewClient";
@@ -227,7 +227,7 @@ public class AdminController {
         return "admin/adminNewTariff";
     }
 
-    // TODO: 9/30/16 Фигня какая-то. Проверь!!!! 
+    // TODO: 9/30/16 Фигня какая-то. Проверь!!!!
     @RequestMapping(value = "/adminNewTariff", method = RequestMethod.POST)
     public String adminNewTariffPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "title") String title,
