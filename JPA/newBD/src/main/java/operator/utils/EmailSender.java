@@ -1,5 +1,8 @@
 package operator.utils;
 
+import operator.controllers.ManagerCases;
+import org.apache.log4j.Logger;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -13,6 +16,7 @@ import java.util.Properties;
  * artyom-karnov@yandex.ru
  **/
 public class EmailSender {
+    private final static Logger logger = Logger.getLogger(EmailSender.class);
 
     public static void send(String eMail, String user, String password) {
         String to = eMail;
@@ -30,7 +34,7 @@ public class EmailSender {
                     "to K-Mobile!\n Your password: " + password + "</h2>", "text/html");
             Transport.send(message);
         } catch (MessagingException mex) {
-            mex.printStackTrace();
+            logger.info(mex);
         }
     }
 }
