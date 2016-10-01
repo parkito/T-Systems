@@ -70,7 +70,7 @@
                     <a href="adminChangeClient"><i class="fa fa-fw fa-cog"></i> Tariffs</a>
                 </li>
                 <li>
-                    <a href="Exit"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                    <a href="logout"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
                 </li>
             </ul>
         </div>

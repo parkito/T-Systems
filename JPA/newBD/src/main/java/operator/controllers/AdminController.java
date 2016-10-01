@@ -408,12 +408,14 @@ public class AdminController {
 
     @RequestMapping(value = "/adminViewClient", method = RequestMethod.GET)
     public String adminViewClientGet(HttpServletRequest request, Locale locale, Model model) {
+        model.addAttribute("check", "work");
         return "admin/adminViewClient";
     }
 
     @RequestMapping(value = "/adminViewClient", method = RequestMethod.POST)
     public String adminViewClientPost(HttpServletRequest request, Locale locale, Model model,
                                       @RequestParam(value = "email") String email) {
+        System.out.println(email);
         model.addAttribute("check", "work");
         try {
             User user = userService.getUserByEMAil(email);
@@ -427,14 +429,14 @@ public class AdminController {
 
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.GET)
     public String adminFindClientGet(HttpServletRequest request, Locale locale, Model model) {
-        return "admin/adminViewClient";
+        model.addAttribute("check", "work");
+        return "admin/adminFindClient";
     }
 
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.POST)
     public String adminFindClientPost(HttpServletRequest request, Locale locale, Model model,
                                       @RequestParam(value = "number") String number) {
-        model.addAttribute("check", "work");
-        ContractServiceImpl contractService = new ContractServiceImpl();
+        model.addAttribute("check", "notwork");
         try {
             Contract contract = contractService.getContractByNumber(number);
             model.addAttribute("usr", contract);
@@ -442,6 +444,6 @@ public class AdminController {
         } catch (ContractNotFoundException ex) {
             model.addAttribute("usr", null);
         }
-        return "admin/adminViewClient";
+        return "admin/adminFindClient";
     }
 }

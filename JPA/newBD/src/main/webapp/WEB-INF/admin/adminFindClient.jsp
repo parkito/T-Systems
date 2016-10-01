@@ -48,7 +48,8 @@
             </div>
         </div>
     </div>
-    <% String check = (String) request.getAttribute("check");
+    <%
+        String check = (String) request.getAttribute("check");
         if (check.equals("work"))
             if (request.getAttribute("usr") != null) {
                 Contract contract = (Contract) request.getAttribute("usr");
