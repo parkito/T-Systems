@@ -136,7 +136,7 @@ public class User {
 
     public User(String name, String secondName, String birthdayData,
                 String passport, String adress,
-                String email, String password) {
+                String email, String password,AccessLevel accessLevel) {
         this.name = name;
         this.secondName = secondName;
         this.birthdayData = birthdayData;
@@ -144,6 +144,7 @@ public class User {
         this.adress = adress;
         this.email = email;
         this.password = password;
+        this.accessLevel=accessLevel;
     }
 
     @Override

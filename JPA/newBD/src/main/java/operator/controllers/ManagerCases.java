@@ -1,15 +1,9 @@
 package operator.controllers;
 
-import operator.entities.Contract;
-import operator.entities.Tariff;
-import operator.entities.TariffOption;
-import operator.entities.User;
+import operator.entities.*;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.UserNotFoundException;
-import operator.services.api.ContractService;
-import operator.services.api.TariffOptionService;
-import operator.services.api.TariffService;
-import operator.services.api.UserService;
+import operator.services.api.*;
 import operator.services.implementation.TariffOptionServiceImpl;
 import operator.utils.Converter;
 import operator.utils.Smsc;
@@ -37,6 +31,8 @@ public class ManagerCases {
     TariffService tariffService;
     @Autowired
     TariffOptionService tariffOptionService;
+    @Autowired
+    AccessLevelService accessLevelService;
 
     /**
      * Checking user existing
@@ -67,9 +63,10 @@ public class ManagerCases {
     public void addUserToBase(String name, String secondName, String birthdayData,
                               String passport, String adress,
                               String email, String password) {
+        AccessLevel accessLevel = accessLevelService.getEntityById(1);
         User user = new User(name, secondName, birthdayData,
                 passport, adress,
-                email, password);
+                email, password, accessLevel);
         userService.createEntity(user);
     }
 
