@@ -145,7 +145,7 @@ public class AdminController {
             req.getSession().setAttribute("newContract", true);
             req.getSession().setAttribute("numberStat", "OK");
             req.getSession().setAttribute("emailStat", "OK");
-            addContractToBase(eMail, number);
+            managerCases.addContractToBase(eMail, number);
         }
 
         return "admin/adminNewContract";
@@ -158,7 +158,6 @@ public class AdminController {
         return "admin/adminChangeClientTariff";
     }
 
-    // TODO: 10/2/16 Проблема в том что изменения из не подхватываются фронтом. 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.POST)
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
@@ -245,11 +244,6 @@ public class AdminController {
         return "admin/adminContractControl";
     }
 
-    public void addContractToBase(String eMail, String number) {
-        Contract contract = new Contract(number, userService.getUserByEMAil(eMail),
-                tariffService.getTariffByTitle("base"));
-        contractService.createEntity(contract);
-    }
 
     @RequestMapping(value = "/adminNewTariff", method = RequestMethod.GET)
     public String adminNewTariffGet(HttpServletRequest request, Locale locale, Model model) {
@@ -258,24 +252,28 @@ public class AdminController {
 
     // TODO: 9/30/16 Фигня какая-то. Проверь!!!!
     @RequestMapping(value = "/adminNewTariff", method = RequestMethod.POST)
+    @Scope("session")
     public String adminNewTariffPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "title") String title,
                                      @RequestParam(value = "price") String price) {
         boolean add = true;
 
         if (title.equals("") || managerCases.isTariffExists(title)) {
-            model.addAttribute("titleStat", "Error");
+            req.getSession().setAttribute("titleStat", "Error");
             add = false;
         } else
-            model.addAttribute("titleStat", "OK");
+            req.getSession().setAttribute("titleStat", "OK");
 
         if (price.equals("")) {
-            model.addAttribute("priceStat", "Error");
+            req.getSession().setAttribute("priceStat", "Error");
             add = false;
         } else
-            model.addAttribute("priceStat", "OK");
+            req.getSession().setAttribute("priceStat", "OK");
 
-        if (add == true) managerCases.addTariffToBase(title, price);
+        if (add == true) {
+            req.getSession().setAttribute("newTariff", true);
+            managerCases.addTariffToBase(title, price);
+        }
         return "admin/adminNewTariff";
     }
 

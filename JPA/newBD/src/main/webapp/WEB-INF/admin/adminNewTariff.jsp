@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,21 +21,6 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <%
-                        String title;
-                        String price;
-
-                        if (request.getAttribute("titleStat") == null)
-                            title = "";
-                        else
-                            title = (String) request.getAttribute("titleStat");
-
-                        if (request.getAttribute("priceStat") == null)
-                            price = "";
-                        else
-                            price = (String) request.getAttribute("priceStat");
-
-                    %>
                     <table class="table">
                         <thead>
                         <tr>
@@ -46,12 +32,12 @@
                         <tr>
                             <td><input id="title" type="text" class="form-control" placeholder="Title"></td>
                             <td>
-                                <font color="blue"><%out.print(title);%></font>
+                                <font color="blue">${titleStat}</font>
                             </td>
                         </tr>
                         <tr>
                             <td><input id="price" type="text" class="form-control" placeholder="Price"></td>
-                            <td><font color="blue"><%out.print(price);%></font></td>
+                            <td><font color="blue">${priceStat}</font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -82,12 +68,12 @@
             </div>
         </div>
     </div>
-    <%if (title.equals("OK") && price.equals("OK")) {%>
+    <c:if test="${newTariff!=null}">
     <div class="container-fluid cm-container-white">
         <h2 align="center" style="margin-top:0;">Tariff added</h2>
 
     </div>
-    <%}%>
+    </c:if>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>
