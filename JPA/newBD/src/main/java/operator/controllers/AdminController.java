@@ -118,28 +118,32 @@ public class AdminController {
         return "admin/adminNewContract";
     }
 
-    // TODO: 9/29/16 Хрен знает почему не фурычит
+    // TODO: 10/2/16 Не фурычит как надо. Дабл ввод
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.POST)
+    @Scope("session")
     public String adminNewContractPost(HttpServletRequest req, Locale locale, Model model,
                                        @RequestParam(value = "email") String eMail,
                                        @RequestParam(value = "number") String number) {
-        System.out.println(eMail + " " + number);
         boolean add = true;
         if (!managerCases.isUserExists(eMail) || eMail.equals("")) {
-            model.addAttribute("emailStat", "Error");
+            req.getSession().setAttribute("emailStat", "Error");
             add = false;
+            req.getSession().setAttribute("newContract", false);
         } else {
-            model.addAttribute("emailStat", "OK");
+            req.getSession().setAttribute("emailStat", "OK");
         }
 
         if (managerCases.isNumberExists(number) || number.equals("")) {
-            model.addAttribute("numberStat", "Error");
+            req.getSession().setAttribute("numberStat", "Error");
             add = false;
+            req.getSession().setAttribute("newContract", false);
         } else {
-            model.addAttribute("numberStat", "OK");
+            req.getSession().setAttribute("numberStat", "OK");
         }
         if (add == true) {
-            model.addAttribute("newContract", true);
+            req.getSession().setAttribute("newContract", true);
+            req.getSession().setAttribute("numberStat", "OK");
+            req.getSession().setAttribute("emailStat", "OK");
             addContractToBase(eMail, number);
         }
 
@@ -147,6 +151,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
+    @Scope("session")
     public String adminChangeClientTariff(HttpServletRequest req, Locale locale, Model model) {
         int count = 1;
         if (count == 1) {
@@ -434,15 +439,16 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.POST)
-    public String adminFindClientPost(HttpServletRequest request, Locale locale, Model model,
+    @Scope("session")
+    public String adminFindClientPost(HttpServletRequest req, Locale locale, Model model,
                                       @RequestParam(value = "number") String number) {
-        model.addAttribute("check", "notwork");
+        req.getSession().setAttribute("check", "notwork");
         try {
             Contract contract = contractService.getContractByNumber(number);
-            model.addAttribute("usr", contract);
+            req.getSession().setAttribute("usr", contract);
 
         } catch (ContractNotFoundException ex) {
-            model.addAttribute("usr", null);
+            req.getSession().setAttribute("usr", null);
         }
         return "admin/adminFindClient";
     }

@@ -13,13 +13,10 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new contract</h2>
     </div>
-    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
-           value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -61,8 +58,11 @@
                             x = confirm('Are you sure? ');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "adminNewContract?email=" + email + "&number=" + number, true);
+                                xhr.open("POST", "adminNewContract?email=" + email + "&number=" + number, false);
                                 xhr.send();
+//                                xhr.open("GET", "adminNewContract?email=" + email + "&number=" + number, true);
+//                                xhr.send();
+
                             }
                         }
 
@@ -71,10 +71,9 @@
             </div>
         </div>
     </div>
-    <c:if test="${newContract!=null}">
+    <c:if test="${newContract==true}">
         <div class="container-fluid cm-container-white">
             <h2 align="center" style="margin-top:0;">Contract added</h2>
-
         </div>
     </c:if>
 </div>
