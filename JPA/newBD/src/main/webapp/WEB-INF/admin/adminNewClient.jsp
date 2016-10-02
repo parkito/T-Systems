@@ -130,7 +130,7 @@
             </div>
         </div>
     </div>
-    <c:if test="${newClient!=null}">
+    <c:if test="${newOption!=null}">
         <div class="container-fluid cm-container-white">
             <h2 align="center" style="margin-top:0;">Client added, password generated</h2>
         </div>

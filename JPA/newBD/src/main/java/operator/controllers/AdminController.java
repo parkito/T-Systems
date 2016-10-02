@@ -298,30 +298,34 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminNewOption", method = RequestMethod.POST)
+    @Scope("session")
     public String adminNewOptionPost(HttpServletRequest req, Locale locale, Model model,
                                      @RequestParam(value = "title") String title,
-                                     @RequestParam(value = "price") String price) {
+                                     @RequestParam(value = "price") String price,
+                                     @RequestParam(value = "connectPrice") String connectPrice) {
         boolean add = true;
         String connectionPrice = req.getParameter("connectPrice");
         if (title.equals("") || managerCases.isOptionExists(title)) {
-            model.addAttribute("titleStat", "Error");
+            req.getSession().setAttribute("titleStat", "Error");
             add = false;
         } else
-            model.addAttribute("titleStat", "OK");
+            req.getSession().setAttribute("titleStat", "OK");
 
         if (price.equals("")) {
-            model.addAttribute("priceStat", "Error");
+            req.getSession().setAttribute("priceStat", "Error");
             add = false;
         } else
-            model.addAttribute("priceStat", "OK");
+            req.getSession().setAttribute("priceStat", "OK");
 
         if (connectionPrice.equals("")) {
-            model.addAttribute("connectionPriceStat", "Error");
+            req.getSession().setAttribute("connectionPriceStat", "Error");
             add = false;
         } else
-            model.addAttribute("connectionPriceStat", "OK");
+            req.getSession().setAttribute("connectionPriceStat", "OK");
 
-        if (add == true) managerCases.addOptionToBase(title, price, connectionPrice);
+        if (add == true){
+            req.setAttribute("newOption",true);
+            managerCases.addOptionToBase(title, price, connectionPrice);}
         return "admin/adminNewOption";
     }
 

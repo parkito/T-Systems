@@ -59,7 +59,9 @@
                             x = confirm('Are you sure?');
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "adminEditTariff?tariffId=" + number, true);
+                                xhr.open("POST", "adminEditTariff?tariffId=" + number, false);
+                                xhr.send();
+                                xhr.open("GET", "adminEditTariff", false);
                                 xhr.send();
                             }
                         }
