@@ -33,7 +33,7 @@
 
     <root>
         <priority value="ALL"/>
-        <appender-ref ref="LOG-FILE-APPENDER-CUSTOM" />
+        <appender-ref ref="LOG-FILE-APPENDER-CUSTOM"/>
         <appender-ref ref="LOG-FILE-APPENDER"/>
         <appender-ref ref="LOG-FILE-APPENDER-ERROR"/>
     </root>

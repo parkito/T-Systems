@@ -2,7 +2,6 @@ package operator.services.implementation;
 
 
 import operator.dao.api.ContractDAO;
-import operator.dao.implementation.ContractDAOImpl;
 import operator.entities.Contract;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;

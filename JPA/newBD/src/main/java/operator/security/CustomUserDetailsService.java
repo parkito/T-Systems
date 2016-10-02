@@ -1,6 +1,5 @@
 package operator.security;
 
-import operator.entities.AccessLevel;
 import operator.entities.User;
 import operator.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

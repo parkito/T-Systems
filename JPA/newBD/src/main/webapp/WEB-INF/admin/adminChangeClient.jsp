@@ -1,9 +1,7 @@
 <%@ page import="operator.entities.Contract" %>
-<%@ page import="operator.entities.User" %>
-<%@ page import="java.util.List" %>
 <%@ page import="operator.entities.TariffOption" %>
-<%@ page import="operator.entities.Tariff" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

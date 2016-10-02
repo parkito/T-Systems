@@ -1,11 +1,11 @@
 package integration;
 
 import entities.AccessLevel;
-import org.junit.Ignore;
-import services.implementation.AccessLevelImpl;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import services.implementation.AccessLevelImpl;
 
 /**
  * Created by Artyom Karnov on 9/8/16.

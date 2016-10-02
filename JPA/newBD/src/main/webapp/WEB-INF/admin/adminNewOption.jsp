@@ -68,7 +68,7 @@
                                 xhr.open("POST", "adminNewOption?title=" + title + "&price=" + price +
                                         "&connectPrice=" + connectedPrice, false);
                                 xhr.send();
-                                xhr.open("GET","adminNewOption",false);
+                                xhr.open("GET", "adminNewOption", false);
                                 xhr.send();
                             }
                         }
@@ -79,9 +79,9 @@
         </div>
     </div>
     <c:if test="${newOption!=null}">
-    <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Option added</h2>
-    </div>
+        <div class="container-fluid cm-container-white">
+            <h2 align="center" style="margin-top:0;">Option added</h2>
+        </div>
     </c:if>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>

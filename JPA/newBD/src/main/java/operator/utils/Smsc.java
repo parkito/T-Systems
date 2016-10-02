@@ -4,11 +4,12 @@ package operator.utils;
  * Created by Artyom Karnov on 9/30/16.
  * artyom-karnov@yandex.ru
  **/
-import java.net.*;
-import java.util.*;
+
 import java.io.*;
-import java.lang.Math;
-import java.sql.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class Smsc {
 

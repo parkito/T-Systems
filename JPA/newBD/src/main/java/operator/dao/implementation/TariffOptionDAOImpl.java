@@ -1,7 +1,6 @@
 package operator.dao.implementation;
 
 import operator.dao.api.TariffOptionDAO;
-import operator.entities.Tariff;
 import operator.entities.TariffOption;
 import operator.exceptions.OptionsForEntityNotGotException;
 import operator.exceptions.UserNotFoundException;

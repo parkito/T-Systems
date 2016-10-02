@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RequestInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     private UserService userService;
+
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
@@ -32,8 +33,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
                 org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 User currentUser = userService.getUserByEMAil(user.getUsername());
                 request.getSession().setAttribute("currentUserU", currentUser);
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 return true;
             }
         }

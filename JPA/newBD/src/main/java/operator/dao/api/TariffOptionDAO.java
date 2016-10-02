@@ -1,7 +1,5 @@
 package operator.dao.api;
 
-import operator.entities.Contract;
-import operator.entities.Tariff;
 import operator.entities.TariffOption;
 import operator.exceptions.OptionsForEntityNotGotException;
 

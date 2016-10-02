@@ -28,10 +28,10 @@
                         <div class="panel-body">
                             <h2>
                                 <small>Tariff :</small>
-                                ${contract.tariff.title}
+                                    ${contract.tariff.title}
                                 <br>
                                 <small>Month payment :</small>
-                                ${contract.tariff.price} RUB
+                                    ${contract.tariff.price} RUB
                                 <small><br>Status :</small>
                                 <c:if test="${contract.isBlocked() && contract.isBlockedByAdmin()}">
                                     <font color="red">Blocked by manager</font>
@@ -61,7 +61,7 @@
                                     <p>------------------------------------------------</p>
                                     <br>
 
-                                    </c:forEach>
+                                </c:forEach>
                             </h2>
                         </div>
                     </div>

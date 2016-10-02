@@ -59,14 +59,16 @@ public class ContractValidator {
         Collections.addAll(list, optionList, exceptionsList);
         return list;
     }
+
     public double balanceCheck(int userId, List<TariffOption> optionList) {
         double balance = userService.getEntityById(userId).getBalance();
         for (TariffOption x : optionList) {
-            balance-=x.getConnectionPrice();
+            balance -= x.getConnectionPrice();
         }
         return balance;
     }
-    public void priceCheck(int price, String priceName) throws Exception{
+
+    public void priceCheck(int price, String priceName) throws Exception {
         if (price > 400000) throw new Exception(String.format("The %s is too high!", priceName));
         if (price < 0) throw new Exception(String.format("The %s must be > 0!", priceName));
     }

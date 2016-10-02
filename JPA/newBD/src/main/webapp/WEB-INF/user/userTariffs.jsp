@@ -18,7 +18,7 @@
         <p></p>
     </div>
     <%--<input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"--%>
-           <%--value="<c:out value="${_csrf.token}"/>"/>--%>
+    <%--value="<c:out value="${_csrf.token}"/>"/>--%>
     <div class="container-fluid">
         <c:forEach var="contract" items="${contractsUserList}" varStatus="loopOne">
             <div class="row cm-fix-height">
@@ -113,6 +113,6 @@
             </div>
         </c:forEach>
     </div>
-    </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

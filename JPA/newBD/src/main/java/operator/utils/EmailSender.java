@@ -1,6 +1,5 @@
 package operator.utils;
 
-import operator.controllers.ManagerCases;
 import org.apache.log4j.Logger;
 
 import javax.mail.Message;

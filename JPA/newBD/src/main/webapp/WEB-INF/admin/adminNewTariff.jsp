@@ -69,10 +69,10 @@
         </div>
     </div>
     <c:if test="${newTariff!=null}">
-    <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Tariff added</h2>
+        <div class="container-fluid cm-container-white">
+            <h2 align="center" style="margin-top:0;">Tariff added</h2>
 
-    </div>
+        </div>
     </c:if>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>

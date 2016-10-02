@@ -2,7 +2,6 @@ package operator.services.implementation;
 
 
 import operator.dao.api.UserDAO;
-import operator.dao.implementation.UserDAOImpl;
 import operator.entities.AccessLevel;
 import operator.entities.User;
 import operator.exceptions.CustomDAOException;

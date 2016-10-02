@@ -1,16 +1,11 @@
 package operator.integration;
 
-import operator.entities.Contract;
-import operator.entities.TariffOption;
-import operator.entities.User;
 import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * This class will handle the logic when an entity is removed,

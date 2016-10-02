@@ -1,7 +1,6 @@
 package operator.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 /**
  * Created by Artyom Karnov on 8/26/16.

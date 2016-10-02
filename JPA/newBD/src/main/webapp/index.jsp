@@ -53,11 +53,11 @@
 <br>
 <font color="red">
     <c:if test="${userData!=null}">
-    <c:if test="${userData==false}">
-        <h3 align="center">
-            E-mail or password is incorrect. Try again
-        </h3>
-    </c:if>
+        <c:if test="${userData==false}">
+            <h3 align="center">
+                E-mail or password is incorrect. Try again
+            </h3>
+        </c:if>
     </c:if>
 </font>
 </body>

@@ -26,7 +26,7 @@
         <p></p>
     </div>
     <%--<input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"--%>
-           <%--value="<c:out value="${_csrf.token}"/>"/>--%>
+    <%--value="<c:out value="${_csrf.token}"/>"/>--%>
     <div class="container-fluid">
         <%for (Contract contract : contracts) {%>
         <div class="row cm-fix-height">

@@ -27,7 +27,6 @@ public class UserDetailsServiceDAO implements UserDetailsService {
     private UserDAO userDAO;
 
     /**
-     *
      * @param eMail - user Email
      * @return
      * @throws UsernameNotFoundException when eMail isn't correct
@@ -41,11 +40,9 @@ public class UserDetailsServiceDAO implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(user.getAccessLevel().getStatus()));
             return new org.springframework.security.core.userdetails.User(eMail, user.getPassword(),
                     true, true, true, true, authorities);
-        }
-        catch (CustomDAOException ex) {
+        } catch (CustomDAOException ex) {
             throw new UsernameNotFoundException(eMail + " not found");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             return null;
         }
 

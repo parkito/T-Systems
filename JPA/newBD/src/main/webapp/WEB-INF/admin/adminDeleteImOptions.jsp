@@ -1,8 +1,5 @@
-<%@ page import="operator.entities.Contract" %>
-<%@ page import="operator.entities.User" %>
-<%@ page import="java.util.List" %>
 <%@ page import="operator.entities.TariffOption" %>
-<%@ page import="operator.entities.Tariff" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +58,7 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminEditTariffOption?tariffOptionId=" + number, true);
                                 xhr.send();
-                                xhr.open("GET","adminDeleteImOptions",false);
+                                xhr.open("GET", "adminDeleteImOptions", false);
                                 xhr.send();
                             }
                         }

@@ -2,14 +2,14 @@ package services;
 
 import entities.Contract;
 import entities.Tariff;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 import services.api.UserService;
 import services.implementation.ContractServiceImpl;
 import services.implementation.TariffServiceImpl;
 import services.implementation.UserServiceImpl;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 import java.util.List;
 

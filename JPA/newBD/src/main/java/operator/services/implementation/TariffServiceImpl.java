@@ -2,7 +2,6 @@ package operator.services.implementation;
 
 
 import operator.dao.api.TariffDAO;
-import operator.dao.implementation.TariffDAOImpl;
 import operator.entities.Tariff;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.TariffService;

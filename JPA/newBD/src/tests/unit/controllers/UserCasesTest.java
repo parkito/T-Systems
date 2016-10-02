@@ -7,15 +7,10 @@ import exceptions.CustomDAOException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
-import services.UserServiceImplTest;
 import services.implementation.ContractServiceImpl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import static org.mockito.Mockito.when;

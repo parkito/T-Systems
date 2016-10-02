@@ -1,9 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="operator.entities.Contract" %>
-<%@ page import="operator.entities.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="operator.entities.TariffOption" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -4,13 +4,10 @@ package operator.controllers;
 import operator.entities.Contract;
 import operator.entities.User;
 import operator.exceptions.CustomDAOException;
-import operator.exceptions.UserNotFoundException;
 import operator.services.implementation.AccessLevelImpl;
 import operator.services.implementation.ContractServiceImpl;
 import operator.services.implementation.UserServiceImpl;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
