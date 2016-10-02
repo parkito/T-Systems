@@ -165,7 +165,6 @@ public class AdminController {
         User user = (User) req.getSession().getAttribute("currentUser");
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         List<Tariff> tariffs = tariffService.getAll();
-
         req.getSession().setAttribute("contracts", contracts);
         req.getSession().setAttribute("allTariffs", tariffs);
         return "admin/adminChangeClientTariff";
