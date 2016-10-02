@@ -137,7 +137,7 @@
 
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "adminChangeClient?contractNumber=" + par1
-                                                    + "&tariff=" + par2 + "&method=disable", true);
+                                                    + "&tariffOptionId=" + par2 + "&method=disable", false);
                                             xhr.send();
                                             document.getElementById('textFiled').value = par1;
                                             find();
@@ -167,7 +167,7 @@
                                         function popBox() {
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "adminChangeClient?contractNumber=" + par1
-                                                    + "&tariff=" + par2 + "&method=unable", false);
+                                                    + "&tariffOptionId=" + par2 + "&method=unable", false);
                                             xhr.send();
                                             if (xhr.status == 405) {
                                                 alert('Incompatible options')

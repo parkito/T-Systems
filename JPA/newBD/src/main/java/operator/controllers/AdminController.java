@@ -179,7 +179,6 @@ public class AdminController {
     @Scope("session")
     public String adminChangeClientGet(HttpServletRequest req, Locale locale, Model model) {
         User user = (User) req.getSession().getAttribute("currentUser");
-        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         req.getSession().setAttribute("tariffOptions", optionService.getAll());
 
         return "admin/adminChangeClient";
@@ -190,7 +189,6 @@ public class AdminController {
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
         System.out.println(contractNumber + " " + tariffOptionId + " " + method);
-        User user = (User) request.getSession().getAttribute("currentUser");
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
@@ -212,8 +210,8 @@ public class AdminController {
                 contract.getTariffOptions().add(tariffOption);
                 contractService.updateEntity(contract);
             } else {
-                resp.addHeader("Access-Control-Allow-Origin", "*");
-                resp.addHeader("X-XSS-Protection", "0");
+//                resp.addHeader("Access-Control-Allow-Origin", "*");
+//                resp.addHeader("X-XSS-Protection", "0");
                 resp.setStatus(405);
             }
         } else {
