@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +66,9 @@
                             if (x == true) {
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminNewOption?title=" + title + "&price=" + price +
-                                        "&connectPrice=" + connectedPrice, true);
+                                        "&connectPrice=" + connectedPrice, false);
+                                xhr.send();
+                                xhr.open("GET","adminNewOption",false);
                                 xhr.send();
                             }
                         }
@@ -75,7 +78,7 @@
             </div>
         </div>
     </div>
-    <c:if test="${newClient!=null}">
+    <c:if test="${newOption!=null}">
     <div class="container-fluid cm-container-white">
         <h2 align="center" style="margin-top:0;">Option added</h2>
     </div>

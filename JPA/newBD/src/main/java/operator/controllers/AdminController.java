@@ -324,7 +324,7 @@ public class AdminController {
             req.getSession().setAttribute("connectionPriceStat", "OK");
 
         if (add == true){
-            req.setAttribute("newOption",true);
+            req.getSession().setAttribute("newOption",true);
             managerCases.addOptionToBase(title, price, connectionPrice);}
         return "admin/adminNewOption";
     }
