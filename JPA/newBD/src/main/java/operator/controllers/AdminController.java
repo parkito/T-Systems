@@ -48,6 +48,7 @@ public class AdminController {
     private ManagerCases managerCases;
 
     private static int countFindUser = 0;
+    private static int countChangeTariff = 0;
 
 
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
@@ -155,11 +156,14 @@ public class AdminController {
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
     @Scope("session")
     public String adminChangeClientTariff(HttpServletRequest req, Locale locale, Model model) {
-//        req.getSession().setAttribute("check", "start");
-//        req.getSession().setAttribute("check", "work");
+        if (countChangeTariff == 0) {
+            model.addAttribute("check", "start");
+            countChangeTariff++;
+        }
         User user = (User) req.getSession().getAttribute("currentUser");
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         List<Tariff> tariffs = tariffService.getAll();
+
         req.getSession().setAttribute("contracts", contracts);
         req.getSession().setAttribute("allTariffs", tariffs);
         return "admin/adminChangeClientTariff";
