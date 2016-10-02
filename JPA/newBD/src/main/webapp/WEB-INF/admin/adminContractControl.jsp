@@ -47,7 +47,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "adminFindClient?number=" + text, true);
+                                    xhr.open("POST", "adminFindClient?number=" + text, false);
                                     xhr.send();
                                 }
                             }
@@ -59,11 +59,11 @@
     </div>
 
     <%
-        List<Contract> contracts = new ArrayList();
-        String check = (String) request.getAttribute("check");
-        if (check.equals("work"))
-            if (request.getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getAttribute("usr");
+
+        if (request.getSession().getAttribute("check") != null) {
+            if (!request.getSession().getAttribute("usr").equals("one")) {
+                List<Contract> contracts = new ArrayList();
+                Contract contract1 = (Contract) request.getSession().getAttribute("usr");
                 contracts.clear();
                 contracts.add(contract1);
     %>
@@ -109,11 +109,10 @@
                         popBox();
                         function popBox() {
                             var xhr = new XMLHttpRequest();
-                            xhr.open("DELETE", "adminContractControl?unblockItem=" + number, false);
+                            xhr.open("POST", "adminContractControl?status=unblock&number=" + number, false);
                             xhr.send();
-                            document.getElementById('textFiled').value = number;
-                            find();
-
+                            xhr.open("POST", "adminFindClient?number=" + number, false);
+                            xhr.send();
                         }
                     }</script>
 
@@ -132,10 +131,10 @@
                         popBox();
                         function popBox() {
                             var xhr = new XMLHttpRequest();
-                            xhr.open("DELETE", "adminContractControl?blockItem=" + number, true);
+                            xhr.open("POST", "adminContractControl?status=block&number=" + number, false);
                             xhr.send();
-                            document.getElementById('textFiled').value = number;
-                            find();
+                            xhr.open("POST", "adminFindClient?number=" + number, false);
+                            xhr.send();
                         }
                     }
                 </script>
@@ -145,6 +144,7 @@
                                 }
                             }
                         }
+                    }
                 %>
                 </tbody>
 

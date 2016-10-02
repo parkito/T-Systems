@@ -183,6 +183,7 @@ public class AdminController {
 
         return "admin/adminChangeClient";
     }
+
     @RequestMapping(value = "/adminChangeClient", method = RequestMethod.POST)
     public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
@@ -210,8 +211,6 @@ public class AdminController {
                 contract.getTariffOptions().add(tariffOption);
                 contractService.updateEntity(contract);
             } else {
-//                resp.addHeader("Access-Control-Allow-Origin", "*");
-//                resp.addHeader("X-XSS-Protection", "0");
                 resp.setStatus(405);
             }
         } else {
@@ -222,39 +221,30 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminContractControl", method = RequestMethod.GET)
+    @Scope("session")
     public String adminContractControl(HttpServletRequest req, Locale locale, Model model) {
-        int count = 1;
-        if (count == 1) {
-            model.addAttribute("check", "start");
-            count++;
-        }
         User user = (User) req.getSession().getAttribute("currentUser");
-        model.addAttribute("userObj", user);
-        String userName = user.getName();
-        model.addAttribute("userName", userName);
+        req.getSession().setAttribute("userObj", user);
+        req.getSession().setAttribute("userName", user.getName());
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         model.addAttribute("contracts", contracts);
         return "admin/adminContractControl";
     }
 
-    @RequestMapping(value = "/adminContractControl", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/adminContractControl", method = RequestMethod.POST)
     public String adminContractControlDelete(HttpServletRequest req, Locale locale, Model model,
-                                             @RequestParam(value = "unblockItem") String unblockItem,
-                                             @RequestParam(value = "blockItem") String blockItem) {
-        if (blockItem != null) {
-            Contract contract = contractService.getContractByNumber(req.getParameter("blockItem"));
+                                             @RequestParam(value = "status") String status,
+                                             @RequestParam(value = "number") String number) {
+        if (status.equals("block")) {
+            Contract contract = contractService.getContractByNumber(number);
             contract.setBlocked(true);
             contract.setBlockedByAdmin(true);
             contractService.updateEntity(contract);
-        }
-
-        if (unblockItem != null) {
-            Contract contract = contractService.getContractByNumber(req.getParameter("unblockItem"));
+        } else {
+            Contract contract = contractService.getContractByNumber(number);
             contract.setBlocked(false);
             contract.setBlockedByAdmin(false);
             contractService.updateEntity(contract);
-
-
         }
         return "admin/adminContractControl";
     }
