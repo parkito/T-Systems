@@ -21,7 +21,7 @@
 <%
     String userName = (String) request.getSession().getAttribute("userName");
     List<Contract> contracts = (List<Contract>) request.getSession().getAttribute("contracts");
-    List<Tariff>allTariffs =(List<Tariff>)request.getSession().getAttribute("allTariffs");
+    List<Tariff> allTariffs = (List<Tariff>) request.getSession().getAttribute("allTariffs");
     List<Integer> tempTariff = new ArrayList();
     int i = 1, k;
 %>
@@ -65,8 +65,8 @@
     </div>
 
 
-    <% String check = (String) request.getSession().getAttribute("check");
-        if (check.equals("work"))
+    <% //String check = (String) request.getSession().getAttribute("check");
+        //if (check.equals("work"))
             if (request.getSession().getAttribute("usr") != null) {
                 Contract contract1 = (Contract) request.getSession().getAttribute("usr");
                 contracts.clear();
@@ -164,11 +164,10 @@
                                         x = confirm('Are you sure? ');
                                         if (x == true) {
                                             var xhr = new XMLHttpRequest();
-                                            var id = 1;
-                                            xhr.open("POST", "userTariffs?tariffId=" + num1 + "&contractNumber=" + num2, true);
+                                            xhr.open("POST", "adminChangeClientTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
                                             xhr.send();
-                                            document.getElementById('textFiled').value = num2;
-                                            find();
+                                            xhr.open("GET", "adminChangeClientTariff", false);
+                                            xhr.send();
                                         }
                                     }
                                 }

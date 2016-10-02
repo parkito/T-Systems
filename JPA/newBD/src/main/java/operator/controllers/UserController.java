@@ -89,6 +89,7 @@ public class UserController {
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
                                @RequestParam(value = "contractNumber") String contractNumber) {
+        System.out.println(tariffId + " " + contractNumber);
         int tariffID = Integer.valueOf(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);

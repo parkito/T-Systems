@@ -154,12 +154,14 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
-    @Scope("session")
+//    @Scope("session")
     public String adminChangeClientTariff(HttpServletRequest req, Locale locale, Model model) {
-        if (countChangeTariff == 0) {
-            model.addAttribute("check", "start");
-            countChangeTariff++;
-        }
+
+//        if (countChangeTariff == 0) {
+            req.getSession().setAttribute("check", "work");
+//            countChangeTariff++;
+//        }
+        System.out.println("here");
         User user = (User) req.getSession().getAttribute("currentUser");
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         List<Tariff> tariffs = tariffService.getAll();
@@ -167,6 +169,19 @@ public class AdminController {
         req.getSession().setAttribute("contracts", contracts);
         req.getSession().setAttribute("allTariffs", tariffs);
         return "admin/adminChangeClientTariff";
+    }
+
+    @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.POST)
+    public String changeTariff(HttpServletRequest request, Locale locale, Model model,
+                               @RequestParam(value = "tariffId") String tariffId,
+                               @RequestParam(value = "contractNumber") String contractNumber) {
+        System.out.println(tariffId + " " + contractNumber);
+        int tariffID = Integer.valueOf(tariffId);
+        Contract contract = contractService.getContractByNumber(contractNumber);
+        Tariff tariff = tariffService.getEntityById(tariffID);
+        contract.setTariff(tariff);
+        contractService.updateEntity(contract);
+        return "redirect:adminChangeClientTariff";
     }
 
     @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
