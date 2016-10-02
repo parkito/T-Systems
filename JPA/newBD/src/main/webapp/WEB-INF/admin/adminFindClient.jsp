@@ -38,7 +38,7 @@
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "adminFindClient?number=" + text, true);
+                                    xhr.open("POST", "adminFindClient?number=" + text, false);
                                     xhr.send();
                                 }
                             }
@@ -49,10 +49,10 @@
         </div>
     </div>
     <%
-        String check = (String) request.getAttribute("check");
+        String check = (String) request.getSession().getAttribute("check");
         if (check.equals("work"))
-            if (request.getAttribute("usr") != null) {
-                Contract contract = (Contract) request.getAttribute("usr");
+            if (!request.getSession().getAttribute("usr").equals("one")) {
+                Contract contract = (Contract) request.getSession().getAttribute("usr");
     %>
 
     <div class="container-fluid">

@@ -434,7 +434,7 @@ public class AdminController {
 
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.GET)
     public String adminFindClientGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("check", "work");
+        model.addAttribute("check", "Notwork");
         return "admin/adminFindClient";
     }
 
@@ -442,13 +442,14 @@ public class AdminController {
     @Scope("session")
     public String adminFindClientPost(HttpServletRequest req, Locale locale, Model model,
                                       @RequestParam(value = "number") String number) {
-        req.getSession().setAttribute("check", "notwork");
+        req.getSession().setAttribute("check", "work");
         try {
             Contract contract = contractService.getContractByNumber(number);
+            System.out.println(contract);
             req.getSession().setAttribute("usr", contract);
 
         } catch (ContractNotFoundException ex) {
-            req.getSession().setAttribute("usr", null);
+            req.getSession().setAttribute("usr", "one");
         }
         return "admin/adminFindClient";
     }
