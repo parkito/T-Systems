@@ -158,7 +158,8 @@
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "adminChangeClientTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
                                             xhr.send();
-                                            xhr.open("GET", "adminChangeClientTariff", false)
+                                            xhr.open("POST", "adminFindClient?number=" + num2, false);
+                                            xhr.send();
                                         }
                                     }
                                 }

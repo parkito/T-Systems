@@ -160,7 +160,7 @@ public class AdminController {
         return "admin/adminChangeClientTariff";
     }
 
-
+    // TODO: 10/2/16 Проблема в том что изменения из не подхватываются фронтом. 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.POST)
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
