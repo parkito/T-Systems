@@ -50,11 +50,9 @@
         </div>
     </div>
     <%
-
-        String check = (String) request.getAttribute("check");
-        if (check.equals("work"))
-            if (request.getAttribute("usrs") != null) {
-                User user = (User) request.getAttribute("usrs");
+        if (request.getSession().getAttribute("chck") != null) {
+            if (!request.getSession().getAttribute("usrs").equals("one")) {
+                User user = (User) request.getSession().getAttribute("usrs");
     %>
 
     <div class="container-fluid">
@@ -106,7 +104,10 @@
                 </div>
             </div>
         </div>
-        <%}%>
+        <%
+                }
+            }
+        %>
     </div>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>

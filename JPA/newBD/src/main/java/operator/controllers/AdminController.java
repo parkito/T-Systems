@@ -49,10 +49,6 @@ public class AdminController {
     @Autowired
     private ManagerCases managerCases;
 
-    private static int countFindUser = 0;
-    private static int countChangeTariff = 0;
-
-
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewClient";
@@ -441,32 +437,25 @@ public class AdminController {
 
     @RequestMapping(value = "/adminViewClient", method = RequestMethod.GET)
     public String adminViewClientGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("check", "work");
         return "admin/adminViewClient";
     }
 
     @RequestMapping(value = "/adminViewClient", method = RequestMethod.POST)
-    public String adminViewClientPost(HttpServletRequest request, Locale locale, Model model,
+    @Scope("session")
+    public String adminViewClientPost(HttpServletRequest req, Locale locale, Model model,
                                       @RequestParam(value = "email") String email) {
-        System.out.println(email);
-        model.addAttribute("check", "work");
+        req.getSession().setAttribute("chck", "work");
         try {
             User user = userService.getUserByEMAil(email);
-            model.addAttribute("usrs", user);
-
+            req.getSession().setAttribute("usrs", user);
         } catch (UserNotFoundException ex) {
-            model.addAttribute("usrs", null);
+            req.getSession().setAttribute("usrs", "one");
         }
         return "admin/adminViewClient";
     }
 
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.GET)
-    @Scope("session")
     public String adminFindClientGet(HttpServletRequest req, Locale locale, Model model) {
-        if (countFindUser == 0) {
-            req.getSession().setAttribute("check", "Notwork");
-            countFindUser++;
-        }
         return "admin/adminFindClient";
     }
 

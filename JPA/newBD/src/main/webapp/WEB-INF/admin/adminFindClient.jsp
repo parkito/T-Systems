@@ -49,8 +49,7 @@
         </div>
     </div>
     <%
-        String check = (String) request.getSession().getAttribute("check");
-        if (!check.equals("Notwork"))
+        if (request.getSession().getAttribute("check") != null) {
             if (!request.getSession().getAttribute("usr").equals("one")) {
                 Contract contract = (Contract) request.getSession().getAttribute("usr");
     %>
@@ -100,7 +99,10 @@
                 </div>
             </div>
         </div>
-        <%}%>
+        <%
+                }
+            }
+        %>
     </div>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
