@@ -18,13 +18,6 @@
     <title>Change tariff</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<%
-    String userName = (String) request.getSession().getAttribute("userName");
-    List<Contract> contracts = (List<Contract>) request.getSession().getAttribute("contracts");
-    List<Tariff> allTariffs = (List<Tariff>) request.getSession().getAttribute("allTariffs");
-    List<Integer> tempTariff = new ArrayList();
-    int i = 1, k;
-%>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Change tariff</h2>
@@ -65,20 +58,19 @@
     </div>
 
 
-    <% //String check = (String) request.getSession().getAttribute("check");
-        //if (check.equals("work"))
-            if (request.getSession().getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getSession().getAttribute("usr");
-                contracts.clear();
-                contracts.add(contract1);
+    <%
+        //        String check = (String) request.getSession().getAttribute("check");
+        if (request.getSession().getAttribute("check") != null) {
+            if (!request.getSession().getAttribute("usr").equals("one")) {
+                Contract contract = (Contract) request.getSession().getAttribute("usr");
+                List<Tariff> allTariffs = (List<Tariff>) request.getSession().getAttribute("allTariffs");
+                List<Integer> tempTariff = new ArrayList<>();
+                int i = 1;
     %>
 
 
     <%--------------------------------------------------------------------------------------------%>
     <div class="container-fluid">
-        <%
-            for (Contract contract : contracts) {
-        %>
         <div class="row cm-fix-height">
             <div class="col-sm-6">
                 <div class="panel panel-default">
@@ -166,8 +158,7 @@
                                             var xhr = new XMLHttpRequest();
                                             xhr.open("POST", "adminChangeClientTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
                                             xhr.send();
-                                            xhr.open("GET", "adminChangeClientTariff", false);
-                                            xhr.send();
+                                            xhr.open("GET", "adminChangeClientTariff", false)
                                         }
                                     }
                                 }
@@ -179,10 +170,6 @@
             </div>
 
         </div>
-        <%
-                i++;
-            }
-        %>
     </div>
     <%} else {%>
     <div class="container-fluid">
@@ -193,7 +180,10 @@
             </div>
         </div>
     </div>
-    <%}%>
+    <%
+            }
+        }
+    %>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

@@ -154,21 +154,12 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
-//    @Scope("session")
-    public String adminChangeClientTariff(HttpServletRequest req, Locale locale, Model model) {
-
-//        if (countChangeTariff == 0) {
-            req.getSession().setAttribute("check", "work");
-//            countChangeTariff++;
-//        }
-        System.out.println("here");
-        User user = (User) req.getSession().getAttribute("currentUser");
-        List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
-        List<Tariff> tariffs = tariffService.getAll();
-        req.getSession().setAttribute("contracts", contracts);
-        req.getSession().setAttribute("allTariffs", tariffs);
+    @Scope("session")
+    public String adminChangeClientTariffGet(HttpServletRequest req, Locale locale, Model model) {
+        req.getSession().setAttribute("allTariffs", tariffService.getAll());
         return "admin/adminChangeClientTariff";
     }
+
 
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.POST)
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
