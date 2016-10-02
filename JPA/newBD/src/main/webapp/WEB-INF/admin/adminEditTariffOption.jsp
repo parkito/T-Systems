@@ -60,8 +60,6 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminEditTariffOption?tariffOptionId=" + number, false);
                                 xhr.send();
-                                xhr.open("GET","adminEditTariffOption",false);
-                                xhr.send();
                             }
                         }
                     }</script>

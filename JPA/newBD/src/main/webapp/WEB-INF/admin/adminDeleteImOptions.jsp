@@ -61,6 +61,8 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminEditTariffOption?tariffOptionId=" + number, true);
                                 xhr.send();
+                                xhr.open("GET","adminDeleteImOptions",false);
+                                xhr.send();
                             }
                         }
                     }</script>

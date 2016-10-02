@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,21 +21,6 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <%
-                        String tariffOne;
-                        String tariffTwo;
-
-                        if (request.getAttribute("oneStat") == null)
-                            tariffOne = "";
-                        else
-                            tariffOne = (String) request.getAttribute("oneStat");
-
-                        if (request.getAttribute("twoStat") == null)
-                            tariffTwo = "";
-                        else
-                            tariffTwo = (String) request.getAttribute("twoStat");
-
-                    %>
                     <h4>Add options</h4>
                     <table class="table">
                         <thead>
@@ -47,12 +33,12 @@
                         <tr>
                             <td><input id="tariffOne" type="text" class="form-control" placeholder="First tariff"></td>
                             <td>
-                                <font color="blue"><%out.print(tariffOne);%></font>
+                                <font color="blue">${oneStat}</font>
                             </td>
                         </tr>
                         <tr>
                             <td><input id="tariffTwo" type="text" class="form-control" placeholder="Second tariff"></td>
-                            <td><font color="blue"><%out.print(tariffTwo);%></font></td>
+                            <td><font color="blue">${twoStat}</font></td>
                         </tr>
                         </tbody>
                     </table>
@@ -75,6 +61,8 @@
                                 var xhr = new XMLHttpRequest();
                                 xhr.open("POST", "adminImpossibleOption?tariffOne=" + tariffOne + "&tariffTwo=" + tariffTwo, true);
                                 xhr.send();
+                                xhr.open("GET", "adminImpossibleOption", false);
+                                xhr.send();
                             }
                         }
 
@@ -83,12 +71,11 @@
             </div>
         </div>
     </div>
-    <%if (tariffOne.equals("OK") && tariffTwo.equals("OK")) {%>
-    <div class="container-fluid cm-container-white">
-        <h2 align="center" style="margin-top:0;">Connection added</h2>
-
-    </div>
-    <%}%>
+    <c:if test="${ImConnectt!=null}">
+        <div class="container-fluid cm-container-white">
+            <h2 align="center" style="margin-top:0;">Conection added</h2>
+        </div>
+    </c:if>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

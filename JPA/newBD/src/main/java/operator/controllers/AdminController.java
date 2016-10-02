@@ -323,9 +323,10 @@ public class AdminController {
         } else
             req.getSession().setAttribute("connectionPriceStat", "OK");
 
-        if (add == true){
-            req.getSession().setAttribute("newOption",true);
-            managerCases.addOptionToBase(title, price, connectionPrice);}
+        if (add == true) {
+            req.getSession().setAttribute("newOption", true);
+            managerCases.addOptionToBase(title, price, connectionPrice);
+        }
         return "admin/adminNewOption";
     }
 
@@ -347,34 +348,35 @@ public class AdminController {
     @RequestMapping(value = "/adminConnectOption", method = RequestMethod.GET)
     public String adminConnectOptionGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
-        return "admin/adminEditTariffOption";
+        return "admin/adminJointOption";
     }
 
     @RequestMapping(value = "/adminConnectOption", method = RequestMethod.POST)
-    public String adminConnectOptionPost(HttpServletRequest request, Locale locale, Model model,
+    @Scope("session")
+    public String adminConnectOptionPost(HttpServletRequest req, Locale locale, Model model,
                                          @RequestParam(value = "tariffOne") String tariffOne,
                                          @RequestParam(value = "tariffTwo") String tariffTwo) {
         boolean add = true;
         System.out.println(tariffOne + " " + tariffTwo);
 
         if (tariffOne.equals("") || !managerCases.isOptionExists(tariffOne)) {
-            model.addAttribute("oneStat", "Error");
+            req.getSession().setAttribute("oneStat", "Error");
             add = false;
         } else
-            model.addAttribute("oneStat", "OK");
+            req.getSession().setAttribute("oneStat", "OK");
 
         if (tariffTwo.equals("") || !managerCases.isOptionExists(tariffTwo)) {
-            model.addAttribute("twoStat", "Error");
+            req.getSession().setAttribute("twoStat", "Error");
             add = false;
         } else
-            model.addAttribute("twoStat", "OK");
+            req.getSession().setAttribute("twoStat", "OK");
 
         if (add == true) {
-            System.out.println("here");
+            req.getSession().setAttribute("newConnect", true);
             managerCases.addJoinOptionToBase(tariffOne, tariffTwo);
         }
 
-        return "admin/adminEditTariffOption";
+        return "admin/adminJointOption";
     }
 
     @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.GET)
@@ -383,25 +385,26 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.POST)
-    public String adminImpossibleOptionPost(HttpServletRequest request, Locale locale, Model model,
+    @Scope("session")
+    public String adminImpossibleOptionPost(HttpServletRequest req, Locale locale, Model model,
                                             @RequestParam(value = "tariffOne") String tariffOne,
                                             @RequestParam(value = "tariffTwo") String tariffTwo) {
         boolean add = true;
-        System.out.println(tariffOne + " " + tariffTwo);
 
         if (tariffOne.equals("") || !managerCases.isOptionExists(tariffOne)) {
-            model.addAttribute("oneStat", "Error");
+            req.getSession().setAttribute("oneStat", "Error");
             add = false;
         } else
-            model.addAttribute("oneStat", "OK");
+            req.getSession().setAttribute("oneStat", "OK");
 
         if (tariffTwo.equals("") || !managerCases.isOptionExists(tariffTwo)) {
-            model.addAttribute("twoStat", "Error");
+            req.getSession().setAttribute("twoStat", "Error");
             add = false;
         } else
-            model.addAttribute("twoStat", "OK");
+            req.getSession().setAttribute("twoStat", "OK");
 
         if (add == true) {
+            req.getSession().setAttribute("ImConnect", true);
             managerCases.addImmposibleOptionToBase(tariffOne, tariffTwo);
         }
         return "admin/adminImpossibleOptions";
