@@ -47,6 +47,8 @@ public class AdminController {
     @Autowired
     private ManagerCases managerCases;
 
+    private static int countFindUser = 0;
+
 
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
@@ -153,17 +155,13 @@ public class AdminController {
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
     @Scope("session")
     public String adminChangeClientTariff(HttpServletRequest req, Locale locale, Model model) {
-        int count = 1;
-        if (count == 1) {
-            model.addAttribute("check", "start");
-            count++;
-        }
+//        req.getSession().setAttribute("check", "start");
+//        req.getSession().setAttribute("check", "work");
         User user = (User) req.getSession().getAttribute("currentUser");
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
         List<Tariff> tariffs = tariffService.getAll();
-
-        model.addAttribute("contracts", contracts);
-        model.addAttribute("allTariffs", tariffs);
+        req.getSession().setAttribute("contracts", contracts);
+        req.getSession().setAttribute("allTariffs", tariffs);
         return "admin/adminChangeClientTariff";
     }
 
@@ -433,8 +431,12 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.GET)
-    public String adminFindClientGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("check", "Notwork");
+    @Scope("session")
+    public String adminFindClientGet(HttpServletRequest req, Locale locale, Model model) {
+        if (countFindUser == 0) {
+            req.getSession().setAttribute("check", "Notwork");
+            countFindUser++;
+        }
         return "admin/adminFindClient";
     }
 
@@ -445,7 +447,6 @@ public class AdminController {
         req.getSession().setAttribute("check", "work");
         try {
             Contract contract = contractService.getContractByNumber(number);
-            System.out.println(contract);
             req.getSession().setAttribute("usr", contract);
 
         } catch (ContractNotFoundException ex) {

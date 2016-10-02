@@ -65,10 +65,10 @@
     </div>
 
 
-    <% String check = (String) request.getAttribute("check");
-        if (check.equals("work"))
-            if (request.getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getAttribute("usr");
+    <% String check = (String) request.getSession().getAttribute("check");
+        if (!check.equals("Notwork"))
+            if (!request.getSession().getAttribute("usr").equals("one")) {
+                Contract contract1 = (Contract) request.getSession().getAttribute("usr");
                 contracts.clear();
                 contracts.add(contract1);
     %>
