@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -165,7 +167,6 @@ public class AdminController {
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
                                @RequestParam(value = "contractNumber") String contractNumber) {
-        System.out.println(tariffId + " " + contractNumber);
         int tariffID = Integer.valueOf(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);
@@ -175,18 +176,50 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
-    public String adminChangeClient(HttpServletRequest req, Locale locale, Model model) {
-        int count = 1;
-        if (count == 1) {
-            model.addAttribute("check", "start");
-            count++;
-        }
+    @Scope("session")
+    public String adminChangeClientGet(HttpServletRequest req, Locale locale, Model model) {
         User user = (User) req.getSession().getAttribute("currentUser");
         List<Contract> contracts = contractService.getAllContractsForUser(user.getUserId());
+        req.getSession().setAttribute("tariffOptions", optionService.getAll());
 
-        model.addAttribute("contracts", contracts);
-        model.addAttribute("tariffOptions", optionService.getAll());
+        return "admin/adminChangeClient";
+    }
+    @RequestMapping(value = "/adminChangeClient", method = RequestMethod.POST)
+    public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
+                                       @RequestParam(value = "contractNumber") String contractNumber,
+                                       @RequestParam(value = "tariffOptionId") String tariffOptionId,
+                                       @RequestParam(value = "method") String method) {
+        System.out.println(contractNumber + " " + tariffOptionId + " " + method);
+        User user = (User) request.getSession().getAttribute("currentUser");
+        int tariffOptionID = Integer.parseInt(tariffOptionId);
+        Contract contract = contractService.getContractByNumber(contractNumber);
+        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
+        if (method.equals("unable")) {
+            List<TariffOption> jointOptions = new ArrayList();
 
+            boolean isForbid = false;
+            for (TariffOption tar : contract.getTariffOptions()) {
+                if (tar.getimpossibleTogether().contains(tariffOption))
+                    isForbid = true;
+            }
+
+            if (!isForbid) {
+                jointOptions = tariffOption.getjointTogether();
+                for (TariffOption tar : jointOptions) {
+                    contract.getTariffOptions().add(tar);
+                    contractService.updateEntity(contract);
+                }
+                contract.getTariffOptions().add(tariffOption);
+                contractService.updateEntity(contract);
+            } else {
+                resp.addHeader("Access-Control-Allow-Origin", "*");
+                resp.addHeader("X-XSS-Protection", "0");
+                resp.setStatus(405);
+            }
+        } else {
+            contract.getTariffOptions().remove(tariffOption);
+            contractService.updateEntity(contract);
+        }
         return "admin/adminChangeClient";
     }
 

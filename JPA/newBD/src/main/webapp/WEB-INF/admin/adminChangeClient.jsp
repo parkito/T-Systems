@@ -17,13 +17,6 @@
     <title>Change client</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<%
-    List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
-    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getAttribute("tariffOptions");
-    List<Integer> tempTariff = new ArrayList();
-
-
-%>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Change contract options</h2>
@@ -63,19 +56,18 @@
         </div>
     </div>
 
-    <% String check = (String) request.getAttribute("check");
-        if (check.equals("work"))
-            if (request.getSession(true).getAttribute("usr") != null) {
-                Contract contract1 = (Contract) request.getAttribute("usr");
-                contracts.clear();
-                contracts.add(contract1);
+    <% if (request.getSession().getAttribute("check") != null) {
+        if (!request.getSession().getAttribute("usr").equals("one")) {
+            Contract contract = (Contract) request.getSession().getAttribute("usr");
+            List<TariffOption> allTariffOptions = (List<TariffOption>) request.getSession().getAttribute("tariffOptions");
+            List<Integer> tempTariff = new ArrayList<>();
+
     %>
     <%-----------------------------------------------%>
 
     <div class="container-fluid">
         <%
-            for (Contract contract : contracts) {
-                List<TariffOption> contractOptions = contract.getTariffOptions();
+            List<TariffOption> contractOptions = contract.getTariffOptions();
 
         %>
         <div class="row cm-fix-height">
@@ -144,7 +136,7 @@
                                         function popBox() {
 
                                             var xhr = new XMLHttpRequest();
-                                            xhr.open("DELETE", "/user/TariffOptions?contractNumber=" + par1
+                                            xhr.open("POST", "adminChangeClient?contractNumber=" + par1
                                                     + "&tariff=" + par2 + "&method=disable", true);
                                             xhr.send();
                                             document.getElementById('textFiled').value = par1;
@@ -174,10 +166,10 @@
                                         popBox();
                                         function popBox() {
                                             var xhr = new XMLHttpRequest();
-                                            xhr.open("DELETE", "userTariffOptions?contractNumber=" + par1
+                                            xhr.open("POST", "adminChangeClient?contractNumber=" + par1
                                                     + "&tariff=" + par2 + "&method=unable", false);
                                             xhr.send();
-                                            if (xhr.status == 500) {
+                                            if (xhr.status == 405) {
                                                 alert('Incompatible options')
                                             }
                                             else {
@@ -202,8 +194,8 @@
             <%}%>
         </div>
         <%
-                    }
                 }
+            }
         %>
     </div>
 </div>
