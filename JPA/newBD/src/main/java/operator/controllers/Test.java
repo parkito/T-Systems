@@ -37,21 +37,24 @@ public class Test {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
         boolean userWasChange = false;
-        List<User> users = userService.getAll();
-        for (User user : users) {
-            for (Contract contract : user.getContracts()) {
-                for (TariffOption tariffOption : contract.getTariffOptions()) {
-                    if (tariffOption.getTitle().equals("test")) {
-                        contract.getTariffOptions().remove(tariffOption);
-                        contractService.updateEntity(contract);
-                        userWasChange = true;
+        Object object = new Object();
+        synchronized (object) {
+            List<User> users = userService.getAll();
+            for (User user : users) {
+                for (Contract contract : user.getContracts()) {
+                    for (TariffOption tariffOption : contract.getTariffOptions()) {
+                        if (tariffOption.getTitle().equals("test")) {
+                            contract.getTariffOptions().remove(tariffOption);
+                            userWasChange = true;
+                        }
                     }
                 }
+                if (userWasChange)
+                    userService.updateEntity(user);
+                userWasChange = false;
             }
-            if (userWasChange)
-                userService.updateEntity(user);
         }
-        optionService.deleteEntity(optionService.getEntityById(8));
+        optionService.deleteEntity(optionService.getEntityById(9));
         model.addAttribute("test", optionService.getAll());
         return "admin/adminTest";
     }

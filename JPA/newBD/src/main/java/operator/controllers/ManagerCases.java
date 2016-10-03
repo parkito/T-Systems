@@ -237,7 +237,30 @@ public class ManagerCases {
             }
             if (userWasChange)
                 userService.updateEntity(user);
+            userWasChange = false;
         }
         tariffService.deleteEntity(tariffService.getTariffByTitle(tariffForRemoving.getTitle()));
+    }
+    public void removeTariffOption(TariffOption tariffOptionForRemoving)
+    {
+        boolean userWasChange = false;
+        Object object = new Object();
+        synchronized (object) {
+            List<User> users = userService.getAll();
+            for (User user : users) {
+                for (Contract contract : user.getContracts()) {
+                    for (TariffOption tariffOption : contract.getTariffOptions()) {
+                        if (tariffOption.getTitle().equals(tariffOptionForRemoving.getTitle())) {
+                            contract.getTariffOptions().remove(tariffOption);
+                            userWasChange = true;
+                        }
+                    }
+                }
+                if (userWasChange)
+                    userService.updateEntity(user);
+                userWasChange = false;
+            }
+        }
+        tariffOptionService.deleteEntity(tariffOptionService.getEntityById(tariffOptionForRemoving.getTariffOptionId()));
     }
 }
