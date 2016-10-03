@@ -149,9 +149,6 @@ public class TariffOption {
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (connectionPrice != null ? connectionPrice.hashCode() : 0);
-        result = 31 * result + (contracts != null ? contracts.hashCode() : 0);
-        result = 31 * result + (jointTogether != null ? jointTogether.hashCode() : 0);
-        result = 31 * result + (impossibleTogether != null ? impossibleTogether.hashCode() : 0);
         return result;
     }
 }

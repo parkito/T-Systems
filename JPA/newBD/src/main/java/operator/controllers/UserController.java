@@ -87,8 +87,7 @@ public class UserController {
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
                                @RequestParam(value = "contractNumber") String contractNumber) {
-        System.out.println(tariffId + " " + contractNumber);
-        int tariffID = Integer.valueOf(tariffId);
+        int tariffID = Integer.parseInt(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);
         contract.setTariff(tariff);
@@ -130,13 +129,11 @@ public class UserController {
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
-        System.out.println(contractNumber + " " + tariffOptionId + " " + method);
-        User user = (User) request.getSession().getAttribute("currentUser");
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
-        if (method.equals("unable")) {
-            List<TariffOption> jointOptions = new ArrayList();
+        if ("unable".equals(method)) {
+            List<TariffOption> jointOptions;
 
             boolean isForbid = false;
             for (TariffOption tar : contract.getTariffOptions()) {
@@ -197,7 +194,7 @@ public class UserController {
         User user = (User) req.getSession().getAttribute("currentUser");
         model.addAttribute("contracts", contractService.getAllContractsForUser(user.getUserId()));
         String blockItem = null, unblockItem = null;
-        if (status.equals("block"))
+        if ("block".equals(status))
             blockItem = status;
         else unblockItem = status;
         if (blockItem != null) {

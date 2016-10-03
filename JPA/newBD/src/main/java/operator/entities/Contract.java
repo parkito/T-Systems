@@ -141,7 +141,7 @@ public class Contract {
     public void addOption(TariffOption tariffOption) {
         if (!isTariffOptionExists(tariffOption))
             this.tariffOptions.add(tariffOption);
-        else System.out.println("Option already exists");
+
     }
 
     public Contract(String number, User user, Tariff tariff) {

@@ -47,6 +47,7 @@ public class ManagerCases {
         try {
             userService.getUserByEMAil(eMail).getEmail();
         } catch (UserNotFoundException ex) {
+            logger.info(ex);
             return false;
         }
         return true;
@@ -83,6 +84,7 @@ public class ManagerCases {
         try {
             contractService.getContractByNumber(number);
         } catch (ContractNotFoundException ex) {
+            logger.info(ex);
             return false;
         }
         return true;
@@ -173,8 +175,8 @@ public class ManagerCases {
         EmailSender.send(eMail, user, result);
         try {
             result = Converter.getMD5(result);
-        } catch (NoSuchAlgorithmException e) {
-            logger.info(e);
+        } catch (NoSuchAlgorithmException ex) {
+            logger.info(ex);
 
         }
         return result;

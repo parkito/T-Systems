@@ -1,5 +1,6 @@
 package operator.controllers;
 
+import operator.aop.Logging;
 import operator.entities.Contract;
 import operator.entities.Tariff;
 import operator.entities.TariffOption;
@@ -13,6 +14,7 @@ import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -49,6 +51,8 @@ public class AdminController {
     @Autowired
     private ManagerCases managerCases;
 
+    private static final Logger logger = Logger.getLogger(AdminController.class);
+
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewClient";
@@ -65,38 +69,38 @@ public class AdminController {
                                      @RequestParam(value = "email") String eMail,
                                      @RequestParam(value = "number") String number) {
         boolean add = true;
-        if (name.equals("")) {
+        if (("").equals(name)) {
             req.getSession().setAttribute("nameStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("nameStat", "OK");
 
-        if (secondName.equals("")) {
+        if (("").equals(secondName)) {
             req.getSession().setAttribute("surNameStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("surNameStat", "OK");
 
-        if (birthdayDate.equals("")) {
+        if (("").equals(birthdayDate)) {
             req.getSession().setAttribute("birthday", "Error");
             add = false;
         } else
             req.getSession().setAttribute("birthday", "OK");
 
-        if (passport.equals("")) {
+        if (("").equals(passport)) {
             req.getSession().setAttribute("passport", "Error");
             add = false;
         } else
             req.getSession().setAttribute("passport", "OK");
 
-        if (adress.equals("")) {
+        if (("").equals(adress)) {
             req.getSession().setAttribute("adress", "Error");
             add = false;
         } else
             req.getSession().setAttribute("adress", "OK");
 
 
-        if (managerCases.isUserExists(eMail) || eMail.equals("")) {
+        if (managerCases.isUserExists(eMail) || ("").equals(eMail)) {
             req.getSession().setAttribute("email", "Error");
             add = false;
         } else {
@@ -126,7 +130,7 @@ public class AdminController {
                                        @RequestParam(value = "email") String eMail,
                                        @RequestParam(value = "number") String number) {
         boolean add = true;
-        if (!managerCases.isUserExists(eMail) || eMail.equals("")) {
+        if (!managerCases.isUserExists(eMail) || ("").equals(eMail)) {
             req.getSession().setAttribute("emailStat", "Error");
             add = false;
             req.getSession().setAttribute("newContract", false);
@@ -134,7 +138,7 @@ public class AdminController {
             req.getSession().setAttribute("emailStat", "OK");
         }
 
-        if (managerCases.isNumberExists(number) || number.equals("")) {
+        if (managerCases.isNumberExists(number) || ("").equals(number)) {
             req.getSession().setAttribute("numberStat", "Error");
             add = false;
             req.getSession().setAttribute("newContract", false);
@@ -162,7 +166,7 @@ public class AdminController {
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
                                @RequestParam(value = "contractNumber") String contractNumber) {
-        int tariffID = Integer.valueOf(tariffId);
+        int tariffID = Integer.parseInt(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);
         contract.setTariff(tariff);
@@ -173,9 +177,7 @@ public class AdminController {
     @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
     @Scope("session")
     public String adminChangeClientGet(HttpServletRequest req, Locale locale, Model model) {
-        User user = (User) req.getSession().getAttribute("currentUser");
         req.getSession().setAttribute("tariffOptions", optionService.getAll());
-
         return "admin/adminChangeClient";
     }
 
@@ -184,13 +186,11 @@ public class AdminController {
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
-        System.out.println(contractNumber + " " + tariffOptionId + " " + method);
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
-        if (method.equals("unable")) {
-            List<TariffOption> jointOptions = new ArrayList();
-
+        if (("unable").equals(method)) {
+            List<TariffOption> jointOptions;
             boolean isForbid = false;
             for (TariffOption tar : contract.getTariffOptions()) {
                 if (tar.getimpossibleTogether().contains(tariffOption))
@@ -230,7 +230,7 @@ public class AdminController {
     public String adminContractControlDelete(HttpServletRequest req, Locale locale, Model model,
                                              @RequestParam(value = "status") String status,
                                              @RequestParam(value = "number") String number) {
-        if (status.equals("block")) {
+        if (("block").equals(status)) {
             Contract contract = contractService.getContractByNumber(number);
             contract.setBlocked(true);
             contract.setBlockedByAdmin(true);
@@ -258,13 +258,13 @@ public class AdminController {
                                      @RequestParam(value = "price") String price) {
         boolean add = true;
 
-        if (title.equals("") || managerCases.isTariffExists(title)) {
+        if (("").equals(title) || managerCases.isTariffExists(title)) {
             req.getSession().setAttribute("titleStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("titleStat", "OK");
 
-        if (price.equals("")) {
+        if (("").equals(price)) {
             req.getSession().setAttribute("priceStat", "Error");
             add = false;
         } else
@@ -305,19 +305,19 @@ public class AdminController {
                                      @RequestParam(value = "connectPrice") String connectPrice) {
         boolean add = true;
         String connectionPrice = req.getParameter("connectPrice");
-        if (title.equals("") || managerCases.isOptionExists(title)) {
+        if (("").equals(title) || managerCases.isOptionExists(title)) {
             req.getSession().setAttribute("titleStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("titleStat", "OK");
 
-        if (price.equals("")) {
+        if (("").equals(price)) {
             req.getSession().setAttribute("priceStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("priceStat", "OK");
 
-        if (connectionPrice.equals("")) {
+        if (("").equals(connectionPrice)) {
             req.getSession().setAttribute("connectionPriceStat", "Error");
             add = false;
         } else
@@ -357,15 +357,14 @@ public class AdminController {
                                          @RequestParam(value = "tariffOne") String tariffOne,
                                          @RequestParam(value = "tariffTwo") String tariffTwo) {
         boolean add = true;
-        System.out.println(tariffOne + " " + tariffTwo);
 
-        if (tariffOne.equals("") || !managerCases.isOptionExists(tariffOne)) {
+        if (("").equals(tariffOne) || !managerCases.isOptionExists(tariffOne)) {
             req.getSession().setAttribute("oneStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("oneStat", "OK");
 
-        if (tariffTwo.equals("") || !managerCases.isOptionExists(tariffTwo)) {
+        if (("").equals(tariffTwo) || !managerCases.isOptionExists(tariffTwo)) {
             req.getSession().setAttribute("twoStat", "Error");
             add = false;
         } else
@@ -391,13 +390,13 @@ public class AdminController {
                                             @RequestParam(value = "tariffTwo") String tariffTwo) {
         boolean add = true;
 
-        if (tariffOne.equals("") || !managerCases.isOptionExists(tariffOne)) {
+        if (("").equals(tariffOne) || !managerCases.isOptionExists(tariffOne)) {
             req.getSession().setAttribute("oneStat", "Error");
             add = false;
         } else
             req.getSession().setAttribute("oneStat", "OK");
 
-        if (tariffTwo.equals("") || !managerCases.isOptionExists(tariffTwo)) {
+        if (("").equals(tariffTwo) || !managerCases.isOptionExists(tariffTwo)) {
             req.getSession().setAttribute("twoStat", "Error");
             add = false;
         } else
@@ -455,6 +454,7 @@ public class AdminController {
             req.getSession().setAttribute("usrs", user);
         } catch (UserNotFoundException ex) {
             req.getSession().setAttribute("usrs", "one");
+            logger.info(ex);
         }
         return "admin/adminViewClient";
     }
@@ -475,6 +475,7 @@ public class AdminController {
 
         } catch (ContractNotFoundException ex) {
             req.getSession().setAttribute("usr", "one");
+            logger.info(ex);
         }
         return "admin/adminFindClient";
     }

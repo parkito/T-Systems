@@ -4,9 +4,12 @@ package operator.controllers;
 import operator.entities.Contract;
 import operator.entities.User;
 import operator.exceptions.CustomDAOException;
+import operator.services.api.*;
 import operator.services.implementation.AccessLevelImpl;
 import operator.services.implementation.ContractServiceImpl;
 import operator.services.implementation.UserServiceImpl;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -19,23 +22,33 @@ import java.util.List;
  * Business logic for users
  */
 public class UserCases {
-    private UserServiceImpl userService = new UserServiceImpl();
-    private AccessLevelImpl accessLevelService = new AccessLevelImpl();
-    private ContractServiceImpl contractService = new ContractServiceImpl();
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ContractService contractService;
+    @Autowired
+    TariffService tariffService;
+    @Autowired
+    TariffOptionService tariffOptionService;
+    @Autowired
+    AccessLevelService accessLevelService;
 
-    /**
-     * User become manager
-     *
-     * @param user entity for changing
-     */
-    public boolean makeUserManager(User user) {
-        try {
-            userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
-        } catch (CustomDAOException ex) {
-            return false;
-        }
-        return true;
-    }
+    private final static Logger logger = Logger.getLogger(ManagerCases.class);
+
+    // TODO: 10/4/16 Подумать с деланием менеджера
+//    /**
+//     * User become manager
+//     *
+//     * @param user entity for changing
+//     */
+//    public boolean makeUserManager(User user) {
+//        try {
+//            userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
+//        } catch (CustomDAOException ex) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     /**
      * Getting user name from contract
