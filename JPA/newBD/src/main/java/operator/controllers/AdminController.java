@@ -7,9 +7,6 @@ import operator.entities.TariffOption;
 import operator.entities.User;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.UserNotFoundException;
-import operator.integration.ContractValidator;
-import operator.integration.EntityRemoval;
-import operator.integration.UserUpdater;
 import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
@@ -42,12 +39,6 @@ public class AdminController {
     private TariffService tariffService;
     @Autowired
     private TariffOptionService optionService;
-    @Autowired
-    private ContractValidator contractValidator;
-    @Autowired
-    private UserUpdater userUpdater;
-    @Autowired
-    private EntityRemoval entityRemoval;
     @Autowired
     private ManagerCases managerCases;
 

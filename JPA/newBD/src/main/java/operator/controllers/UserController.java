@@ -4,7 +4,6 @@ import operator.entities.Contract;
 import operator.entities.Tariff;
 import operator.entities.TariffOption;
 import operator.entities.User;
-import operator.integration.ContractValidator;
 import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
@@ -35,8 +34,6 @@ public class UserController {
     private TariffService tariffService;
     @Autowired
     private TariffOptionService optionService;
-    @Autowired
-    private ContractValidator contractValidator;
 
     /**
      * Method for dispatching requests to user's contracts
