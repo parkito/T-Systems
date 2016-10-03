@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -221,5 +222,22 @@ public class ManagerCases {
         two.addOptionsIncompatible(one);
         tariffOptionService.updateEntity(one);
         tariffOptionService.updateEntity(two);
+    }
+
+    public void removeTariff(Tariff tariffForRemoving) {
+        boolean userWasChange = false;
+        List<User> users = userService.getAll();
+        Tariff tariff = tariffService.getTariffByTitle("base");
+        for (User user : users) {
+            for (Contract contract : user.getContracts()) {
+                if (contract.getTariff().getTitle().equals(tariffForRemoving.getTitle())) {
+                    contract.setTariff(tariff);
+                    userWasChange = true;
+                }
+            }
+            if (userWasChange)
+                userService.updateEntity(user);
+        }
+        tariffService.deleteEntity(tariffService.getTariffByTitle(tariffForRemoving.getTitle()));
     }
 }

@@ -48,7 +48,6 @@ public class Contract {
             inverseJoinColumns = @JoinColumn(name = "tariffOption_id"))
     private List<TariffOption> tariffOptions = new ArrayList();
 
-
     @OneToOne
     @JoinColumn(name = "tariff_id")
     private Tariff tariff;

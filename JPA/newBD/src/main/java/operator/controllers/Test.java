@@ -1,7 +1,7 @@
 package operator.controllers;
 
 import operator.entities.Contract;
-import operator.entities.Tariff;
+import operator.entities.TariffOption;
 import operator.entities.User;
 import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
@@ -36,17 +36,23 @@ public class Test {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
+        boolean userWasChange = false;
         List<User> users = userService.getAll();
-        Tariff tariff = tariffService.getTariffByTitle("base");
         for (User user : users) {
             for (Contract contract : user.getContracts()) {
-                if (contract.getTariff().getTitle().equals("test"))
-                    contract.setTariff(tariff);
+                for (TariffOption tariffOption : contract.getTariffOptions()) {
+                    if (tariffOption.getTitle().equals("test")) {
+                        contract.getTariffOptions().remove(tariffOption);
+                        contractService.updateEntity(contract);
+                        userWasChange = true;
+                    }
+                }
             }
-            userService.updateEntity(user);
+            if (userWasChange)
+                userService.updateEntity(user);
         }
-        tariffService.deleteEntity(tariffService.getTariffByTitle("test"));
-        model.addAttribute("test", tariffService.getAll());
+        optionService.deleteEntity(optionService.getEntityById(8));
+        model.addAttribute("test", optionService.getAll());
         return "admin/adminTest";
     }
 }
