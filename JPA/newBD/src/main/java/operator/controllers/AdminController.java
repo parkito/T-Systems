@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * A controllers to dispatch the queries of admins.
+ * A controllers for dispatch the queries of admins.
  */
 @Controller("AdminController")
 public class AdminController {

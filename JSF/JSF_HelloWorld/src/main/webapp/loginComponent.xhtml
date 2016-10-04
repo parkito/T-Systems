@@ -5,16 +5,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:composite="http://java.sun.com/jsf/composite">
-<!--<composite:interface>-->
-    <!--<composite:attribute name="usernameLabel" />-->
-    <!--<composite:attribute name="usernameValue" />-->
-    <!--<composite:attribute name="passwordLabel" />-->
-    <!--<composite:attribute name="passwordValue" />-->
-    <!--<composite:attribute name="loginButtonLabel" />-->
-    <!--<composite:attribute name="loginButtonAction"-->
-                         <!--method-signature="java.lang.String login()" />-->
-<!--</composite:interface>-->
-<!--<composite:implementation>-->
+<composite:interface>
+    <composite:attribute name="usernameLabel" />
+    <composite:attribute name="usernameValue" />
+    <composite:attribute name="passwordLabel" />
+    <composite:attribute name="passwordValue" />
+    <composite:attribute name="loginButtonLabel" />
+    <composite:attribute name="loginButtonAction"
+                         method-signature="java.lang.String login()" />
+</composite:interface>
+<composite:implementation>
     <h:form>
         <h:message for="loginPanel" style="color:red;" />
         <h:panelGrid columns="2" id="loginPanel">
@@ -26,5 +26,5 @@
         <h:commandButton action="#{cc.attrs.loginButtonAction}"
                          value="#{cc.attrs.loginButtonLabel}"/>
     </h:form>
-<!--</composite:implementation>-->
+</composite:implementation>
 </html>
