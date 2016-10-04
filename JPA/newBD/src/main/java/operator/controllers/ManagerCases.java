@@ -225,42 +225,42 @@ public class ManagerCases {
     }
 
     public void removeTariff(Tariff tariffForRemoving) {
-        boolean userWasChange = false;
+        boolean contractWasChange = false;
         List<User> users = userService.getAll();
         Tariff tariff = tariffService.getTariffByTitle("base");
-        for (User user : users) {
-            for (Contract contract : user.getContracts()) {
-                if (contract.getTariff().getTitle().equals(tariffForRemoving.getTitle())) {
-                    contract.setTariff(tariff);
-                    userWasChange = true;
-                }
+        for (Contract contract : contractService.getAll()) {
+            if (contract.getTariff().getTitle().equals(tariffForRemoving.getTitle())) {
+                contract.setTariff(tariff);
+                contractWasChange = true;
             }
-            if (userWasChange)
-                userService.updateEntity(user);
-            userWasChange = false;
+            if (contractWasChange) {
+                contractService.updateEntity(contract);
+            }
+            contractWasChange = false;
         }
+
         tariffService.deleteEntity(tariffService.getTariffByTitle(tariffForRemoving.getTitle()));
     }
-    public void removeTariffOption(TariffOption tariffOptionForRemoving)
-    {
-        boolean userWasChange = false;
+
+    public void removeTariffOption(TariffOption tariffOptionForRemoving) {
+        boolean contractWasChanged = false;
         Object object = new Object();
+        // TODO: 10/4/16 check it , test it
         synchronized (object) {
-            List<User> users = userService.getAll();
-            for (User user : users) {
-                for (Contract contract : user.getContracts()) {
-                    for (TariffOption tariffOption : contract.getTariffOptions()) {
-                        if (tariffOption.getTitle().equals(tariffOptionForRemoving.getTitle())) {
-                            contract.getTariffOptions().remove(tariffOption);
-                            userWasChange = true;
-                        }
+            for (Contract contract : contractService.getAll()) {
+                for (TariffOption tariffOption : contract.getTariffOptions()) {
+                    if (tariffOption.getTitle().equals(tariffOptionForRemoving.getTitle())) {
+                        contract.getTariffOptions().remove(tariffOption);
+                        contractWasChanged = true;
                     }
                 }
-                if (userWasChange)
-                    userService.updateEntity(user);
-                userWasChange = false;
+                if (contractWasChanged) {
+                    contractService.updateEntity(contract);
+                }
+                contractWasChanged = false;
             }
         }
-        tariffOptionService.deleteEntity(tariffOptionService.getEntityById(tariffOptionForRemoving.getTariffOptionId()));
+        tariffOptionService.deleteEntity(tariffOptionService.
+                getEntityById(tariffOptionForRemoving.getTariffOptionId()));
     }
 }
