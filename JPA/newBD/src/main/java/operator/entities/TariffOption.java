@@ -55,7 +55,6 @@ public class TariffOption {
         this.tariffOptionId = tariffOptionId;
     }
 
-
     public String getTitle() {
         return title;
     }
@@ -63,7 +62,6 @@ public class TariffOption {
     public void setTitle(String title) {
         this.title = title;
     }
-
 
     public double getPrice() {
         return price;

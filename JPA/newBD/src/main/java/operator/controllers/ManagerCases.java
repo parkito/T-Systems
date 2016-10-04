@@ -229,7 +229,7 @@ public class ManagerCases {
         List<User> users = userService.getAll();
         Tariff tariff = tariffService.getTariffByTitle("base");
         for (Contract contract : contractService.getAll()) {
-            if (contract.getTariff().getTitle().equals(tariffForRemoving.getTitle())) {
+            if (contract.getTariff().equals(tariffForRemoving)) {
                 contract.setTariff(tariff);
                 contractWasChange = true;
             }
@@ -238,20 +238,20 @@ public class ManagerCases {
             }
             contractWasChange = false;
         }
-
-        tariffService.deleteEntity(tariffService.getTariffByTitle(tariffForRemoving.getTitle()));
+        tariffService.deleteEntity(tariffForRemoving);
     }
 
+    // TODO: 10/4/16 fucking shit works, but throws nullpointerexception
     public void removeTariffOption(TariffOption tariffOptionForRemoving) {
         boolean contractWasChanged = false;
         Object object = new Object();
-        // TODO: 10/4/16 check it , test it
         synchronized (object) {
             for (Contract contract : contractService.getAll()) {
                 for (TariffOption tariffOption : contract.getTariffOptions()) {
-                    if (tariffOption.getTitle().equals(tariffOptionForRemoving.getTitle())) {
+                    if (tariffOption.equals(tariffOptionForRemoving)) {
                         contract.getTariffOptions().remove(tariffOption);
                         contractWasChanged = true;
+                        break;
                     }
                 }
                 if (contractWasChanged) {
@@ -260,7 +260,7 @@ public class ManagerCases {
                 contractWasChanged = false;
             }
         }
-        tariffOptionService.deleteEntity(tariffOptionService.
-                getEntityById(tariffOptionForRemoving.getTariffOptionId()));
+
+        tariffOptionService.deleteEntity(tariffOptionForRemoving);
     }
 }
