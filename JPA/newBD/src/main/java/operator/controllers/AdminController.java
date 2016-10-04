@@ -44,11 +44,32 @@ public class AdminController {
 
     private static final Logger logger = Logger.getLogger(AdminController.class);
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewClient";
     }
 
+    /**
+     * 
+     * @param req request from page 
+     * @param locale locale for page 
+     * @param model model for page view 
+     * @param name
+     * @param secondName
+     * @param birthdayDate
+     * @param passport
+     * @param adress
+     * @param eMail
+     * @param number
+     * @return page for page for
+     */
     @RequestMapping(value = "/adminNewClient", method = RequestMethod.DELETE)
     @Scope("session")
     public String adminNewClientPost(HttpServletRequest req, Locale locale, Model model,
@@ -109,12 +130,29 @@ public class AdminController {
         return "admin/adminNewClient";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.GET)
     public String adminNewContractGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewContract";
     }
 
     // TODO: 10/2/16 Не фурычит как надо. Дабл ввод
+
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param eMail
+     * @param number
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewContract", method = RequestMethod.POST)
     @Scope("session")
     public String adminNewContractPost(HttpServletRequest req, Locale locale, Model model,
@@ -146,6 +184,13 @@ public class AdminController {
         return "admin/adminNewContract";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.GET)
     @Scope("session")
     public String adminChangeClientTariffGet(HttpServletRequest req, Locale locale, Model model) {
@@ -153,6 +198,15 @@ public class AdminController {
         return "admin/adminChangeClientTariff";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffId
+     * @param contractNumber
+     * @return page for
+     */
     @RequestMapping(value = "/adminChangeClientTariff", method = RequestMethod.POST)
     public String changeTariff(HttpServletRequest request, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
@@ -165,6 +219,13 @@ public class AdminController {
         return "redirect:adminChangeClientTariff";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminChangeClient", method = RequestMethod.GET)
     @Scope("session")
     public String adminChangeClientGet(HttpServletRequest req, Locale locale, Model model) {
@@ -172,6 +233,17 @@ public class AdminController {
         return "admin/adminChangeClient";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param resp
+     * @param locale locale for page
+     * @param model model for page view
+     * @param contractNumber
+     * @param tariffOptionId
+     * @param method
+     * @return page for
+     */
     @RequestMapping(value = "/adminChangeClient", method = RequestMethod.POST)
     public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
@@ -206,6 +278,13 @@ public class AdminController {
         return "admin/adminChangeClient";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminContractControl", method = RequestMethod.GET)
     @Scope("session")
     public String adminContractControl(HttpServletRequest req, Locale locale, Model model) {
@@ -217,6 +296,15 @@ public class AdminController {
         return "admin/adminContractControl";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param status
+     * @param number
+     * @return page for
+     */
     @RequestMapping(value = "/adminContractControl", method = RequestMethod.POST)
     public String adminContractControlDelete(HttpServletRequest req, Locale locale, Model model,
                                              @RequestParam(value = "status") String status,
@@ -235,13 +323,29 @@ public class AdminController {
         return "admin/adminContractControl";
     }
 
-
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewTariff", method = RequestMethod.GET)
     public String adminNewTariffGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewTariff";
     }
 
     // TODO: 9/30/16 Фигня какая-то. Проверь!!!!
+
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param title
+     * @param price
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewTariff", method = RequestMethod.POST)
     @Scope("session")
     public String adminNewTariffPost(HttpServletRequest req, Locale locale, Model model,
@@ -268,12 +372,27 @@ public class AdminController {
         return "admin/adminNewTariff";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminEditTariff", method = RequestMethod.GET)
     public String adminEditTariffGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("tariffs", tariffService.getAll());
         return "admin/adminEditTariff";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffId
+     * @return page for
+     */
     @RequestMapping(value = "/adminEditTariff", method = RequestMethod.POST)
     public String adminEditTariffPost(HttpServletRequest request, Locale locale, Model model,
                                       @RequestParam(value = "tariffId") String tariffId) {
@@ -283,11 +402,28 @@ public class AdminController {
         return "admin/adminEditTariff";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewOption", method = RequestMethod.GET)
     public String adminNewOptionGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminNewOption";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param title
+     * @param price
+     * @param connectPrice
+     * @return page for
+     */
     @RequestMapping(value = "/adminNewOption", method = RequestMethod.POST)
     @Scope("session")
     public String adminNewOptionPost(HttpServletRequest req, Locale locale, Model model,
@@ -321,12 +457,27 @@ public class AdminController {
         return "admin/adminNewOption";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminEditTariffOption", method = RequestMethod.GET)
     public String adminEditTariffOptionGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAll());
         return "admin/adminEditTariffOption";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffOptionId
+     * @return page for
+     */
     @RequestMapping(value = "/adminEditTariffOption", method = RequestMethod.POST)
     public String adminEditTariffOptionPost(HttpServletRequest request, Locale locale, Model model,
                                             @RequestParam(value = "tariffOptionId") String tariffOptionId) {
@@ -336,12 +487,28 @@ public class AdminController {
         return "admin/adminEditTariffOption";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminConnectOption", method = RequestMethod.GET)
     public String adminConnectOptionGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
         return "admin/adminJointOption";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffOne
+     * @param tariffTwo
+     * @return page for
+     */
     @RequestMapping(value = "/adminConnectOption", method = RequestMethod.POST)
     @Scope("session")
     public String adminConnectOptionPost(HttpServletRequest req, Locale locale, Model model,
@@ -369,11 +536,27 @@ public class AdminController {
         return "admin/adminJointOption";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.GET)
     public String adminImpossibleOptionGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminImpossibleOptions";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffOne
+     * @param tariffTwo
+     * @return page for
+     */
     @RequestMapping(value = "/adminImpossibleOption", method = RequestMethod.POST)
     @Scope("session")
     public String adminImpossibleOptionPost(HttpServletRequest req, Locale locale, Model model,
@@ -400,12 +583,27 @@ public class AdminController {
         return "admin/adminImpossibleOptions";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.GET)
     public String adminDeleteImOptionsGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAllImpossibleTariffOption(0));
         return "admin/adminDeleteImOptions";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffOptionId
+     * @return page for
+     */
     @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.POST)
     public String adminDeleteImOptionsPost(HttpServletRequest request, Locale locale, Model model,
                                            @RequestParam(value = "tariffOptionId") String tariffOptionId) {
@@ -415,12 +613,27 @@ public class AdminController {
         return "admin/adminDeleteImOptions";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.GET)
     public String adminDeleteJoOptionsGet(HttpServletRequest request, Locale locale, Model model) {
         model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
         return "admin/adminDeleteJoOptions";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @param tariffOptionId
+     * @return page for
+     */
     @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.POST)
     public String adminDeleteJoOptionsPost(HttpServletRequest request, Locale locale, Model model,
                                            @RequestParam(value = "tariffOptionId") String tariffOptionId) {
@@ -430,11 +643,26 @@ public class AdminController {
         return "admin/adminDeleteJoOptions";
     }
 
+    /**
+     * 
+     * @param req request from pageuest
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminViewClient", method = RequestMethod.GET)
     public String adminViewClientGet(HttpServletRequest request, Locale locale, Model model) {
         return "admin/adminViewClient";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param email
+     * @return page for
+     */
     @RequestMapping(value = "/adminViewClient", method = RequestMethod.POST)
     @Scope("session")
     public String adminViewClientPost(HttpServletRequest req, Locale locale, Model model,
@@ -450,11 +678,26 @@ public class AdminController {
         return "admin/adminViewClient";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @return page for
+     */
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.GET)
     public String adminFindClientGet(HttpServletRequest req, Locale locale, Model model) {
         return "admin/adminFindClient";
     }
 
+    /**
+     * 
+     * @param req request from page
+     * @param locale locale for page
+     * @param model model for page view
+     * @param number
+     * @return page for
+     */
     @RequestMapping(value = "/adminFindClient", method = RequestMethod.POST)
     @Scope("session")
     public String adminFindClientPost(HttpServletRequest req, Locale locale, Model model,
