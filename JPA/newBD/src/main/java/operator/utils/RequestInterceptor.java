@@ -24,7 +24,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
         long startTime = System.currentTimeMillis();
         String url = request.getRequestURL().toString();
         try {
-            String userLogin = ((User) request.getSession().getAttribute("currentUserU")).getEmail();
+            String userLogin = ((User) request.getSession().getAttribute("currentUser")).getEmail();
             request.setAttribute("startTime", startTime);
         }
         //if returned false, we need to make sure 'response' is sent
@@ -32,7 +32,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
             try {
                 org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 User currentUser = userService.getUserByEMAil(user.getUsername());
-                request.getSession().setAttribute("currentUserU", currentUser);
+                request.getSession().setAttribute("currentUser", currentUser);
             } catch (Exception exception) {
                 return true;
             }
@@ -45,7 +45,6 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
                            HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("Request URL::" + request.getRequestURL().toString()
                 + " Sent to Handler");
-        //we can add attributes in the modelAndView and use that in the view page
     }
 
     @Override

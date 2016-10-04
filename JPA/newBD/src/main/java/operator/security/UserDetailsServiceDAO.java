@@ -5,9 +5,11 @@ package operator.security;
  * artyom-karnov@yandex.ru
  **/
 
+import operator.controllers.ManagerCases;
 import operator.dao.api.UserDAO;
 import operator.entities.User;
 import operator.exceptions.CustomDAOException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 @Service("userDetailsService")
 public class UserDetailsServiceDAO implements UserDetailsService {
+    private final static Logger logger = Logger.getLogger(UserDetailsServiceDAO.class);
     @Autowired
     private UserDAO userDAO;
 
@@ -41,8 +44,10 @@ public class UserDetailsServiceDAO implements UserDetailsService {
             return new org.springframework.security.core.userdetails.User(eMail, user.getPassword(),
                     true, true, true, true, authorities);
         } catch (CustomDAOException ex) {
+            logger.info(ex);
             throw new UsernameNotFoundException(eMail + " not found");
         } catch (Exception ex) {
+            logger.info(ex);
             return null;
         }
 

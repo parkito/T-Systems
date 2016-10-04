@@ -6,7 +6,9 @@ import operator.entities.Contract;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
 import operator.exceptions.CustomDAOException;
+import operator.security.UserDetailsServiceDAO;
 import operator.services.api.ContractService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,7 @@ import java.util.List;
  **/
 @Service("contractService")
 public class ContractServiceImpl implements ContractService {
+
     @Autowired
     private ContractDAO contractDAO;
 
@@ -33,7 +36,6 @@ public class ContractServiceImpl implements ContractService {
     public void createEntity(Contract contract) throws CustomDAOException {
         if (!isContractExists(contract))
             contractDAO.create(contract);
-        else System.out.println("Contract already exists");
     }
 
     /**

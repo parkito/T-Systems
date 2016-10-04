@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     public void createEntity(User user) throws CustomDAOException {
         if (!isUserExists(user)) {
             userDAO.create(user);
-        } else System.out.println("User already exists");
+        }
     }
 
     /**

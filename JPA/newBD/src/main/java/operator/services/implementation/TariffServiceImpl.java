@@ -31,7 +31,6 @@ public class TariffServiceImpl implements TariffService {
     public void createEntity(Tariff tariff) throws CustomDAOException {
         if (!isTariffExists(tariff))
             tariffDAO.create(tariff);
-        else System.out.println("Tariff already exists");
 
     }
 
