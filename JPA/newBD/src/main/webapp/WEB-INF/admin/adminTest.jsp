@@ -8,6 +8,8 @@
 <c:forEach var="contract" items="${test}">
     ${contract}
     <br>
+    <br>
+    <br>
 </c:forEach>
 </body>
 </html>

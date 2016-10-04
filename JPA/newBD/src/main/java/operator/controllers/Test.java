@@ -1,7 +1,7 @@
 package operator.controllers;
 
 import operator.entities.Contract;
-import operator.entities.TariffOption;
+import operator.entities.Tariff;
 import operator.entities.User;
 import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,8 +37,15 @@ public class Test {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
-
-//        model.addAttribute("test", optionService.ge);
+        Tariff tariff = tariffService.getTariffByTitle("base");
+        List<User> users = new ArrayList<>();
+        for (Contract contract : contractService.getAll()) {
+            if (contract.getTariff().equals(tariff)) {
+                contract.getUser().setPassword("");
+                users.add(contract.getUser());
+            }
+        }
+        model.addAttribute("test", users);
         return "admin/adminTest";
     }
 }
