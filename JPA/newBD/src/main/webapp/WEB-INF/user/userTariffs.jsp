@@ -17,8 +17,8 @@
         <h2 style="margin-top:0;">${currentUser.name}, your tariffs:</h2>
         <p></p>
     </div>
-    <%--<input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"--%>
-    <%--value="<c:out value="${_csrf.token}"/>"/>--%>
+    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
+    value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
         <c:forEach var="contract" items="${contractsUserList}" varStatus="loopOne">
             <div class="row cm-fix-height">
