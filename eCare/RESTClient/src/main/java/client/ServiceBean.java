@@ -43,7 +43,8 @@ public class ServiceBean {
 
 
     public void downloadFile() throws IOException {
-        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        HttpServletResponse response = (HttpServletResponse)
+                FacesContext.getCurrentInstance().getExternalContext().getResponse();
         try {
             // Get the text that will be added to the PDF
             String text = request;
