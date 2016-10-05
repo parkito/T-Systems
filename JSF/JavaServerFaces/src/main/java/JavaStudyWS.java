@@ -10,8 +10,21 @@ import java.io.IOException;
  **/
 public class JavaStudyWS {
     public static void main(String[] args) throws IOException {
+//        String output = null;
+//        String URLstring = "http://localhost:8080/getRestInfo";
+//        URL url = new URL(URLstring);
+//        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//        conn.setRequestMethod("GET");
+//        conn.setRequestProperty("Accept", "application/json");
+//        BufferedReader br = new BufferedReader(new InputStreamReader(
+//                (conn.getInputStream())));
+//
+//        output = br.readLine();
+//        conn.disconnect();
+//        System.out.println(output);
 
-        String restServiceUrl = "http://localhost:8080/getRestInfo/getContracts";
+
+        String restServiceUrl = "http://localhost:8080/getRestInfo?contract=new";
 
         HttpClient httpClient = new HttpClient();
         GetMethod getMethod = new GetMethod(restServiceUrl);
