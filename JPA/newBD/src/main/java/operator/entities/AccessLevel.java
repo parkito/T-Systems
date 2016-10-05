@@ -1,6 +1,7 @@
 package operator.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "AccessLevel")
 @NamedQuery(name = "AccessLevel.getAll", query = "SELECT a FROM AccessLevel a")
-public class AccessLevel {
+public class AccessLevel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "accessLevel_id")

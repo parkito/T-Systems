@@ -1,6 +1,7 @@
 package operator.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Artyom Karnov on 8/26/16.
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Tariff")
 @NamedQuery(name = "Tariff.getAll", query = "SELECT tar FROM Tariff tar")
-public class Tariff {
+public class Tariff implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tariff_id")

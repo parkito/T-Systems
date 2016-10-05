@@ -1,6 +1,7 @@
 package operator.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "Contract")
 @NamedQuery(name = "Contract.getAll", query = "SELECT c FROM Contract c")
-public class Contract {
+public class Contract implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")

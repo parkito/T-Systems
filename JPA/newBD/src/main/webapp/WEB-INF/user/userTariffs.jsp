@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-clearmin.min.css">
@@ -17,8 +19,6 @@
         <h2 style="margin-top:0;">${currentUser.name}, your tariffs:</h2>
         <p></p>
     </div>
-    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
-    value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid">
         <c:forEach var="contract" items="${contractsUserList}" varStatus="loopOne">
             <div class="row cm-fix-height">
@@ -96,8 +96,20 @@
                                             function popBox(num1, num2) {
                                                 x = confirm('Are you sure? ');
                                                 if (x == true) {
+                                                    var csrfHeaderName = "X-CSRF-TOKEN";
+                                                    var csrfTokenValue;
+
+                                                    var metaTags = document.getElementsByTagName('meta');
+                                                    for(var i = 0; i < metaTags.length; i++) {
+                                                        var metaTagName = metaTags[i].getAttribute("name");
+                                                        if(metaTagName === "_csrf_header")
+                                                            csrfHeaderName = metaTags[i].getAttribute("content");
+                                                        if(metaTagName === "_csrf")
+                                                            csrfTokenValue = metaTags[i].getAttribute("content");
+                                                    }
                                                     var xhr = new XMLHttpRequest();
                                                     xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
+                                                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
                                                     xhr.send();
                                                     xhr.open("GET", "userTariffs", false);
                                                     xhr.send();
