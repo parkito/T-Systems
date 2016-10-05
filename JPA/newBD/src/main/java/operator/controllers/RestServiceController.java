@@ -25,7 +25,7 @@ public class RestServiceController {
     @Autowired
     private ContractService contractService;
 
-    @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/restGetRestInfo", method = RequestMethod.GET)
     public List<User> getContracts(@RequestParam(value = "contract") String contractTitle) {
         System.out.println(contractTitle);
         Tariff tariff = tariffService.getTariffByTitle("base");
