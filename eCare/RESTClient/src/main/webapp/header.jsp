@@ -39,6 +39,7 @@
                     </li>
                     <li><a href="adminViewClient" class="sf-lock-open">View clients</a></li>
                     <li><a href="adminFindClient" class="sf-window-layout">Find client</a></li>
+                    <li><a href="RESTClient" class="sf-file-pdf">Report</a></li>
                 </ul>
             </div>
         </div>
