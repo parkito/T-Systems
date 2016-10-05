@@ -4,10 +4,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 
-//import javax.ws.rs.GET;
-//import javax.ws.rs.Path;
-//import javax.ws.rs.QueryParam;
-
 /**
  * Created by Artyom Karnov on 10/6/16.
  * artyom-karnov@yandex.ru
@@ -16,22 +12,22 @@ import java.io.Serializable;
 @SessionScoped
 public class BeanController implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-//    @EJB
-//    private ClientGet clientGet;
+    private static final long serialVersionUID = 2L;
 
-    private String status;
+    private String tariff;
 
-    public String getStatus() {
-        return status;
+    public String getTariff() {
+        return tariff;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTariff(String status) {
+        this.tariff = status;
     }
 
-    public String get() {
-        return "STRING";
+    public String getInfo() {
+        if (tariff.equals("my"))
+            return "User";
+        else return "home";
     }
 
 }

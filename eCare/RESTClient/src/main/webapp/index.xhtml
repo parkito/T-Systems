@@ -2,24 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <title>JSF 2.0 Hello World</title>
+    <title>JSF 2.0</title>
 </h:head>
 <h:body>
-    <h3>JSF 2.0 Hello World Example - hello.xhtml</h3>
+    <h3>Enter tariff title</h3>
     <h:form>
-        <h:inputText value="#{helloBean.name}"></h:inputText>
-        <br/>
-        <h:inputText validatorMessage="Please enter a number upper 18"
-                     value="#{helloBean.age}">
-            <!--<f:validateLongRange minimum="18" maximum="200"/>-->
-
-        </h:inputText>
+        <h:inputText value="#{beanController.tariff}"></h:inputText>
         <br/>
         <br/>
-        <h:commandButton value="Welcome Me" action="#{helloBean.goTo}"></h:commandButton>
+        <h:commandButton value="Welcome Me" action="#{beanController.getInfo}"></h:commandButton>
     </h:form>
 </h:body>
 </html>
