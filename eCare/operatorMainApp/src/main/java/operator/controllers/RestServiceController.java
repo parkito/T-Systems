@@ -27,16 +27,22 @@ public class RestServiceController {
     private ContractService contractService;
 
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
-    public @ResponseBody
+    public
+    @ResponseBody
     List<User> getContracts(@RequestParam(value = "contract") String contractTitle) {
         System.out.println(contractTitle);
-        Tariff tariff = tariffService.getTariffByTitle("base");
         List<User> users = new ArrayList<>();
-        for (Contract contract : contractService.getAll()) {
-            if (contract.getTariff().equals(tariff)) {
-                contract.getUser().setPassword("");
-                users.add(contract.getUser());
+        try {
+            Tariff tariff = tariffService.getTariffByTitle(contractTitle);
+
+            for (Contract contract : contractService.getAll()) {
+                if (contract.getTariff().equals(tariff)) {
+                    contract.getUser().setPassword("");
+                    users.add(contract.getUser());
+                }
             }
+        } catch (Exception ex) {
+            return null;
         }
         return users;
     }

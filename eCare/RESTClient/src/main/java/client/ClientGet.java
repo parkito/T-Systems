@@ -3,6 +3,8 @@ package client;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.ejb.Stateless;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-@Stateless
+@ManagedBean
+@SessionScoped
 public class ClientGet {
 
     public String getContract(String tariffTitle) {
