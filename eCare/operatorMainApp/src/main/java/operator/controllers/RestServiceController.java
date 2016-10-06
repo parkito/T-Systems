@@ -32,7 +32,6 @@ public class RestServiceController {
     List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle) {
         List<UserDTO> users = new ArrayList<>();
         try {
-
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
             for (Contract contract : contractService.getAll()) {
                 UserDTO userDTO = new UserDTO();

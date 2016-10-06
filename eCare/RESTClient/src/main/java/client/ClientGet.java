@@ -18,10 +18,9 @@ import java.util.List;
 @SessionScoped
 public class ClientGet {
 
-    public String getContract(String tariffTitle) throws IOException {
-
-        String output = null;
-        String URL = "http://localhost:8080/getRestInfo?contract=base";
+    public List<UserDTO> getContract(String tariffTitle) throws IOException {
+        String result = null;
+        String URL = "http://localhost:8080/getRestInfo?contract=" + tariffTitle;
         URL url = new URL(URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -35,15 +34,13 @@ public class ClientGet {
         }
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 (conn.getInputStream())));
-        output = br.readLine();
+        result = br.readLine();
         Gson gson = new Gson();
         Type userListType = new TypeToken<List<UserDTO>>() {
         }.getType();
-        List<UserDTO> users = gson.fromJson(output, userListType);
-        for (UserDTO user : users)
-            System.out.println(user);
+        List<UserDTO> users = gson.fromJson(result, userListType);
         conn.disconnect();
-        return output;
+        return users;
 
 
     }
