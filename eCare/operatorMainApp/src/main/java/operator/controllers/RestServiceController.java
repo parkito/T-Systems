@@ -40,6 +40,8 @@ public class RestServiceController {
                     userDTO.setName(contract.getUser().getName());
                     userDTO.setSecondName(contract.getUser().getSecondName());
                     userDTO.setBirthdayData(contract.getUser().getBirthdayData());
+                    userDTO.setPassport(contract.getUser().getPassport());
+                    userDTO.setAdress(contract.getUser().getAdress());
                     userDTO.setBalance(String.valueOf(contract.getUser().getBalance()));
                     userDTO.setEmail(contract.getUser().getEmail());
                     userDTO.setContracts(contract.getNumber());

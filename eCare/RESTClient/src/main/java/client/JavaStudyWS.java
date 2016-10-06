@@ -1,12 +1,13 @@
-import client.entities.User;
-import org.apache.commons.codec.binary.Base64;
+import client.ClientGet;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
 
 /**
  * Created by Artyom Karnov on 10/5/16.
@@ -14,31 +15,22 @@ import java.util.List;
  **/
 public class JavaStudyWS {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        String output = null;
-        String URLstring = "http://localhost:8080/getRestInfo?contract=base";
-        URL url = new URL(URLstring);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-//        conn.setRequestProperty("Accept", "application/json");
-        conn.setRequestProperty("Authorization", "Basic " +
-                new String(new Base64().encodeBase64("b@b.ru:12345".getBytes())));
-        if (conn.getResponseCode() != 200) {
-            System.out.println("Failed : HTTP error code : "
-                    + conn.getResponseCode());
-            System.exit(1);
+        ClientGet clientGet = new ClientGet();
+        Document document = new Document();
+        try {
+            File file = new File("/tmp/contracts.pdf");
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            document.add(new Paragraph("A Hello World PDF document."));
+            document.add(new Paragraph(clientGet.getContract("base")));
+            document.close();
+            writer.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        BufferedReader br = new BufferedReader(new InputStreamReader(
-                (conn.getInputStream())));
 
-        output = br.readLine();
-        conn.disconnect();
-//        List<User> users = (List<User>) br;
-        System.out.println(output);
-
-//        ObjectInputStream ois = new ObjectInputStream(conn.getInputStream());
-//        List<User> userList = (List<User>) ois.readObject();
-//        System.out.println(userList);
-//        ois.close();
 
     }
 }

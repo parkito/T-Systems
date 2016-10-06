@@ -24,7 +24,7 @@
           authentication-manager-ref="dao-auth"
           access-decision-manager-ref="accessDecisionManager">
         <intercept-url pattern="/admin**" access="Manager"/>
-        <intercept-url pattern="/getRestInfo" access="Manager"/>
+        <!--<intercept-url pattern="/getRestInfo" access="Manager"/>-->
         <intercept-url pattern="/user**" access="Manager"/>
         <intercept-url pattern="/user**" access="userAvailable"/>
         <form-login login-page="/login" authentication-failure-url="/login-denied"
