@@ -2,7 +2,7 @@ package operator.controllers;
 
 import operator.entities.Contract;
 import operator.entities.Tariff;
-import operator.entities.User;
+import operator.entities.UserDTO;
 import operator.services.api.ContractService;
 import operator.services.api.TariffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +29,21 @@ public class RestServiceController {
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<User> getContracts(@RequestParam(value = "contract") String contractTitle) {
-        System.out.println(contractTitle);
-        List<User> users = new ArrayList<>();
+    List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle) {
+        List<UserDTO> users = new ArrayList<>();
         try {
+            UserDTO userDTO = new UserDTO();
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
-
             for (Contract contract : contractService.getAll()) {
                 if (contract.getTariff().equals(tariff)) {
-                    contract.getUser().setPassword("");
-                    users.add(contract.getUser());
+                    userDTO.setUserId(String.valueOf(contract.getUser().getUserId()));
+                    userDTO.setName(contract.getUser().getName());
+                    userDTO.setSecondName(contract.getUser().getSecondName());
+                    userDTO.setBirthdayData(contract.getUser().getBirthdayData());
+                    userDTO.setBalance(String.valueOf(contract.getUser().getBalance()));
+                    userDTO.setEmail(contract.getUser().getEmail());
+                    userDTO.setContracts(contract.getNumber());
+                    users.add(userDTO);
                 }
             }
         } catch (Exception ex) {

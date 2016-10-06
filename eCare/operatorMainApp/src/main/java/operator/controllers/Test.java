@@ -37,13 +37,18 @@ public class Test {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String adminNewClientGet(HttpServletRequest request, Locale locale, Model model) {
-        Tariff tariff = tariffService.getTariffByTitle("base");
         List<User> users = new ArrayList<>();
-        for (Contract contract : contractService.getAll()) {
-            if (contract.getTariff().equals(tariff)) {
-                contract.getUser().setPassword("");
-                users.add(contract.getUser());
+        try {
+            Tariff tariff = tariffService.getTariffByTitle("base");
+
+            for (Contract contract : contractService.getAll()) {
+                if (contract.getTariff().equals(tariff)) {
+                    contract.getUser().setPassword("");
+                    users.add(contract.getUser());
+                }
             }
+        } catch (Exception ex) {
+            return null;
         }
         model.addAttribute("test", users);
         return "admin/adminTest";
