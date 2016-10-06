@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "Contract")
 @NamedQuery(name = "Contract.getAll", query = "SELECT c FROM Contract c")
-public class Contract implements Serializable {
+public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")

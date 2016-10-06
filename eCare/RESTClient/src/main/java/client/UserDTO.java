@@ -17,9 +17,6 @@ public class UserDTO implements Serializable {
     private String userId;
     private String name;
     private String secondName;
-    private String birthdayData;
-    private String passport;
-    private String adress;
     private String balance;
     private String email;
     private String contracts;
@@ -39,17 +36,6 @@ public class UserDTO implements Serializable {
         this.secondName = secondName;
     }
 
-    public void setBirthdayData(String birthdayData) {
-        this.birthdayData = birthdayData;
-    }
-
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
 
     public void setBalance(String balance) {
         this.balance = balance;
@@ -75,18 +61,6 @@ public class UserDTO implements Serializable {
         return secondName;
     }
 
-    public String getBirthdayData() {
-        return birthdayData;
-    }
-
-    public String getPassport() {
-        return passport;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
     public String getBalance() {
         return balance;
     }
@@ -106,9 +80,6 @@ public class UserDTO implements Serializable {
                 ", name='" + name + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", birthdayData='" + birthdayData + '\'' +
-                ", passport='" + passport + '\'' +
-                ", adress='" + adress + '\'' +
-                ", balance='" + balance + '\'' +
                 ", email='" + email + '\'' +
                 ", contracts='" + contracts + '\'' +
                 '}';

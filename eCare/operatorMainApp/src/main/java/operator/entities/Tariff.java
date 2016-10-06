@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "Tariff")
 @NamedQuery(name = "Tariff.getAll", query = "SELECT tar FROM Tariff tar")
-public class Tariff implements Serializable {
+public class Tariff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tariff_id")
