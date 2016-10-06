@@ -36,13 +36,13 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input id="tariffOne" type="text" class="form-control" placeholder="First tariff"></td>
+                            <td><input id="tariffOne" type="text" class="form-control" placeholder="First option"></td>
                             <td>
                                 <font color="blue">${oneStat}</font>
                             </td>
                         </tr>
                         <tr>
-                            <td><input id="tariffTwo" type="text" class="form-control" placeholder="Second tariff"></td>
+                            <td><input id="tariffTwo" type="text" class="form-control" placeholder="Second option"></td>
                             <td><font color="blue">${twoStat}</font></td>
                         </tr>
                         </tbody>
