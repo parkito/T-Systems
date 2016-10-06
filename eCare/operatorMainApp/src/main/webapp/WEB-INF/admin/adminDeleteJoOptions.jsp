@@ -23,19 +23,19 @@
         <p></p>
     </div>
     <%
-        for (int j = 0; j < 3; j++) {
+        for (TariffOption option : allTariffOptions) {
+            if (option.getjointTogether() != null)
 
     %>
     <div class="container-fluid">
         <div class="row cm-fix-height">
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Number:</div>
+                    <div class="panel-heading">Option: <%out.print(option.getTitle());%></div>
                     <div class="panel-body">
 
                         <h2>
-
-
+                            <%out.print(option.getTitle());%>
                         </h2>
 
                     </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Tariff option list</div>
+                    <div class="panel-heading">Joint options</div>
                     <div class="panel-body">
                         <table class="table">
                             <thead>
@@ -56,18 +56,18 @@
                             </thead>
                             <tbody>
                             <%
-                                for (int i = 0; i < allTariffOptions.size(); i++) {
+                                for (int i = 0; i < option.getjointTogether().size(); i++) {
                             %>
 
                             <tr class="active">
                                 <th scope="row"><%out.print(i + 1);%></th>
-                                <td><%out.print(allTariffOptions.get(i).getTitle());%></td>
-                                <td>Disabled</td>
+                                <td><%out.print(option.getjointTogether().get(i).getTitle());%></td>
+                                <td>Joint</td>
                                 <td>
 
                                     <form name="test"
-                                          onclick="unable(<%=allTariffOptions.get(i)%>,<%=allTariffOptions.get(i).getTariffOptionId()%>)">
-                                        <button type="submit" class="btn btn-success">Activate</button>
+                                          onclick="unable(<%=option.getTariffOptionId()%>,<%=option.getjointTogether().get(i).getTariffOptionId()%>)">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
 
                                 </td>
@@ -77,23 +77,16 @@
                                         popBox();
                                         function popBox() {
                                             var xhr = new XMLHttpRequest();
-                                            xhr.open("POST", "adminChangeClient?contractNumber=" + par1
-                                                    + "&tariffOptionId=" + par2 + "&method=unable", false);
+                                            xhr.open("POST", "adminDeleteJoOptions?modified=" + par1
+                                                    + "&removed=" + par2, false);
                                             xhr.send();
-                                            if (xhr.status == 405) {
-                                                alert('Incompatible options')
-                                            }
-                                            else {
-                                                document.getElementById('textFiled').value = par1;
-                                                find();
-                                            }
 
                                         }
                                     }</script>
                             </tr>
 
                             <%
-                                    }
+                                }
 
                             %>
 

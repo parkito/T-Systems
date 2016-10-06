@@ -624,10 +624,13 @@ public class AdminController {
      */
     @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.POST)
     public String adminDeleteJoOptionsPost(HttpServletRequest request, Locale locale, Model model,
-                                           @RequestParam(value = "tariffOptionId") String tariffOptionId) {
-        int tariffOptionID = Integer.parseInt(tariffOptionId);
-        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
-//        managerCases.deleteJoinOption(t);
+                                           @RequestParam(value = "modified") String modified,
+                                           @RequestParam(value = "removed") String removed) {
+        int modifiedOptId = Integer.parseInt(modified);
+        int removedOptId = Integer.parseInt(removed);
+        TariffOption modifiedOpt = optionService.getEntityById(modifiedOptId);
+        TariffOption removedOpt = optionService.getEntityById(removedOptId);
+        managerCases.deleteJoinOption(modifiedOpt, removedOpt);
         return "admin/adminDeleteJoOptions";
     }
 
