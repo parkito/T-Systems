@@ -10,23 +10,14 @@ import java.io.Serializable;
  * Created by Artyom Karnov on 10/6/16.
  * artyom-karnov@yandex.ru
  **/
-@ManagedBean
+@ManagedBean(name = "beanController")
 @SessionScoped
-public class BeanController implements Serializable {
+public class BeanController {
 
     @EJB(beanName = RestClientImpl.JNDI)
-    RestClient restClient;
+    private RestClient restClient;
 
-    private String status;
     private String tariff;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getTariff() {
         return tariff;

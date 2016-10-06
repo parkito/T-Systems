@@ -6,10 +6,10 @@
 
 	</application>
 	<navigation-rule>
-		<from-view-id>welcome.xhtml</from-view-id>
+		<from-view-id>index.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/User.xhtml</to-view-id>
+			<to-view-id>/home.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>fail</from-outcome>

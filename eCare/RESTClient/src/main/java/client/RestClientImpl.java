@@ -22,7 +22,7 @@ import java.util.List;
  **/
 @Stateless(name = RestClientImpl.JNDI)
 public class RestClientImpl implements RestClient {
-    public static final String JNDI = "RestClient";
+    public static final String JNDI = "restClientBean";
 
     @Override
     public List<UserDTO> getContracts(String tariffTitle) throws IOException {
@@ -35,8 +35,7 @@ public class RestClientImpl implements RestClient {
         conn.setRequestProperty("Authorization", "Basic " +
                 new String(new Base64().encodeBase64("b@b.ru:12345".getBytes())));
         if (conn.getResponseCode() != 200) {
-            System.out.println("Failed : HTTP error code : "
-                    + conn.getResponseCode());
+            throw new IOException();
         }
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 (conn.getInputStream())));
