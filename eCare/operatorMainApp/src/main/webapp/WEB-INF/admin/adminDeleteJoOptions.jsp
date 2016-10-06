@@ -24,7 +24,7 @@
     </div>
     <%
         for (TariffOption option : allTariffOptions) {
-            if (option.getjointTogether() != null)
+            if (option.getjointTogether().size() > 0) {
 
     %>
     <div class="container-fluid">
@@ -86,6 +86,7 @@
                             </tr>
 
                             <%
+                                    }
                                 }
 
                             %>
