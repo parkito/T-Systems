@@ -627,7 +627,7 @@ public class AdminController {
                                            @RequestParam(value = "tariffOptionId") String tariffOptionId) {
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
-        optionService.deleteEntity(tariffOption);
+//        managerCases.deleteJoinOption(t);
         return "admin/adminDeleteJoOptions";
     }
 

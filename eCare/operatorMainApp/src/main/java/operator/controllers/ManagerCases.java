@@ -263,4 +263,9 @@ public class ManagerCases {
 
         tariffOptionService.deleteEntity(tariffOptionForRemoving);
     }
+
+    public void deleteJoinOption(TariffOption modifiedOption, TariffOption removedOption) {
+        modifiedOption.getjointTogether().remove(removedOption);
+        tariffOptionService.updateEntity(modifiedOption);
+    }
 }
