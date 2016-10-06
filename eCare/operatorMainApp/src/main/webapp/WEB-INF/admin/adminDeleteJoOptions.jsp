@@ -15,60 +15,96 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    List<TariffOption> tariffs = (List<TariffOption>) request.getAttribute("options");
+    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getAttribute("options");
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Delete options</h2>
         <p></p>
     </div>
-    <div class="container-fluid ">
-        <div class="panel panel-default">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Option</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
+    <%
+        for (int j = 0; j < 3; j++) {
 
-                <%
-                    for (int i = 0; i < tariffs.size(); i++) {
-                        out.print("<tr class=\"active\">");
-                %>
-                <th scope="row"><%out.print(i + 1);%></th>
-                <td><%out.print(tariffs.get(i).getTitle());%></td>
+    %>
+    <div class="container-fluid">
+        <div class="row cm-fix-height">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Number:</div>
+                    <div class="panel-body">
 
-                <td>
+                        <h2>
 
-                    <form name="test" onclick="del(<%=tariffs.get(i).getTariffOptionId()%>)">
-                        <button type="submit" class="btn btn-danger">delete</button>
-                    </form>
 
-                </td>
-                <script>
-                    function del(number) {
-                        popBox();
-                        function popBox() {
-                            x = confirm('Are you sure?');
-                            if (x == true) {
-                                var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "adminDeleteJoOptions?tariffOptionId=" + number, true);
-                                xhr.send();
-                                xhr.open("GET", "adminDeleteJoOptions", false);
-                                xhr.send();
-                            }
-                        }
-                    }</script>
-                </tr>
-                <%}%>
-                </tbody>
-            </table>
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tariff option list</div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Option</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                                for (int i = 0; i < allTariffOptions.size(); i++) {
+                            %>
+
+                            <tr class="active">
+                                <th scope="row"><%out.print(i + 1);%></th>
+                                <td><%out.print(allTariffOptions.get(i).getTitle());%></td>
+                                <td>Disabled</td>
+                                <td>
+
+                                    <form name="test"
+                                          onclick="unable(<%=allTariffOptions.get(i)%>,<%=allTariffOptions.get(i).getTariffOptionId()%>)">
+                                        <button type="submit" class="btn btn-success">Activate</button>
+                                    </form>
+
+                                </td>
+
+                                <script>
+                                    function unable(par1, par2) {
+                                        popBox();
+                                        function popBox() {
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("POST", "adminChangeClient?contractNumber=" + par1
+                                                    + "&tariffOptionId=" + par2 + "&method=unable", false);
+                                            xhr.send();
+                                            if (xhr.status == 405) {
+                                                alert('Incompatible options')
+                                            }
+                                            else {
+                                                document.getElementById('textFiled').value = par1;
+                                                find();
+                                            }
+
+                                        }
+                                    }</script>
+                            </tr>
+
+                            <%
+                                    }
+
+                            %>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <%}%>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

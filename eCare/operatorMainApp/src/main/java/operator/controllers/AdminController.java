@@ -611,7 +611,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/adminDeleteJoOptions", method = RequestMethod.GET)
     public String adminDeleteJoOptionsGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("options", optionService.getAllJoinedTariffOption(0));
+        model.addAttribute("options", optionService.getAll());
         return "admin/adminDeleteJoOptions";
     }
 

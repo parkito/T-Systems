@@ -13,10 +13,6 @@
 </head>
 <body class="cm-no-transition cm-1-navbar">
 <jsp:include page="header.jsp"></jsp:include>
-
-    <%
-    String userName = (String) request.getAttribute("userName");
-    %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Add new contract</h2>
