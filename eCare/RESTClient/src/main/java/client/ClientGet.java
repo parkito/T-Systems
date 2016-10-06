@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -38,7 +37,7 @@ public class ClientGet {
                 (conn.getInputStream())));
         output = br.readLine();
         Gson gson = new Gson();
-        Type userListType = new TypeToken<ArrayList<UserDTO>>() {
+        Type userListType = new TypeToken<List<UserDTO>>() {
         }.getType();
         List<UserDTO> users = gson.fromJson(output, userListType);
         for (UserDTO user : users)

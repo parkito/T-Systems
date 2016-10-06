@@ -32,9 +32,10 @@ public class RestServiceController {
     List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle) {
         List<UserDTO> users = new ArrayList<>();
         try {
-            UserDTO userDTO = new UserDTO();
+
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
             for (Contract contract : contractService.getAll()) {
+                UserDTO userDTO = new UserDTO();
                 if (contract.getTariff().equals(tariff)) {
                     userDTO.setUserId(String.valueOf(contract.getUser().getUserId()));
                     userDTO.setName(contract.getUser().getName());
