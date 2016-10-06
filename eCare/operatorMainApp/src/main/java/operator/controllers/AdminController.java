@@ -583,7 +583,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.GET)
     public String adminDeleteImOptionsGet(HttpServletRequest request, Locale locale, Model model) {
-        model.addAttribute("options", optionService.getAllImpossibleTariffOption(0));
+        model.addAttribute("options", optionService.getAll());
         return "admin/adminDeleteImOptions";
     }
 
@@ -596,10 +596,13 @@ public class AdminController {
      */
     @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.POST)
     public String adminDeleteImOptionsPost(HttpServletRequest request, Locale locale, Model model,
-                                           @RequestParam(value = "tariffOptionId") String tariffOptionId) {
-        int tariffOptionID = Integer.parseInt(tariffOptionId);
-        TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
-        optionService.deleteEntity(tariffOption);
+                                           @RequestParam(value = "modified") String modified,
+                                           @RequestParam(value = "removed") String removed) {
+        int modifiedOptId = Integer.parseInt(modified);
+        int removedOptId = Integer.parseInt(removed);
+        TariffOption modifiedOpt = optionService.getEntityById(modifiedOptId);
+        TariffOption removedOpt = optionService.getEntityById(removedOptId);
+        managerCases.deleteImpossibleOption(modifiedOpt, removedOpt);
         return "admin/adminDeleteImOptions";
     }
 

@@ -268,4 +268,9 @@ public class ManagerCases {
         modifiedOption.getjointTogether().remove(removedOption);
         tariffOptionService.updateEntity(modifiedOption);
     }
+
+    public void deleteImpossibleOption(TariffOption modifiedOption, TariffOption removedOption) {
+        modifiedOption.getimpossibleTogether().remove(removedOption);
+        tariffOptionService.updateEntity(modifiedOption);
+    }
 }

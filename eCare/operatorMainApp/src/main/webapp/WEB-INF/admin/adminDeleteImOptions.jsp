@@ -15,61 +15,90 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-    List<TariffOption> tariffs = (List<TariffOption>) request.getAttribute("options");
-
+    List<TariffOption> allTariffOptions = (List<TariffOption>) request.getAttribute("options");
 %>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">Delete options</h2>
         <p></p>
     </div>
-    <div class="container-fluid ">
-        <div class="panel panel-default">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Option</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
+    <%
+        for (TariffOption option : allTariffOptions) {
+            if (option.getimpossibleTogether().size() > 0) {
 
-                <%
-                    for (int i = 0; i < tariffs.size(); i++) {
-                        out.print("<tr class=\"active\">");
-                %>
-                <th scope="row"><%out.print(i + 1);%></th>
-                <td><%out.print(tariffs.get(i).getTitle());%></td>
+    %>
+    <div class="container-fluid">
+        <div class="row cm-fix-height">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Option: <%out.print(option.getTitle());%></div>
+                    <div class="panel-body">
 
-                <td>
+                        <h2>
+                            <%out.print(option.getTitle());%>
+                        </h2>
 
-                    <form name="test" onclick="del(<%=tariffs.get(i).getTariffOptionId()%>)">
-                        <button type="submit" class="btn btn-danger">delete</button>
-                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Joint options</div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Option</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                                for (int i = 0; i < option.getjointTogether().size(); i++) {
+                            %>
 
-                </td>
-                <script>
-                    function del(number) {
-                        popBox();
-                        function popBox() {
-                            x = confirm('Are you sure?');
-                            if (x == true) {
-                                var xhr = new XMLHttpRequest();
-                                xhr.open("POST", "adminEditTariffOption?tariffOptionId=" + number, true);
-                                xhr.send();
-                                xhr.open("GET", "adminDeleteImOptions", false);
-                                xhr.send();
-                            }
-                        }
-                    }</script>
-                </tr>
-                <%}%>
-                </tbody>
-            </table>
+                            <tr class="active">
+                                <th scope="row"><%out.print(i + 1);%></th>
+                                <td><%out.print(option.getimpossibleTogether().get(i).getTitle());%></td>
+                                <td>Joint</td>
+                                <td>
+
+                                    <form name="test"
+                                          onclick="unable(<%=option.getTariffOptionId()%>,<%=option.getimpossibleTogether().get(i).getTariffOptionId()%>)">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+
+                                </td>
+
+                                <script>
+                                    function unable(par1, par2) {
+                                        popBox();
+                                        function popBox() {
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("POST", "adminDeleteImOptions?modified=" + par1
+                                                    + "&removed=" + par2, false);
+                                            xhr.send();
+
+                                        }
+                                    }</script>
+                            </tr>
+
+                            <%
+                                    }
+                                }
+
+                            %>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <%}%>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>
