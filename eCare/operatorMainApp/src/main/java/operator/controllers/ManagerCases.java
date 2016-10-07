@@ -172,7 +172,7 @@ public class ManagerCases {
         }
         String result = sb.toString();
         Smsc sms = new Smsc("parkito", "214189");
-//        sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
+        sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
         EmailSender.send(eMail, user, result);
         try {
             result = Converter.getMD5(result);
@@ -191,7 +191,8 @@ public class ManagerCases {
      * @param tarifftwo second tariff for adding
      */
     public void addJoinOptionToBase(String tariffOne, String tarifftwo) {
-        TariffOption one = null, two = null;
+        TariffOption one = new TariffOption();
+        TariffOption two = new TariffOption();
         for (TariffOption tariffOption : tariffOptionService.getAll()) {
             if (tariffOption.getTitle().equals(tariffOne))
                 one = tariffOption;
@@ -211,7 +212,8 @@ public class ManagerCases {
      * @param tarifftwo second tariff for adding
      */
     public void addImmposibleOptionToBase(String tariffOne, String tarifftwo) {
-        TariffOption one = null, two = null;
+        TariffOption one = new TariffOption();
+        TariffOption two = new TariffOption();
         for (TariffOption tariffOption : tariffOptionService.getAll()) {
             if (tariffOption.getTitle().equals(tariffOne))
                 one = tariffOption;
@@ -226,7 +228,6 @@ public class ManagerCases {
 
     public void removeTariff(Tariff tariffForRemoving) {
         boolean contractWasChange = false;
-        List<User> users = userService.getAll();
         Tariff tariff = tariffService.getTariffByTitle("base");
         for (Contract contract : contractService.getAll()) {
             if (contract.getTariff().equals(tariffForRemoving)) {

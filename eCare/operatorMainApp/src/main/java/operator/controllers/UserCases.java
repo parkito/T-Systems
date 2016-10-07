@@ -95,9 +95,10 @@ public class UserCases {
     public double getPaymentInfo(User user) {
         double payment = 0;
         for (Contract contract : user.getContracts()) {
-            if (!contract.getIsBlocked())
-            for (TariffOption tariffOption : contract.getTariffOptions()) {
-                payment += tariffOption.getPrice();
+            if (!contract.getIsBlocked()) {
+                for (TariffOption tariffOption : contract.getTariffOptions()) {
+                    payment += tariffOption.getPrice();
+                }
             }
             payment += contract.getTariff().getPrice();
         }

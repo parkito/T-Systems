@@ -5,6 +5,7 @@ import operator.entities.Tariff;
 import operator.entities.UserDTO;
 import operator.services.api.ContractService;
 import operator.services.api.TariffService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,8 @@ public class RestServiceController {
     @Autowired
     private ContractService contractService;
 
+    private final static Logger logger = Logger.getLogger(RestServiceController.class);
+
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
     public
     @ResponseBody
@@ -46,6 +49,7 @@ public class RestServiceController {
                 }
             }
         } catch (Exception ex) {
+            logger.info(ex);
             return null;
         }
         return users;

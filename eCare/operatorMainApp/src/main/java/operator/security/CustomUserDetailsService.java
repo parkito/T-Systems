@@ -2,6 +2,7 @@ package operator.security;
 
 import operator.entities.User;
 import operator.services.api.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,17 +18,16 @@ import java.util.List;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
-
     @Autowired
     private UserService userService;
+    private final static Logger logger = Logger.getLogger(CustomUserDetailsService.class);
 
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String eMail)
             throws UsernameNotFoundException {
         User user = userService.getUserByEMAil(eMail);
-        System.out.println("User : " + user);
         if (user == null) {
-            System.out.println("User not found");
+            logger.info("Username not found");
             throw new UsernameNotFoundException("Username not found");
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
@@ -38,7 +38,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private List<GrantedAuthority> getGrantedAuthorities(User user) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getAccessLevel().getStatus()));
-        System.out.print("authorities :" + authorities);
+        logger.info("authorities :" + authorities);
         return authorities;
     }
 
