@@ -19,7 +19,7 @@ import java.util.List;
  **/
 @Service("tariffOptionService")
 public class TariffOptionServiceImpl implements TariffOptionService {
-    private final static Logger logger = Logger.getLogger(ContractServiceImpl.class);
+    private final static Logger logger = Logger.getLogger(TariffOptionServiceImpl.class);
 
     @Autowired
     private TariffOptionDAO optionDAO;

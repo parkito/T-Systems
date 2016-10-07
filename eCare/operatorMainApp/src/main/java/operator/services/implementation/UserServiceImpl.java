@@ -21,7 +21,7 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    private final static Logger logger = Logger.getLogger(ContractServiceImpl.class);
+    private final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDAO userDAO;

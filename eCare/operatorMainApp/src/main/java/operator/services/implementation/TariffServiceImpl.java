@@ -5,6 +5,7 @@ import operator.dao.api.TariffDAO;
 import operator.entities.Tariff;
 import operator.exceptions.CustomDAOException;
 import operator.services.api.TariffService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ import java.util.List;
  **/
 @Service("tariffService")
 public class TariffServiceImpl implements TariffService {
+
+    private final static Logger logger = Logger.getLogger(TariffServiceImpl.class);
+
     @Autowired
     private TariffDAO tariffDAO;
 
@@ -97,6 +101,7 @@ public class TariffServiceImpl implements TariffService {
         try {
             return tariffDAO.getTariffByTitle(tariff.getTitle()) != null ? true : false;
         } catch (IndexOutOfBoundsException e) {
+            logger.error(e);
             return false;
         }
     }

@@ -5,6 +5,8 @@ package operator.utils;
  * artyom-karnov@yandex.ru
  **/
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,6 +14,8 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 public class Smsc {
+
+    private static final Logger logger = Logger.getLogger(Smsc.class);
 
     String SMSC_LOGIN;     // логин клиента
     String SMSC_PASSWORD;  // пароль или MD5-хеш пароля в нижнем регистре
@@ -76,17 +80,15 @@ public class Smsc {
 
         if (SMSC_DEBUG) {
             if (Integer.parseInt(m[1]) > 0) {
-                System.out.println("Сообщение отправлено успешно. ID: " + m[0] + ", всего SMS: " + m[1] + ", стоимость: " + m[2] + ", баланс: " + m[3]);
+                logger.error("Сообщение отправлено успешно. ID: " + m[0] + ", всего SMS: " + m[1] + ", стоимость: " + m[2] + ", баланс: " + m[3]);
             } else {
-                System.out.print("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
-                System.out.println(Integer.parseInt(m[0]) > 0 ? (", ID: " + m[0]) : "");
+                logger.error("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
+                logger.error(Integer.parseInt(m[0]) > 0 ? (", ID: " + m[0]) : "");
             }
         }
 
         return m;
     }
-
-    ;
 
     /**
      * Получение стоимости SMS
@@ -117,9 +119,9 @@ public class Smsc {
 
         if (SMSC_DEBUG) {
             if (Integer.parseInt(m[1]) > 0) {
-                System.out.println("Стоимость рассылки: " + m[0] + ", Всего SMS: " + m[1]);
+                logger.error("Стоимость рассылки: " + m[0] + ", Всего SMS: " + m[1]);
             } else {
-                System.out.print("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
+                logger.error("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
             }
         }
 
@@ -150,10 +152,9 @@ public class Smsc {
 
             if (SMSC_DEBUG) {
                 if (m[1] != "" && Integer.parseInt(m[1]) >= 0) {
-                    java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Integer.parseInt(m[1]));
-                    System.out.println("Статус SMS = " + m[0]);
+                    logger.error("Статус SMS = " + m[0]);
                 } else
-                    System.out.println("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
+                    logger.error("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
             }
 
             if (all == 1 && m.length > 9 && (m.length < 14 || m[14] != "HLR")) {
@@ -174,15 +175,15 @@ public class Smsc {
      */
 
     public String get_balance() {
-        String[] m = {};
+        String[] m;
 
         m = _smsc_send_cmd("balance", ""); // (balance) или (0, -error)
 
         if (SMSC_DEBUG) {
             if (m.length == 1)
-                System.out.println("Сумма на счете: " + m[0]);
+                logger.error("Сумма на счете: " + m[0]);
             else
-                System.out.println("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
+                logger.error("Ошибка №" + Math.abs(Integer.parseInt(m[1])));
         }
 
         return m.length == 2 ? "" : m[0];
@@ -196,7 +197,7 @@ public class Smsc {
      */
 
     private String[] _smsc_send_cmd(String cmd, String arg) {
-        String[] m = {};
+        String[] m;
         String ret = ",";
 
         try {
@@ -218,9 +219,9 @@ public class Smsc {
         } catch (UnsupportedEncodingException e) {
 
         } catch (InterruptedException e) {
+            logger.error(e);
 
         }
-
         return ret.split(",");
     }
 
@@ -252,7 +253,7 @@ public class Smsc {
                 os.write(param[1]);
                 os.flush();
                 os.close();
-                System.out.println("post");
+                logger.error("post");
                 is = conn.getInputStream();
             } else {
                 is = u.openStream();

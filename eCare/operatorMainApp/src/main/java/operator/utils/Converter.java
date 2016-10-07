@@ -1,6 +1,7 @@
 package operator.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -8,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
  * Password hashing.
  */
 public class Converter extends org.springframework.security.authentication.encoding.BasePasswordEncoder {
+
     /**
      * Method for password encoding
      *

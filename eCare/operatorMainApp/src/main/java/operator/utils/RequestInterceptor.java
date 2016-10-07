@@ -21,14 +21,10 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
 
-        long startTime = System.currentTimeMillis();
-        String url = request.getRequestURL().toString();
         try {
-            String userLogin = ((User) request.getSession().getAttribute("currentUser")).getEmail();
+            long startTime = System.currentTimeMillis();
             request.setAttribute("startTime", startTime);
-        }
-        //if returned false, we need to make sure 'response' is sent
-        catch (Exception ex) {
+        } catch (Exception ex) {
             try {
                 org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 User currentUser = userService.getUserByEMAil(user.getUsername());
@@ -43,14 +39,11 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest request,
                            HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("Request URL::" + request.getRequestURL().toString()
-                + " Sent to Handler");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-        long startTime = (Long) request.getAttribute("startTime");
     }
 }
