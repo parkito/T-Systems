@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row cm-fix-height">
             <div class="panel panel-default">
-                <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, !</h1>
+                <div class="panel-body">
                     <center>
                         <iframe width="350" height="200" align="center"
                                 src="http://localhost:8080/RESTClient/index.xhtml"></iframe>

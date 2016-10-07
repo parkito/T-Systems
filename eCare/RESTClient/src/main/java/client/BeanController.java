@@ -3,8 +3,6 @@ package client;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import java.io.IOException;
 
 /**
@@ -34,15 +32,10 @@ public class BeanController {
         } else return "error";
     }
 
-    public void home() throws IOException {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.redirect("http://localhost:8080/");
+    public String home() throws IOException {
+        return "index";
     }
 
-    public void back() throws IOException {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.redirect("http://localhost:8080/RESTClient/");
-    }
 
 
 }
