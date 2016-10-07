@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>404 - page not fount</title>
+    <title>500 - something went wrong</title>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <style type="text/css">

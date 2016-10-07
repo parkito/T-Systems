@@ -44,6 +44,11 @@
         <location>/WEB-INF/404.jsp</location>
     </error-page>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/Help.jsp</location>
+    </error-page>
+
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>

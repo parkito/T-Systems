@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
@@ -53,7 +54,9 @@ public class LoginController {
      * @return page for logout
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage(Model model) {
+    public String logoutPage(Model model,HttpServletRequest req) throws ServletException {
+        req.getSession().invalidate();
+        req.logout();
         model.addAttribute("userData", true);
         return "index";
     }
