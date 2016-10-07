@@ -43,4 +43,9 @@ public class BeanController {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.redirect("http://localhost:8080/RESTClient/");
     }
+
+    public String test() {
+        return "index.jsp";
+    }
+
 }
