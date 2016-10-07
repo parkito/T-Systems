@@ -704,4 +704,9 @@ public class AdminController {
         }
         return "admin/adminFindClient";
     }
+
+    @RequestMapping(value = "/adminRest", method = RequestMethod.GET)
+    public String adminRest(HttpServletRequest request, Locale locale, Model model) {
+        return "admin/adminRest";
+    }
 }

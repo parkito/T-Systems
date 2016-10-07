@@ -44,8 +44,5 @@ public class BeanController {
         externalContext.redirect("http://localhost:8080/RESTClient/");
     }
 
-    public String test() {
-        return "index.jsp";
-    }
 
 }
