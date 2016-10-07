@@ -2,12 +2,9 @@ package operator.controllers;
 
 
 import operator.entities.Contract;
+import operator.entities.TariffOption;
 import operator.entities.User;
-import operator.exceptions.CustomDAOException;
 import operator.services.api.*;
-import operator.services.implementation.AccessLevelImpl;
-import operator.services.implementation.ContractServiceImpl;
-import operator.services.implementation.UserServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -91,5 +88,16 @@ public class UserCases {
         userService.updateEntity(userService.getUserByEMAil(eMail));
         return contractService.getAllContractsForUser(userService.getUserByEMAil(eMail).getUserId());
 
+    }
+
+    public double getPaymentInfo(User user) {
+        double payment = 0;
+        for (Contract contract : user.getContracts()) {
+            for (TariffOption tariffOption : contract.getTariffOptions()) {
+                payment += tariffOption.getPrice();
+            }
+            payment += contract.getTariff().getPrice();
+        }
+        return payment;
     }
 }

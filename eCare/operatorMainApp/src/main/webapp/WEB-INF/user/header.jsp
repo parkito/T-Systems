@@ -41,7 +41,7 @@
                             <h4 class="list-group-item-heading text-overflow">
                                 <i class="fa fa-fw fa-envelope"></i> My scope
                             </h4>
-                            <p class="list-group-item-text text-overflow">I spend RUB per month</p>
+                            <p class="list-group-item-text text-overflow">I spend ${userPayment} RUB per month</p>
                         </a>
                     </div>
                     <div style="padding:10px"><a class="btn btn-success btn-block" href="/user/Tariffs">Show me

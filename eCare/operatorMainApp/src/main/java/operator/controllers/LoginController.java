@@ -33,6 +33,8 @@ public class LoginController {
     private UserService userService;
     @Autowired
     private ContractService contractService;
+    @Autowired
+    UserCases userCases;
 
     /**
      * Method for dispatching requests to login page
@@ -54,7 +56,7 @@ public class LoginController {
      * @return page for logout
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage(Model model,HttpServletRequest req) throws ServletException {
+    public String logoutPage(Model model, HttpServletRequest req) throws ServletException {
         req.getSession().invalidate();
         req.logout();
         model.addAttribute("userData", true);
@@ -93,12 +95,13 @@ public class LoginController {
      * @return adjusted page
      */
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String loginPage(HttpServletRequest request, Locale locale, Model model) {
+    public String loginPage(HttpServletRequest req, Locale locale, Model model) {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userService.getUserByEMAil(user.getUsername());
-        request.getSession().setAttribute("currentUser", currentUser);
+        req.getSession().setAttribute("currentUser", currentUser);
         if (currentUser.getAccessLevel().getAccessLevelId() == 1) {
+            req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(currentUser));
             return "user/index";
         } else if (currentUser.getAccessLevel().getAccessLevelId() == 3) {
             return "admin/index";
