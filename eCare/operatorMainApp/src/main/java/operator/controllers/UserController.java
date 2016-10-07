@@ -137,13 +137,13 @@ public class UserController {
         if ("unable".equals(method)) {
             List<TariffOption> jointOptions;
 
-            boolean isForbid = false;
-            for (TariffOption tar : contract.getTariffOptions()) {
-                if (tar.getimpossibleTogether().contains(tariffOption))
-                    isForbid = true;
+            boolean isForbiden = false;
+            for (TariffOption option : contract.getTariffOptions()) {
+                if (option.getimpossibleTogether().contains(tariffOption))
+                    isForbiden = true;
             }
 
-            if (!isForbid) {
+            if (!isForbiden) {
                 jointOptions = tariffOption.getjointTogether();
                 for (TariffOption tar : jointOptions) {
                     contract.getTariffOptions().add(tar);

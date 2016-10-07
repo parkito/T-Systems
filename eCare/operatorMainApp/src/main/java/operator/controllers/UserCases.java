@@ -4,7 +4,8 @@ package operator.controllers;
 import operator.entities.Contract;
 import operator.entities.TariffOption;
 import operator.entities.User;
-import operator.services.api.*;
+import operator.services.api.ContractService;
+import operator.services.api.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,9 @@ import java.util.List;
 @Service("UserCases")
 public class UserCases {
     @Autowired
-    private UserService userService;
+    private UserService usersService;
     @Autowired
-    private ContractService contractService;
-    @Autowired
-    TariffService tariffService;
-    @Autowired
-    TariffOptionService tariffOptionService;
-    @Autowired
-    AccessLevelService accessLevelService;
+    private ContractService service;
 
     private final static Logger logger = Logger.getLogger(ManagerCases.class);
 
@@ -42,7 +37,7 @@ public class UserCases {
 //     */
 //    public boolean makeUserManager(User user) {
 //        try {
-//            userService.cahngeUserAccessLevel(user, accessLevelService.getEntityById(3));
+//            usersService.cahngeUserAccessLevel(user, accessLevelsService.getEntityById(3));
 //        } catch (CustomDAOException ex) {
 //            return false;
 //        }
@@ -67,7 +62,7 @@ public class UserCases {
      * @return true - user manager, false - if not
      */
     public boolean isManager(String eMail) {
-        return userService.getUserByEMAil(eMail).getAccessLevel() != null ? true : false;
+        return usersService.getUserByEMAil(eMail).getAccessLevel() != null ? true : false;
     }
 
     /**
@@ -77,7 +72,7 @@ public class UserCases {
      * @return user name
      */
     public String getUserNameByEmail(String eMail) {
-        return userService.getUserByEMAil(eMail).getName();
+        return usersService.getUserByEMAil(eMail).getName();
     }
 
     /**
@@ -87,8 +82,8 @@ public class UserCases {
      * @return contract list for adjusted user
      */
     public List<Contract> getAllContractsForUser(String eMail) {
-        userService.updateEntity(userService.getUserByEMAil(eMail));
-        return contractService.getAllContractsForUser(userService.getUserByEMAil(eMail).getUserId());
+        usersService.updateEntity(usersService.getUserByEMAil(eMail));
+        return service.getAllContractsForUser(usersService.getUserByEMAil(eMail).getUserId());
 
     }
 
