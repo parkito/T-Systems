@@ -6,6 +6,7 @@ import operator.entities.TariffOption;
 import operator.exceptions.CustomDAOException;
 import operator.exceptions.OptionsForEntityNotGotException;
 import operator.services.api.TariffOptionService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,8 @@ import java.util.List;
  **/
 @Service("tariffOptionService")
 public class TariffOptionServiceImpl implements TariffOptionService {
+    private final static Logger logger = Logger.getLogger(ContractServiceImpl.class);
+
     @Autowired
     private TariffOptionDAO optionDAO;
 
@@ -144,6 +147,7 @@ public class TariffOptionServiceImpl implements TariffOptionService {
         try {
             return optionDAO.getTariffOptionByTitle(tariffOption.getTitle()) != null ? true : false;
         } catch (IndexOutOfBoundsException e) {
+            logger.error(e);
             return false;
         }
     }

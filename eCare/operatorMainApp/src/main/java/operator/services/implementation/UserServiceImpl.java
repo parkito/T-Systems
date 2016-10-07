@@ -7,6 +7,7 @@ import operator.entities.User;
 import operator.exceptions.CustomDAOException;
 import operator.exceptions.UserNotFoundException;
 import operator.services.api.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,9 @@ import java.util.List;
  **/
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
+    private final static Logger logger = Logger.getLogger(ContractServiceImpl.class);
+
     @Autowired
     private UserDAO userDAO;
 
@@ -122,6 +126,7 @@ public class UserServiceImpl implements UserService {
         try {
             return getUserByEMAil(user.getEmail()) != null ? true : false;
         } catch (UserNotFoundException ex) {
+            logger.error(ex);
             return false;
         }
     }

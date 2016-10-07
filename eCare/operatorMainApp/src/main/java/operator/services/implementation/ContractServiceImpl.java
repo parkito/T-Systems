@@ -6,6 +6,7 @@ import operator.entities.Contract;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
 import operator.exceptions.CustomDAOException;
+import operator.security.CustomUserDetailsService;
 import operator.security.UserDetailsServiceDAO;
 import operator.services.api.ContractService;
 import org.apache.log4j.Logger;
@@ -21,6 +22,8 @@ import java.util.List;
  **/
 @Service("contractService")
 public class ContractServiceImpl implements ContractService {
+
+    private final static Logger logger = Logger.getLogger(ContractServiceImpl.class);
 
     @Autowired
     private ContractDAO contractDAO;
@@ -123,8 +126,10 @@ public class ContractServiceImpl implements ContractService {
         try {
             return getContractByNumber(contract.getNumber()) != null ? true : false;
         } catch (IndexOutOfBoundsException e) {
+            logger.error(e);
             return false;
         } catch (ContractNotFoundException ex) {
+            logger.error(ex);
             return false;
         }
     }
