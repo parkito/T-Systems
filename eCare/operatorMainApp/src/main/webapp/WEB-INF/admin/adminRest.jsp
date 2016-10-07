@@ -23,7 +23,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <center>
-                        <iframe width="350" height="200" align="center"
+                        <iframe width="350" height="200" align="center"  frameborder="0"
                                 src="http://localhost:8080/RESTClient/index.xhtml"></iframe>
                     </center>
                 </div>
