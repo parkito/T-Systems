@@ -217,10 +217,9 @@ public class Smsc {
             }
             while (ret == "" && ++i < 4);
         } catch (UnsupportedEncodingException e) {
-
+            logger.error(e);
         } catch (InterruptedException e) {
             logger.error(e);
-
         }
         return ret.split(",");
     }
