@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import org.apache.commons.codec.binary.Base64;
@@ -55,15 +56,24 @@ public class RestClientImpl implements RestClient {
             File file = new File("/tmp/Report.pdf");
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
-            document.add(new Paragraph(new Date() + ". Report for BASE tariff. \n\n"));
-            document.add(new DottedLineSeparator());
+            document.add(new Paragraph(new Date() + ". Report for " + tariffTitle.toUpperCase() + " tariff. \n\n"));
             document.add(new Paragraph());
+            PdfPTable table = new PdfPTable(4);
+            table.addCell("ID");
+            table.addCell("NAME");
+            table.addCell("E-MAIL");
+            table.addCell("NUMBER");
+            document.add(table);
+
             List<UserDTO> users = getContracts(tariffTitle);
             for (UserDTO userDTO : users) {
-                document.add(new Paragraph(String.format("|%-20s| %-20s| %-20s| %-30s| %-20s|\n\n", userDTO.getUserId(),
-                        userDTO.getName(), userDTO.getSecondName(), userDTO.getEmail(), userDTO.getContracts())));
+                PdfPTable tb = new PdfPTable(4);
+                tb.addCell(userDTO.getUserId());
+                tb.addCell(userDTO.getName());
+                tb.addCell(userDTO.getEmail());
+                tb.addCell(userDTO.getContracts());
+                document.add(tb);
             }
-            document.add(new DottedLineSeparator());
             document.close();
             writer.close();
         } catch (Exception ex) {

@@ -594,6 +594,7 @@ public class AdminController {
      * @param tariffOptionId
      * @return page for
      */
+    // TODO: 10/7/16 Чтобы убиралась лишняя херня сделать 
     @RequestMapping(value = "/adminDeleteImOptions", method = RequestMethod.POST)
     public String adminDeleteImOptionsPost(HttpServletRequest request, Locale locale, Model model,
                                            @RequestParam(value = "modified") String modified,

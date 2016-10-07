@@ -4,7 +4,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.IOException;
-import java.io.Serializable;
 
 /**
  * Created by Artyom Karnov on 10/6/16.
@@ -31,5 +30,9 @@ public class BeanController {
         if (restClient.buildPDF(tariff)) {
             return "home";
         } else return "error";
+    }
+
+    public String home() {
+        return "/";
     }
 }
