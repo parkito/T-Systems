@@ -44,7 +44,7 @@
                             <p class="list-group-item-text text-overflow">I spend ${userPayment} RUB per month</p>
                         </a>
                     </div>
-                    <div style="padding:10px"><a class="btn btn-success btn-block" href="/user/Tariffs">Show me
+                    <div style="padding:10px"><a class="btn btn-success btn-block" href="userTariffs">Show me
                         more...</a></div>
                 </div>
             </div>
@@ -57,10 +57,10 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="userTariffs"><i class="fa fa-fw fa-user"></i> About Me</a>
+                    <a href="userContract.jsp"><i class="fa fa-fw fa-user"></i> About Me</a>
                 </li>
                 <li>
-                    <a href="userContract"><i class="fa fa-fw fa-cog"></i> Contracts</a>
+                    <a href="userNumberOperations"><i class="fa fa-fw fa-cog"></i> Contracts</a>
                 </li>
                 <li>
                     <a href="logout"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>

@@ -96,20 +96,8 @@
                                             function popBox(num1, num2) {
                                                 x = confirm('Are you sure? ');
                                                 if (x == true) {
-                                                    var csrfHeaderName = "X-CSRF-TOKEN";
-                                                    var csrfTokenValue;
-
-                                                    var metaTags = document.getElementsByTagName('meta');
-                                                    for(var i = 0; i < metaTags.length; i++) {
-                                                        var metaTagName = metaTags[i].getAttribute("name");
-                                                        if(metaTagName === "_csrf_header")
-                                                            csrfHeaderName = metaTags[i].getAttribute("content");
-                                                        if(metaTagName === "_csrf")
-                                                            csrfTokenValue = metaTags[i].getAttribute("content");
-                                                    }
                                                     var xhr = new XMLHttpRequest();
                                                     xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
-                                                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
                                                     xhr.send();
                                                     xhr.open("GET", "userTariffs", false);
                                                     xhr.send();

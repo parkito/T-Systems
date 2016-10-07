@@ -34,6 +34,8 @@ public class UserController {
     private TariffService tariffService;
     @Autowired
     private TariffOptionService optionService;
+    @Autowired
+    UserCases userCases;
 
     /**
      * Method for dispatching requests to user's contracts
@@ -81,14 +83,16 @@ public class UserController {
      * @return page for view tariff changing
      */
     @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
-    public String changeTariff(HttpServletRequest request, Locale locale, Model model,
+    public String changeTariff(HttpServletRequest req, Locale locale, Model model,
                                @RequestParam(value = "tariffId") String tariffId,
                                @RequestParam(value = "contractNumber") String contractNumber) {
+        User user = (User) req.getSession().getAttribute("currentUser");
         int tariffID = Integer.parseInt(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         Tariff tariff = tariffService.getEntityById(tariffID);
         contract.setTariff(tariff);
         contractService.updateEntity(contract);
+        req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(user));
         return "user/userTariffs";
     }
 
@@ -122,10 +126,11 @@ public class UserController {
      */
     // TODO: 9/28/16 тут случаются глюки. Быть осторожным
     @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.POST)
-    public String chgangeTariffOptions(HttpServletRequest request, HttpServletResponse resp, Locale locale, Model model,
+    public String chgangeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Locale locale, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
+        User user = (User) req.getSession().getAttribute("currentUser");
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         Contract contract = contractService.getContractByNumber(contractNumber);
         TariffOption tariffOption = optionService.getEntityById(tariffOptionID);
@@ -155,6 +160,7 @@ public class UserController {
             contract.getTariffOptions().remove(tariffOption);
             contractService.updateEntity(contract);
         }
+        req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(user));
         return "user/userTariffOptions";
     }
 
@@ -211,6 +217,12 @@ public class UserController {
                 resp.setStatus(600);
             }
         }
+        req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(user));
         return "user/userNumberOperations";
+    }
+
+    @RequestMapping(value = "/Help", method = RequestMethod.GET)
+    public String help(HttpServletRequest request, Locale locale, Model model) {
+        return "Help";
     }
 }

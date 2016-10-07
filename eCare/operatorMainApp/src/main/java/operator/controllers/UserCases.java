@@ -7,6 +7,7 @@ import operator.entities.User;
 import operator.services.api.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  * Business logic for users
  */
+@Service("UserCases")
 public class UserCases {
     @Autowired
     private UserService userService;
@@ -93,6 +95,7 @@ public class UserCases {
     public double getPaymentInfo(User user) {
         double payment = 0;
         for (Contract contract : user.getContracts()) {
+            if (!contract.getIsBlocked())
             for (TariffOption tariffOption : contract.getTariffOptions()) {
                 payment += tariffOption.getPrice();
             }
