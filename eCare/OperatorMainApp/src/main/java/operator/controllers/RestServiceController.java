@@ -2,7 +2,9 @@ package operator.controllers;
 
 import operator.entities.Contract;
 import operator.entities.Tariff;
+import operator.entities.User;
 import operator.entities.UserDTO;
+import operator.exceptions.CustomDAOException;
 import operator.services.api.ContractService;
 import operator.services.api.TariffService;
 import org.apache.log4j.Logger;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +35,13 @@ public class RestServiceController {
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle) {
+    List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle, HttpServletRequest req) {
         List<UserDTO> users = new ArrayList<>();
+        User user = (User) req.getSession().getAttribute("currentUser");
         try {
+            if (user.getAccessLevel().getAccessLevelId() != 3) {
+                return null;
+            }
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
             for (Contract contract : contractService.getAll()) {
                 UserDTO userDTO = new UserDTO();
