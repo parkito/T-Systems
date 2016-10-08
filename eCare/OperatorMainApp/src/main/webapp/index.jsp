@@ -49,7 +49,6 @@
     <form method="GET" action="/rememberMe">
         <button type="submit" class="btn btn-block">Forgot password</button>
     </form>
-
 </div>
 <br>
 <br>

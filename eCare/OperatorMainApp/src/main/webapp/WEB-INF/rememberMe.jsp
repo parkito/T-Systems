@@ -34,12 +34,6 @@
         <button type="submit" class="btn btn-block">Go to home</button>
     </form>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <c:if test="${remindCheck!=null}">
     <c:if test="${remindCheck==false}">
         <font color="red">
@@ -47,7 +41,6 @@
                 User doesn't exist. Try again!
             </h3>
         </font>
-
     </c:if>
     <c:if test="${remindCheck==true}">
         <font color="green">

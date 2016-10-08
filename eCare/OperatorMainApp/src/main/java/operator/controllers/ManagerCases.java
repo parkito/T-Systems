@@ -226,6 +226,10 @@ public class ManagerCases {
         tariffOptionService.updateEntity(two);
     }
 
+    /**
+     * Removing tariff
+     * @param tariffForRemoving tariff for removing
+     */
     public void removeTariff(Tariff tariffForRemoving) {
         boolean contractWasChange = false;
         Tariff tariff = tariffService.getTariffByTitle("base");
@@ -243,6 +247,11 @@ public class ManagerCases {
     }
 
     // TODO: 10/4/16 fucking shit works, but throws nullpointerexception
+
+    /**
+     * Removing tariff option
+     * @param tariffOptionForRemoving tariff option for removing
+     */
     public void removeTariffOption(TariffOption tariffOptionForRemoving) {
         boolean contractWasChanged = false;
         Object object = new Object();
@@ -265,11 +274,21 @@ public class ManagerCases {
         tariffOptionService.deleteEntity(tariffOptionForRemoving);
     }
 
+    /**
+     *  Deleting joint options
+     * @param modifiedOption modified option
+     * @param removedOption removed option
+     */
     public void deleteJoinOption(TariffOption modifiedOption, TariffOption removedOption) {
         modifiedOption.getjointTogether().remove(removedOption);
         tariffOptionService.updateEntity(modifiedOption);
     }
 
+    /**
+     *  Deleting impossible options
+     * @param modifiedOption modified option
+     * @param removedOption removed option
+     */
     public void deleteImpossibleOption(TariffOption modifiedOption, TariffOption removedOption) {
         modifiedOption.getimpossibleTogether().remove(removedOption);
         tariffOptionService.updateEntity(modifiedOption);
