@@ -27,27 +27,18 @@
                     <input type="email" name="username" class="form-control" placeholder="E-mail">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                </div>
-            </div>
         </div>
-        <div class="col-xs-6">
-            <div class="checkbox"><label><input type="checkbox" name="_spring_security_remember_me"> Remember me</label>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <button type="submit" class="btn btn-block btn-primary">Sign in</button>
-        </div>
-        <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
-               value="<c:out value="${_csrf.token}"/>"/>
     </form>
     <form method="GET" action="/rememberMe">
-        <button type="submit" class="btn btn-block">Forgot password</button>
+        <button type="submit" class="btn btn-block btn-purple">Remind password</button>
     </form>
+
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 <font color="red">
     <c:if test="${userData!=null}">
         <c:if test="${userData==false}">

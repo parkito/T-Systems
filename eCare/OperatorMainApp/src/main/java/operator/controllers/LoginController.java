@@ -106,4 +106,10 @@ public class LoginController {
             return "admin/index";
         } else return "login";
     }
+
+    @RequestMapping(value = "/rememberMe", method = RequestMethod.GET)
+    public String rememberMe(Locale locale, Model model) {
+        return "rememberMe";
+    }
+
 }

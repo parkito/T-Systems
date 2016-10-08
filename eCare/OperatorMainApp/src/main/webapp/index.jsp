@@ -44,6 +44,11 @@
         <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
                value="<c:out value="${_csrf.token}"/>"/>
     </form>
+    <br>
+
+    <form method="GET" action="/rememberMe">
+        <button type="submit" class="btn btn-block">Forgot password</button>
+    </form>
 
 </div>
 <br>
