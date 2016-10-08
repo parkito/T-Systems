@@ -58,18 +58,20 @@ public class RestClientImpl implements RestClient {
             document.open();
             document.add(new Paragraph(new Date() + ". Report for " + tariffTitle.toUpperCase() + " tariff. \n\n"));
             document.add(new Paragraph());
-            PdfPTable table = new PdfPTable(4);
+            PdfPTable table = new PdfPTable(5);
             table.addCell("ID");
             table.addCell("NAME");
+            table.addCell("SURNAME");
             table.addCell("E-MAIL");
             table.addCell("NUMBER");
             document.add(table);
 
             List<UserDTO> users = getContracts(tariffTitle);
             for (UserDTO userDTO : users) {
-                PdfPTable tb = new PdfPTable(4);
+                PdfPTable tb = new PdfPTable(5);
                 tb.addCell(userDTO.getUserId());
                 tb.addCell(userDTO.getName());
+                tb.addCell(userDTO.getSecondName());
                 tb.addCell(userDTO.getEmail());
                 tb.addCell(userDTO.getContracts());
                 document.add(tb);

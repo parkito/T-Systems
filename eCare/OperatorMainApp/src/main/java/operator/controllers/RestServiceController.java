@@ -37,11 +37,7 @@ public class RestServiceController {
     @ResponseBody
     List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle, HttpServletRequest req) {
         List<UserDTO> users = new ArrayList<>();
-        User user = (User) req.getSession().getAttribute("currentUser");
         try {
-            if (user.getAccessLevel().getAccessLevelId() != 3) {
-                return null;
-            }
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
             for (Contract contract : contractService.getAll()) {
                 UserDTO userDTO = new UserDTO();

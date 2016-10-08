@@ -45,7 +45,7 @@ public class BeanController {
         File file = new File("/tmp/Report.pdf");
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance()
                 .getExternalContext().getResponse();
-        response.setHeader("Content-Disposition", "attachment;filename=file.txt");
+        response.setHeader("Content-Disposition", "attachment;filename=Report.pdf");
         response.setContentLength((int) file.length());
         ServletOutputStream out = null;
         try {
