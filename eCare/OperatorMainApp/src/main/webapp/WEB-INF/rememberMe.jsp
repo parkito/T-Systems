@@ -18,19 +18,17 @@
 </div>
 
 <div class="col-sm-6 col-md-4 col-lg-3" style="margin:40px auto; float:none;">
-    <c:url var="loginUrl" value="/login"/>
-    <form method="post" action="${loginUrl}">
+    <form method="post" action="/rememberMe">
         <div class="col-xs-12">
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
-                    <input type="email" name="username" class="form-control" placeholder="E-mail">
+                    <input type="email" name="email" class="form-control" placeholder="E-mail">
                 </div>
+                <br>
+                <button type="submit" class="btn btn-block btn-purple">Remind password</button>
             </div>
         </div>
-    </form>
-    <form method="GET" action="/rememberMe">
-        <button type="submit" class="btn btn-block btn-purple">Remind password</button>
     </form>
 
 </div>
@@ -39,14 +37,24 @@
 <br>
 <br>
 <br>
-<font color="red">
-    <c:if test="${userData!=null}">
-        <c:if test="${userData==false}">
+
+<c:if test="${remindCheck!=null}">
+    <c:if test="${userData==false}">
+        <font color="red">
             <h3 align="center">
-                E-mail or password is incorrect. Try again
+                User doesn't exist. Try again!
             </h3>
-        </c:if>
+        </font>
+
     </c:if>
-</font>
+    <c:if test="${userData==true}">
+        <font color="#adff2f">
+            <h3 align="center">
+                Password sent on your e-mail
+            </h3>
+        </font>
+
+    </c:if>
+</c:if>
 </body>
 </html>

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -172,7 +171,8 @@ public class ManagerCases {
         }
         String result = sb.toString();
         Smsc sms = new Smsc("parkito", "214189");
-        sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
+        if (!number.equals(""))
+            sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
         EmailSender.send(eMail, user, result);
         try {
             result = Converter.getMD5(result);

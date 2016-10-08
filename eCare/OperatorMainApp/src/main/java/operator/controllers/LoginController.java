@@ -1,6 +1,7 @@
 package operator.controllers;
 
 import operator.entities.User;
+import operator.exceptions.UserNotFoundException;
 import operator.services.api.ContractService;
 import operator.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,8 @@ public class LoginController {
     private ContractService contractService;
     @Autowired
     UserCases userCases;
+    @Autowired
+    ManagerCases managerCases;
 
     /**
      * Method for dispatching requests to login page
@@ -109,6 +113,20 @@ public class LoginController {
 
     @RequestMapping(value = "/rememberMe", method = RequestMethod.GET)
     public String rememberMe(Locale locale, Model model) {
+        return "rememberMe";
+    }
+
+    @RequestMapping(value = "/rememberMe", method = RequestMethod.POST)
+    public String rememberMePost(Locale locale, Model model,
+                                 @RequestParam(value = "email") String email) {
+        User user;
+        try {
+            user = userService.getUserByEMAil(email);
+            model.addAttribute("remindCheck", true);
+            managerCases.passwordGenerator(5, "", user.getEmail(), user.getName());
+        } catch (UserNotFoundException ex) {
+            model.addAttribute("remindCheck", false);
+        }
         return "rememberMe";
     }
 
