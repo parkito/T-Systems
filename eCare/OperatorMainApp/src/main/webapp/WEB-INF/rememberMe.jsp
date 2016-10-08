@@ -30,7 +30,9 @@
             </div>
         </div>
     </form>
-
+    <form method="GET" action="/">
+        <button type="submit" class="btn btn-block">Go to home</button>
+    </form>
 </div>
 <br>
 <br>
@@ -39,7 +41,7 @@
 <br>
 
 <c:if test="${remindCheck!=null}">
-    <c:if test="${userData==false}">
+    <c:if test="${remindCheck==false}">
         <font color="red">
             <h3 align="center">
                 User doesn't exist. Try again!
@@ -47,8 +49,8 @@
         </font>
 
     </c:if>
-    <c:if test="${userData==true}">
-        <font color="#adff2f">
+    <c:if test="${remindCheck==true}">
+        <font color="green">
             <h3 align="center">
                 Password sent on your e-mail
             </h3>
