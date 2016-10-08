@@ -66,11 +66,12 @@ public class UserController {
      */
 
     @RequestMapping(value = "/userTariffs", method = RequestMethod.GET)
-    public String tariffs(HttpServletRequest request, Locale locale, Model model) {
-        User user = (User) request.getSession().getAttribute("currentUser");
+    public String tariffs(HttpServletRequest req, Locale locale, Model model) {
+        User user = (User) req.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         model.addAttribute("allTariffs", tariffService.getAll());
         model.addAttribute("tempId", new ArrayList<Integer>());
+        req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(user));
         return "user/userTariffs";
     }
 
