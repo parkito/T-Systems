@@ -37,6 +37,10 @@ public class UserController {
     @Autowired
     UserCases userCases;
 
+    enum Cat {
+        Leopard, Puma, Lion, Tiger, Manul
+    }
+
     /**
      * Method for dispatching requests to user's contracts
      *
@@ -45,7 +49,6 @@ public class UserController {
      * @param model   model for page view
      * @return page for view user's contract
      */
-// TODO: 9/29/16 Добавить колько он всего платит денег
     @RequestMapping(value = "/userContract", method = RequestMethod.GET)
     public String contracts(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
@@ -62,7 +65,6 @@ public class UserController {
      * @return page for view user's tariffs
      */
 
-    // TODO: 9/27/16 анот для юзеров
     @RequestMapping(value = "/userTariffs", method = RequestMethod.GET)
     public String tariffs(HttpServletRequest request, Locale locale, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
