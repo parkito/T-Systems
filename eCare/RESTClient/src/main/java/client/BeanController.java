@@ -42,11 +42,9 @@ public class BeanController {
     }
 
     public void downloadFile() {
-
         File file = new File("/tmp/Report.pdf");
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance()
                 .getExternalContext().getResponse();
-
         response.setHeader("Content-Disposition", "attachment;filename=file.txt");
         response.setContentLength((int) file.length());
         ServletOutputStream out = null;
@@ -71,7 +69,5 @@ public class BeanController {
                 err.printStackTrace();
             }
         }
-
     }
-
 }
