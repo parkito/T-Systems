@@ -4,7 +4,6 @@ import operator.entities.Contract;
 import operator.entities.Tariff;
 import operator.entities.User;
 import operator.entities.UserDTO;
-import operator.exceptions.CustomDAOException;
 import operator.services.api.ContractService;
 import operator.services.api.TariffService;
 import org.apache.log4j.Logger;
@@ -35,9 +34,13 @@ public class RestServiceController {
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle, HttpServletRequest req) {
+    List<UserDTO> getContracts(@RequestParam(value = "contract") String contractTitle,
+                               @RequestParam(value = "password") String password) {
         List<UserDTO> users = new ArrayList<>();
         try {
+            if (!password.equals("12345")) {
+                return null;
+            }
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
             for (Contract contract : contractService.getAll()) {
                 UserDTO userDTO = new UserDTO();
