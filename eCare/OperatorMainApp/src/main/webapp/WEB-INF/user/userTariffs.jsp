@@ -2,8 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="_csrf" content="${_csrf.token}"/>
-    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-clearmin.min.css">
@@ -99,7 +97,7 @@
                                                     var xhr = new XMLHttpRequest();
                                                     xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
                                                     xhr.send();
-                                                    xhr.open("GET", "userTariffs", false);
+                                                    xhr.open("GET", "main", false);
                                                     xhr.send();
                                                 }
                                             }

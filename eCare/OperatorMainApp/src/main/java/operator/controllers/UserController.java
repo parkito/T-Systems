@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -86,9 +87,11 @@ public class UserController {
      * @return page for view tariff changing
      */
     @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
-    public String changeTariff(HttpServletRequest req, Locale locale, Model model,
-                               @RequestParam(value = "tariffId") String tariffId,
-                               @RequestParam(value = "contractNumber") String contractNumber) {
+    public
+    @ResponseBody
+    double changeTariff(HttpServletRequest req, Locale locale, Model model,
+                        @RequestParam(value = "tariffId") String tariffId,
+                        @RequestParam(value = "contractNumber") String contractNumber) {
         User user = (User) req.getSession().getAttribute("currentUser");
         int tariffID = Integer.parseInt(tariffId);
         Contract contract = contractService.getContractByNumber(contractNumber);
@@ -96,7 +99,7 @@ public class UserController {
         contract.setTariff(tariff);
         contractService.updateEntity(contract);
         req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(user));
-        return "user/userTariffs";
+        return userCases.getPaymentInfo(user);
     }
 
     /**
