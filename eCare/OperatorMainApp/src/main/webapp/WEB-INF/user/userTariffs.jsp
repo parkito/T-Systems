@@ -99,7 +99,7 @@
                                                     var xhr = new XMLHttpRequest();
                                                     xhr.open("POST", "userChangeTariff?tariffId=" + num1 + "&contractNumber=" + num2, false);
                                                     xhr.send();
-                                                    xhr.open("GET", "userTariffs", true);
+                                                    xhr.open("GET", "userTariffs", false);
                                                     xhr.send();
                                                 }
                                             }
