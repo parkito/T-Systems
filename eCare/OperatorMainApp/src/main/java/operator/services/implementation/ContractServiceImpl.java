@@ -6,8 +6,6 @@ import operator.entities.Contract;
 import operator.exceptions.ContractNotFoundException;
 import operator.exceptions.ContractsForEntityNotGotException;
 import operator.exceptions.CustomDAOException;
-import operator.security.CustomUserDetailsService;
-import operator.security.UserDetailsServiceDAO;
 import operator.services.api.ContractService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

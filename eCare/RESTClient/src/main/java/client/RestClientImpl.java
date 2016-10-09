@@ -7,6 +7,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.ejb.Stateless;
 import java.io.*;
@@ -27,7 +28,7 @@ public class RestClientImpl implements RestClient {
     @Override
     public List<UserDTO> getContracts(String tariffTitle) throws IOException {
         String result = null;
-        String URL = "http://localhost:8080/getRestInfo?contract=" + tariffTitle + "&password=12345";
+        String URL = "http://localhost:8080/getRestInfo?contract=" + tariffTitle + "&password=" + DigestUtils.md5Hex("12345");
         java.net.URL url = new URL(URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");

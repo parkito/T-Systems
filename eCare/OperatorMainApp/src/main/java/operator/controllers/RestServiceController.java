@@ -2,10 +2,10 @@ package operator.controllers;
 
 import operator.entities.Contract;
 import operator.entities.Tariff;
-import operator.entities.User;
 import operator.entities.UserDTO;
 import operator.services.api.ContractService;
 import operator.services.api.TariffService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class RestServiceController {
                                @RequestParam(value = "password") String password) {
         List<UserDTO> users = new ArrayList<>();
         try {
-            if (!password.equals("12345")) {
+            if (DigestUtils.md5Hex(password).equals(DigestUtils.md5Hex("12345"))) {
                 return null;
             }
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
