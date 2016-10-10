@@ -1,11 +1,13 @@
 package unit.controllers;
 
-import controllers.ManagerCases;
+import operator.controllers.ManagerCases;
+import operator.exceptions.CustomDAOException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.mockito.InjectMocks;
 
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 /**
@@ -13,16 +15,26 @@ import static org.mockito.Mockito.when;
  * artyom-karnov@yandex.ru
  **/
 public class ManagerCasesTest {
-    ManagerCases managerCasesMock;
+    @InjectMocks
+    ManagerCases managerCasesMock = new ManagerCases();
 
     @Before
     public void beforeTest() {
-        managerCasesMock = Mockito.mock(ManagerCases.class);
+        when(managerCasesMock.isUserExists("c@b.ru")).thenReturn(true);
+        doThrow(new CustomDAOException("User already exists"))
+                .when(managerCasesMock).addUserToBase("art", "kar", "08.02.1995",
+                "pass", "addr", "c@c.ru", "pass");
         when(managerCasesMock.isNumberExists("214189")).thenReturn(true);
-        when(managerCasesMock.isOptionExists("base")).thenReturn(true);
         when(managerCasesMock.isTariffExists("call1")).thenReturn(true);
+        doThrow(new CustomDAOException("Tariff already exists"))
+                .when(managerCasesMock).addContractToBase("base", "100.0");
+        doThrow(new CustomDAOException("Contract already exists"))
+                .when(managerCasesMock).addTariffToBase("c@b.ru", "214189");
+        when(managerCasesMock.isOptionExists("base")).thenReturn(true);
+        doThrow(new CustomDAOException("Contract already exists"))
+                .when(managerCasesMock).addOptionToBase("new", "100", "100");
+        when(managerCasesMock.passwordGenerator(5, "214189", "c@b.ru", "user")).thenReturn("password");
         when(managerCasesMock.isUserExists("b@b.ru")).thenReturn(true);
-        when(managerCasesMock.passwordGenerator(5)).thenReturn("j4j5j");
 
     }
 
@@ -65,12 +77,4 @@ public class ManagerCasesTest {
     public void isOptionExistsOne() {
         Assert.assertEquals(managerCasesMock.isOptionExists("baseff"), false);
     }
-
-
-    @Test
-    public void passwordGenerator() {
-        Assert.assertEquals(managerCasesMock.passwordGenerator(5).length(), 5);
-    }
-
-
 }
