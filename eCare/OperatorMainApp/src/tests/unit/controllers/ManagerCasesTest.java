@@ -15,8 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Artyom Karnov on 9/12/16.
@@ -87,6 +86,12 @@ public class ManagerCasesTest {
         spyContract.add(new Contract("214190", new Tariff()));
         spyContract.add(new Contract("214191", new Tariff()));
         Assert.assertEquals(spyContract.get(0).getNumber(), "214189");
+        Assert.assertEquals(spyContract.get(1).getNumber(), "214190");
+        Assert.assertEquals(spyContract.get(2).getNumber(), "214191");
+        spyContract.clear();
+        Assert.assertEquals(0, spyContract.size());
+        verify(spyContract, times(1)).clear();
+
     }
 
     @Test
