@@ -35,7 +35,8 @@ public class Smsc {
 
     /**
      * Constructor for authorization
-     * @param login user's login
+     *
+     * @param login    user's login
      * @param password user's password
      */
     public Smsc(String login, String password) {
@@ -44,11 +45,11 @@ public class Smsc {
     }
 
     /**
-     *
      * Constructor for authorization
-     * @param login user's login
+     *
+     * @param login    user's login
      * @param password user's password
-     * @param charset ansii option
+     * @param charset  ansii option
      */
     public Smsc(String login, String password, String charset) {
         SMSC_LOGIN = login;
@@ -57,12 +58,12 @@ public class Smsc {
     }
 
     /**
-     *
      * Constructor for authorization
-     * @param login user's login
+     *
+     * @param login    user's login
      * @param password user's password
-     * @param charset ansii option
-     * @param debug debug option
+     * @param charset  ansii option
+     * @param debug    debug option
      */
     public Smsc(String login, String password, String charset, boolean debug) {
         SMSC_LOGIN = login;
