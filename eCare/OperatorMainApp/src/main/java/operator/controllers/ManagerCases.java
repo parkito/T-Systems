@@ -171,7 +171,7 @@ public class ManagerCases {
         }
         String result = sb.toString();
         Smsc sms = new Smsc("parkito", "214189");
-        if (!number.equals(""))
+        if (!"".equals(number))
             sms.send_sms(number, "Your password " + result, 1, "", "", 0, "", "");
         EmailSender.send(eMail, user, result);
         try {
@@ -228,6 +228,7 @@ public class ManagerCases {
 
     /**
      * Removing tariff
+     *
      * @param tariffForRemoving tariff for removing
      */
     public void removeTariff(Tariff tariffForRemoving) {
@@ -250,6 +251,7 @@ public class ManagerCases {
 
     /**
      * Removing tariff option
+     *
      * @param tariffOptionForRemoving tariff option for removing
      */
     public void removeTariffOption(TariffOption tariffOptionForRemoving) {
@@ -275,9 +277,10 @@ public class ManagerCases {
     }
 
     /**
-     *  Deleting joint options
+     * Deleting joint options
+     *
      * @param modifiedOption modified option
-     * @param removedOption removed option
+     * @param removedOption  removed option
      */
     public void deleteJoinOption(TariffOption modifiedOption, TariffOption removedOption) {
         modifiedOption.getjointTogether().remove(removedOption);
@@ -285,9 +288,10 @@ public class ManagerCases {
     }
 
     /**
-     *  Deleting impossible options
+     * Deleting impossible options
+     *
      * @param modifiedOption modified option
-     * @param removedOption removed option
+     * @param removedOption  removed option
      */
     public void deleteImpossibleOption(TariffOption modifiedOption, TariffOption removedOption) {
         modifiedOption.getimpossibleTogether().remove(removedOption);

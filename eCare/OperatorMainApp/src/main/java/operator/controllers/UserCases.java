@@ -1,9 +1,12 @@
 package operator.controllers;
 
 
+import operator.entities.AccessLevel;
 import operator.entities.Contract;
 import operator.entities.TariffOption;
 import operator.entities.User;
+import operator.exceptions.CustomDAOException;
+import operator.services.api.AccessLevelService;
 import operator.services.api.ContractService;
 import operator.services.api.UserService;
 import org.apache.log4j.Logger;
@@ -26,23 +29,29 @@ public class UserCases {
     private UserService usersService;
     @Autowired
     private ContractService service;
+    @Autowired
+    private AccessLevelService accessLevelsService;
 
     private final static Logger logger = Logger.getLogger(ManagerCases.class);
 
     // TODO: 10/4/16 Подумать с деланием менеджера
-//    /**
-//     * User become manager
-//     *
-//     * @param user entity for changing
-//     */
-//    public boolean makeUserManager(User user) {
-//        try {
-//            usersService.cahngeUserAccessLevel(user, accessLevelsService.getEntityById(3));
-//        } catch (CustomDAOException ex) {
-//            return false;
-//        }
-//        return true;
-//    }
+
+    /**
+     * User become manager
+     *
+     * @param user entity for changing
+     * @return true - if level changed, false if something went wrong
+     */
+    public boolean makeUserManager(User user) {
+        try {
+            AccessLevel accessLevelManger = accessLevelsService.getEntityById(3);
+            user.setAccessLevel(accessLevelManger);
+            usersService.updateEntity(user);
+        } catch (CustomDAOException ex) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Getting user name from contract
