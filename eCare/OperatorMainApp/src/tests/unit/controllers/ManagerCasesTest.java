@@ -5,7 +5,9 @@ import operator.exceptions.CustomDAOException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -14,13 +16,14 @@ import static org.mockito.Mockito.when;
  * Created by Artyom Karnov on 9/12/16.
  * artyom-karnov@yandex.ru
  **/
+@RunWith(MockitoJUnitRunner.class)
 public class ManagerCasesTest {
-    @InjectMocks
-    ManagerCases managerCasesMock = new ManagerCases();
+    @Mock
+    ManagerCases managerCasesMock;
 
     @Before
     public void beforeTest() {
-        when(managerCasesMock.isUserExists("c@b.ru")).thenReturn(true);
+        when(managerCasesMock.isUserExists("c@b.ru")).thenReturn(false);
         doThrow(new CustomDAOException("User already exists"))
                 .when(managerCasesMock).addUserToBase("art", "kar", "08.02.1995",
                 "pass", "addr", "c@c.ru", "pass");
@@ -36,6 +39,22 @@ public class ManagerCasesTest {
         when(managerCasesMock.passwordGenerator(5, "214189", "c@b.ru", "user")).thenReturn("password");
         when(managerCasesMock.isUserExists("b@b.ru")).thenReturn(true);
 
+    }
+
+    @Test(expected = CustomDAOException.class)
+    public void newUserToBaseError() {
+        if (!managerCasesMock.isUserExists("c@b.ru")) {
+            managerCasesMock.addUserToBase("art", "kar", "08.02.1995",
+                    "pass", "addr", "c@c.ru", "pass");
+        }
+    }
+
+    @Test
+    public void newUserToBase() {
+        if (!managerCasesMock.isUserExists("c@b.ru")) {
+            managerCasesMock.addUserToBase("art", "kar", "08.02.1995",
+                    "pass", "addr", "c@b.ru", "pass");
+        }
     }
 
     @Test
