@@ -34,8 +34,6 @@ public class UserCases {
 
     private final static Logger logger = Logger.getLogger(ManagerCases.class);
 
-    // TODO: 10/4/16 Подумать с деланием менеджера
-
     /**
      * User become manager
      *
@@ -96,6 +94,12 @@ public class UserCases {
 
     }
 
+    /**
+     * Getting payment info
+     *
+     * @param user
+     * @return sum of payment
+     */
     public double getPaymentInfo(User user) {
         double payment = 0;
         for (Contract contract : user.getContracts()) {

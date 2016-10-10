@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Locale;
 
 /**
  * Created by Artyom Karnov on 9/24/16.
@@ -27,7 +26,10 @@ import java.util.Locale;
 // TODO: 10/2/16 Во многих местах ты можешь избавиться от скриплетов - действуй
 // TODO: 10/4/16 При добавление нового тарифа не выскакивает надпись о том что тариф добавлен
 // TODO: 10/7/16 Проблема юзров об обновлении корзины
-// TODO: 10/8/16 Обычные юзеры читаю то, что нежно
+
+/**
+ * Login controller
+ */
 @Controller("LoginController")
 public class LoginController {
     @Autowired
@@ -42,12 +44,11 @@ public class LoginController {
     /**
      * Method for dispatching requests to login page
      *
-     * @param locale locale for page
-     * @param model  model for page view
+     * @param model model for page view
      * @return page for view login
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Locale locale, Model model) {
+    public String loginPage(Model model) {
         model.addAttribute("userData", true);
         return "index";
     }
@@ -79,12 +80,11 @@ public class LoginController {
     /**
      * This method returns a login page with an error block after an unsuccessful attempt.
      *
-     * @param locale locale;
-     * @param model  model;
+     * @param model model;
      * @return login.jsp
      */
     @RequestMapping(value = "/login-denied", method = RequestMethod.GET)
-    public String loginDenied(HttpServletRequest req, Locale locale, Model model) {
+    public String loginDenied(HttpServletRequest req, Model model) {
         model.addAttribute("userData", false);
         return "index";
     }
@@ -93,12 +93,11 @@ public class LoginController {
      * Method for dispatching requests to admin's and user's pages
      *
      * @param request
-     * @param locale
      * @param model
      * @return adjusted page
      */
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String loginPage(HttpServletRequest req, Locale locale, Model model) {
+    public String loginPage(HttpServletRequest req, Model model) {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userService.getUserByEMAil(user.getUsername());
@@ -111,13 +110,23 @@ public class LoginController {
         } else return "login";
     }
 
+    /**
+     * Method for dispatching requests to rememberMe
+     * @return remember me page
+     */
     @RequestMapping(value = "/rememberMe", method = RequestMethod.GET)
-    public String rememberMe(Locale locale, Model model) {
+    public String rememberMe() {
         return "rememberMe";
     }
 
+    /**
+     * Method for dispatching requests to rememberMe
+     * @param model model;
+     * @param email user's email
+     * @return remember me page
+     */
     @RequestMapping(value = "/rememberMe", method = RequestMethod.POST)
-    public String rememberMePost(Locale locale, Model model,
+    public String rememberMePost(Model model,
                                  @RequestParam(value = "email") String email) {
         User user;
         try {

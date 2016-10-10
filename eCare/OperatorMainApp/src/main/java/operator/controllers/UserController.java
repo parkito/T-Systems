@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A controllers to dispatch the queries of the clients.
@@ -51,7 +50,7 @@ public class UserController {
      * @return page for view user's contract
      */
     @RequestMapping(value = "/userContract", method = RequestMethod.GET)
-    public String contracts(HttpServletRequest request, Locale locale, Model model) {
+    public String contracts(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         return "user/userContract";
@@ -67,7 +66,7 @@ public class UserController {
      */
 
     @RequestMapping(value = "/userTariffs", method = RequestMethod.GET)
-    public String tariffs(HttpServletRequest req, Locale locale, Model model) {
+    public String tariffs(HttpServletRequest req, Model model) {
         User user = (User) req.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         model.addAttribute("allTariffs", tariffService.getAll());
@@ -89,7 +88,7 @@ public class UserController {
     @RequestMapping(value = "/userChangeTariff", method = RequestMethod.POST)
     public
     @ResponseBody
-    double changeTariff(HttpServletRequest req, Locale locale, Model model,
+    double changeTariff(HttpServletRequest req, Model model,
                         @RequestParam(value = "tariffId") String tariffId,
                         @RequestParam(value = "contractNumber") String contractNumber) {
         User user = (User) req.getSession().getAttribute("currentUser");
@@ -111,7 +110,7 @@ public class UserController {
      * @return page for view options changing
      */
     @RequestMapping(value = "/userTariffOptions", method = RequestMethod.GET)
-    public String tariffOptions(HttpServletRequest request, Locale locale, Model model) {
+    public String tariffOptions(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         model.addAttribute("allTariffOptions", optionService.getAll());
@@ -132,7 +131,7 @@ public class UserController {
      */
     // TODO: 9/28/16 тут случаются глюки. Быть осторожным
     @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.POST)
-    public String chgangeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Locale locale, Model model,
+    public String chgangeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
@@ -173,13 +172,12 @@ public class UserController {
     /**
      * Method for dispatching requests to user's number operations
      *
-     * @param locale locale for page
-     * @param model  model for page view
+     * @param model model for page view
      * @return page for view user's number operations
      */
 
     @RequestMapping(value = "/userNumberOperations", method = RequestMethod.GET)
-    public String userNumberOperations(HttpServletRequest request, Locale locale, Model model) {
+    public String userNumberOperations(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("currentUser");
         model.addAttribute("contracts", contractService.getAllContractsForUser(user.getUserId()));
         return "user/userNumberOperations";
@@ -197,7 +195,7 @@ public class UserController {
      * @return page for view user's number operations
      */
     @RequestMapping(value = "/userNumberOperations", method = RequestMethod.POST)
-    public String userNumberOperationsDelete(HttpServletRequest req, HttpServletResponse resp, Locale locale, Model model,
+    public String userNumberOperationsDelete(HttpServletRequest req, HttpServletResponse resp, Model model,
                                              @RequestParam(value = "number") String number,
                                              @RequestParam(value = "status") String status) {
         User user = (User) req.getSession().getAttribute("currentUser");
@@ -227,8 +225,15 @@ public class UserController {
         return "user/userNumberOperations";
     }
 
+    /**
+     * Method for dispatching requests to help page
+     *
+     * @param request request from page
+     * @param model   model for page view
+     * @return page for help
+     */
     @RequestMapping(value = "/Help", method = RequestMethod.GET)
-    public String help(HttpServletRequest request, Locale locale, Model model) {
+    public String help(HttpServletRequest request, Model model) {
         return "Help";
     }
 }

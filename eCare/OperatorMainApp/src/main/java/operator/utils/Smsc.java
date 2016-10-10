@@ -13,6 +13,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+/**
+ * Sms sending
+ */
 public class Smsc {
 
     private static final Logger logger = Logger.getLogger(Smsc.class);
@@ -30,17 +33,37 @@ public class Smsc {
     public Smsc() {
     }
 
+    /**
+     * Constructor for authorization
+     * @param login user's login
+     * @param password user's password
+     */
     public Smsc(String login, String password) {
         SMSC_LOGIN = login;
         SMSC_PASSWORD = password;
     }
 
+    /**
+     *
+     * Constructor for authorization
+     * @param login user's login
+     * @param password user's password
+     * @param charset ansii option
+     */
     public Smsc(String login, String password, String charset) {
         SMSC_LOGIN = login;
         SMSC_PASSWORD = password;
         SMSC_CHARSET = charset;
     }
 
+    /**
+     *
+     * Constructor for authorization
+     * @param login user's login
+     * @param password user's password
+     * @param charset ansii option
+     * @param debug debug option
+     */
     public Smsc(String login, String password, String charset, boolean debug) {
         SMSC_LOGIN = login;
         SMSC_PASSWORD = password;
@@ -287,15 +310,3 @@ public class Smsc {
         return out;
     }
 }
-
-// Examples:
-/*
-        Smsc sd= new Smsc();
-        // or
-        Smsc sd= new Smsc("login", "password");
-
-        sd.send_sms("79999999999", "Ваш пароль: 123", 1, "", "", 0, "", "");
-        sd.get_sms_cost("79999999999", "Вы успешно зарегистрированы!", 0, 0, "", "");
-        sd.get_status(sms_id, "79999999999");
-        sd.get_balanse();
-*/

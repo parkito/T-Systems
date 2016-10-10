@@ -21,6 +21,10 @@ import java.util.List;
  * Created by Artyom Karnov on 10/5/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Rest service
+ */
 @Controller("RestService")
 public class RestServiceController {
     @Autowired
@@ -30,6 +34,12 @@ public class RestServiceController {
 
     private final static Logger logger = Logger.getLogger(RestServiceController.class);
 
+    /**
+     * Method for dispatching requests to getRestInfo
+     * @param contractTitle contract title
+     * @param password password
+     * @return getRestInfo
+     */
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
     public
     @ResponseBody

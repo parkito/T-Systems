@@ -14,9 +14,19 @@ import java.util.Properties;
  * Created by Artyom Karnov on 10/2/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Sending emails
+ */
 public class EmailSender {
     private final static Logger logger = Logger.getLogger(EmailSender.class);
 
+    /**
+     * Method for email and sms sending
+     * @param eMail user's email
+     * @param user user's name
+     * @param password user's password
+     */
     public static void send(String eMail, String user, String password) {
         String to = eMail;
         String from = "support@k-mobile.com";
