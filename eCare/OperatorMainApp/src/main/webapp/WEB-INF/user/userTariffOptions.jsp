@@ -14,12 +14,12 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>Tariff options</title>
 </head>
-<%@ include file="header.jsp"%>
-
 <%
     List<TariffOption> allOptions = (List<TariffOption>) request.getAttribute("allTariffOptions");
     List<Contract> contracts = (List<Contract>) request.getAttribute("contractsUserList");
 %>
+<%@ include file="header.jsp"%>
+
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">${currentUser.name}, your options:</h2>
@@ -149,7 +149,6 @@
                                     }
                                 }
                             %>
-
                             </tbody>
                         </table>
                     </div>
@@ -161,5 +160,6 @@
     </div>
 </div>
 </div>
-<jsp:include page="footer.jsp"></jsp:include>
+<%--<jsp:include page="footer.jsp"></jsp:include>--%>
+<%@ include file="footer.jsp"%>
 </html>
