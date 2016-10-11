@@ -29,12 +29,12 @@
 //    private JdbcTemplate jdbcTemplate;
 //    /*for testing in IDEA uncomment the variables below */
 //
-//    private static final String createScript = "mobile/src/main/resources/sql/create-data-option.sql";
-//    private static final String deleteScript = "mobile/src/main/resources/sql/remove-data-option.sql";
+//    private static final String createScript = "mobile/src/main/resources/SQLTestScripts/create-data-option.SQLTestScripts";
+//    private static final String deleteScript = "mobile/src/main/resources/SQLTestScripts/remove-data-option.SQLTestScripts";
 ///*
 //
-//    private static final String createScript = "src/main/resources/sql/create-data-option.sql";
-//    private static final String deleteScript = "src/main/resources/sql/remove-data-option.sql";
+//    private static final String createScript = "src/main/resources/SQLTestScripts/create-data-option.SQLTestScripts";
+//    private static final String deleteScript = "src/main/resources/SQLTestScripts/remove-data-option.SQLTestScripts";
 //*/
 //
 //    @Before

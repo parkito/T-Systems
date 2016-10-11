@@ -29,11 +29,11 @@
 //    private JdbcTemplate jdbcTemplate;
 //    /*for testing in IDEA uncomment the variables below */
 //
-//    private static final String createScript = "mobile/src/main/resources/sql/create-data-tariff.sql";
-//    private static final String deleteScript = "mobile/src/main/resources/sql/remove-data-tariff.sql";
+//    private static final String createScript = "mobile/src/main/resources/SQLTestScripts/create-data-tariff.SQLTestScripts";
+//    private static final String deleteScript = "mobile/src/main/resources/SQLTestScripts/remove-data-tariff.SQLTestScripts";
 //
-// /*   private static final String createScript = "src/main/resources/sql/create-data-tariff.sql";
-//    private static final String deleteScript = "src/main/resources/sql/remove-data-tariff.sql";
+// /*   private static final String createScript = "src/main/resources/SQLTestScripts/create-data-tariff.SQLTestScripts";
+//    private static final String deleteScript = "src/main/resources/SQLTestScripts/remove-data-tariff.SQLTestScripts";
 //*/
 //    @Before
 //    public void insertData() {
