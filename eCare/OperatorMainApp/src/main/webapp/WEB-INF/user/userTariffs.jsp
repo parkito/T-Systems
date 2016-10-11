@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>Tariffs</title>
 </head>
-<jsp:include page="header.jsp"></jsp:include>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">${currentUser.name}, your tariffs:</h2>

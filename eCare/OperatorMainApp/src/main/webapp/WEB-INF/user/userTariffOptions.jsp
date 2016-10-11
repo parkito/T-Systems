@@ -14,19 +14,17 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>Tariff options</title>
 </head>
-<jsp:include page="header.jsp"></jsp:include>
+<%@ include file="header.jsp"%>
+
 <%
     List<TariffOption> allOptions = (List<TariffOption>) request.getAttribute("allTariffOptions");
     List<Contract> contracts = (List<Contract>) request.getAttribute("contractsUserList");
 %>
-
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">${currentUser.name}, your options:</h2>
         <p></p>
     </div>
-    <%--<input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"--%>
-    <%--value="<c:out value="${_csrf.token}"/>"/>--%>
     <div class="container-fluid">
         <%for (Contract contract : contracts) {%>
         <div class="row cm-fix-height">

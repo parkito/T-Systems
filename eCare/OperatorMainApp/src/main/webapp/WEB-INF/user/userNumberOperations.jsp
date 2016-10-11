@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="operator.entities.Contract" %>
 <%@ page import="java.util.List" %>
-
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>Number operations</title>
 </head>
-<jsp:include page="header.jsp"></jsp:include>
 <%
     List<Contract> contracts = (List<Contract>) request.getAttribute("contracts");
 %>
