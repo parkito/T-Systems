@@ -16,10 +16,10 @@ import javax.persistence.PersistenceContext;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * A test of entity manager injection.
+ * DI tests
  */
 @ContextConfiguration(locations = "/spring.xml")
-public class DependencyInjectionTest extends AbstractJUnit4SpringContextTests {
+public class DITest extends AbstractJUnit4SpringContextTests {
 
     @PersistenceContext
     private EntityManager entityManager;
