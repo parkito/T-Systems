@@ -1,4 +1,4 @@
-package tproject.integration;
+package integration;
 
 import operator.dao.api.AccessLevelDAO;
 import operator.dao.api.ContractDAO;
@@ -21,8 +21,6 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(locations = "/spring.xml")
 public class DITest extends AbstractJUnit4SpringContextTests {
 
-    @PersistenceContext
-    private EntityManager entityManager;
     @Autowired
     private UserService userService;
     @Autowired
@@ -43,60 +41,62 @@ public class DITest extends AbstractJUnit4SpringContextTests {
     private AccessLevelDAO accessLevelDAO;
     @Autowired
     private TariffDAO optionDAO;
+    @PersistenceContext
+    private EntityManager entityManager;
 
 
     @Test
-    public void testEntityManager() {
+    public void EntityManagerTest() {
         assertNotNull(entityManager);
     }
 
     @Test
-    public void testUserService() {
+    public void UserServiceTest() {
         assertNotNull(userService);
     }
 
     @Test
-    public void testTariffService() {
+    public void TariffServiceTest() {
         assertNotNull(tariffService);
     }
 
     @Test
-    public void testContractService() {
+    public void ContractServiceTest() {
         assertNotNull(contractService);
     }
 
     @Test
-    public void testRoleService() {
+    public void RoleServiceTest() {
         assertNotNull(accessLevel);
     }
 
     @Test
-    public void testOptionService() {
+    public void OptionServiceTest() {
         assertNotNull(optionService);
     }
 
     @Test
-    public void testUserDAO() {
+    public void UserDAOTest() {
         assertNotNull(userDAO);
     }
 
     @Test
-    public void testTariffDAO() {
+    public void TariffDAOTest() {
         assertNotNull(tariffDAO);
     }
 
     @Test
-    public void testContractDAO() {
+    public void ContractDAOTest() {
         assertNotNull(contractDAO);
     }
 
     @Test
-    public void testRoleDAO() {
+    public void RoleDAOTest() {
         assertNotNull(accessLevelDAO);
     }
 
     @Test
-    public void testOptionDAO() {
+    public void OptionDAOTest() {
         assertNotNull(optionDAO);
     }
 }

@@ -1,6 +1,7 @@
 //package tproject.services.implementation;
 //
 //
+//import operator.entities.Contract;
 //import operator.services.api.ContractService;
 //import operator.services.api.TariffService;
 //import operator.services.api.UserService;

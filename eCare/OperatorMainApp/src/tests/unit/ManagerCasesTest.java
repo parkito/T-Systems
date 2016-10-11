@@ -1,4 +1,4 @@
-package unit.controllers;
+package unit;
 
 import operator.controllers.ManagerCases;
 import operator.entities.Contract;
