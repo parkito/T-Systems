@@ -9,4 +9,8 @@ Artyom Karnov's repository for Java School by T-Systems
 *    --- OperatorMainApp  ---Web-application for mobile operator company
 *   |
 *    --- RESTClient       ---Rest-client for generating reports
+*   |
+*    --- Silenium       ---Silenium test cases
+
+
 
