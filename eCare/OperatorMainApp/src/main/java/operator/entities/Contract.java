@@ -179,8 +179,6 @@ public class Contract {
         if (number != null ? !number.equals(contract.number) : contract.number != null) return false;
         if (whoBlockedId != null ? !whoBlockedId.equals(contract.whoBlockedId) : contract.whoBlockedId != null)
             return false;
-
-
         return true;
     }
 

@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
     <title>Contracts</title>
 </head>
+<%@ include file="header.jsp"%>
 <div id="global">
     <div class="container-fluid cm-container-white">
         <h2 style="margin-top:0;">${currentUser.name}, your contracts:</h2>
@@ -69,5 +69,5 @@
     </div>
 </div>
 </div>
-<jsp:include page="footer.jsp"></jsp:include>
+<%@ include file="footer.jsp"%>
 </html>

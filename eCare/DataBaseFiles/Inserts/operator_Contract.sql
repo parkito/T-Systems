@@ -1,0 +1,9 @@
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214189', 2, 5, 1, 1, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214190', 6, 2, 0, 0, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214191', 1, 3, 0, 0, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214192', 2, 2, 0, 0, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214194', 1, 3, 1, 1, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214195', 1, 3, 0, 0, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('214199', 1, 17, 0, 0, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('89062477476', 6, 1, 0, 0, null);
+INSERT INTO operator.Contract (number, tariff_id, user_id, isBlocked, blockedByAdmin, whoBlocked_id) VALUES ('2121', 1, 3, 0, 0, null);

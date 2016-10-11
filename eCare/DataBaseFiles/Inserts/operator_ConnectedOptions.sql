@@ -1,0 +1,15 @@
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (1, 4);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (1, 5);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (1, 1);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (1, 9);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (1, 6);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (2, 2);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (2, 1);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (2, 9);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (2, 6);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (4, 3);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (5, 2);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (5, 3);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (7, 2);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (7, 6);
+INSERT INTO operator.ConnectedOptions (tariffOption_id, contract_id) VALUES (7, 3);
