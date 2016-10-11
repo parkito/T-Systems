@@ -59,6 +59,13 @@ public class UserCasesTest {
         when(userCasesMock.makeUserManager(user1)).thenReturn(true);
         when(userCasesMock.getUserName(contract)).thenReturn("test");
         when(userCasesMock.getAllContractsForUser("a@2.ru")).thenReturn(contractList);
+        when(userCasesMock.getUserNameByEmail(user1.getEmail())).thenReturn(user1.getName());
+        when(userCasesMock.getUserNameByEmail(user2.getEmail())).thenReturn(user2.getName());
+        when(userCasesMock.getUserNameByEmail("d@d.ru")).thenThrow(customDAOException);
+        when(userCasesMock.getPaymentInfo(user1)).thenReturn(100.0);
+        when(userCasesMock.getPaymentInfo(user2)).thenReturn(150.0);
+        when(userCasesMock.getPaymentInfo(user3)).thenReturn(160.0);
+        when(userCasesMock.getPaymentInfo(user4)).thenReturn(170.0);
     }
 
     @Test(expected = CustomDAOException.class)
@@ -88,4 +95,33 @@ public class UserCasesTest {
         Assert.assertEquals(userCasesMock.getAllContractsForUser("a@2.ru").size(), 0);
     }
 
+    @Test
+    public void getFirstUserName() {
+        Assert.assertEquals(userCasesMock.getUserNameByEmail(user1.getEmail()), user1.getName());
+    }
+
+    @Test
+    public void getSecondtUserName() {
+        Assert.assertEquals(userCasesMock.getUserNameByEmail(user2.getEmail()), user2.getName());
+    }
+
+    @Test(expected = CustomDAOException.class)
+    public void getUserNameExp() {
+        Assert.assertEquals(userCasesMock.getUserNameByEmail("d@d.ru"), user2.getName());
+    }
+
+    @Test
+    public void checkPaymentInfoFirstUser() {
+        Assert.assertEquals(userCasesMock.getPaymentInfo(user1), 100, 0.001);
+    }
+
+    @Test
+    public void checkPaymentInfoSecondUser() {
+        Assert.assertEquals(userCasesMock.getPaymentInfo(user2), 150, 0.001);
+    }
+
+    @Test
+    public void checkPaymentInfoThirdUser() {
+        Assert.assertNotEquals(userCasesMock.getPaymentInfo(user1), 150);
+    }
 }
