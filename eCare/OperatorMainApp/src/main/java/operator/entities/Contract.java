@@ -174,7 +174,6 @@ public class Contract {
 
         Contract contract = (Contract) o;
 
-        if (contractId != contract.contractId) return false;
         if (isBlocked != contract.isBlocked) return false;
         if (blockedByAdmin != contract.blockedByAdmin) return false;
         if (number != null ? !number.equals(contract.number) : contract.number != null) return false;
