@@ -19,6 +19,7 @@ public class SearchResult {
         Client client = TransportClient.builder().build()
                 .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
         SearchResponse search = client.prepareSearch("operator").setTypes("tariffs").execute().actionGet();
-        return str;
+        String serch = search.toString();
+        return serch;
     }
 }
