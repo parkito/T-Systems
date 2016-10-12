@@ -11,6 +11,7 @@ Artyom Karnov's repository for Java School by T-Systems
 *    --- RESTClient       ---Rest-client for generating reports
 *   |
 *    --- Silenium       ---Silenium test cases
-
+*   |
+*    --- JavaDoc       ---Documentation in JavaDoc style
 
 
