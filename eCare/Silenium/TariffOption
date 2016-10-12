@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>Contracts</title>
+<title>TariffOption</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Contracts</td></tr>
+<tr><td rowspan="1" colspan="3">TariffOption</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -18,13 +18,13 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=username</td>
-	<td>c@b.ru</td>
+	<td>name=password</td>
+	<td>12346</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=password</td>
-	<td>12346</td>
+	<td>name=username</td>
+	<td>c@b.ru</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -33,9 +33,40 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>css=div.panel-body.text-center</td>
+	<td>link=Tariff options</td>
 	<td></td>
 </tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-success</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure? </td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-danger</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure? </td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-danger</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure? </td>
+	<td></td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
