@@ -22,7 +22,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <%--<c:forEach var="val" items="${result}">--%>
-                        <p><strong><h3> ${result}</h3></strong></p>
+                        <p><strong><h3> ${searchResult}</h3></strong></p>
                     <%--</c:forEach>--%>
                 </div>
             </div>

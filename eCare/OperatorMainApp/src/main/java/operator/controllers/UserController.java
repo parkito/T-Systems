@@ -37,6 +37,8 @@ public class UserController {
     private TariffOptionService optionService;
     @Autowired
     UserCases userCases;
+    @Autowired
+    private SearchResult searchResult;
 
     /**
      * Method for dispatching requests to user's contracts
@@ -233,9 +235,18 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userSearch", method = RequestMethod.GET)
-    public String searching(HttpServletRequest req, Model model,
-                            @RequestParam(value = "query") String query) {
-        model.addAttribute("result", SearchResult.results(query));
+    public String searching(HttpServletRequest req, Model model) {
+        model.addAttribute("searchResult", "Nothing found");
         return "user/userSearch";
+    }
+
+    @RequestMapping(value = "/userSearch", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    String searchingPost(HttpServletRequest req, Model model,
+                         @RequestParam(value = "query") String query) {
+        String result = searchResult.getResults(query);
+        model.addAttribute("searchResult", result);
+        return result;
     }
 }

@@ -7,6 +7,7 @@ import operator.dao.api.ContractDAO;
 import operator.dao.api.TariffDAO;
 import operator.dao.api.UserDAO;
 import operator.services.api.*;
+import operator.utils.SearchResult;
 import operator.utils.Searching;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class DITest extends AbstractJUnit4SpringContextTests {
     @Autowired
     UserCases userCases;
     @Autowired
-    Searching searching;
+    SearchResult searchResult;
 
 
     @Test
@@ -121,6 +122,6 @@ public class DITest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void SearchingUtilityTest() {
-        assertNotNull(searching);
+        assertNotNull(searchResult);
     }
 }
