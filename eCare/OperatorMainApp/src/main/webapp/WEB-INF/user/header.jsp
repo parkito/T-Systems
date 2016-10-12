@@ -18,6 +18,7 @@
         </div>
     </div>
 </div>
+
 <header id="cm-header">
     <nav class="cm-navbar cm-navbar-primary">
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
@@ -25,6 +26,7 @@
             <h1>Home</h1>
             <form id="cm-search" action="Help" method="get">
                 <input type="search" name="find" autocomplete="off" placeholder="Search...">
+
             </form>
         </div>
         <div class="pull-right">

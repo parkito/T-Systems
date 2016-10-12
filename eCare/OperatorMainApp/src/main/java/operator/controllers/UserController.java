@@ -37,10 +37,6 @@ public class UserController {
     @Autowired
     UserCases userCases;
 
-    enum Cat {
-        Leopard, Puma, Lion, Tiger, Manul
-    }
-
     /**
      * Method for dispatching requests to user's contracts
      *
@@ -126,7 +122,7 @@ public class UserController {
      */
     // TODO: 9/28/16 тут случаются глюки. Быть осторожным
     @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.POST)
-    public String chgangeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Model model,
+    public @ResponseBody double changeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Model model,
                                        @RequestParam(value = "contractNumber") String contractNumber,
                                        @RequestParam(value = "tariffOptionId") String tariffOptionId,
                                        @RequestParam(value = "method") String method) {
@@ -161,7 +157,7 @@ public class UserController {
             contractService.updateEntity(contract);
         }
         req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(user));
-        return "user/userTariffOptions";
+        return userCases.getPaymentInfo(user);
     }
 
     /**
