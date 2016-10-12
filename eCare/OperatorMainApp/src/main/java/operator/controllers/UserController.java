@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -234,19 +235,32 @@ public class UserController {
         return "Help";
     }
 
+    /**
+     * Method for dispatching requests to userSearch page
+     *
+     * @param req   request from page
+     * @param model model for page view
+     * @return page for userSearch
+     */
     @RequestMapping(value = "/userSearch", method = RequestMethod.GET)
     public String searching(HttpServletRequest req, Model model) {
         model.addAttribute("searchResult", "Nothing found");
         return "user/userSearch";
     }
 
+    /**
+     * Method for dispatching requests to userSearch page
+     *
+     * @param req   request from page
+     * @param model model for page view
+     * @param query query for searching
+     * @return page for userSearch
+     */
     @RequestMapping(value = "/userSearch", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    String searchingPost(HttpServletRequest req, Model model,
-                         @RequestParam(value = "query") String query) {
+    public String searchingPost(HttpServletRequest req, Model model,
+                                @RequestParam(value = "query") String query) throws UnknownHostException {
         String result = searchResult.getResults(query);
         model.addAttribute("searchResult", result);
-        return result;
+        return "user/userSearch";
     }
 }
