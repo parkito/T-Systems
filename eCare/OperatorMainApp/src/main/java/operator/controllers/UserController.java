@@ -8,6 +8,7 @@ import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
+import operator.utils.Searching;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -122,10 +123,12 @@ public class UserController {
      */
     // TODO: 9/28/16 тут случаются глюки. Быть осторожным
     @RequestMapping(value = "/userChangeTariffOptions", method = RequestMethod.POST)
-    public @ResponseBody double changeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Model model,
-                                       @RequestParam(value = "contractNumber") String contractNumber,
-                                       @RequestParam(value = "tariffOptionId") String tariffOptionId,
-                                       @RequestParam(value = "method") String method) {
+    public
+    @ResponseBody
+    double changeTariffOptions(HttpServletRequest req, HttpServletResponse resp, Model model,
+                               @RequestParam(value = "contractNumber") String contractNumber,
+                               @RequestParam(value = "tariffOptionId") String tariffOptionId,
+                               @RequestParam(value = "method") String method) {
         User user = (User) req.getSession().getAttribute("currentUser");
         int tariffOptionID = Integer.parseInt(tariffOptionId);
         Contract contract = contractService.getContractByNumber(contractNumber);
@@ -230,7 +233,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userSearch", method = RequestMethod.GET)
-    public String searching(HttpServletRequest req, Model model) {
+    public String searching(HttpServletRequest req, Model model,
+                            @RequestParam(value = "query") String query) {
+        model.addAttribute("result", Searching.findSomething(query));
         return "user/userSearch";
     }
 }
