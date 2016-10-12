@@ -1,0 +1,12 @@
+integration
+operator.aop
+operator.controllers
+operator.dao.api
+operator.dao.implementation
+operator.entities
+operator.exceptions
+operator.security
+operator.services.api
+operator.services.implementation
+operator.utils
+unit

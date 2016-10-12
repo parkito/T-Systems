@@ -44,14 +44,13 @@ public class UserController {
     /**
      * Method for dispatching requests to user's contracts
      *
-     * @param request request from page
-     * @param locale  locale for page
-     * @param model   model for page view
+     * @param req   request from page
+     * @param model model for page view
      * @return page for view user's contract
      */
     @RequestMapping(value = "/userContract", method = RequestMethod.GET)
-    public String contracts(HttpServletRequest request, Model model) {
-        User user = (User) request.getSession().getAttribute("currentUser");
+    public String contracts(HttpServletRequest req, Model model) {
+        User user = (User) req.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         return "user/userContract";
     }
@@ -59,9 +58,8 @@ public class UserController {
     /**
      * Method for dispatching requests to user's tariffs
      *
-     * @param request request from page
-     * @param locale  locale for page
-     * @param model   model for page view
+     * @param req   request from page
+     * @param model model for page view
      * @return page for view user's tariffs
      */
 
@@ -78,8 +76,7 @@ public class UserController {
     /**
      * Method for dispatching requests to user's user's tariff changing
      *
-     * @param request        request from page
-     * @param locale         locale for page
+     * @param req            request from page
      * @param model          model for page view
      * @param tariffId       of of changing tariff
      * @param contractNumber contract number for changing
@@ -104,14 +101,13 @@ public class UserController {
     /**
      * Method for dispatching requests to user's tariff options changing
      *
-     * @param request request from page
-     * @param locale  locale for page
-     * @param model   model for page view
+     * @param req   request from page
+     * @param model model for page view
      * @return page for view options changing
      */
     @RequestMapping(value = "/userTariffOptions", method = RequestMethod.GET)
-    public String tariffOptions(HttpServletRequest request, Model model) {
-        User user = (User) request.getSession().getAttribute("currentUser");
+    public String tariffOptions(HttpServletRequest req, Model model) {
+        User user = (User) req.getSession().getAttribute("currentUser");
         model.addAttribute("contractsUserList", contractService.getAllContractsForUser(user.getUserId()));
         model.addAttribute("allTariffOptions", optionService.getAll());
         return "user/userTariffOptions";
@@ -120,9 +116,8 @@ public class UserController {
     /**
      * Method for dispatching requests to user's tariff options changing
      *
-     * @param request        request from page
+     * @param req            request from page
      * @param resp           request to page
-     * @param locale         locale for page
      * @param model          model for page view
      * @param contractNumber number for changing
      * @param tariffOptionId tariff option id for changing
@@ -172,13 +167,14 @@ public class UserController {
     /**
      * Method for dispatching requests to user's number operations
      *
+     * @param req   request from page
      * @param model model for page view
      * @return page for view user's number operations
      */
 
     @RequestMapping(value = "/userNumberOperations", method = RequestMethod.GET)
-    public String userNumberOperations(HttpServletRequest request, Model model) {
-        User user = (User) request.getSession().getAttribute("currentUser");
+    public String userNumberOperations(HttpServletRequest req, Model model) {
+        User user = (User) req.getSession().getAttribute("currentUser");
         model.addAttribute("contracts", contractService.getAllContractsForUser(user.getUserId()));
         return "user/userNumberOperations";
     }
@@ -187,8 +183,8 @@ public class UserController {
     /**
      * Method for dispatching requests to user's number operations
      *
+     * @param req         request from page
      * @param resp        request to page
-     * @param locale      locale for page
      * @param model       model for page view
      * @param unblockItem element for blocking
      * @param blockItem   element for unblocking
@@ -228,12 +224,12 @@ public class UserController {
     /**
      * Method for dispatching requests to help page
      *
-     * @param request request from page
-     * @param model   model for page view
+     * @param req   request from page
+     * @param model model for page view
      * @return page for help
      */
     @RequestMapping(value = "/Help", method = RequestMethod.GET)
-    public String help(HttpServletRequest request, Model model) {
+    public String help(HttpServletRequest req, Model model) {
         return "Help";
     }
 }
