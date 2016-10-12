@@ -7,6 +7,10 @@ import java.io.Serializable;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Class for tariff entity
+ */
 @Entity
 @Table(name = "Tariff")
 @NamedQuery(name = "Tariff.getAll", query = "SELECT tar FROM Tariff tar")

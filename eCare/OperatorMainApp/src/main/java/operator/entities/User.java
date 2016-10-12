@@ -9,6 +9,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Class for user entity
+ */
 @Entity
 @Table(name = "User")
 @NamedQuery(name = "User.getAll", query = "SELECT u FROM User u")

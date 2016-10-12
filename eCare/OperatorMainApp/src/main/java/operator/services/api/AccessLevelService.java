@@ -7,6 +7,9 @@ import operator.entities.AccessLevel;
  * artyom-karnov@yandex.ru
  **/
 
+/**
+ * Interface for AccessLevelService
+ */
 public interface AccessLevelService extends GenericService<AccessLevel, Integer> {
 
 }

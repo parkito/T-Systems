@@ -9,6 +9,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Class for tariff option entity
+ */
 @Entity
 @Table(name = "TariffOption")
 @NamedQuery(name = "TariffOption.getAll", query = "SELECT opt FROM TariffOption opt")

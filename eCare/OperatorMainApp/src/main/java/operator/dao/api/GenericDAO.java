@@ -8,6 +8,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Interface for GenericDAO
+ */
 public interface GenericDAO<E, K> {
 
     public void create(E entity) throws CustomDAOException;

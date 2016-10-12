@@ -9,6 +9,10 @@ import java.util.List;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Class for contract entity
+ */
 @Entity
 @Table(name = "Contract")
 @NamedQuery(name = "Contract.getAll", query = "SELECT c FROM Contract c")

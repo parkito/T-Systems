@@ -6,6 +6,10 @@ import javax.persistence.*;
  * Created by Artyom Karnov on 8/26/16.
  * artyom-karnov@yandex.ru
  **/
+
+/**
+ * Class for accesslevel entity
+ */
 @Entity
 @Table(name = "AccessLevel")
 @NamedQuery(name = "AccessLevel.getAll", query = "SELECT a FROM AccessLevel a")
