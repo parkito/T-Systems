@@ -228,4 +228,9 @@ public class UserController {
     public String help(HttpServletRequest req, Model model) {
         return "Help";
     }
+
+    @RequestMapping(value = "/userSearch", method = RequestMethod.GET)
+    public String searching(HttpServletRequest req, Model model) {
+        return "user/userSearch";
+    }
 }
