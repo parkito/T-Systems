@@ -8,7 +8,7 @@ import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
-import operator.utils.Searching;
+import operator.utils.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -235,7 +235,7 @@ public class UserController {
     @RequestMapping(value = "/userSearch", method = RequestMethod.GET)
     public String searching(HttpServletRequest req, Model model,
                             @RequestParam(value = "query") String query) {
-        model.addAttribute("result", Searching.findSomething(query));
+        model.addAttribute("result", SearchResult.results(query));
         return "user/userSearch";
     }
 }

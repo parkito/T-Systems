@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row cm-fix-height">
             <div class="panel panel-default">
-                <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, ${currentUser.name} !</h1>
+                <div class="panel-body">
                     <%--<c:forEach var="val" items="${result}">--%>
                         <p><strong><h3> ${result}</h3></strong></p>
                     <%--</c:forEach>--%>

@@ -1,10 +1,13 @@
 package integration;
 
+import operator.controllers.ManagerCases;
+import operator.controllers.UserCases;
 import operator.dao.api.AccessLevelDAO;
 import operator.dao.api.ContractDAO;
 import operator.dao.api.TariffDAO;
 import operator.dao.api.UserDAO;
 import operator.services.api.*;
+import operator.utils.Searching;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -43,6 +46,12 @@ public class DITest extends AbstractJUnit4SpringContextTests {
     private TariffDAO optionDAO;
     @PersistenceContext
     private EntityManager entityManager;
+    @Autowired
+    ManagerCases managerCases;
+    @Autowired
+    UserCases userCases;
+    @Autowired
+    Searching searching;
 
 
     @Test
@@ -98,5 +107,20 @@ public class DITest extends AbstractJUnit4SpringContextTests {
     @Test
     public void OptionDAOTest() {
         assertNotNull(optionDAO);
+    }
+
+    @Test
+    public void ManagerCasesTest() {
+        assertNotNull(managerCases);
+    }
+
+    @Test
+    public void UserCasesTest() {
+        assertNotNull(managerCases);
+    }
+
+    @Test
+    public void SearchingUtilityTest() {
+        assertNotNull(searching);
     }
 }
