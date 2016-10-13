@@ -26,6 +26,7 @@
         <intercept-url pattern="/admin**" access="Manager"/>
         <!--<intercept-url pattern="/getRestInfo**" access="Manager"/>-->
         <intercept-url pattern="/user**" access="Manager"/>
+        <!--<intercept-url pattern="/getRest**" access="Manager"/>-->
         <intercept-url pattern="/user**" access="userAvailable"/>
         <form-login login-page="/login" authentication-failure-url="/login-denied"
                     username-parameter="username" password-parameter="password"
