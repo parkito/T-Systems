@@ -22,8 +22,6 @@
         <h2 style="margin-top:0;">${currentUser.name}, your options:</h2>
         <p></p>
     </div>
-    <input type="hidden" name="<c:out value="${_csrf.parameterName}"/>"
-           value="<c:out value="${_csrf.token}"/>"/>
     <div class="container-fluid ">
         <div class="panel panel-default">
             <table class="table">

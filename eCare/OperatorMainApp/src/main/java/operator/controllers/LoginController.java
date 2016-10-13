@@ -101,6 +101,9 @@ public class LoginController {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)
                 SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User currentUser = userService.getUserByEMAil(user.getUsername());
+        currentUser.setPassword("");
+        currentUser.setBirthdayData("");
+        currentUser.setSecondName("");
         req.getSession().setAttribute("currentUser", currentUser);
         if (currentUser.getAccessLevel().getAccessLevelId() == 1) {
             req.getSession().setAttribute("userPayment", userCases.getPaymentInfo(currentUser));

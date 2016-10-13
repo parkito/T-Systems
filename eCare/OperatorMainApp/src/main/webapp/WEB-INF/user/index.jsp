@@ -95,7 +95,7 @@
             <div class="panel panel-default">
                 <div class="panel-body"><h1 style="margin:0px;" align="center">Hello, ${currentUser.name} !</h1>
                     <p><strong><h3>We are glad to see you here ! </h3></strong>
-                    <h3>Let's discover all opportunities and explore new horizonts! If you need a help, please</h3><a
+                    <h3>Let's discover all opportunities and explore new horizons! If you need a help, please</h3><a
                             href="Help"><h3>Contact us</h3></a></p>
                 </div>
             </div>

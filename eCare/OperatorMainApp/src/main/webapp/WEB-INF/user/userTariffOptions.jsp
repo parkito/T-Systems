@@ -18,7 +18,7 @@
     List<TariffOption> allOptions = (List<TariffOption>) request.getAttribute("allTariffOptions");
     List<Contract> contracts = (List<Contract>) request.getAttribute("contractsUserList");
 %>
-<%@ include file="header.jsp"%>
+<%@ include file="header.jsp" %>
 
 <div id="global">
     <div class="container-fluid cm-container-white">
@@ -90,21 +90,9 @@
                                         function popBox() {
                                             x = confirm('Are you sure? ');
                                             if (x == true) {
-                                                var csrfHeaderName = "X-CSRF-TOKEN";
-                                                var csrfTokenValue;
-
-                                                var metaTags = document.getElementsByTagName('meta');
-                                                for(var i = 0; i < metaTags.length; i++) {
-                                                    var metaTagName = metaTags[i].getAttribute("name");
-                                                    if(metaTagName === "_csrf_header")
-                                                        csrfHeaderName = metaTags[i].getAttribute("content");
-                                                    if(metaTagName === "_csrf")
-                                                        csrfTokenValue = metaTags[i].getAttribute("content");
-                                                }
                                                 var xhr = new XMLHttpRequest();
                                                 xhr.open("POST", "userChangeTariffOptions?contractNumber=" + par1
                                                         + "&tariffOptionId=" + par2 + "&method=disable", false);
-                                                xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
                                                 xhr.send();
                                             }
                                         }
@@ -160,6 +148,5 @@
     </div>
 </div>
 </div>
-<%--<jsp:include page="footer.jsp"></jsp:include>--%>
-<%@ include file="footer.jsp"%>
+<%@ include file="footer.jsp" %>
 </html>
