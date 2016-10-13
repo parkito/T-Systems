@@ -50,8 +50,8 @@
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
         <div class="cm-flex">
             <h1>Home</h1>
-            <form id="cm-search" action="Help" method="get">
-                <input type="search" name="find" autocomplete="off" placeholder="Search...">
+            <form id="cm-search" action="userSearch" method="POST">
+                <input type="search" name="query" autocomplete="off" placeholder="Search...">
             </form>
         </div>
         <div class="pull-right">

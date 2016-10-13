@@ -10,6 +10,7 @@ import operator.services.api.ContractService;
 import operator.services.api.TariffOptionService;
 import operator.services.api.TariffService;
 import operator.services.api.UserService;
+import operator.utils.SearchResult;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.UnknownHostException;
 import java.util.List;
 
 /**
@@ -38,6 +40,8 @@ public class AdminController {
     private TariffOptionService optionService;
     @Autowired
     private ManagerCases managerCases;
+    @Autowired
+    private SearchResult searchResult;
 
     private static final Logger logger = Logger.getLogger(AdminController.class);
 
@@ -757,5 +761,21 @@ public class AdminController {
     @RequestMapping(value = "/adminRest", method = RequestMethod.GET)
     public String adminRest(HttpServletRequest request, Model model) {
         return "admin/adminRest";
+    }
+
+    /**
+     * Method for dispatching requests to userSearch page
+     *
+     * @param req   request from page
+     * @param model model for page view
+     * @param query query for searching
+     * @return page for userSearch
+     */
+    @RequestMapping(value = "/adminSearch", method = RequestMethod.POST)
+    public String searchingPost(HttpServletRequest req, Model model,
+                                @RequestParam(value = "query") String query) throws UnknownHostException {
+        String result = searchResult.getResults(query);
+        model.addAttribute("searchResult", result);
+        return "admin/adminSearch";
     }
 }

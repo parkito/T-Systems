@@ -26,7 +26,6 @@
             <h1>Home</h1>
             <form id="cm-search" action="userSearch" method="POST">
                 <input type="search" name="query" autocomplete="off" placeholder="Search...">
-
             </form>
         </div>
         <div class="pull-right">

@@ -26,8 +26,9 @@ public class SearchResult {
 
         for (SearchHit hit : search.getHits()) {
             Map<String, Object> searchMap = hit.getSource();
-            if (searchMap.containsValue(str)) ;
-            result = searchMap.toString();
+            if (searchMap.containsValue(str)) {
+                result = searchMap.toString();
+            }
         }
         return result;
     }
