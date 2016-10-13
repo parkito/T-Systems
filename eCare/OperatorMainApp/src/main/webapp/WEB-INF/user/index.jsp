@@ -98,7 +98,6 @@
                     <h3>Let's discover all opportunities and explore new horizonts! If you need a help, please</h3><a
                             href="Help"><h3>Contact us</h3></a></p>
                 </div>
-
             </div>
         </div>
     </div>
