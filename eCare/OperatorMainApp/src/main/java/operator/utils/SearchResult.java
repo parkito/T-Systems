@@ -22,7 +22,6 @@ public class SearchResult {
         Client client = TransportClient.builder().build()
                 .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
         SearchResponse search = client.prepareSearch("operator").setTypes("tariffs").execute().actionGet();
-        String serch = search.toString();
 
         for (SearchHit hit : search.getHits()) {
             Map<String, Object> searchMap = hit.getSource();
