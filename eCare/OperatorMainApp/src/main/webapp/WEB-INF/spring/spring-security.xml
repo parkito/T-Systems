@@ -23,11 +23,19 @@
     <http realm="JavaStudy example" use-expressions="false"
           authentication-manager-ref="dao-auth"
           access-decision-manager-ref="accessDecisionManager">
-        <intercept-url pattern="/admin**" access="Manager"/>
-        <!--<intercept-url pattern="/getRestInfo**" access="Manager"/>-->
-        <intercept-url pattern="/user**" access="Manager"/>
-        <!--<intercept-url pattern="/getRest**" access="Manager"/>-->
-        <intercept-url pattern="/user**" access="userAvailable"/>
+        <intercept-url pattern="/getRestInfo"
+                       requires-channel="http"/>
+        <intercept-url pattern="/adminRest" access="Manager"
+                       requires-channel="http"/>
+        <intercept-url pattern="/admin**" access="Manager"
+                       requires-channel="https"/>
+        <intercept-url pattern="/user**" access="Manager"
+                       requires-channel="https"/>
+        <intercept-url pattern="/user**" access="userAvailable"
+                       requires-channel="https"/>
+        <intercept-url pattern="/*"
+                       requires-channel="https"/>
+
         <form-login login-page="/login" authentication-failure-url="/login-denied"
                     username-parameter="username" password-parameter="password"
                     default-target-url="/main"/>

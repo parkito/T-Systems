@@ -36,8 +36,9 @@ public class RestServiceController {
 
     /**
      * Method for dispatching requests to getRestInfo
+     *
      * @param contractTitle contract title
-     * @param password password
+     * @param password      password
      * @return getRestInfo
      */
     @RequestMapping(value = "/getRestInfo", method = RequestMethod.GET)
@@ -47,7 +48,7 @@ public class RestServiceController {
                                @RequestParam(value = "password") String password) {
         List<UserDTO> users = new ArrayList<>();
         try {
-            if (DigestUtils.md5Hex(password).equals(DigestUtils.md5Hex("12345"))) {
+            if (!password.equals(DigestUtils.md5Hex("12345"))) {
                 return null;
             }
             Tariff tariff = tariffService.getTariffByTitle(contractTitle);
