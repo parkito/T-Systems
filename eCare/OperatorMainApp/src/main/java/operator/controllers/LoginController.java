@@ -115,6 +115,7 @@ public class LoginController {
 
     /**
      * Method for dispatching requests to rememberMe
+     *
      * @return remember me page
      */
     @RequestMapping(value = "/rememberMe", method = RequestMethod.GET)
@@ -124,6 +125,7 @@ public class LoginController {
 
     /**
      * Method for dispatching requests to rememberMe
+     *
      * @param model model;
      * @param email user's email
      * @return remember me page
@@ -135,7 +137,8 @@ public class LoginController {
         try {
             user = userService.getUserByEMAil(email);
             model.addAttribute("remindCheck", true);
-            managerCases.passwordGenerator(5, "", user.getEmail(), user.getName());
+            user.setPassword(managerCases.passwordGenerator(5, "", user.getEmail(), user.getName()));
+            userService.updateEntity(user);
         } catch (UserNotFoundException ex) {
             model.addAttribute("remindCheck", false);
         }
