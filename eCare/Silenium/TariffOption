@@ -38,16 +38,6 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=button.btn.btn-success</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertConfirmation</td>
-	<td>Are you sure? </td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
 	<td>css=button.btn.btn-danger</td>
 	<td></td>
 </tr>
@@ -66,7 +56,21 @@
 	<td>Are you sure? </td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-danger</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure? </td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

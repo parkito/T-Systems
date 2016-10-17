@@ -38,12 +38,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//input[@id='optionsRadios0'])[6]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=button.btn.btn-success</td>
+	<td>xpath=(//button[@type='submit'])[5]</td>
 	<td></td>
 </tr>
 <tr>
@@ -53,22 +48,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//header[@id='cm-header']/nav/div[4]/button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=b</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=optionsRadios0</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=button.btn.btn-success</td>
+	<td>xpath=(//button[@type='submit'])[5]</td>
 	<td></td>
 </tr>
 <tr>
@@ -77,13 +57,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//header[@id='cm-header']/nav/div[4]/button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//div[@id='global']/div[2]/div/div[2]/div/div[2]</td>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
 	<td></td>
 </tr>
 </tbody></table>
