@@ -96,7 +96,6 @@
                     </div>
                 </div>
             </div>
-            <%if (!contract.isBlocked()) {%>
             <div class="col-sm-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">Tariff option list</div>
@@ -189,7 +188,6 @@
                     </div>
                 </div>
             </div>
-            <%}%>
         </div>
         <%
                 }

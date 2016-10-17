@@ -24,7 +24,7 @@
                 <h3 style="margin-top:0px">Enter email</h3>
                 <div class="input-group input-group-lg">
 
-                    <input type="text" class="form-control" placeholder="Searching" id="textFiled1">
+                    <input type="text" class="form-control" placeholder="Searching" id="field">
 
                     <span class="input-group-btn">
                         <form name="newOne" onclick="finding()" class="btn btn-primary md-search-white">
@@ -33,13 +33,13 @@
                     </span>
                     <script>
                         function finding() {
-                            var text = document.getElementById('textFiled1').value;
+                            var text = document.getElementById('field').value;
                             popBox();
                             function popBox() {
                                 x = confirm('Are you sure?');
                                 if (x == true) {
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "adminViewClient?email=" + text, true);
+                                    xhr.open("POST", "adminViewClient?email=" + text, false);
                                     xhr.send();
                                 }
                             }
