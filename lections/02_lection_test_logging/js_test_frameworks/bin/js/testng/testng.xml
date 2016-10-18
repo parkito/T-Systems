@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="My test suite">
+
+	<groups>
+      <run>
+        <include name="integration"/>
+      </run>
+    </groups>
+
+  <test name="testing">
+    <classes>
+       <class name="js.testng.TestNGTest1" />
+       <class name="js.testng.TestNGTest2" />
+       <class name="js.testng.TestNGTest4" />
+    </classes>
+  </test>
+</suite>
